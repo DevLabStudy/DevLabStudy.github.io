@@ -9,7 +9,7 @@ Moje domowe laboratorium doczekało się małej, ale mega ważnej aktualizacji s
 
 Za grosze wjechał nowy router od Xiaomi (w wersji Redmi), który przejął na siebie całe bezprzewodowe pasmo 5 GHz. Szybki procesor i lepszy układ antenowy całkowicie rozwiązały problem – teraz podczas obciążenia transfer jest dzielony płynnie i sprawiedliwie, a sieć stoi stabilnie jak skała. 
 
-Oto dowód – stabilne, równe i pełne pasmo bez krztuszenia sieci ( test przeprowadzony telefonem Motorola g35 5g 8/256) :
+Oto dowód – stabilne, równe i pełne pasmo bez krztuszenia sieci ( test przeprowadzony telefonem Motorola g35 5g 8/256 ) :
 
 ![Wynik Speedtest](/assets/images/Screenshot_20260529-164930.png)
 
