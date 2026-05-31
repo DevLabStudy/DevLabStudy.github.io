@@ -39,6 +39,104 @@
         .article-content pre { background: rgba(0,0,0,0.8); border: 1px solid var(--border-color); padding: 15px; border-radius: 8px; overflow-x: auto; }
         .article-content img { max-width: 100%; height: auto; border-radius: 8px; margin: 20px 0; border: 1px solid var(--border-color); }
 
+        /* ==========================================================================
+           NOWE STYLE: Serduszka i Komentarze pod postem
+           ========================================================================== */
+        .post-interactions {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .like-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 35px;
+        }
+        .like-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .like-btn:hover {
+            background: rgba(239, 68, 68, 0.1);
+            border-color: #ef4444;
+            color: #ef4444;
+        }
+        .like-btn.liked {
+            background: #ef4444;
+            color: #fff;
+            border-color: #ef4444;
+        }
+
+        .comment-form-card {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 35px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        .form-input {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            color: var(--text-main);
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.95rem;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+        
+        .comments-list {
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .single-comment {
+            background: rgba(255, 255, 255, 0.01);
+            border-left: 3px solid var(--accent-blue);
+            border-radius: 0 6px 6px 0;
+            padding: 15px;
+            border-top: 1px solid rgba(255,255,255,0.02);
+            border-right: 1px solid rgba(255,255,255,0.02);
+            border-bottom: 1px solid rgba(255,255,255,0.02);
+        }
+        .comment-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        .comment-text {
+            color: #cbd5e1;
+        }
+
         footer { text-align: center; color: var(--text-muted); font-size: 0.85rem; margin: 50px 0 30px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     </style>
 </head>
@@ -58,11 +156,93 @@
         <article class="article-content">
             {{ content }}
         </article>
-    </main>
+
+        <div class="post-interactions" data-post-id="{{ page.id | slugify }}">
+            
+            <div class="like-section">
+                <button class="like-btn" id="likeButton">
+                    <span>❤️</span> <span id="likeText">Polub wpis</span> (<span id="postTotalLikes">0</span>)
+                </button>
+            </div>
+
+            <div class="comment-form-card">
+                <h3 style="font-size: 1.1rem; margin: 0 0 20px 0;">Dodaj komentarz</h3>
+                
+                <form id="commentForm">
+                    <div class="form-group">
+                        <label for="nickname">Twój Nick</label>
+                        <input type="text" id="nickname" class="form-input" placeholder="np. anonim" required autocomplete="off">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="commentContent">Treść wiadomości</label>
+                        <textarea id="commentContent" class="form-input" rows="4" placeholder="Napisz co myślisz..." required></textarea>
+                    </div>
+
+                    <div style="display: none !important; visibility: hidden;">
+                        <input type="text" id="sys_verification_field" autocomplete="off">
+                    </div>
+
+                    <div class="cf-turnstile" data-sitekey="TUTAJ_WPISZ_TWÓJ_SITEKEY_Z_CLOUDFLARE" style="margin-bottom: 15px;"></div>
+
+                    <button type="submit" class="like-btn" style="border-color: var(--accent-blue); color: var(--accent-blue); background: rgba(59, 130, 246, 0.05);">Wyślij komentarz</button>
+                </form>
+            </div>
+
+            <div class="comments-section">
+                <h3 style="font-size: 1.1rem; margin: 0 0 15px 0;">Komentarze (<span id="postTotalComments">0</span>)</h3>
+                
+                <div class="comments-list" id="commentsList">
+                    <div class="single-comment">
+                        <div class="comment-meta">Moderacja [System]</div>
+                        <div class="comment-text">Komentarze ładują się poprawnie. Brak kont nie przeszkadza w dyskusji!</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        </main>
 
     <footer>
         <p>1 Gbps Fiber - Linux Mint - Orbit™ Project 2026</p>
     </footer>
+
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+    <script>
+        // Logika zapisu serduszek w przeglądarce (localStorage)
+        document.addEventListener("DOMContentLoaded", function() {
+            const postId = document.querySelector('.post-interactions').getAttribute('data-post-id');
+            const likeBtn = document.getElementById('likeButton');
+            
+            if (localStorage.getItem('liked_' + postId)) {
+                likeBtn.classList.add('liked');
+                document.getElementById('likeText').innerText = 'Polubiono';
+            }
+
+            likeBtn.addEventListener('click', function() {
+                if (!localStorage.getItem('liked_' + postId)) {
+                    localStorage.setItem('liked_' + postId, true);
+                    likeBtn.classList.add('liked');
+                    document.getElementById('likeText').innerText = 'Polubiono';
+                    
+                    let currentLikes = parseInt(document.getElementById('postTotalLikes').innerText);
+                    document.getElementById('postTotalLikes').innerText = currentLikes + 1;
+                    
+                    // fetch(`/api/like?id=${postId}`, { method: 'POST' });
+                } else {
+                    localStorage.removeItem('liked_' + postId);
+                    likeBtn.classList.remove('liked');
+                    document.getElementById('likeText').innerText = 'Polub wpis';
+                    
+                    let currentLikes = parseInt(document.getElementById('postTotalLikes').innerText);
+                    document.getElementById('postTotalLikes').innerText = currentLikes - 1;
+                    
+                    // fetch(`/api/unlike?id=${postId}`, { method: 'POST' });
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
