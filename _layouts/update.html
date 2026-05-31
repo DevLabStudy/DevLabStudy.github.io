@@ -2,6 +2,50 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} | DevLabStudy</title>
+    <link rel="icon" type="image/jpeg" href="/profileIcon_g3ffyg7edeeg1.jpeg">
+
+    <style>
+        :root {
+            --bg-nav: rgba(5, 5, 5, 0.85); --text-main: #f8fafc; --text-muted: #94a3b8; 
+            --border-color: rgba(255, 255, 255, 0.1); --accent-blue: #3b82f6;
+        }
+        body { font-family: 'Inter', sans-serif; background: #000; color: var(--text-main); margin: 0; line-height: 1.6; }
+        .navbar { position: sticky; top: 0; z-index: 100; background: var(--bg-nav); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border-color); padding: 15px 40px; display: flex; align-items: center; justify-content: space-between; }
+        .nav-brand { font-size: 1.5rem; font-weight: 800; text-decoration: none; color: var(--text-main); }
+        .back-link { color: var(--accent-blue); text-decoration: none; font-weight: 600; font-size: 0.95rem;}
+        .container { max-width: 800px; margin: 40px auto; padding: 40px; background: rgba(5, 5, 5, 0.8); border-radius: 12px; border: 1px solid var(--border-color); }
+        
+        /* Reszta styli jest taka sama jak w Twoim kodzie blogowym, aby zachować spójność */
+        .article-header { border-bottom: 1px solid var(--border-color); padding-bottom: 20px; margin-bottom: 30px; }
+        .article-title { font-size: 2.2rem; font-weight: 800; margin: 0 0 10px 0; }
+        .article-date { color: var(--text-muted); font-size: 0.95rem; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="/" class="nav-brand">DevLabStudy</a>
+        <a href="/updates" class="back-link">&larr; Wróć do aktualizacji</a>
+    </nav>
+
+    <main class="container">
+        <header class="article-header">
+            <h1 class="article-title">{{ page.title }}</h1>
+            <div class="article-date">{{ page.date | date: "%B %d, %Y" }}</div>
+        </header>
+
+        <article>
+            {{ content }}
+        </article>
+
+        </main>
+</body>
+</html><!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
     <title>{{ page.title }} | DevLabStudy</title>
     <style>
         body { 
