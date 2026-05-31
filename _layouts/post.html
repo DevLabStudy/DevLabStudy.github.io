@@ -201,48 +201,119 @@
             </div>
 
         </div>
-        </main>
-
-    <footer>
+    </main> <footer>
         <p>1 Gbps Fiber - Linux Mint - Orbit™ Project 2026</p>
     </footer>
 
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
     <script>
-        // Logika zapisu serduszek w przeglądarce (localStorage)
         document.addEventListener("DOMContentLoaded", function() {
             const postId = document.querySelector('.post-interactions').getAttribute('data-post-id');
             const likeBtn = document.getElementById('likeButton');
             
+            // Konfiguracja adresu url Twojego API
+            const API_BASE = "https://api.devlabstudy.pl/api";
+            
+            // ==========================================================================
+            // FUNKCJA POBIERANIA DANYCH Z BAZY (KOMENTARZE I SERCA)
+            // ==========================================================================
+            function loadPostData() {
+                fetch(`${API_BASE}/post/${postId}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        document.getElementById('postTotalLikes').innerText = data.likes || 0;
+                        document.getElementById('postTotalComments').innerText = data.comments ? data.comments.length : 0;
+
+                        const list = document.getElementById('commentsList');
+                        if (data.comments && data.comments.length > 0) {
+                            list.innerHTML = ''; 
+                            data.comments.forEach(c => {
+                                const commentDiv = document.createElement('div');
+                                commentDiv.className = 'single-comment';
+                                commentDiv.innerHTML = `
+                                    <div class="comment-meta">${escapeHTML(c.nickname)} [${c.date}]</div>
+                                    <div class="comment-text">${escapeHTML(c.content)}</div>
+                                `;
+                                list.appendChild(commentDiv);
+                            });
+                        }
+                    })
+                    .catch(err => console.error("Błąd synchronizacji z bazą danych API:", err));
+            }
+
+            // Wywołaj ładowanie danych na starcie strony
+            loadPostData();
+
+            // ==========================================================================
+            // LOGIKA ZAPISU SERDUSZEK W PRZEGLĄDARCE (LOCALSTORAGE)
+            // ==========================================================================
             if (localStorage.getItem('liked_' + postId)) {
                 likeBtn.classList.add('liked');
                 document.getElementById('likeText').innerText = 'Polubiono';
             }
 
             likeBtn.addEventListener('click', function() {
-                if (!localStorage.getItem('liked_' + postId)) {
-                    localStorage.setItem('liked_' + postId, true);
-                    likeBtn.classList.add('liked');
-                    document.getElementById('likeText').innerText = 'Polubiono';
-                    
-                    let currentLikes = parseInt(document.getElementById('postTotalLikes').innerText);
-                    document.getElementById('postTotalLikes').innerText = currentLikes + 1;
-                    
-                    // fetch(`/api/like?id=${postId}`, { method: 'POST' });
-                } else {
-                    localStorage.removeItem('liked_' + postId);
-                    likeBtn.classList.remove('liked');
-                    document.getElementById('likeText').innerText = 'Polub wpis';
-                    
-                    let currentLikes = parseInt(document.getElementById('postTotalLikes').innerText);
-                    document.getElementById('postTotalLikes').innerText = currentLikes - 1;
-                    
-                    // fetch(`/api/unlike?id=${postId}`, { method: 'POST' });
-                }
+                const isLiked = localStorage.getItem('liked_' + postId);
+                const method = isLiked ? 'DELETE' : 'POST';
+
+                fetch(`${API_BASE}/like/${postId}`, { method: method })
+                    .then(res => {
+                        if (res.ok) {
+                            if (!isLiked) {
+                                localStorage.setItem('liked_' + postId, true);
+                                likeBtn.classList.add('liked');
+                                document.getElementById('likeText').innerText = 'Polubiono';
+                            } else {
+                                localStorage.removeItem('liked_' + postId);
+                                likeBtn.classList.remove('liked');
+                                document.getElementById('likeText').innerText = 'Polub wpis';
+                            }
+                            loadPostData(); // Aktualizacja liczników na żywo z serwera
+                        }
+                    });
             });
+
+            // ==========================================================================
+            // WYSYŁANIE FORMULARZA KOMENTARZY
+            // ==========================================================================
+            document.getElementById('commentForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                if (document.getElementById('sys_verification_field').value !== "") {
+                    return; // Blokada dla bota (honeypot)
+                }
+
+                const turnstileToken = document.querySelector('[name="cf-turnstile-response"]').value;
+
+                const payload = {
+                    nickname: document.getElementById('nickname').value,
+                    content: document.getElementById('commentContent').value,
+                    turnstileToken: turnstileToken
+                };
+
+                fetch(`${API_BASE}/comment/${postId}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                })
+                .then(res => {
+                    if (res.ok) {
+                        document.getElementById('commentContent').value = ''; 
+                        loadPostData(); // Odświeżenie listy komentarzy na żywo
+                        if (typeof turnstile !== "undefined") turnstile.reset();
+                    } else {
+                        alert("Weryfikacja antybotowa odrzuciła pakiet.");
+                    }
+                });
+            });
+
+            function escapeHTML(str) {
+                return str.replace(/[&<>'"]/g, 
+                    tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+                );
+            }
         });
     </script>
-
 </body>
 </html>
