@@ -62,7 +62,21 @@ title: Hub | DevLabStudy
         padding: 15px;
         border-top: 1px solid var(--border);
         font-size: 0.8rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
+
+    .btn-updates {
+        text-decoration: none;
+        color: var(--accent);
+        border: 1px solid var(--accent);
+        padding: 6px 12px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        transition: 0.2s;
+    }
+    .btn-updates:hover { background: var(--accent); color: #fff; }
 </style>
 
 <div class="devlab-hub">
@@ -126,6 +140,7 @@ title: Hub | DevLabStudy
     </div>
 
     <div class="status-footer">
-        <span style="color: var(--success);">●</span> All Real Nodes Operational | Architecture: x86-64
+        <span><span style="color: var(--success);">●</span> All Real Nodes Operational | Architecture: x86-64</span>
+        <a href="/updates/" class="btn-updates">[ VIEW_SYSTEM_UPDATES ]</a>
     </div>
 </div>
