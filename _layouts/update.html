@@ -4,68 +4,44 @@
     <meta charset="UTF-8">
     <title>{{ page.title }} | DevLabStudy</title>
     <style>
-        body { font-family: 'Inter', sans-serif; background: #000; color: #f8fafc; margin: 0; line-height: 1.6; }
-        .container { max-width: 800px; margin: 40px auto; padding: 40px; border: 1px solid #333; border-radius: 12px; }
-        .like-btn { background: #111; border: 1px solid #444; color: #fff; padding: 10px 20px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: 0.2s; }
-        .like-btn:hover { border-color: #ef4444; color: #ef4444; }
-        .like-btn.liked { background: #ef4444; border-color: #ef4444; color: #fff; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: #000; 
+            color: #f8fafc; 
+            margin: 0; 
+            line-height: 1.6; 
+        }
+        .container { 
+            max-width: 800px; 
+            margin: 40px auto; 
+            padding: 40px; 
+            border: 1px solid #333; 
+            border-radius: 12px; 
+        }
+        .article-header { 
+            border-bottom: 1px solid #333; 
+            padding-bottom: 20px; 
+            margin-bottom: 30px; 
+        }
+        h1 { margin: 0 0 10px 0; }
+        .date { color: #94a3b8; }
+        a { color: #3b82f6; text-decoration: none; }
     </style>
 </head>
 <body>
     <main class="container">
-        <h1>{{ page.title }}</h1>
-        <article>{{ content }}</article>
+        <header class="article-header">
+            <h1>{{ page.title }}</h1>
+            <div class="date">{{ page.date | date: "%B %d, %Y" }}</div>
+        </header>
 
-        <div id="interactionZone" data-post-id="{{ page.path | split: '/' | last | remove: '.md' }}" style="margin-top: 40px; border-top: 1px solid #333; padding-top: 20px;">
-            <button class="like-btn" id="likeButton">
-                ❤️ <span id="likeText">Polub aktualizację</span> (<span id="postTotalLikes">0</span>)
-            </button>
+        <article>
+            {{ content }}
+        </article>
+
+        <div style="margin-top: 50px;">
+            <a href="/updates">&larr; Wróć do listy aktualizacji</a>
         </div>
     </main>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const API_BASE = "https://api.devlabstudy.pl/api";
-            const zone = document.getElementById('interactionZone');
-            const postId = zone.getAttribute('data-post-id');
-            const likeBtn = document.getElementById('likeButton');
-            const likeText = document.getElementById('likeText');
-            const likeCount = document.getElementById('postTotalLikes');
-
-            // Pobierz stan z API
-            fetch(`${API_BASE}/post/${postId}`)
-                .then(res => res.json())
-                .then(data => { likeCount.innerText = data.likes || 0; })
-                .catch(err => console.log("API Error:", err));
-
-            // Sprawdź czy użytkownik polubił wcześniej
-            if (localStorage.getItem('liked_' + postId)) {
-                likeBtn.classList.add('liked');
-                likeText.innerText = 'Polubiono';
-            }
-
-            // Obsługa kliknięcia
-            likeBtn.addEventListener('click', () => {
-                const isLiked = likeBtn.classList.contains('liked');
-                
-                fetch(`${API_BASE}/like/${postId}`, { method: isLiked ? 'DELETE' : 'POST' })
-                    .then(res => {
-                        if (res.ok) {
-                            if (isLiked) {
-                                likeBtn.classList.remove('liked');
-                                likeText.innerText = 'Polub aktualizację';
-                                localStorage.removeItem('liked_' + postId);
-                                likeCount.innerText = Math.max(0, parseInt(likeCount.innerText) - 1);
-                            } else {
-                                likeBtn.classList.add('liked');
-                                likeText.innerText = 'Polubiono';
-                                localStorage.setItem('liked_' + postId, true);
-                                likeCount.innerText = parseInt(likeCount.innerText) + 1;
-                            }
-                        }
-                    });
-            });
-        });
-    </script>
 </body>
 </html>
