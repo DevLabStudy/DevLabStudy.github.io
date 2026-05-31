@@ -1,5 +1,5 @@
 ---
-layout: updates_standalone
+layout: update
 title: "Wdrożenie systemu reakcji i komentarzy"
 date: 2026-05-31
 ---
