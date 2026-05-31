@@ -2,106 +2,81 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }} | DevLabStudy</title>
-    
-    <link rel="icon" type="image/jpeg" href="/profileIcon_g3ffyg7edeeg1.jpeg">
-
     <style>
-        :root {
-            --bg-nav: rgba(5, 5, 5, 0.85); --text-main: #f8fafc; --text-muted: #94a3b8; 
-            --border-color: rgba(255, 255, 255, 0.1); --accent-blue: #3b82f6; --bg-card: #111;
-        }
-        
-        body { 
-            font-family: 'Inter', -apple-system, sans-serif; margin: 0; min-height: 100vh;
-            background: #000 url('/background.png') no-repeat center center fixed; 
-            background-size: cover; color: var(--text-main); line-height: 1.6;
-        }
-
-        .navbar { position: sticky; top: 0; z-index: 100; background: var(--bg-nav); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border-color); padding: 15px 40px; display: flex; align-items: center; justify-content: space-between; }
-        .nav-brand { font-size: 1.5rem; font-weight: 800; text-decoration: none; color: var(--text-main); }
-        .back-link { color: var(--accent-blue); text-decoration: none; font-weight: 600; font-size: 0.95rem;}
-
-        .container { max-width: 800px; margin: 40px auto; padding: 40px; background: rgba(5, 5, 5, 0.8); border-radius: 12px; border: 1px solid var(--border-color); }
-        .article-header { border-bottom: 1px solid var(--border-color); padding-bottom: 20px; margin-bottom: 30px; }
-        .article-title { font-size: 2.2rem; margin: 0 0 10px 0; font-weight: 800; }
-        
-        .post-interactions { margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border-color); }
-        .like-btn { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); color: var(--text-main); padding: 10px 20px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 8px; font-weight: 600; transition: 0.2s; }
-        .like-btn:hover { background: rgba(239, 68, 68, 0.1); border-color: #ef4444; color: #ef4444; }
-        .like-btn.liked { background: #ef4444; color: #fff; }
+        :root { --bg-nav: rgba(5, 5, 5, 0.85); --text-main: #f8fafc; --text-muted: #94a3b8; --accent-blue: #3b82f6; }
+        body { font-family: 'Inter', sans-serif; background: #000; color: var(--text-main); line-height: 1.6; margin: 0; padding: 0; }
+        .navbar { padding: 15px 40px; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; }
+        .container { max-width: 800px; margin: 40px auto; padding: 40px; border: 1px solid #333; border-radius: 12px; }
+        .article-header { border-bottom: 1px solid #333; padding-bottom: 20px; margin-bottom: 30px; }
+        .like-btn { background: #111; border: 1px solid #444; color: #fff; padding: 10px 20px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 8px; }
+        .like-btn.liked { background: #ef4444; border-color: #ef4444; }
     </style>
 </head>
 <body>
-
     <nav class="navbar">
-        <a href="/" class="nav-brand">DevLabStudy</a>
-        <a href="/updates" class="back-link">&larr; Back to Updates</a>
+        <a href="/" style="color: #fff; font-weight: 800; text-decoration: none;">DevLabStudy</a>
+        <a href="/updates" style="color: var(--accent-blue); text-decoration: none;">&larr; Back to Updates</a>
     </nav>
 
     <main class="container">
-        <header class="article-header">
-            <h1 class="article-title">{{ page.title }}</h1>
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span style="color: var(--text-muted);">{{ page.date | date: "%B %d, %Y" }}</span>
-                <span style="color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">
-                    ❤️ <span id="dateLikeCount">0</span>
-                </span>
-            </div>
-        </header>
+        <div class="article-header">
+            <h1>{{ page.title }}</h1>
+            <div style="color: var(--text-muted);">{{ page.date | date: "%B %d, %Y" }}</div>
+        </div>
 
         <article>
             {{ content }}
         </article>
 
-        <div class="post-interactions" data-post-id="{{ page.id | slugify }}">
+        <div id="interactionZone" data-post-id="{{ page.id | slugify }}" style="margin-top: 40px; padding-top: 30px; border-top: 1px solid #333;">
             <button class="like-btn" id="likeButton">
-                <span>❤️</span> <span id="likeText">Polub aktualizację</span> (<span id="postTotalLikes">0</span>)
+                ❤️ <span id="likeText">Polub aktualizację</span> (<span id="postTotalLikes">0</span>)
             </button>
         </div>
     </main>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const postId = document.querySelector('.post-interactions').getAttribute('data-post-id');
-            const likeBtn = document.getElementById('likeButton');
-            const API_BASE = "https://api.devlabstudy.pl/api";
+        const API_BASE = "https://api.devlabstudy.pl/api";
+        const zone = document.getElementById('interactionZone');
+        const postId = zone.getAttribute('data-post-id');
+        const likeBtn = document.getElementById('likeButton');
+        const likeText = document.getElementById('likeText');
+        const likeCount = document.getElementById('postTotalLikes');
 
-            function updateLikeDisplay(count) {
-                document.getElementById('postTotalLikes').innerText = count;
-                document.getElementById('dateLikeCount').innerText = count;
-            }
-
-            fetch(`${API_BASE}/post/${postId}`)
-                .then(res => res.json())
-                .then(data => updateLikeDisplay(data.likes || 0));
-
-            if (localStorage.getItem('liked_' + postId)) {
-                likeBtn.classList.add('liked');
-                document.getElementById('likeText').innerText = 'Polubiono';
-            }
-
-            likeBtn.addEventListener('click', function() {
-                const isLiked = localStorage.getItem('liked_' + postId);
-                const method = isLiked ? 'DELETE' : 'POST';
-
-                fetch(`${API_BASE}/like/${postId}`, { method: method })
-                    .then(res => {
-                        if (res.ok) {
-                            if (!isLiked) {
-                                localStorage.setItem('liked_' + postId, true);
-                                likeBtn.classList.add('liked');
-                                document.getElementById('likeText').innerText = 'Polubiono';
-                            } else {
-                                localStorage.removeItem('liked_' + postId);
-                                likeBtn.classList.remove('liked');
-                                document.getElementById('likeText').innerText = 'Polub aktualizację';
-                            }
-                            fetch(`${API_BASE}/post/${postId}`).then(res => res.json()).then(data => updateLikeDisplay(data.likes || 0));
-                        }
-                    });
+        // 1. Pobierz stan początkowy
+        fetch(`${API_BASE}/post/${postId}`)
+            .then(res => res.json())
+            .then(data => {
+                likeCount.innerText = data.likes || 0;
             });
+
+        // 2. Sprawdź czy użytkownik polubił wcześniej
+        if (localStorage.getItem('liked_' + postId)) {
+            likeBtn.classList.add('liked');
+            likeText.innerText = 'Polubiono';
+        }
+
+        // 3. Akcja kliknięcia
+        likeBtn.addEventListener('click', () => {
+            const isLiked = likeBtn.classList.contains('liked');
+            
+            fetch(`${API_BASE}/like/${postId}`, { method: isLiked ? 'DELETE' : 'POST' })
+                .then(res => {
+                    if (res.ok) {
+                        if (isLiked) {
+                            likeBtn.classList.remove('liked');
+                            likeText.innerText = 'Polub aktualizację';
+                            localStorage.removeItem('liked_' + postId);
+                            likeCount.innerText = parseInt(likeCount.innerText) - 1;
+                        } else {
+                            likeBtn.classList.add('liked');
+                            likeText.innerText = 'Polubiono';
+                            localStorage.setItem('liked_' + postId, true);
+                            likeCount.innerText = parseInt(likeCount.innerText) + 1;
+                        }
+                    }
+                });
         });
     </script>
 </body>
