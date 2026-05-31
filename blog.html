@@ -6,7 +6,7 @@ title: Blog
     .log-link { 
         display: flex; 
         justify-content: space-between; 
-        align-items: center; /* Wyrównanie elementów w pionie */
+        align-items: center;
         text-decoration: none; 
         padding: 12px 0; 
         border-bottom: 1px solid rgba(255,255,255,0.05); 
@@ -16,33 +16,10 @@ title: Blog
     .log-link:last-child { border-bottom: none; padding-bottom: 0; }
     .log-link:hover { padding-left: 8px; color: var(--accent-blue); }
 
-    /* Kontener na tytuł (lewa strona) */
     .log-title {
         font-size: 0.95rem; 
         font-weight: 600;
         padding-right: 20px;
-    }
-
-    /* Kontener grupujący statystyki i datę (prawa strona) */
-    .log-meta-wrapper {
-        display: flex;
-        align-items: center;
-        gap: 15px; /* Odstęp między statystykami a datą */
-        white-space: nowrap;
-    }
-
-    /* Wygląd samych liczników serc i komentarzy */
-    .log-stats {
-        display: flex;
-        gap: 10px;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.8rem;
-        color: var(--text-muted);
-    }
-    .stat-item {
-        display: flex;
-        align-items: center;
-        gap: 4px;
     }
 </style>
 
@@ -51,45 +28,15 @@ title: Blog
     
     <div style="display: flex; flex-direction: column;">
         {% for post in site.posts %}
-        <a href="{{ post.url }}" class="log-link" data-post-id="{{ post.id | slugify }}">
+        <a href="{{ post.url }}" class="log-link">
             
             <span class="log-title">{{ post.title }}</span>
             
-            <div class="log-meta-wrapper">
-                <div class="log-stats">
-                    <span class="stat-item">❤️ <span class="likes-count">0</span></span>
-                    <span class="stat-item">💬 <span class="comments-count">0</span></span>
-                </div>
-                <span style="color: var(--text-muted); font-size: 0.8rem; font-family: 'JetBrains Mono', monospace;">[{{ post.date | date: "%d.%m.%Y" }}]</span>
-            </div>
+            <span style="color: var(--text-muted); font-size: 0.8rem; font-family: 'JetBrains Mono', monospace;">
+                [{{ post.date | date: "%d.%m.%Y" }}]
+            </span>
 
         </a>
         {% endfor %}
     </div>
 </div>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Docelowy adres Twojego API
-        const API_URL = "https://api.devlabstudy.pl/stats";
-
-        const postElements = document.querySelectorAll(".log-link");
-        if (postElements.length === 0) return;
-
-        // Pobieramy paczkę danych dla wszystkich postów naraz
-        fetch(API_URL)
-            .then(response => response.json())
-            .then(data => {
-                // Oczekiwany format z serwera: { "nazwa-posta": { likes: 12, comments: 4 } }
-                postElements.forEach(post => {
-                    const postId = post.getAttribute("data-post-id");
-                    
-                    if (data[postId]) {
-                        post.querySelector(".likes-count").innerText = data[postId].likes || 0;
-                        post.querySelector(".comments-count").innerText = data[postId].comments || 0;
-                    }
-                });
-            })
-            .catch(err => console.error("Błąd ładowania statystyk logs:", err));
-    });
-</script>
