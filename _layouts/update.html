@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,37 +16,21 @@
         body { 
             font-family: 'Inter', -apple-system, sans-serif; margin: 0; min-height: 100vh;
             background: #000 url('/background.png') no-repeat center center fixed; 
-            background-size: cover; color: var(--text-main); overflow-x: hidden;
-            line-height: 1.6;
+            background-size: cover; color: var(--text-main); line-height: 1.6;
         }
 
         .navbar { position: sticky; top: 0; z-index: 100; background: var(--bg-nav); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border-color); padding: 15px 40px; display: flex; align-items: center; justify-content: space-between; }
-        .nav-brand { font-size: 1.5rem; font-weight: 800; text-decoration: none; color: var(--text-main); letter-spacing: -0.5px; }
+        .nav-brand { font-size: 1.5rem; font-weight: 800; text-decoration: none; color: var(--text-main); }
         .back-link { color: var(--accent-blue); text-decoration: none; font-weight: 600; font-size: 0.95rem;}
-        .back-link:hover { text-decoration: underline; }
 
-        .container { max-width: 800px; margin: 40px auto; padding: 40px; background: rgba(5, 5, 5, 0.8); backdrop-filter: blur(10px); border-radius: 12px; border: 1px solid var(--border-color); }
-        
+        .container { max-width: 800px; margin: 40px auto; padding: 40px; background: rgba(5, 5, 5, 0.8); border-radius: 12px; border: 1px solid var(--border-color); }
         .article-header { border-bottom: 1px solid var(--border-color); padding-bottom: 20px; margin-bottom: 30px; }
-        .article-title { font-size: 2.2rem; margin: 0 0 10px 0; line-height: 1.2; font-weight: 800; }
-        .article-date { color: var(--text-muted); font-size: 0.95rem; }
+        .article-title { font-size: 2.2rem; margin: 0 0 10px 0; font-weight: 800; }
         
-        .article-content { font-size: 1.1rem; line-height: 1.8; color: #cbd5e1; }
-        .article-content h2, .article-content h3 { margin-top: 40px; color: var(--text-main); }
-        .article-content a { color: var(--accent-blue); text-decoration: none; }
-        .article-content a:hover { text-decoration: underline; }
-        .article-content code { background: rgba(255,255,255,0.1); border: 1px solid var(--border-color); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.9em; color: #f8fafc; }
-        .article-content pre { background: rgba(0,0,0,0.8); border: 1px solid var(--border-color); padding: 15px; border-radius: 8px; overflow-x: auto; }
-        .article-content img { max-width: 100%; height: auto; border-radius: 8px; margin: 20px 0; border: 1px solid var(--border-color); }
-
-        /* SEKCJA SERDUSZEK */
         .post-interactions { margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border-color); }
-        .like-section { display: flex; align-items: center; gap: 10px; margin-bottom: 35px; }
-        .like-btn { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); color: var(--text-main); padding: 10px 20px; border-radius: 6px; cursor: pointer; font-family: inherit; font-weight: 600; font-size: 0.95rem; transition: 0.2s; display: flex; align-items: center; gap: 8px; }
+        .like-btn { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); color: var(--text-main); padding: 10px 20px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 8px; font-weight: 600; transition: 0.2s; }
         .like-btn:hover { background: rgba(239, 68, 68, 0.1); border-color: #ef4444; color: #ef4444; }
-        .like-btn.liked { background: #ef4444; color: #fff; border-color: #ef4444; }
-
-        footer { text-align: center; color: var(--text-muted); font-size: 0.85rem; margin: 50px 0 30px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
+        .like-btn.liked { background: #ef4444; color: #fff; }
     </style>
 </head>
 <body>
@@ -59,25 +43,24 @@
     <main class="container">
         <header class="article-header">
             <h1 class="article-title">{{ page.title }}</h1>
-            <div class="article-date">{{ page.date | date: "%B %d, %Y" }}</div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="color: var(--text-muted);">{{ page.date | date: "%B %d, %Y" }}</span>
+                <span style="color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">
+                    ❤️ <span id="dateLikeCount">0</span>
+                </span>
+            </div>
         </header>
 
-        <article class="article-content">
+        <article>
             {{ content }}
         </article>
 
         <div class="post-interactions" data-post-id="{{ page.id | slugify }}">
-            <div class="like-section">
-                <button class="like-btn" id="likeButton">
-                    <span>❤️</span> <span id="likeText">Polub aktualizację</span> (<span id="postTotalLikes">0</span>)
-                </button>
-            </div>
+            <button class="like-btn" id="likeButton">
+                <span>❤️</span> <span id="likeText">Polub aktualizację</span> (<span id="postTotalLikes">0</span>)
+            </button>
         </div>
     </main>
-
-    <footer>
-        <p>1 Gbps Fiber - Linux Mint - Orbit™ Project 2026</p>
-    </footer>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -85,14 +68,15 @@
             const likeBtn = document.getElementById('likeButton');
             const API_BASE = "https://api.devlabstudy.pl/api";
 
-            // Pobieranie liczby polubień
+            function updateLikeDisplay(count) {
+                document.getElementById('postTotalLikes').innerText = count;
+                document.getElementById('dateLikeCount').innerText = count;
+            }
+
             fetch(`${API_BASE}/post/${postId}`)
                 .then(res => res.json())
-                .then(data => {
-                    document.getElementById('postTotalLikes').innerText = data.likes || 0;
-                });
+                .then(data => updateLikeDisplay(data.likes || 0));
 
-            // Obsługa stanu polubienia
             if (localStorage.getItem('liked_' + postId)) {
                 likeBtn.classList.add('liked');
                 document.getElementById('likeText').innerText = 'Polubiono';
@@ -114,10 +98,7 @@
                                 likeBtn.classList.remove('liked');
                                 document.getElementById('likeText').innerText = 'Polub aktualizację';
                             }
-                            // Odśwież liczbę
-                            fetch(`${API_BASE}/post/${postId}`).then(res => res.json()).then(data => {
-                                 document.getElementById('postTotalLikes').innerText = data.likes || 0;
-                            });
+                            fetch(`${API_BASE}/post/${postId}`).then(res => res.json()).then(data => updateLikeDisplay(data.likes || 0));
                         }
                     });
             });
