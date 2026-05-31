@@ -20,18 +20,24 @@
         .nav-brand { font-size: 1.5rem; font-weight: 800; text-decoration: none; color: var(--text-main); }
         .back-link { color: var(--accent-blue); text-decoration: none; font-weight: 600; font-size: 0.95rem; }
         .back-link:hover { text-decoration: underline; }
+        
         .container { max-width: 800px; margin: 40px auto; padding: 40px; background: rgba(5, 5, 5, 0.8); backdrop-filter: blur(10px); border-radius: 12px; border: 1px solid var(--border-color); }
         
         .article-header { border-bottom: 1px solid var(--border-color); padding-bottom: 20px; margin-bottom: 30px; }
         .article-title { font-size: 2.2rem; margin: 0 0 10px 0; font-weight: 800; }
         .article-date { color: var(--text-muted); font-size: 0.95rem; }
         
-        .article-content { font-size: 1.1rem; color: #cbd5e1; }
+        /* Zaktualizowane style treści - zabezpieczenie przed rozciąganiem */
+        .article-content { font-size: 1.1rem; color: #cbd5e1; overflow-wrap: break-word; }
         .article-content h2, .article-content h3 { margin-top: 40px; color: var(--text-main); }
         .article-content a { color: var(--accent-blue); text-decoration: none; }
+        
+        /* Kluczowe poprawki dla zdjęć i kodu */
+        .article-content img { max-width: 100%; height: auto; display: block; margin: 20px auto; border-radius: 8px; border: 1px solid var(--border-color); }
+        .article-content pre { max-width: 100%; overflow-x: auto; background: rgba(0,0,0,0.5); padding: 15px; border-radius: 8px; }
         .article-content code { background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; font-family: monospace; }
         
-        footer { text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-top: 50px; }
+        footer { text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-top: 50px; margin-bottom: 30px; }
     </style>
 </head>
 <body>
