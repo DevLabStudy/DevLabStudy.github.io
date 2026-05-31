@@ -2,6 +2,23 @@
 layout: default
 title: Updates
 ---
+<div class="card">
+    <h3 style="font-size: 0.85rem; color: var(--text-muted); margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 1px; font-family: 'JetBrains Mono', monospace;">[ Recent_Update_Logs ]</h3>
+    
+    <div style="display: flex; flex-direction: column;">
+        {% for update in site.updates %}
+        <a href="{{ update.url }}" class="log-link">
+            <span class="log-title">{{ update.title }}</span>
+            <div class="log-meta-wrapper">
+                <span style="color: var(--text-muted); font-size: 0.8rem; font-family: 'JetBrains Mono', monospace;">[{{ update.date | date: "%d.%m.%Y" }}]</span>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>---
+layout: default
+title: Updates
+---
 <style>
     .log-link { 
         display: flex; 
