@@ -35,8 +35,17 @@
         .grid-container { display: grid; grid-template-columns: 240px 1px 1fr; gap: 50px; align-items: start; }
         .vertical-divider { background: var(--border-color); width: 1px; min-height: 400px; }
         
-        .left-sidebar { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 100px; }
-        .left-sidebar .card { margin-right: 25px; } 
+        /* ZMIANA: Przesunięcie sidebara w lewo o 120px bez przesuwania reszty strony */
+        .left-sidebar { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 20px; 
+            position: sticky; 
+            top: 100px; 
+            margin-left: -120px; 
+        }
+        
+        .left-sidebar .card { margin-right: 0; } 
         
         .card { background: rgba(10, 10, 10, 0.7); border: 1px solid var(--border-color); padding: 20px; border-radius: 12px; backdrop-filter: blur(10px); }
         .vinted-card { border-color: #00bfb2 !important; background: transparent !important; }
@@ -44,7 +53,11 @@
         .do-badge { display: block; margin-top: 10px; }
         .do-badge img { width: 100%; border-radius: 8px; }
 
-        @media (max-width: 1024px) { .grid-container { grid-template-columns: 1fr; } .vertical-divider { display: none; } .left-sidebar .card { margin-right: 0; } }
+        @media (max-width: 1024px) { 
+            .grid-container { grid-template-columns: 1fr; } 
+            .vertical-divider { display: none; } 
+            .left-sidebar { margin-left: 0; } 
+        }
     </style>
 </head>
 <body>
