@@ -3,13 +3,17 @@ layout: default
 title: Updates
 ---
 <div class="card">
-    <h3 style="font-size: 0.8rem; color: var(--text-muted); margin: 0 0 20px 0; text-transform: uppercase; font-family: 'JetBrains Mono', monospace;">[ RECENT_UPDATE_LOGS ]</h3>
+    <h3 style="font-size: 0.85rem; color: var(--text-muted); margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 1px; font-family: 'JetBrains Mono', monospace;">[ RECENT_SYSTEM_UPDATES ]</h3>
     
     <div style="display: flex; flex-direction: column;">
-        {% for update in site.updates reversed %}
-        <a href="{{ update.url }}" style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); text-decoration: none; color: #fff;">
-            <span>{{ update.title }}</span>
-            <span style="color: #666; font-family: 'JetBrains Mono';">[{{ update.date | date: "%Y.%m.%d" }}]</span>
+        {% for item in site.updates reversed %}
+        <a href="{{ item.url }}" class="log-link" style="display: flex; justify-content: space-between; align-items: center; text-decoration: none; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--text-main); transition: 0.2s;">
+            
+            <span class="log-title" style="font-size: 0.95rem; font-weight: 600;">{{ item.title }}</span>
+            
+            <span style="color: var(--text-muted); font-size: 0.8rem; font-family: 'JetBrains Mono', monospace;">
+                [{{ item.date | date: "%Y.%m.%d" }}]
+            </span>
         </a>
         {% endfor %}
     </div>
