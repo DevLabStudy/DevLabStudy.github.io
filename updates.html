@@ -3,85 +3,20 @@ layout: default
 title: Updates
 ---
 <div class="card">
-    <h3 style="font-size: 0.85rem; color: var(--text-muted); margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 1px; font-family: 'JetBrains Mono', monospace;">[ Recent_Update_Logs ]</h3>
+    <h3 style="font-size: 0.85rem; color: var(--text-muted); margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 1px; font-family: 'JetBrains Mono', monospace;">[ RECENT_UPDATE_LOGS ]</h3>
     
     <div style="display: flex; flex-direction: column;">
-        {% for update in site.updates %}
-        <a href="{{ update.url }}" class="log-link">
-            <span class="log-title">{{ update.title }}</span>
-            <div class="log-meta-wrapper">
-                <span style="color: var(--text-muted); font-size: 0.8rem; font-family: 'JetBrains Mono', monospace;">[{{ update.date | date: "%d.%m.%Y" }}]</span>
-            </div>
-        </a>
+        {% for post in site.posts %}
+            {% if post.categories contains 'update' %}
+            <a href="{{ post.url }}" class="log-link" style="display: flex; justify-content: space-between; align-items: center; text-decoration: none; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--text-main); transition: 0.2s;">
+                
+                <span class="log-title" style="font-size: 0.95rem; font-weight: 600;">{{ post.title }}</span>
+                
+                <div class="log-meta-wrapper">
+                    <span style="color: var(--text-muted); font-size: 0.8rem; font-family: 'JetBrains Mono', monospace;">[{{ post.date | date: "%Y.%m.%d" }}]</span>
+                </div>
+            </a>
+            {% endif %}
         {% endfor %}
     </div>
-</div>---
-layout: default
-title: Updates
----
-<style>
-    .log-link { 
-        display: flex; 
-        justify-content: space-between; 
-        align-items: center; 
-        text-decoration: none; 
-        padding: 12px 0; 
-        border-bottom: 1px solid rgba(255,255,255,0.05); 
-        color: var(--text-main); 
-        transition: 0.2s; 
-    }
-    .log-link:last-child { border-bottom: none; padding-bottom: 0; }
-    .log-link:hover { padding-left: 8px; color: var(--accent-blue); }
-
-    .log-title {
-        font-size: 0.95rem; 
-        font-weight: 600;
-        padding-right: 20px;
-    }
-</style>
-
-<div class="card">
-    <h3 style="font-size: 0.85rem; color: var(--text-muted); margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 1px; font-family: 'JetBrains Mono', monospace;">[ Recent_Update_Logs ]</h3>
-    
-    <div id="updates-list" style="display: flex; flex-direction: column;">
-        <!-- Lista będzie generowana przez JS -->
-        <p style="color: var(--text-muted);">Wczytywanie logów...</p>
-    </div>
 </div>
-
-<script>
-    // Tutaj wpisz nazwy plików .md, które masz w folderze /updates/
-    const updateFiles = [
-        "2026-05-31-jellykil-testy.md",
-        "2026-05-28-homelab-setup.md"
-    ];
-
-    async function loadUpdates() {
-        const container = document.getElementById('updates-list');
-        container.innerHTML = ''; // Czyścimy loader
-
-        for (const file of updateFiles) {
-            try {
-                const response = await fetch(`/updates/${file}`);
-                const text = await response.text();
-                
-                // Wyciągamy tytuł (zakładając, że pierwsza linijka to np. # Tytuł)
-                const title = text.split('\n')[0].replace('#', '').trim();
-                const date = file.substring(0, 10).replace(/-/g, '.');
-
-                const link = document.createElement('a');
-                link.href = `/updates/${file}`;
-                link.className = 'log-link';
-                link.innerHTML = `
-                    <span class="log-title">${title}</span>
-                    <span style="color: var(--text-muted); font-size: 0.8rem; font-family: 'JetBrains Mono', monospace;">[${date}]</span>
-                `;
-                container.appendChild(link);
-            } catch (err) {
-                console.error("Błąd ładowania pliku:", file);
-            }
-        }
-    }
-
-    document.addEventListener("DOMContentLoaded", loadUpdates);
-</script>
