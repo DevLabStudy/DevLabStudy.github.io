@@ -1,186 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }} | DevLabStudy</title>
-    
     <link rel="icon" type="image/jpeg" href="/profileIcon_g3ffyg7edeeg1.jpeg">
 
     <style>
         :root {
             --bg-nav: rgba(5, 5, 5, 0.85); --text-main: #f8fafc; --text-muted: #94a3b8; 
-            --border-color: rgba(255, 255, 255, 0.1); --accent-blue: #3b82f6; --bg-card: #111;
+            --border-color: rgba(255, 255, 255, 0.1); --accent-blue: #3b82f6;
         }
-        
         body { 
             font-family: 'Inter', -apple-system, sans-serif; margin: 0; min-height: 100vh;
             background: #000 url('/background.png') no-repeat center center fixed; 
-            background-size: cover; color: var(--text-main); overflow-x: hidden;
-            line-height: 1.6;
+            background-size: cover; color: var(--text-main); line-height: 1.8;
         }
-
         .navbar { position: sticky; top: 0; z-index: 100; background: var(--bg-nav); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border-color); padding: 15px 40px; display: flex; align-items: center; justify-content: space-between; }
-        .nav-brand { font-size: 1.5rem; font-weight: 800; text-decoration: none; color: var(--text-main); letter-spacing: -0.5px; }
-        .back-link { color: var(--accent-blue); text-decoration: none; font-weight: 600; font-size: 0.95rem;}
+        .nav-brand { font-size: 1.5rem; font-weight: 800; text-decoration: none; color: var(--text-main); }
+        .back-link { color: var(--accent-blue); text-decoration: none; font-weight: 600; font-size: 0.95rem; }
         .back-link:hover { text-decoration: underline; }
-
         .container { max-width: 800px; margin: 40px auto; padding: 40px; background: rgba(5, 5, 5, 0.8); backdrop-filter: blur(10px); border-radius: 12px; border: 1px solid var(--border-color); }
         
         .article-header { border-bottom: 1px solid var(--border-color); padding-bottom: 20px; margin-bottom: 30px; }
-        .article-title { font-size: 2.2rem; margin: 0 0 10px 0; line-height: 1.2; font-weight: 800; }
+        .article-title { font-size: 2.2rem; margin: 0 0 10px 0; font-weight: 800; }
         .article-date { color: var(--text-muted); font-size: 0.95rem; }
         
-        .article-content { font-size: 1.1rem; line-height: 1.8; color: #cbd5e1; }
+        .article-content { font-size: 1.1rem; color: #cbd5e1; }
         .article-content h2, .article-content h3 { margin-top: 40px; color: var(--text-main); }
         .article-content a { color: var(--accent-blue); text-decoration: none; }
-        .article-content a:hover { text-decoration: underline; }
-        .article-content code { background: rgba(255,255,255,0.1); border: 1px solid var(--border-color); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.9em; color: #f8fafc; }
-        .article-content pre { background: rgba(0,0,0,0.8); border: 1px solid var(--border-color); padding: 15px; border-radius: 8px; overflow-x: auto; }
-        .article-content img { max-width: 100%; height: auto; border-radius: 8px; margin: 20px 0; border: 1px solid var(--border-color); }
-
-        /* ==========================================================================
-           SEKCJA INTERAKCJI: Serduszka i Komentarze
-           ========================================================================== */
-        .post-interactions {
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .like-section {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 35px;
-        }
-        .like-btn {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            padding: 10px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-family: inherit;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .like-btn:hover {
-            background: rgba(239, 68, 68, 0.1);
-            border-color: #ef4444;
-            color: #ef4444;
-        }
-        .like-btn.liked {
-            background: #ef4444;
-            color: #fff;
-            border-color: #ef4444;
-        }
-
-        .comment-form-card {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--border-color);
-            padding: 25px;
-            border-radius: 8px;
-            margin-bottom: 35px;
-        }
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            font-weight: 600;
-        }
-        .form-input {
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid var(--border-color);
-            padding: 12px;
-            color: var(--text-main);
-            border-radius: 6px;
-            font-family: inherit;
-            font-size: 0.95rem;
-        }
-        .form-input:focus {
-            outline: none;
-            border-color: var(--accent-blue);
-        }
+        .article-content code { background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; font-family: monospace; }
         
-        .comments-list {
-            margin-top: 25px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        .single-comment {
-            background: rgba(255, 255, 255, 0.01);
-            border-left: 3px solid var(--accent-blue);
-            border-radius: 0 6px 6px 0;
-            padding: 15px;
-            border-top: 1px solid rgba(255,255,255,0.02);
-            border-right: 1px solid rgba(255,255,255,0.02);
-            border-bottom: 1px solid rgba(255,255,255,0.02);
-            position: relative;
-        }
-        .comment-meta {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 6px;
-            font-weight: 600;
-        }
-        .comment-text {
-            color: #cbd5e1;
-        }
-
-        /* NOWE STYLE: Obsługa akcji usuwania/odpowiedzi i wcięć */
-        .comment-actions {
-            display: flex;
-            gap: 15px;
-            margin-top: 10px;
-            font-size: 0.8rem;
-            font-family: 'JetBrains Mono', monospace;
-        }
-        .action-link {
-            color: var(--text-muted);
-            text-decoration: none;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .action-link:hover { color: var(--accent-blue); }
-        .action-delete:hover { color: #ef4444; }
-
-        .comment-reply {
-            margin-left: 35px; /* Wcięcie dla odpowiedzi w prawo */
-            border-left-color: rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.005);
-        }
-
-        .reply-indicator {
-            background: rgba(59, 130, 246, 0.08);
-            border: 1px dashed var(--accent-blue);
-            padding: 10px 15px;
-            border-radius: 6px;
-            margin-bottom: 15px;
-            font-size: 0.85rem;
-            display: none; /* Domyślnie ukryte */
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        footer { text-align: center; color: var(--text-muted); font-size: 0.85rem; margin: 50px 0 30px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
+        footer { text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-top: 50px; }
     </style>
 </head>
 <body>
 
     <nav class="navbar">
         <a href="/" class="nav-brand">DevLabStudy</a>
-        <a href="/blog" class="back-link">&larr; Back to Blog</a>
+        <a href="/blog" class="back-link">&larr; Powrót do bloga</a>
     </nav>
 
     <main class="container">
@@ -192,257 +50,11 @@
         <article class="article-content">
             {{ content }}
         </article>
-
-        <div class="post-interactions" data-post-id="{{ page.id | slugify }}">
-            
-            <div class="like-section">
-                <button class="like-btn" id="likeButton">
-                    <span>❤️</span> <span id="likeText">Polub wpis</span> (<span id="postTotalLikes">0</span>)
-                </button>
-            </div>
-
-            <div class="comment-form-card">
-                <h3 style="font-size: 1.1rem; margin: 0 0 20px 0;">Dodaj komentarz</h3>
-                
-                <div class="reply-indicator" id="replyIndicator"></div>
-
-                <form id="commentForm">
-                    <div class="form-group">
-                        <label for="nickname">Twój Nick</label>
-                        <input type="text" id="nickname" class="form-input" placeholder="np. anonim" required autocomplete="off">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="commentContent">Treść wiadomości</label>
-                        <textarea id="commentContent" class="form-input" rows="4" placeholder="Napisz co myślisz..." required></textarea>
-                    </div>
-
-                    <div style="display: none !important; visibility: hidden;">
-                        <input type="text" id="sys_verification_field" autocomplete="off">
-                    </div>
-
-                    <div class="cf-turnstile" data-sitekey="TUTAJ_WPISZ_TWÓJ_SITEKEY_Z_CLOUDFLARE" style="margin-bottom: 15px;"></div>
-
-                    <button type="submit" class="like-btn" style="border-color: var(--accent-blue); color: var(--accent-blue); background: rgba(59, 130, 246, 0.05);">Wyślij komentarz</button>
-                </form>
-            </div>
-
-            <div class="comments-section">
-                <h3 style="font-size: 1.1rem; margin: 0 0 15px 0;">Komentarze (<span id="postTotalComments">0</span>)</h3>
-                
-                <div class="comments-list" id="commentsList">
-                    <div class="single-comment">
-                        <div class="comment-meta">Moderacja [System]</div>
-                        <div class="comment-text">Komentarze ładują się poprawnie. Brak kont nie przeszkadza w dyskusji!</div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
     </main>
 
     <footer>
         <p>1 Gbps Fiber - Linux Mint - Orbit™ Project 2026</p>
     </footer>
 
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const postId = document.querySelector('.post-interactions').getAttribute('data-post-id');
-            const likeBtn = document.getElementById('likeButton');
-            
-            const API_BASE = "https://api.devlabstudy.pl/api";
-            
-            // Zmienna przechowująca ID komentarza-rodzica, na który odpowiadamy
-            let currentParentId = null;
-
-            // ==========================================================================
-            // FUNKCJA POBIERANIA I BUDOWANIA DRZEWA KOMENTARZY
-            // ==========================================================================
-            window.loadPostData = function() {
-                fetch(`${API_BASE}/post/${postId}`)
-                    .then(res => res.json())
-                    .then(data => {
-                        document.getElementById('postTotalLikes').innerText = data.likes || 0;
-                        document.getElementById('postTotalComments').innerText = data.comments ? data.comments.length : 0;
-
-                        const list = document.getElementById('commentsList');
-                        list.innerHTML = ''; // Czyszczenie widoku na starcie
-
-                        if (data.comments && data.comments.length > 0) {
-                            
-                            // 1. Rozdzielamy komentarze główne od odpowiedzi
-                            const mainComments = data.comments.filter(c => !c.parent_id);
-                            const replies = data.comments.filter(c => c.parent_id);
-
-                            // Helper renderujący pojedynczy boks HTML
-                            function renderCommentHTML(c, isReply = false) {
-                                const hasToken = localStorage.getItem(`token_comment_${c.id}`) !== null;
-                                const deleteBtn = hasToken ? `<span class="action-link action-delete" onclick="deleteComment(${c.id})">[ Usuń ]</span>` : '';
-                                const replyBtn = !isReply ? `<span class="action-link" onclick="setReplyTo(${c.id}, '${escapeHTML(c.nickname)}')">[ Odpowiedz ]</span>` : '';
-
-                                return `
-                                    <div class="single-comment ${isReply ? 'comment-reply' : ''}" id="comment-${c.id}">
-                                        <div class="comment-meta">${escapeHTML(c.nickname)} [${c.date}]</div>
-                                        <div class="comment-text">${escapeHTML(c.content)}</div>
-                                        <div class="comment-actions">
-                                            ${replyBtn}
-                                            ${deleteBtn}
-                                        </div>
-                                    </div>
-                                `;
-                            }
-
-                            // 2. Renderujemy pętlą główne wątki oraz przypisane do nich pod-odpowiedzi
-                            mainComments.forEach(main => {
-                                list.innerHTML += renderCommentHTML(main, false);
-                                
-                                // Szukamy odpowiedzi powiązanych z tym komentarzem głównym
-                                const subReplies = replies.filter(r => r.parent_id == main.id);
-                                subReplies.forEach(reply => {
-                                    list.innerHTML += renderCommentHTML(reply, true);
-                                });
-                            });
-
-                        } else {
-                            // Systemowy log powitalny gdy brak komentarzy
-                            list.innerHTML = `
-                                <div class="single-comment" style="border-left-color: var(--text-muted);">
-                                    <div class="comment-meta">Moderacja [System]</div>
-                                    <div class="comment-text" style="color: var(--text-muted);">Brak komentarzy pod tym wpisem. Brak kont nie przeszkadza w dyskusji – napisz coś pierwszy!</div>
-                                </div>
-                            `;
-                        }
-                    })
-                    .catch(err => {
-                        console.error("Błąd synchronizacji z bazą danych API:", err);
-                        document.getElementById('commentsList').innerHTML = `
-                            <div class="single-comment" style="border-left-color: #ef4444;">
-                                <div class="comment-meta" style="color: #ef4444;">[ System_Error ]</div>
-                                <div class="comment-text">Nie udało się połączyć z bazą danych DevLabStudy. Tryb offline.</div>
-                            </div>
-                        `;
-                    });
-            }
-
-            loadPostData(); // Wywołanie startowe
-
-            // ==========================================================================
-            // OBSŁUGA FUNKCJI ODPOWIADANIA (SET/CANCEL)
-            // ==========================================================================
-            window.setReplyTo = function(commentId, authorName) {
-                currentParentId = commentId;
-                const indicator = document.getElementById('replyIndicator');
-                indicator.innerHTML = `Odpowiadasz użytkownikowi <strong>${authorName}</strong> <span class="action-link" onclick="cancelReply()" style="color:#ef4444; margin-left:10px;">[ Anuluj ]</span>`;
-                indicator.style.display = 'flex';
-                document.getElementById('commentContent').focus();
-            }
-
-            window.cancelReply = function() {
-                currentParentId = null;
-                document.getElementById('replyIndicator').style.display = 'none';
-            }
-
-            // ==========================================================================
-            // USUWANIE KOMENTARZA Z UŻYCIEM TOKENU Z LOCALSTORAGE
-            // ==========================================================================
-            window.deleteComment = function(commentId) {
-                const token = localStorage.getItem(`token_comment_${commentId}`);
-                if (!token) return;
-
-                if (confirm("Czy na pewno chcesz usunąć swój komentarz?")) {
-                    fetch(`${API_BASE}/comment/${commentId}`, {
-                        method: 'DELETE',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ token: token })
-                    })
-                    .then(res => {
-                        if (res.ok) {
-                            localStorage.removeItem(`token_comment_${commentId}`);
-                            loadPostData(); // Odśwież widok
-                        } else {
-                            alert("Serwer odmówił autoryzacji do usunięcia wpisu.");
-                        }
-                    });
-                }
-            }
-
-            // ==========================================================================
-            // OBSŁUGA POLUBIEŃ (SERDUSZKO)
-            // ==========================================================================
-            if (localStorage.getItem('liked_' + postId)) {
-                likeBtn.classList.add('liked');
-                document.getElementById('likeText').innerText = 'Polubiono';
-            }
-
-            likeBtn.addEventListener('click', function() {
-                const isLiked = localStorage.getItem('liked_' + postId);
-                const method = isLiked ? 'DELETE' : 'POST';
-
-                fetch(`${API_BASE}/like/${postId}`, { method: method })
-                    .then(res => {
-                        if (res.ok) {
-                            if (!isLiked) {
-                                localStorage.setItem('liked_' + postId, true);
-                                likeBtn.classList.add('liked');
-                                document.getElementById('likeText').innerText = 'Polubiono';
-                            } else {
-                                localStorage.removeItem('liked_' + postId);
-                                likeBtn.classList.remove('liked');
-                                document.getElementById('likeText').innerText = 'Polub wpis';
-                            }
-                            loadPostData();
-                        }
-                    });
-            });
-
-            // ==========================================================================
-            // WYSYŁANIE NOWEGO KOMENTARZA LUB ODPOWIEDZI
-            // ==========================================================================
-            document.getElementById('commentForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-
-                if (document.getElementById('sys_verification_field').value !== "") return;
-
-                const turnstileToken = document.querySelector('[name="cf-turnstile-response"]').value;
-
-                const payload = {
-                    nickname: document.getElementById('nickname').value,
-                    content: document.getElementById('commentContent').value,
-                    turnstileToken: turnstileToken,
-                    parent_id: currentParentId // Przekazanie ID rodzica do bazy danych
-                };
-
-                fetch(`${API_BASE}/comment/${postId}`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                })
-                .then(res => res.json())
-                .then(resData => {
-                    // Backend w odpowiedzi musi przesłać obiekt: { success: true, id: 123, token: "losowy_string" }
-                    if (resData.success && resData.token) {
-                        // Zapisujemy token uprawniający do kasowania tego konkretnego komentarza
-                        localStorage.setItem(`token_comment_${resData.id}`, resData.token);
-                        
-                        document.getElementById('commentContent').value = ''; 
-                        cancelReply(); // Reset flagi odpowiedzi
-                        loadPostData(); // Odświeżenie listy komentarzy
-                        if (typeof turnstile !== "undefined") turnstile.reset();
-                    } else {
-                        alert("Błąd walidacji pakietu przez Cloudflare.");
-                    }
-                })
-                .catch(err => alert("Błąd krytyczny połączenia sieciowego z backendem."));
-            });
-
-            function escapeHTML(str) {
-                return str.replace(/[&<>'"]/g, 
-                    tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
-                );
-            }
-        });
-    </script>
 </body>
 </html>
