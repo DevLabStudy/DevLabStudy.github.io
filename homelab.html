@@ -8,62 +8,87 @@ title: HomeLab Inventory
     .hero-homelab h2 { font-size: 2.2rem; margin-bottom: 10px; background: linear-gradient(to right, #10b981, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 900; letter-spacing: -1px; }
     .hero-homelab p { color: var(--text-muted); font-size: 0.95rem; font-family: 'JetBrains Mono', monospace; }
     
-    .section-title { font-family: 'JetBrains Mono', monospace; color: #fff; border-left: 4px solid #10b981; padding-left: 15px; margin: 40px 0 20px 0; font-size: 1.5rem; text-transform: uppercase; }
+    .section-title { font-family: 'JetBrains Mono', monospace; color: #fff; border-left: 4px solid #3b82f6; padding-left: 15px; margin: 40px 0 20px 0; font-size: 1.5rem; text-transform: uppercase; }
     
     .nodes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
     
     .node-card { background: rgba(10, 10, 10, 0.7); border: 1px solid var(--border-color); padding: 30px; border-radius: 12px; position: relative; transition: all 0.3s; backdrop-filter: blur(10px); }
-    .node-card:hover { border-color: #10b981; transform: translateY(-5px); box-shadow: 0 10px 30px rgba(16,185,129,0.05); }
+    .node-card:hover { border-color: #3b82f6; transform: translateY(-5px); box-shadow: 0 10px 30px rgba(59,130,246,0.1); }
     
-    .status-badge { position: absolute; top: 25px; right: 25px; background: rgba(16, 185, 129, 0.1); color: #10b981; padding: 5px 12px; border-radius: 20px; font-weight: 800; font-size: 0.7rem; border: 1px solid rgba(16, 185, 129, 0.2); text-transform: uppercase; font-family: 'JetBrains Mono', monospace; }
+    .status-badge { position: absolute; top: 25px; right: 25px; background: rgba(59, 130, 246, 0.1); color: #3b82f6; padding: 5px 12px; border-radius: 20px; font-weight: 800; font-size: 0.7rem; border: 1px solid rgba(59, 130, 246, 0.2); text-transform: uppercase; font-family: 'JetBrains Mono', monospace; }
     .node-name { font-size: 1.2rem; font-weight: 700; margin-bottom: 20px; display: block; padding-right: 60px; color: #fff; font-family: 'JetBrains Mono', monospace; }
     
     .spec-line { display: flex; align-items: center; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dashed rgba(255,255,255,0.05); font-size: 0.9rem; }
-    .spec-line:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
     .spec-label { color: var(--text-muted); width: 100px; font-weight: 600; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; }
 </style>
 
 <section class="hero-homelab">
     <h2>Infrastructure & HomeLab</h2>
-    <p>>_ Building, learning, and optimizing distributed server environments.</p>
+    <p>>_ Current Network Backbone, Compute Nodes & Cloud</p>
 </section>
 
-<h3 class="section-title">Networking & Connectivity</h3>
+<h3 class="section-title">Network Layer (Connectivity)</h3>
 <div class="nodes-grid">
     <div class="node-card">
-        <span class="status-badge">Core</span>
+        <span class="status-badge">Agg</span>
         <span class="node-name">D-Link DGS-1100-16</span>
-        <div class="spec-line"><span class="spec-label">Type:</span><span>Smart Managed Switch</span></div>
-        <div class="spec-line"><span class="spec-label">Ports:</span><span>16x 1GbE RJ45</span></div>
-        <div class="spec-line"><span class="spec-label">Features:</span><span>VLANs, IGMP Snooping</span></div>
+        <div class="spec-line"><span class="spec-label">Role:</span><span>ISP/Gateway Distribution</span></div>
+        <div class="spec-line"><span class="spec-label">Ports:</span><span>16x 1GbE</span></div>
     </div>
-
     <div class="node-card">
-        <span class="status-badge">Edge/AP</span>
+        <span class="status-badge">Edge</span>
         <span class="node-name">MikroTik RB951G</span>
-        <div class="spec-line"><span class="spec-label">OS:</span><span>RouterOS v7.x</span></div>
-        <div class="spec-line"><span class="spec-label">CPU:</span><span>600MHz (MIPSBE)</span></div>
-        <div class="spec-line"><span class="spec-label">Usage:</span><span>Mgmt VLAN & 2.4GHz AP</span></div>
+        <div class="spec-line"><span class="spec-label">CPU:</span><span>600MHz</span></div>
+        <div class="spec-line"><span class="spec-label">Usage:</span><span>Mgmt VLAN & AP</span></div>
+    </div>
+    <div class="node-card">
+        <span class="status-badge">Legacy</span>
+        <span class="node-name">TP-Link WR1043ND v2.1</span>
+        <div class="spec-line"><span class="spec-label">OS:</span><span>OpenWrt</span></div>
+        <div class="spec-line"><span class="spec-label">Role:</span><span>Lab Router</span></div>
+    </div>
+    <div class="node-card">
+        <span class="status-badge">Router</span>
+        <span class="node-name">Redmi AC2100</span>
+        <div class="spec-line"><span class="spec-label">Role:</span><span>Wireless AP/Router</span></div>
+        <div class="spec-line"><span class="spec-label">Status:</span><span>Active</span></div>
     </div>
 </div>
 
-<h3 class="section-title">Compute Nodes</h3>
+<h3 class="section-title">Compute Layer (Servers & Hosts)</h3>
 <div class="nodes-grid">
     <div class="node-card">
         <span class="status-badge">Main</span>
         <span class="node-name">Gamingowy Host</span>
-        <div class="spec-line"><span class="spec-label">CPU:</span><span>Ryzen 5 3600 (12T)</span></div>
+        <div class="spec-line"><span class="spec-label">CPU:</span><span>Ryzen 5 3600</span></div>
         <div class="spec-line"><span class="spec-label">RAM:</span><span>16GB DDR4</span></div>
-        <div class="spec-line"><span class="spec-label">Storage:</span><span>MSI NVMe PCIe Gen3</span></div>
-        <div class="spec-line"><span class="spec-label">OS:</span><span>Nobara Linux 43</span></div>
     </div>
-
     <div class="node-card">
-        <span class="status-badge">Online</span>
+        <span class="status-badge">Storage</span>
         <span class="node-name">HP Compaq Pro 6300</span>
-        <div class="spec-line"><span class="spec-label">CPU:</span><span>i5-3470 (4C)</span></div>
+        <div class="spec-line"><span class="spec-label">CPU:</span><span>i5-3470</span></div>
         <div class="spec-line"><span class="spec-label">RAM:</span><span>16GB DDR3</span></div>
-        <div class="spec-line"><span class="spec-label">Storage:</span><span>256GB SSD + 2TB HDD</span></div>
-        <div class="spec-line"><span class="spec-label">Role:</span><span>Storage & Backup</span></div>
+    </div>
+    <div class="node-card">
+        <span class="status-badge">Node</span>
+        <span class="node-name">Dell Optiplex 790</span>
+        <div class="spec-line"><span class="spec-label">CPU:</span><span>i3-2120</span></div>
+        <div class="spec-line"><span class="spec-label">RAM:</span><span>8GB DDR3</span></div>
+    </div>
+    <div class="node-card">
+        <span class="status-badge">Small</span>
+        <span class="node-name">Fujitsu Futro S520</span>
+        <div class="spec-line"><span class="spec-label">CPU:</span><span>AMD GX-212ZC</span></div>
+        <div class="spec-line"><span class="spec-label">RAM:</span><span>2GB DDR3</span></div>
+    </div>
+</div>
+
+<h3 class="section-title">Cloud Infrastructure</h3>
+<div class="nodes-grid">
+    <div class="node-card">
+        <span class="status-badge">DigitalOcean</span>
+        <span class="node-name">Ubuntu Droplet (FRA1)</span>
+        <div class="spec-line"><span class="spec-label">CPU:</span><span>1 vCPU</span></div>
+        <div class="spec-line"><span class="spec-label">RAM:</span><span>2GB RAM</span></div>
     </div>
 </div>
