@@ -20,7 +20,7 @@ Moim priorytetem jest separacja warstw:
 
 Wszystkie urządzenia fizyczne, od głównych serwerów obliczeniowych po "Cloud Infrastructure" w postaci VPS-a, zostały zaktualizowane w dokumentacji. Dążę do standardu, w którym każde urządzenie ma jasno określoną rolę – od eksperymentalnego OpenWrt po stabilny węzeł na Ubuntu 24.04.
 
-[![Network Overview](/assets/images/WhatsApp Image 2026-06-08 at 20.59.15 (1).jpeg](/assets/images/WhatsApp Image 2026-06-08 at 20.59.15 (1).jpeg)
+[![Network Overview](assets/images/main.jpeg)](assets/images/main.jpeg)
 
 ### Plany na najbliższą przyszłość
 
