@@ -26,7 +26,7 @@ Wszystkie urządzenia fizyczne, od głównych serwerów obliczeniowych po "Cloud
 
 Kluczowym elementem nadchodzącej rozbudowy będzie połączenie mojej wieży (RB5009 + CRS326) światłowodami 10GbE. To wyeliminuje wąskie gardła w komunikacji między „Xeon Bestią” a resztą sieci. Estetyka całego stosu będzie spójna – czarne skrętki Cat6a i przemyślane zarządzanie kablami to dla mnie równie ważne kwestie, co sama konfiguracja RouterOS.
 
-[![Storage and Nodes](assets/images/router.jpeg](assets/images/router.jpeg)
+[![Storage and Nodes](/assets/images/router.jpeg](/assets/images/router.jpeg)
 
 *Stay tuned* – kolejne wpisy będą dotyczyły konfiguracji VLANów i automatyzacji monitoringu przy użyciu SNMP oraz Grafany.
 
