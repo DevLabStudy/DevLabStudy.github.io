@@ -9,7 +9,7 @@ categories: [homelab, networking]
 
 Budowa domowego laboratorium to proces, który nigdy nie kończy się na jednej konfiguracji. Dzisiaj przyszedł czas na aktualizację inwentarza mojego systemu. Odchodzę od doraźnych rozwiązań na rzecz spójnej, warstwowej architektury, która pozwoli mi na bezproblemowe testowanie usług w kontenerach oraz zaawansowane routowanie ruchu.
 
-[![Setup DevLab](/assets/images/WhatsApp Image 2026-06-08 at 20.59.15.jpeg)](/assets/images/WhatsApp Image 2026-06-08 at 20.59.15.jpeg)
+[![Setup DevLab](/assets/images/dell.jpeg)](/assets/images/dell.jpeg)
 
 ### Dlaczego ta zmiana?
 
