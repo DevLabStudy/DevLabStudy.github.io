@@ -1,9 +1,11 @@
 ---
+
 layout: post
 title: "Droga do Certyfikacji: MTCNA & CCNA Networking Plan"
 date: 2026-06-25 22:00:00 +0200
 categories: [networking, certyfikacje]
 tags: [mikrotik, cisco, mtcna, ccna, homelab]
+
 ---
 
 # >_ Droga do Certyfikacji: MTCNA & CCNA
