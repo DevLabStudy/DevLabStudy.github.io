@@ -1,11 +1,9 @@
 ---
-
 layout: post
 title: "Droga do Certyfikacji: MTCNA & CCNA Networking Plan"
-date: 2026-06-25 22:00:00 +0200
+date: 2026-06-25 12:00:00 +0200
 categories: [networking, certyfikacje]
 tags: [mikrotik, cisco, mtcna, ccna, homelab]
-
 ---
 
 # >_ Droga do Certyfikacji: MTCNA & CCNA
@@ -16,7 +14,7 @@ Mój najbliższy plan zakłada podejście do dwóch kluczowych certyfikatów sie
 
 ---
 
-## 🛠️ Podział Środowiska pod Naukę
+## 🛠️ Podział Środowiska pod Nauka
 
 Zamiast uczyć się wyłącznie z suchych książek, zamierzam maksymalnie wykorzystać sprzęt, który już mam w szafie oraz środowiska wirtualne:
 
@@ -50,10 +48,12 @@ Potężny standard branżowy. CCNA wymaga głębokiego zrozumienia fundamentów 
 
 ---
 
-[![Setup DevLab](/assets/images/kursy.jpeg)](/assets/images/kursy.jpeg)
-
 ## 📚 Materiały i Zasoby
 
 Cały proces przygotowań oraz zebrane materiały, schematy sieciowe i checklisty wrzucam do lokalnego katalogu projektu.
 
-!
+[![Setup DevLab](/assets/images/kursy.jpeg)](/assets/images/kursy.jpeg)
+
+> **Zrzut z bazy wiedzy:** Powyższa grafika przedstawia poglądową strukturę kursów i materiałów laboratoryjnych, z których aktualnie korzystam przy budowaniu topologii testowych.
+
+Plan jest prosty:
