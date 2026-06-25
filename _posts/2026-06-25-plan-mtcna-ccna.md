@@ -48,6 +48,8 @@ Potężny standard branżowy. CCNA wymaga głębokiego zrozumienia fundamentów 
 
 ---
 
+[![Setup DevLab](/assets/images/kursy.jpeg)](/assets/images/kursy.jpeg)
+
 ## 📚 Materiały i Zasoby
 
 Cały proces przygotowań oraz zebrane materiały, schematy sieciowe i checklisty wrzucam do lokalnego katalogu projektu.
