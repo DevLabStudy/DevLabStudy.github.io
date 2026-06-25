@@ -16,6 +16,9 @@ title: HomeLab Inventory
     .node-card:hover { border-color: #3b82f6; transform: translateY(-5px); box-shadow: 0 10px 30px rgba(59,130,246,0.1); }
     
     .status-badge { position: absolute; top: 25px; right: 25px; background: rgba(59, 130, 246, 0.1); color: #3b82f6; padding: 5px 12px; border-radius: 20px; font-weight: 800; font-size: 0.7rem; border: 1px solid rgba(59, 130, 246, 0.2); text-transform: uppercase; font-family: 'JetBrains Mono', monospace; }
+    .status-badge.inactive { background: rgba(239, 68, 68, 0.1); color: #ef4444; border-color: rgba(239, 68, 68, 0.2); }
+    .status-badge.migration { background: rgba(245, 158, 11, 0.1); color: #f59e0b; border-color: rgba(245, 158, 11, 0.2); }
+    
     .node-name { font-size: 1.2rem; font-weight: 700; margin-bottom: 20px; display: block; padding-right: 60px; color: #fff; font-family: 'JetBrains Mono', monospace; }
     
     .spec-line { display: flex; align-items: center; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dashed rgba(255,255,255,0.05); font-size: 0.9rem; }
@@ -34,6 +37,12 @@ title: HomeLab Inventory
         <span class="node-name">D-Link DGS-1100-16</span>
         <div class="spec-line"><span class="spec-label">Role:</span><span>ISP/Gateway Distribution</span></div>
         <div class="spec-line"><span class="spec-label">Ports:</span><span>16x 1GbE</span></div>
+    </div>
+    <div class="node-card">
+        <span class="status-badge">Switch</span>
+        <span class="node-name">Cisco Catalyst 2960C</span>
+        <div class="spec-line"><span class="spec-label">Role:</span><span>Lab Switch / Compact Access</span></div>
+        <div class="spec-line"><span class="spec-label">Features:</span><span>LAN Base Software</span></div>
     </div>
     <div class="node-card">
         <span class="status-badge">Edge</span>
@@ -76,6 +85,12 @@ title: HomeLab Inventory
         <div class="spec-line"><span class="spec-label">RAM:</span><span>8GB DDR3</span></div>
     </div>
     <div class="node-card">
+        <span class="status-badge">Thin</span>
+        <span class="node-name">Fujitsu Futro S720</span>
+        <div class="spec-line"><span class="spec-label">CPU:</span><span>AMD GX-217GA</span></div>
+        <div class="spec-line"><span class="spec-label">Status:</span><span>Active / Infrastructure Node</span></div>
+    </div>
+    <div class="node-card">
         <span class="status-badge">Small</span>
         <span class="node-name">Fujitsu Futro S520</span>
         <div class="spec-line"><span class="spec-label">CPU:</span><span>AMD GX-212ZC</span></div>
@@ -86,9 +101,15 @@ title: HomeLab Inventory
 <h3 class="section-title">Cloud Infrastructure</h3>
 <div class="nodes-grid">
     <div class="node-card">
-        <span class="status-badge">DigitalOcean</span>
+        <span class="status-badge inactive">Off</span>
         <span class="node-name">Ubuntu Droplet (FRA1)</span>
-        <div class="spec-line"><span class="spec-label">CPU:</span><span>1 vCPU</span></div>
-        <div class="spec-line"><span class="spec-label">RAM:</span><span>2GB RAM</span></div>
+        <div class="spec-line"><span class="spec-label">Provider:</span><span>DigitalOcean</span></div>
+        <div class="spec-line"><span class="spec-label">Status:</span><span>Decommissioned / Disabled</span></div>
+    </div>
+    <div class="node-card">
+        <span class="status-badge migration">OCI</span>
+        <span class="node-name">Oracle Cloud Instance</span>
+        <div class="spec-line"><span class="spec-label">Status:</span><span>Migrating / Planning Phase</span></div>
+        <div class="spec-line"><span class="spec-label">Tier:</span><span>TBD (Free Tier Always On Setup)</span></div>
     </div>
 </div>
