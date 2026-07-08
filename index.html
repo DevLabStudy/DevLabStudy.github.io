@@ -17,6 +17,39 @@ title: Hub | DevLabStudy
         font-family: 'JetBrains Mono', monospace;
     }
 
+    /* Nowa klasa do układu nagłówka z przyciskiem po prawej */
+    .hub-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    /* Styl dedykowanego przycisku Statusu */
+    .btn-status {
+        background: rgba(16, 185, 129, 0.1);
+        color: var(--success);
+        border: 1px solid rgba(16, 185, 129, 0.2);
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .btn-status:hover {
+        background: var(--success);
+        color: #111114;
+        border-color: var(--success);
+        box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+    }
+
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; }
 
     .card {
@@ -66,7 +99,12 @@ title: Hub | DevLabStudy
 </style>
 
 <div class="devlab-hub">
-    <p style="color: var(--text-dim);">Infrastructure Status: <strong>Cieszyn Data Center</strong></p>
+    <div class="hub-header">
+        <p style="color: var(--text-dim); margin: 0;">Infrastructure Status: <strong>Cieszyn Data Center</strong></p>
+        <a href="https://uptime.devlabstudy.ovh" target="_blank" class="btn-status">
+            <span style="color: var(--success);">●</span> UPTIME KUMA
+        </a>
+    </div>
 
     <div class="grid">
         <section class="card">
