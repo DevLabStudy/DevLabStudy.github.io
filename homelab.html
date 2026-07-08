@@ -47,6 +47,7 @@ title: HomeLab Inventory
     .status-badge { position: absolute; top: 25px; right: 25px; background: rgba(59, 130, 246, 0.1); color: #3b82f6; padding: 5px 12px; border-radius: 20px; font-weight: 800; font-size: 0.7rem; border: 1px solid rgba(59, 130, 246, 0.2); text-transform: uppercase; font-family: 'JetBrains Mono', monospace; }
     .status-badge.inactive { background: rgba(239, 68, 68, 0.1); color: #ef4444; border-color: rgba(239, 68, 68, 0.2); }
     .status-badge.migration { background: rgba(245, 158, 11, 0.1); color: #f59e0b; border-color: rgba(245, 158, 11, 0.2); }
+    .status-badge.mobile { background: rgba(16, 185, 129, 0.1); color: #10b981; border-color: rgba(16, 185, 129, 0.2); }
     
     .node-name { font-size: 1.2rem; font-weight: 700; margin-bottom: 20px; display: block; padding-right: 60px; color: #fff; font-family: 'JetBrains Mono', monospace; }
     
@@ -87,7 +88,7 @@ title: HomeLab Inventory
     <div class="node-card">
         <span class="status-badge">Legacy</span>
         <span class="node-name">TP-Link WR1043ND v2.1</span>
-        <div class="spec-line"><span class="spec-label">OS:</span><span>OpenWrt</span></div>
+        <div class="spec-line"><span class="spec-label">OS:</span><span>Fabric</span></div>
         <div class="spec-line"><span class="spec-label">Role:</span><span>Lab Router</span></div>
     </div>
     <div class="node-card">
@@ -117,6 +118,13 @@ title: HomeLab Inventory
         <span class="node-name">Dell Optiplex 790</span>
         <div class="spec-line"><span class="spec-label">CPU:</span><span>i3-2120</span></div>
         <div class="spec-line"><span class="spec-label">RAM:</span><span>12GB DDR3</span></div>
+    </div>
+    <div class="node-card">
+        <span class="status-badge mobile">Nokia</span>
+        <span class="node-name">Nokia 8 sirocco(Mobile Host)</span>
+        <div class="spec-line"><span class="spec-label">Role:</span><span>FRP Client / Tunneling Node</span></div>
+        <div class="spec-line"><span class="spec-label">Services:</span><span>FRP, Uptime Kuma</span></div>
+        <div class="spec-line"><span class="spec-label">Type:</span><span>ARM64 Architecture</span></div>
     </div>
     <div class="node-card">
         <span class="status-badge">Thin</span>
