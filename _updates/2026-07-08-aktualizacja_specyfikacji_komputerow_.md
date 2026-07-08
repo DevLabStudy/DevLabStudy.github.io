@@ -1,3 +1,10 @@
+---
+layout: update
+title: "Status Update: Aktualizacja specyfikacji komputerów"
+date: 2026-07-08
+categories: [homelab, status]
+---
+
 # Aktualizacja specyfikacji komputerów – 08.07.2026
 
 ## Ostatnie zmiany w infrastrukturze
