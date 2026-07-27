@@ -1,250 +1,126 @@
 ---
 layout: default
-title: Hub | DevLabStudy
+title: Home | DevLabStudy
 ---
 
 <style>
-    :root {
-        --bg-main: #09090b;
-        --card-bg: #121216;
-        --accent: #10b981;
-        --accent-glow: rgba(16, 185, 129, 0.15);
-        --text-main: #f4f4f5;
-        --text-dim: #a1a1aa;
-        --border: #27272a;
-    }
-
-    .devlab-hub {
-        color: var(--text-main);
-        font-family: 'JetBrains Mono', monospace;
-        width: 100%;
+    /* Pancerne resetowanie szerokości pod mobile – zapobiega psuciu się strony na telefonie */
+    html, body {
+        max-width: 100%;
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
         box-sizing: border-box;
+        background-color: #09090b; /* Ciemne tło zapobiegające białym pasom po bokach */
     }
 
-    /* --- WIDOK DLA PC / TABLETU --- *
-    .desktop-view {
-        display: block;
+    *, *:before, *:after {
+        box-sizing: inherit;
     }
 
-    .mobile-view {
-        display: none;
+    /* Główny kontener strony dostosowany do urządzeń */
+    .page-container {
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        font-family: 'JetBrains Mono', monospace;
     }
 
-    /* Styl futurystycznego terminala / dashboardu */
-    .terminal-box {
-        background: var(--card-bg);
-        border: 1px solid var(--border);
+    /* Styl sekcji O mnie */
+    .about-me-section {
+        background: #121216;
+        border: 1px solid #27272a;
         border-radius: 12px;
-        padding: 30px;
-        position: relative;
-        overflow: hidden;
-        box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5);
+        padding: 35px;
+        color: #f4f4f5;
+        box-shadow: 0 10px 30px -15px rgba(0,0,0,0.5);
     }
 
-    .terminal-header {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 20px;
-        padding-bottom: 12px;
-        border-bottom: 1px solid var(--border);
-    }
-
-    .dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-    }
-    .dot-red { background: #ef4444; }
-    .dot-yellow { background: #f59e0b; }
-    .dot-green { background: #10b981; }
-
-    .terminal-title {
-        font-size: 0.85rem;
-        color: var(--text-dim);
-        margin-left: 10px;
-    }
-
-    .hero-content h1 {
-        font-size: 2rem;
-        margin: 0 0 10px 0;
-        letter-spacing: -1px;
-        color: #fff;
-    }
-
-    .hero-content p {
-        color: var(--text-dim);
-        font-size: 0.95rem;
-        line-height: 1.6;
+    .about-me-section h2 {
+        color: #10b981;
+        font-size: 1.4rem;
+        margin-top: 0;
         margin-bottom: 25px;
+        border-bottom: 1px solid #27272a;
+        padding-bottom: 10px;
+        display: inline-block;
     }
 
-    /* Szybkie skróty w formie nowoczesnych kafelków */
-    .quick-links-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 15px;
-        margin-top: 25px;
-    }
-
-    .quick-card {
-        background: #18181b;
-        border: 1px solid var(--border);
-        padding: 18px;
-        border-radius: 8px;
-        text-decoration: none;
-        color: var(--text-main);
-        transition: all 0.2s ease;
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-    }
-
-    .quick-card:hover {
-        border-color: var(--accent);
-        transform: translateY(-2px);
-        background: #1f1f23;
-    }
-
-    .quick-card span:first-child {
-        font-size: 0.75rem;
-        color: var(--accent);
-        font-weight: bold;
-        text-transform: uppercase;
-    }
-
-    .quick-card span:last-child {
+    .about-me-section p {
+        color: #a1a1aa;
         font-size: 0.95rem;
-        font-weight: 600;
+        line-height: 1.7;
+        margin-bottom: 20px;
     }
 
-    /* --- WIDOK DLA TELEFONU (Aktywowany automatycznie poniżej 768px) --- */
+    .about-me-section strong {
+        color: #f4f4f5;
+    }
+
+    .about-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px dashed #27272a;
+    }
+
+    .about-badges span {
+        background: rgba(16, 185, 129, 0.1);
+        color: #10b981;
+        border: 1px solid rgba(16, 185, 129, 0.2);
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        font-weight: bold;
+    }
+
+    /* --- WIDOK DLA TELEFONU --- 
+       Poniższe reguły nadpisują wygląd automatycznie, 
+       gdy ktoś wejdzie z telefonu (ekran mniejszy niż 768px). */
     @media (max-width: 768px) {
-        .desktop-view {
-            display: none;
+        .page-container {
+            padding: 15px 10px;
         }
-        .mobile-view {
-            display: block;
-        }
-
-        .mobile-hero {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
+        .about-me-section {
             padding: 20px;
-            text-align: center;
-        }
-
-        .mobile-hero h1 {
-            font-size: 1.5rem;
-            margin: 0 0 10px 0;
-            color: #fff;
-        }
-
-        .mobile-hero p {
-            color: var(--text-dim);
-            font-size: 0.85rem;
-            margin-bottom: 20px;
-        }
-
-        .mobile-menu-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .mobile-btn {
-            background: #18181b;
-            border: 1px solid var(--border);
-            color: var(--text-main);
-            padding: 16px;
             border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.95rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: border-color 0.2s;
         }
-
-        .mobile-btn:active {
-            border-color: var(--accent);
-            background: var(--accent-glow);
+        .about-me-section h2 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
         }
-
-        .mobile-btn span.arrow {
-            color: var(--accent);
+        .about-me-section p {
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+        .about-badges span {
+            font-size: 0.7rem;
+            padding: 4px 8px;
         }
     }
 </style>
 
-<div class="devlab-hub">
+<div class="page-container">
+    <div class="about-me-section">
+        <h2>// WHOAMI</h2>
+        
+        <p>Cześć! Na co dzień jestem uczniem technikum informatycznego, a po godzinach zgłębiam tajniki administracji serwerami, sieci komputerowych i budowania własnej infrastruktury. Wiedzę teoretyczną z przygotowań do egzaminów zawodowych (m.in. sprzęt i sieci) natychmiast przekuwam w praktykę we własnym <strong>domowym laboratorium (Homelab)</strong>.</p>
+        
+        <p>DevLabStudy to moje centrum dowodzenia i publiczny notatnik. Dokumentuję tu swoje projekty, zarządzanie klastrami w <strong>Proxmoxie</strong>, konfigurację kontenerów (Docker) oraz testy sprzętu sieciowego pokroju routerów MikroTik czy systemów OpenWrt.</p>
 
-    <!-- == WIDOK PC (Dedykowany interfejs terminala) == -->
-    <div class="desktop-view">
-        <div class="terminal-box">
-            <div class="terminal-header">
-                <div class="dot dot-red"></div>
-                <div class="dot dot-yellow"></div>
-                <div class="dot dot-green"></div>
-                <div class="terminal-title">devlab@system-core:~ (x86_64)</div>
-            </div>
+        <p>Mam słabość do testowania nietypowych systemów operacyjnych. Znajdziesz tu ślady moich eksperymentów z mnóstwem dystrybucji Linuksa – od konfigurowanego deklaratywnie <strong>NixOS</strong>, przez minimalistyczne środowiska bez systemd (jak Void czy antiX), po systemy działające całkowicie w RAM-ie (Tiny Core).</p>
 
-            <div class="hero-content">
-                <h1>DevLabStudy Hub</h1>
-                <p>Centralny punkt zarządzania infrastrukturą, testami wydajnościowymi oraz notatkami z laboratoriów sieciowych i systemowych.</p>
-                
-                <div style="font-size: 0.8rem; color: var(--accent); margin-bottom: 10px;">> WYBIERZ SEKCIĘ DOCELOWĄ:</div>
-                
-                <div class="quick-links-grid">
-                    <a href="/Blog" class="quick-card">
-                        <span>// 01</span>
-                        <span>Artykuły & Blog</span>
-                    </a>
-                    <a href="/HomeLab" class="quick-card">
-                        <span>// 02</span>
-                        <span>Architektura Labu</span>
-                    </a>
-                    <a href="/Benchmarks" class="quick-card">
-                        <span>// 03</span>
-                        <span>Wyniki Benchmarków</span>
-                    </a>
-                    <a href="/Orbit" class="quick-card">
-                        <span>// 04</span>
-                        <span>Narzędzia & Inne</span>
-                    </a>
-                </div>
-            </div>
+        <p>Poza warstwą serwerową, lubię też ubrudzić ręce przy sprzęcie komputerowym i mikrokontrolerach (Arduino, ESP32). Kiedy akurat nie stawiam nowych usług i nie walczę z routingiem, najpewniej relaksuję się przy simracingu lub grach turniejowych.</p>
+        
+        <div class="about-badges">
+            <span>Proxmox & Virtualization</span>
+            <span>Linux Distro Hopping</span>
+            <span>MikroTik & Networking</span>
+            <span>Hardware & DIY</span>
+            <span>Docker</span>
         </div>
     </div>
-
-    <!-- == WIDOK MOBILNY (Lekki, dotykowy layout zoptymalizowany pod smartfony) == -->
-    <div class="mobile-view">
-        <div class="mobile-hero">
-            <div style="font-size: 0.75rem; color: var(--accent); margin-bottom: 5px; font-weight: bold;">[ MOBILE DASHBOARD ]</div>
-            <h1>DevLabStudy</h1>
-            <p>Wybierz sekcję, aby przejść do zawartości:</p>
-
-            <div class="mobile-menu-list">
-                <a href="/Blog" class="mobile-btn">
-                    <span>Artykuły & Blog</span>
-                    <span class="arrow">&rarr;</span>
-                </a>
-                <a href="/HomeLab" class="mobile-btn">
-                    <span>Architektura Labu</span>
-                    <span class="arrow">&rarr;</span>
-                </a>
-                <a href="/Benchmarks" class="mobile-btn">
-                    <span>Wyniki Benchmarków</span>
-                    <span class="arrow">&rarr;</span>
-                </a>
-                <a href="/Orbit" class="mobile-btn">
-                    <span>Narzędzia & Inne</span>
-                    <span class="arrow">&rarr;</span>
-                </a>
-            </div>
-        </div>
-    </div>
-
 </div>
