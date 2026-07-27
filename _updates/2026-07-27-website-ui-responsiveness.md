@@ -1,7 +1,7 @@
 ---
 layout: update
 title: "DevLog #1: Przebudowa interfejsu i pełna responsywność strony"
-date: 2026-07-27 13:00:00 +0200
+date: 2026-07-27
 categories: [devlog, webdev, ui]
 ---
 
