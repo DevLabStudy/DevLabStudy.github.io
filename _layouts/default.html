@@ -31,8 +31,8 @@
         .hero-title { font-size: 3.5rem; font-weight: 900; margin: 0; letter-spacing: -2px; color: #fff; }
         .hero-title span { color: var(--accent-blue); }
 
-        .dashboard { width: 100%; max-width: 1200px; padding: 0 40px 0 140px; margin: 0 auto 40px auto; box-sizing: border-box; }
-        .grid-container { display: grid; grid-template-columns: 240px 1px 1fr; gap: 50px; align-items: start; margin-left: -120px; }
+        .dashboard { width: 100%; max-width: 1260px; padding: 0 40px 0 140px; margin: 0 auto 40px auto; box-sizing: border-box; }
+        .grid-container { display: grid; grid-template-columns: 240px 1px 1fr; gap: 80px; align-items: start; margin-left: -180px; }
         .vertical-divider { background: var(--border-color); width: 1px; min-height: 400px; }
         
         .left-sidebar { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 100px; width: 240px; }
@@ -43,10 +43,47 @@
         .do-badge { display: block; margin-top: 10px; }
         .do-badge img { width: 100%; border-radius: 8px; }
 
+        /* == POPRAWKI DLA TELEFONÓW (Poniżej 1024px) == */
         @media (max-width: 1024px) { 
-            .grid-container { grid-template-columns: 1fr; margin-left: 0; } 
+            /* 1. Naprawa głównego kontenera i odwrócenie kolejności */
+            .grid-container { 
+                display: flex; 
+                flex-direction: column; 
+                margin-left: 0; 
+                gap: 40px; 
+            } 
+            .main-content {
+                order: 1; /* Główny tekst z pliku index.html idzie na samą górę! */
+                width: 100%;
+            }
+            .left-sidebar {
+                order: 2; /* Panele boczne spadają na sam dół! */
+                width: 100%;
+                position: relative; /* Wyłącza przyklejanie (sticky) na telefonie */
+                top: 0;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Układa karty obok siebie na tabletach */
+            }
             .vertical-divider { display: none; } 
-            .dashboard { padding: 0 40px; }
+            .dashboard { padding: 0 20px; }
+
+            /* 2. Naprawa nawigacji (Navbar) */
+            .navbar {
+                display: flex;
+                flex-direction: column; /* Układa elementy jeden pod drugim */
+                padding: 15px 20px;
+                gap: 15px;
+            }
+            .nav-brand {
+                font-size: 1.3rem; /* Nieco mniejsze logo, by zaoszczędzić miejsce */
+            }
+            .nav-center {
+                flex-wrap: wrap; /* Kluczowe! Pozwala linkom "Blog", "HomeLab" przeskoczyć do nowej linii, gdy brakuje miejsca */
+                gap: 12px;
+            }
+            .hero-title {
+                font-size: 2.2rem; /* Trochę mniejszy tytuł środowiska dla wąskich ekranów */
+            }
         }
     </style>
 </head>
