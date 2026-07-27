@@ -5,113 +5,232 @@ title: Hub | DevLabStudy
 
 <style>
     :root {
-        --card-bg: #111114;
-        --accent: #3b82f6; 
+        --bg-main: #09090b;
+        --card-bg: #121216;
+        --accent: #10b981;
+        --accent-glow: rgba(16, 185, 129, 0.15);
+        --text-main: #f4f4f5;
         --text-dim: #a1a1aa;
         --border: #27272a;
-        --success: #10b981;
+        --border-hover: #3f3f46;
     }
 
     .devlab-hub {
-        color: #fafafa;
+        color: var(--text-main);
         font-family: 'JetBrains Mono', monospace;
+        width: 100%;
+        box-sizing: border-box;
     }
 
-    /* Nowa klasa do układu nagłówka z przyciskiem po prawej */
+    /* Nagłówek – czysty, minimalistyczny układ bez Uptime Kuma */
     .hub-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
-        gap: 15px;
-        margin-bottom: 20px;
+        gap: 10px;
+        margin-bottom: 30px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid var(--border);
     }
 
-    /* Styl dedykowanego przycisku Statusu */
-    .btn-status {
-        background: rgba(16, 185, 129, 0.1);
-        color: var(--success);
-        border: 1px solid rgba(16, 185, 129, 0.2);
-        padding: 8px 16px;
-        border-radius: 6px;
-        font-size: 0.8rem;
-        font-weight: bold;
-        text-decoration: none;
-        transition: all 0.2s ease;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
+    .hub-header p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: var(--text-dim);
     }
 
-    .btn-status:hover {
-        background: var(--success);
-        color: #111114;
-        border-color: var(--success);
-        box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+    .hub-header strong {
+        color: var(--accent);
     }
 
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; }
+    /* Responsywna siatka – naprawia problem na komórkach */
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+    }
 
     .card {
         background: var(--card-bg);
         border: 1px solid var(--border);
-        border-radius: 8px;
-        padding: 20px;
-        transition: all 0.3s ease;
+        border-radius: 12px;
+        padding: 24px;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .card:hover { border-color: var(--success); }
+    .card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: var(--border);
+        transition: background 0.2s ease;
+    }
+
+    .card:hover {
+        border-color: var(--accent);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px -10px var(--accent-glow);
+    }
+
+    .card:hover::before {
+        background: var(--accent);
+    }
 
     .tag {
-        font-size: 0.65rem;
-        background: rgba(16, 185, 129, 0.1);
-        color: var(--success);
-        padding: 2px 8px;
-        border-radius: 4px;
+        font-size: 0.7rem;
+        background: var(--accent-glow);
+        color: var(--accent);
+        padding: 4px 10px;
+        border-radius: 20px;
         text-transform: uppercase;
-        font-weight: bold;
+        font-weight: 700;
         display: inline-block;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
+        border: 1px solid rgba(16, 185, 129, 0.2);
     }
 
-    .spec-list { list-style: none; padding: 0; font-size: 0.85rem; margin: 15px 0 0 0; }
-    .spec-list li { margin-bottom: 8px; border-bottom: 1px solid #1c1c1f; padding-bottom: 4px; color: var(--text-dim); }
-    .spec-list b { color: #fff; }
+    .card h3 {
+        margin: 0 0 15px 0;
+        font-size: 1.25rem;
+        letter-spacing: -0.5px;
+    }
 
-    .bench-val { font-family: monospace; font-size: 1.2rem; color: var(--success); }
+    .spec-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-size: 0.85rem;
+    }
+
+    .spec-list li {
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        border-bottom: 1px dashed var(--border);
+        padding-bottom: 6px;
+        color: var(--text-dim);
+    }
+
+    .spec-list li:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .spec-list b {
+        color: var(--text-main);
+        text-align: right;
+    }
+
+    /* Sekcja benchmarków z nowym pazurem */
+    .section-title {
+        margin-top: 50px;
+        margin-bottom: 20px;
+        font-size: 1.4rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .section-title::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+    }
+
+    .bench-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    .bench-label {
+        font-size: 0.75rem;
+        color: var(--text-dim);
+        font-weight: bold;
+        letter-spacing: 0.5px;
+    }
+
+    .bench-val {
+        font-family: monospace;
+        font-size: 1.4rem;
+        color: var(--accent);
+        margin: 8px 0;
+        font-weight: bold;
+    }
     
     .benchmark-bar {
-        background: #1c1c1f;
-        height: 6px;
-        border-radius: 3px;
-        margin: 10px 0;
+        background: #18181b;
+        height: 8px;
+        border-radius: 4px;
         overflow: hidden;
+        border: 1px solid var(--border);
     }
 
-    .fill { background: var(--success); height: 100%; }
+    .fill {
+        background: linear-gradient(90deg, #059669, var(--accent));
+        height: 100%;
+        border-radius: 4px;
+    }
 
     .status-footer {
         margin-top: 40px;
-        padding: 15px;
-        border-top: 1px solid var(--border);
+        padding: 20px;
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
         font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--text-dim);
+    }
+
+    .pulse-dot {
+        color: var(--accent);
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% { opacity: 1; }
+        50% { opacity: 0.4; }
+        100% { opacity: 1; }
+    }
+
+    /* Poprawka pod mobile – pełna responsywność */
+    @media (max-width: 600px) {
+        .hub-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .card {
+            padding: 18px;
+        }
     }
 </style>
 
 <div class="devlab-hub">
     <div class="hub-header">
-        <p style="color: var(--text-dim); margin: 0;">Infrastructure Status: <strong>Cieszyn Data Center</strong></p>
-        <a href="https://uptime.devlabstudy.ovh" target="_blank" class="btn-status">
-            <span style="color: var(--success);">●</span> UPTIME KUMA
-        </a>
+        <p>Infrastructure Status: <strong>Cieszyn Data Center</strong></p>
+        <p style="font-size: 0.8rem;">Environment: <span style="color: var(--text-main);">Production / Lab</span></p>
     </div>
 
     <div class="grid">
         <section class="card">
             <span class="tag">Main Host: Nobara Linux</span>
-            <h3 style="margin:0">Gamingowy PC</h3>
+            <h3>Gamingowy PC</h3>
             <ul class="spec-list">
-                <li>CPU: <b>AMD Ryzen 5 3600</b> (6C/12T)</li>
+                <li>CPU: <b>AMD Ryzen 5 3600</b></li>
                 <li>RAM: <b>16GB DDR4</b></li>
                 <li>GPU: <b>AMD Radeon RX 7600</b></li>
                 <li>Storage: <b>MSI NVMe PCIe Gen3</b></li>
@@ -119,51 +238,51 @@ title: Hub | DevLabStudy
         </section>
 
         <section class="card">
-            <span class="tag">Storage & Docker Node</span>
-            <h3 style="margin:0">HP Compaq Pro 6300</h3>
+            <span class="tag">Storage & Docker</span>
+            <h3>HP Compaq Pro 6300</h3>
             <ul class="spec-list">
-                <li>CPU: <b>Intel Core i5-3470</b> (4C/4T)</li>
+                <li>CPU: <b>Intel Core i5-3470</b></li>
                 <li>RAM: <b>16GB DDR3</b></li>
-                <li>Services: <b>Docker / Storage & Backup Server</b></li>
-                <li>Storage: <b>256GB SSD + 2.1TB Mixed HDD</b></li>
+                <li>Services: <b>Docker / Backup</b></li>
+                <li>Storage: <b>256GB SSD + 2.1TB</b></li>
             </ul>
         </section>
 
         <section class="card">
             <span class="tag">Network Backbone</span>
-            <h3 style="margin:0">Core Components</h3>
+            <h3>Core Components</h3>
             <ul class="spec-list">
-                <li>Switch: <b>D-Link DGS-1100-16</b> (Managed L2)</li>
-                <li>Router/DNS: <b>MikroTik RB951G</b> (Pi-hole + Unbound)</li>
-                <li>Wireless: <b>Xiaomi Redmi AC2100</b> (5GHz AP Mode)</li>
-                <li>VLANs: <b>VLAN 10, 20, 30 Configured</b></li>
+                <li>Switch: <b>D-Link DGS-1100-16</b></li>
+                <li>Router: <b>MikroTik (Pi-hole)</b></li>
+                <li>Wireless: <b>Xiaomi AC2100</b></li>
+                <li>VLANs: <b>10, 20, 30 Active</b></li>
             </ul>
         </section>
     </div>
 
-    <h2 style="margin-top: 40px; border-left: 4px solid var(--success); padding-left: 15px;">System Benchmarks</h2>
+    <h2 class="section-title">System Benchmarks</h2>
 
     <div class="grid">
-        <div class="card">
-            <span style="font-size: 0.7rem;">CPU COMPRESSION (7z b)</span>
+        <div class="bench-card">
+            <div class="bench-label">CPU COMPRESSION (7z b)</div>
             <div class="bench-val">46,287 MIPS</div>
             <div class="benchmark-bar"><div class="fill" style="width: 75%;"></div></div>
         </div>
 
-        <div class="card">
-            <span style="font-size: 0.7rem;">LOCAL NETWORK OVER SWITCH (iPerf3)</span>
+        <div class="bench-card">
+            <div class="bench-label">LOCAL NETWORK (iPerf3)</div>
             <div class="bench-val">941 Mbits/sec</div>
             <div class="benchmark-bar"><div class="fill" style="width: 94%;"></div></div>
         </div>
 
-        <div class="card">
-            <span style="font-size: 0.7rem;">SATA III SSD READ (hdparm)</span>
+        <div class="bench-card">
+            <div class="bench-label">SATA III SSD READ (hdparm)</div>
             <div class="bench-val">445.88 MB/s</div>
             <div class="benchmark-bar"><div class="fill" style="width: 65%;"></div></div>
         </div>
     </div>
 
     <div class="status-footer">
-        <span style="color: var(--success);">●</span> All Real Nodes Operational | Architecture: x86-64
+        <span class="pulse-dot">●</span> <span>All Real Nodes Operational &bull; Architecture: x86-64</span>
     </div>
 </div>
