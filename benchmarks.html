@@ -2,115 +2,10 @@
 layout: default
 title: Lab Benchmarks
 ---
-<style>
-    .bench-container { font-family: 'JetBrains Mono', monospace; padding: 20px; }
-    .bench-table { width: 100%; border-collapse: collapse; margin-top: 20px; background: rgba(0,0,0,0.3); border-radius: 8px; overflow: hidden; }
-    .bench-table th, .bench-table td { border: 1px solid rgba(255,255,255,0.1); padding: 12px; text-align: left; }
-    .bench-table th { background: rgba(16, 185, 129, 0.1); color: #10b981; }
-    .result-value { color: #10b981; font-weight: bold; }
-    .unit { color: var(--text-muted); font-size: 0.8rem; margin-left: 4px; }
-</style>
 
-<div class="bench-container">
-    <h2>> Hardware_Audit_Report</h2>
-    <p>Last scan: 2026-05-12 | Environment: Nobara Linux (Kernel 7.0.5)</p>
-
-    <table class="bench-table">
-        <thead>
-            <tr>
-                <th>Component</th>
-                <th>Test Type</th>
-                <th>Result</th>
-                <th>Metric</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>MSI NVMe Storage</strong></td>
-                <td>Random Write (4k)</td>
-                <td class="result-value">21,700<span class="unit">IOPS</span></td>
-                <td><code>fio</code> (libaio, depth 64)</td>
-            </tr>
-            <tr>
-                <td><strong>Network (LAN)</strong></td>
-                <td>TCP Throughput</td>
-                <td class="result-value">941<span class="unit">Mbits/sec</span></td>
-                <td><code>iperf3</code> (D-Link Switch)</td>
-            </tr>
-            <tr>
-                <td><strong>Ryzen 5 3600</strong></td>
-                <td>Compressing Avr</td>
-                <td class="result-value">46,287<span class="unit">MIPS</span></td>
-                <td><code>7z benchmark</code></td>
-            </tr>
-            <tr>
-                <td><strong>SATA SSD (Backup)</strong></td>
-                <td>Buffered Read</td>
-                <td class="result-value">445.8<span class="unit">MB/s</span></td>
-                <td><code>hdparm -tT</code></td>
-            </tr>
-        </tbody>
-    </table>
-</div>---
-layout: default
-title: System Benchmarks
----
-<style>
-    .bench-container { font-family: 'JetBrains Mono', monospace; padding: 20px; }
-    .bench-table { width: 100%; border-collapse: collapse; margin-top: 20px; background: rgba(0,0,0,0.3); }
-    .bench-table th, .bench-table td { border: 1px solid rgba(255,255,255,0.1); padding: 12px; text-align: left; }
-    .bench-table th { background: rgba(59, 130, 246, 0.1); color: var(--accent-blue); }
-    .result-value { color: #10b981; font-weight: bold; }
-    .cmd-hint { color: #666; font-size: 0.8rem; }
-</style>
-
-<div class="bench-container">
-    <h2>> Hardware_Performance_Report</h2>
-    <p>Ostatnia aktualizacja: 2026-05-12 | OS: Nobara Linux (Fedora-based)</p>
-
-    <table class="bench-table">
-        <thead>
-            <tr>
-                <th>Komponent / Test</th>
-                <th>Narzędzie</th>
-                <th>Wynik</th>
-                <th>Szczegóły</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>CPU Performance</strong></td>
-                <td><code>7z b</code></td>
-                <td class="result-value">46,287 MIPS</td>
-                <td>AMD Ryzen 5 3600 (12T)</td>
-            </tr>
-            <tr>
-                <td><strong>Network (LAN)</strong></td>
-                <td><code>iperf3</code></td>
-                <td class="result-value">941 Mbits/s</td>
-                <td>Styk PC (Gamingowy) -> Proxmox (Node)</td>
-            </tr>
-            <tr>
-                <td><strong>Disk Throughput</strong></td>
-                <td><code>hdparm</code></td>
-                <td class="result-value">445.88 MB/s</td>
-                <td>SATA III SSD (/dev/sda)</td>
-            </tr>
-            <tr>
-                <td><strong>Disk Cache</strong></td>
-                <td><code>hdparm</code></td>
-                <td class="result-value">11,594 MB/s</td>
-                <td>Timing cached reads</td>
-            </tr>
-        </tbody>
-    </table>
-</div>---
-layout: default
-title: Lab Benchmarks
----
 <style>
     .bench-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
-    .test-header { border-bottom: 1px solid var(--border-color); padding-bottom: 15px; margin-bottom: 20px; }
+    .test-header { border-bottom: 1px solid var(--border-color); padding-bottom: 15px; margin-bottom: 25px; }
     
     .data-table { width: 100%; border-collapse: collapse; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; }
     .data-table th { text-align: left; color: var(--accent-blue); padding: 12px; border-bottom: 2px solid var(--border-color); text-transform: uppercase; }
@@ -118,24 +13,63 @@ title: Lab Benchmarks
     
     .highlight-val { color: #10b981; font-weight: 800; }
     .node-tag { font-size: 0.7rem; background: rgba(255,255,255,0.05); padding: 2px 6px; border-radius: 4px; color: var(--text-muted); margin-left: 5px; }
-    
-    .status-badge { font-size: 0.7rem; padding: 2px 8px; border-radius: 10px; border: 1px solid; }
-    .status-verified { color: #10b981; border-color: rgba(16, 185, 129, 0.3); background: rgba(16, 185, 129, 0.05); }
+    .cmd-hint { color: var(--text-muted); font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; }
 </style>
 
 <div class="test-header">
     <h2 style="font-size: 2rem; font-weight: 900; margin: 0;">System <span style="color: var(--accent-blue);">Benchmarks</span></h2>
-    <p style="color: var(--text-muted); margin-top: 5px;">> Pomiary wydajności operacyjnej i przepustowości sieciowej klastra DevLab.</p>
+    <p style="color: var(--text-muted); margin-top: 5px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;">> Pomiary wydajności operacyjnej, podzespołów oraz przepustowości klastra DevLab.</p>
 </div>
 
 <div class="bench-grid">
     
+    <!-- Sekcja 1: Sprzęt i Syntetyki (CPU, Storage, Sieć lokalna) -->
     <div class="card">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-            <h3 style="margin: 0; color: #fff; font-size: 1.1rem;">[ #01: Video_Processing_Speed ]</h3>
-            <span class="status-badge status-verified">VERIFIED BY TELEGRAM</span>
-        </div>
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">Test sprawności sprzętowego kodowania wideo przy użyciu Intel QuickSync na węźle roboczym.</p>
+        <h3 style="margin-top: 0; color: #fff; font-size: 1.1rem; font-family: 'JetBrains Mono', monospace;">[ #01: Hardware & Storage Audit ]</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">Ostatni pełny skan wydajności podzespołów bazowych.</p>
+        
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Component</th>
+                    <th>Test Type</th>
+                    <th>Result</th>
+                    <th>Metric / Tool</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Ryzen 5 3600</strong> <span class="node-tag">12T</span></td>
+                    <td>Compressing Avr</td>
+                    <td class="highlight-val">46,287 MIPS</td>
+                    <td><code class="cmd-hint">7z benchmark</code></td>
+                </tr>
+                <tr>
+                    <td><strong>MSI NVMe Storage</strong></td>
+                    <td>Random Write (4k)</td>
+                    <td class="highlight-val">21,700 IOPS</td>
+                    <td><code class="cmd-hint">fio</code> (libaio, depth 64)</td>
+                </tr>
+                <tr>
+                    <td><strong>SATA III SSD</strong> <span class="node-tag">/dev/sda</span></td>
+                    <td>Buffered Read</td>
+                    <td class="highlight-val">445.8 MB/s</td>
+                    <td><code class="cmd-hint">hdparm -tT</code></td>
+                </tr>
+                <tr>
+                    <td><strong>Network (LAN)</strong></td>
+                    <td>TCP Throughput</td>
+                    <td class="highlight-val">941 Mbits/s</td>
+                    <td><code class="cmd-hint">iperf3</code> (D-Link Switch)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Sekcja 2: Zadania Wideo i Renderowanie -->
+    <div class="card">
+        <h3 style="margin-top: 0; color: #fff; font-size: 1.1rem; font-family: 'JetBrains Mono', monospace;">[ #02: Video Processing & Transcoding ]</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">Testy sprawności węzłów przy generowaniu proxy i obróbce materiałów wideo.</p>
         
         <table class="data-table">
             <thead>
@@ -149,20 +83,21 @@ title: Lab Benchmarks
                 <tr>
                     <td>HP 6300 Pro <span class="node-tag">i5-3470</span></td>
                     <td>1080p | 42Mb/s | 65s (Proxy MOV)</td>
-                    <td class="highlight-val">187.2s</td>
+                    <td class="highlight-val">187.2 s</td>
                 </tr>
                 <tr>
                     <td>Main PC <span class="node-tag">RX 7600</span></td>
                     <td>1080p | 42Mb/s | 65s (Proxy MOV)</td>
-                    <td style="color: var(--text-muted);">TBD</td>
+                    <td style="color: var(--text-muted);">Awaiting test...</td>
                 </tr>
             </tbody>
         </table>
     </div>
 
+    <!-- Sekcja 3: Komunikacja w Klastrze -->
     <div class="card">
-        <h3 style="margin-top: 0; color: #fff; font-size: 1.1rem;">[ #02: Network_Throughput ]</h3>
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">Pomiary rzeczywistej przepustowości między punktami końcowymi w sieci lokalnej (iPerf3).</p>
+        <h3 style="margin-top: 0; color: #fff; font-size: 1.1rem; font-family: 'JetBrains Mono', monospace;">[ #03: Network Interconnects ]</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">Rzeczywiste transfery między punktami końcowymi w architekturze labu.</p>
         
         <table class="data-table">
             <thead>
@@ -191,6 +126,6 @@ title: Lab Benchmarks
 
 <div class="card" style="margin-top: 30px; border-style: dashed; text-align: center;">
     <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted); margin: 0;">
-        // Logi z testów są generowane automatycznie i przesyłane przez bramkę Telegram API.
+        // Wszystkie parametry są aktualizowane na bieżąco w ramach rutynowego audytu sprzętowego DevLab.
     </p>
 </div>
