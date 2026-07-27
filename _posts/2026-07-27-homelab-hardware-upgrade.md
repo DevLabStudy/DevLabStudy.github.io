@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Rozbudowa HomeLabu: Nowy sprzęt i optymalizacja infrastruktury"
-date: 2026-07-27 12:00:00 +0200
+date: 2026-07-27
 categories: [homelab, hardware, proxmox]
 ---
 
