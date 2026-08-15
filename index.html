@@ -4,108 +4,219 @@ title: Home | DevLabStudy
 ---
 
 <style>
-    /* Pancerne resetowanie szerokości pod mobile – zapobiega psuciu się strony na telefonie */
+    /* Pancerne resetowanie szerokości pod mobile */
     html, body {
         max-width: 100%;
         overflow-x: hidden;
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        background-color: #09090b; /* Ciemne tło zapobiegające białym pasom po bokach */
+        background-color: #09090b;
     }
 
     *, *:before, *:after {
         box-sizing: inherit;
     }
 
-    /* Główny kontener strony dostosowany do urządzeń */
     .page-container {
         width: 100%;
-        max-width: 900px;
+        max-width: 950px;
         margin: 0 auto;
         padding: 40px 20px;
         font-family: 'JetBrains Mono', monospace;
     }
 
-    /* Styl sekcji O mnie */
-    .about-me-section {
-        background: #121216;
+    /* Hero Banner / Terminal Header */
+    .hero-header {
+        background: radial-gradient(circle at top left, rgba(16, 185, 129, 0.15), transparent 50%),
+                    radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.15), transparent 50%),
+                    #121216;
+        border: 1px solid #27272a;
+        border-radius: 16px;
+        padding: 35px;
+        margin-bottom: 25px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 20px 40px -15px rgba(0,0,0,0.7);
+    }
+
+    .terminal-bar {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 25px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #f59e0b; }
+    .dot-green { background: #10b981; }
+    .terminal-title { color: #71717a; font-size: 0.8rem; margin-left: auto; }
+
+    .hero-title {
+        font-size: 2.2rem;
+        font-weight: 800;
+        margin: 0 0 10px 0;
+        background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -1px;
+    }
+
+    .hero-subtitle {
+        color: #a1a1aa;
+        font-size: 1rem;
+        margin: 0 0 25px 0;
+        line-height: 1.6;
+    }
+
+    /* Grid Kafelków / Quick Stats */
+    .quick-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+
+    .stat-card {
+        background: rgba(18, 18, 22, 0.6);
         border: 1px solid #27272a;
         border-radius: 12px;
+        padding: 20px;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+        border-color: #10b981;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px -10px rgba(16, 185, 129, 0.2);
+    }
+
+    .stat-label {
+        color: #71717a;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .stat-value {
+        color: #f4f4f5;
+        font-size: 1.1rem;
+        font-weight: bold;
+    }
+
+    .stat-value.highlight { color: #10b981; }
+    .stat-value.blue { color: #3b82f6; }
+
+    /* Sekcja Główna Content */
+    .content-box {
+        background: #121216;
+        border: 1px solid #27272a;
+        border-radius: 16px;
         padding: 35px;
         color: #f4f4f5;
-        box-shadow: 0 10px 30px -15px rgba(0,0,0,0.5);
     }
 
-    .about-me-section h2 {
+    .section-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
         color: #10b981;
-        font-size: 1.4rem;
+        font-size: 1.2rem;
         margin-top: 0;
-        margin-bottom: 25px;
-        border-bottom: 1px solid #27272a;
-        padding-bottom: 10px;
-        display: inline-block;
+        margin-bottom: 20px;
+        border-bottom: 1px dashed #27272a;
+        padding-bottom: 12px;
     }
 
-    .about-me-section p {
+    .content-box p {
         color: #a1a1aa;
         font-size: 0.95rem;
         line-height: 1.7;
         margin-bottom: 20px;
     }
 
-    .about-me-section strong {
-        color: #f4f4f5;
-    }
+    .content-box strong { color: #f4f4f5; }
 
+    /* Badges / Tag Cloud */
     .about-badges {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
         margin-top: 30px;
         padding-top: 20px;
-        border-top: 1px dashed #27272a;
+        border-top: 1px solid #27272a;
     }
 
     .about-badges span {
-        background: rgba(16, 185, 129, 0.1);
+        background: rgba(16, 185, 129, 0.08);
         color: #10b981;
         border: 1px solid rgba(16, 185, 129, 0.2);
-        padding: 6px 12px;
-        border-radius: 6px;
+        padding: 8px 14px;
+        border-radius: 8px;
         font-size: 0.8rem;
-        font-weight: bold;
+        font-weight: 600;
+        transition: all 0.2s ease;
     }
 
-    /* --- WIDOK DLA TELEFONU --- 
-       Poniższe reguły nadpisują wygląd automatycznie, 
-       gdy ktoś wejdzie z telefonu (ekran mniejszy niż 768px). */
+    .about-badges span:hover {
+        background: rgba(16, 185, 129, 0.2);
+        border-color: #10b981;
+    }
+
+    /* RWD */
     @media (max-width: 768px) {
-        .page-container {
-            padding: 15px 10px;
-        }
-        .about-me-section {
-            padding: 20px;
-            border-radius: 8px;
-        }
-        .about-me-section h2 {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-        }
-        .about-me-section p {
-            font-size: 0.85rem;
-            line-height: 1.5;
-        }
-        .about-badges span {
-            font-size: 0.7rem;
-            padding: 4px 8px;
-        }
+        .page-container { padding: 15px 10px; }
+        .hero-header, .content-box { padding: 20px; border-radius: 12px; }
+        .hero-title { font-size: 1.6rem; }
+        .hero-subtitle { font-size: 0.85rem; }
+        .quick-stats { grid-template-columns: 1fr 1fr; gap: 10px; }
+        .stat-card { padding: 15px; }
+        .stat-value { font-size: 0.95rem; }
     }
 </style>
 
 <div class="page-container">
-    <div class="about-me-section">
-        <h2>// WHOAMI</h2>
+    <!-- Hero Box z klimatem terminala -->
+    <div class="hero-header">
+        <div class="terminal-bar">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+            <span class="terminal-title">bash - devlabstudy@node-01:~</span>
+        </div>
+        <h1 class="hero-title">DevLabStudy Workspace</h1>
+        <p class="hero-subtitle">> System Admin / Networking / Homelab Infrastructure & Hardware Testing</p>
+    </div>
+
+    <!-- Szybkie Kafelki ze Statusami -->
+    <div class="quick-stats">
+        <div class="stat-card">
+            <span class="stat-label">Main OS Focus</span>
+            <span class="stat-value highlight">Debian / Linux</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-label">Virtualization</span>
+            <span class="stat-value blue">Proxmox VE</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-label">Network Edge</span>
+            <span class="stat-value">MikroTik RouterOS</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-label">Primary Stack</span>
+            <span class="stat-value">Docker & Containers</span>
+        </div>
+    </div>
+
+    <!-- Główna sekcja "O mnie" -->
+    <div class="content-box">
+        <h2 class="section-header"><span>//</span> ABOUT_ME & MISSION</h2>
         
         <p>Cześć! Na co dzień jestem uczniem technikum informatycznego, a po godzinach zgłębiam tajniki administracji serwerami, sieci komputerowych i budowania własnej infrastruktury. Wiedzę teoretyczną z przygotowań do egzaminów zawodowych (m.in. sprzęt i sieci) natychmiast przekuwam w praktykę we własnym <strong>domowym laboratorium (Homelab)</strong>.</p>
         
@@ -113,14 +224,14 @@ title: Home | DevLabStudy
 
         <p>Mam słabość do testowania nietypowych systemów operacyjnych. Znajdziesz tu ślady moich eksperymentów z mnóstwem dystrybucji Linuksa – od konfigurowanego deklaratywnie <strong>NixOS</strong>, przez minimalistyczne środowiska bez systemd (jak Void czy antiX), po systemy działające całkowicie w RAM-ie (Tiny Core).</p>
 
-        <p>Poza warstwą serwerową, lubię też ubrudzić ręce przy sprzęcie komputerowym i mikrokontrolerach (Arduino, ESP32). Kiedy akurat nie stawiam nowych usług i nie walczę z routingiem, najpewniej relaksuję się przy simracingu lub grach turniejowych.</p>
+        <p>Poza warstwą serwerową, lubię też ubrudzić ręce przy sprzęcie komputerowym i mikrokontrolerach (Arduino, ESP32). Kiedy akurat nie stawiam nowych usług i nie walczę z routingiem, najpewniej relaksyję się przy simracingu lub grach turniejowych.</p>
         
         <div class="about-badges">
             <span>Proxmox & Virtualization</span>
             <span>Linux Distro Hopping</span>
             <span>MikroTik & Networking</span>
             <span>Hardware & DIY</span>
-            <span>Docker</span>
+            <span>Docker & Homelab</span>
         </div>
     </div>
 </div>
