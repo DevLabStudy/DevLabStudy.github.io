@@ -6,38 +6,12 @@ title: HomeLab Inventory
 <style>
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&display=swap');
 
-    /* Zmiana kontenera hero na flexbox, by umieścić przycisk z prawej */
     .hero-homelab { 
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         margin-bottom: 40px; 
-        flex-wrap: wrap;
-        gap: 20px;
     }
     .hero-text { text-align: left; }
     .hero-homelab h2 { font-size: 2.2rem; margin: 0 0 10px 0; background: linear-gradient(to right, #10b981, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 900; letter-spacing: -1px; }
     .hero-homelab p { color: var(--text-muted, #888); font-size: 0.95rem; font-family: 'JetBrains Mono', monospace; margin: 0; }
-    
-    /* Przycisk dopasowany do stylu akcentu niebieskiego z Inventory */
-    .btn-kuma-live {
-        background: rgba(59, 130, 246, 0.1);
-        color: #3b82f6;
-        border: 1px solid rgba(59, 130, 246, 0.2);
-        padding: 10px 20px;
-        border-radius: 8px;
-        font-size: 0.85rem;
-        font-weight: bold;
-        text-decoration: none;
-        font-family: 'JetBrains Mono', monospace;
-        transition: all 0.3s ease;
-    }
-    .btn-kuma-live:hover {
-        background: #3b82f6;
-        color: #fff;
-        border-color: #3b82f6;
-        box-shadow: 0 5px 20px rgba(59,130,246,0.2);
-    }
 
     .section-title { font-family: 'JetBrains Mono', monospace; color: #fff; border-left: 4px solid #3b82f6; padding-left: 15px; margin: 40px 0 20px 0; font-size: 1.5rem; text-transform: uppercase; }
     
@@ -63,9 +37,6 @@ title: HomeLab Inventory
         <h2>Infrastructure & HomeLab</h2>
         <p>>_ Current Network Backbone, Compute Nodes & Cloud</p>
     </div>
-    <a href="https://uptime.devlabstudy.ovh" target="_blank" class="btn-kuma-live">
-        LIVE MONITORING →
-    </a>
 </section>
 
 <h3 class="section-title">Network Layer (Connectivity)</h3>
