@@ -1,0 +1,159 @@
+---
+layout: default
+title: Sponsors
+permalink: /sponsors
+---
+
+<style>
+    .sponsors-container {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .sponsor-section-title {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 1.1rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        color: var(--accent-blue);
+        letter-spacing: -0.5px;
+        margin: 0 0 15px 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .sponsor-section-title::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: var(--border-color);
+    }
+
+    .sponsor-section-desc {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+
+    .sponsor-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 20px;
+    }
+
+    .sponsor-card-placeholder {
+        background: rgba(15, 15, 15, 0.6);
+        border: 1px dashed var(--border-color);
+        border-radius: 12px;
+        padding: 30px 20px;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .sponsor-card-placeholder:hover {
+        border-color: rgba(255, 255, 255, 0.2);
+        background: rgba(20, 20, 20, 0.8);
+    }
+
+    .placeholder-badge {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+    }
+
+    .become-sponsor-card {
+        background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.1), rgba(10, 10, 10, 0.8));
+        border: 1px solid var(--accent-blue);
+        border-radius: 12px;
+        padding: 30px;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .become-sponsor-card h2 {
+        font-size: 1.4rem;
+        margin: 0 0 10px 0;
+        color: #fff;
+    }
+
+    .become-sponsor-card p {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        max-width: 600px;
+        margin: 0 auto 20px auto;
+        line-height: 1.6;
+    }
+
+    .contact-btn {
+        display: inline-block;
+        background: var(--accent-blue);
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.9rem;
+        padding: 12px 24px;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background 0.3s ease;
+    }
+
+    .contact-btn:hover {
+        background: #2563eb;
+    }
+</style>
+
+<div class="sponsors-container">
+
+    <!-- SEKJA 1: DOWSTAWCY SPRZĘTU -->
+    <div class="sponsor-category">
+        <h2 class="sponsor-section-title">[ Dostawcy_Sprzętu ]</h2>
+        <p class="sponsor-section-desc">Partnerzy wspierający rozwój infrastruktury DevLab Study poprzez udostępnianie lub przekazywanie sprzętu sieciowego, serwerowego oraz podzespołów komputerowych.</p>
+        
+        <div class="sponsor-grid">
+            <div class="sponsor-card-placeholder">
+                <div class="placeholder-badge">[ MIEJSCE_NA_LOGO ]</div>
+            </div>
+            <div class="sponsor-card-placeholder">
+                <div class="placeholder-badge">[ MIEJSCE_NA_LOGO ]</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEKJA 2: STALI SPONSORZY -->
+    <div class="sponsor-category">
+        <h2 class="sponsor-section-title">[ Stali_Sponsorzy ]</h2>
+        <p class="sponsor-section-desc">Firmy i organizacje wspierające projekt w trybie ciągłym, umożliwiające stałe prowadzenie badań, testów oraz tworzenie materiałów technicznych.</p>
+        
+        <div class="sponsor-grid">
+            <div class="sponsor-card-placeholder">
+                <div class="placeholder-badge">[ MIEJSCE_NA_LOGO ]</div>
+            </div>
+            <div class="sponsor-card-placeholder">
+                <div class="placeholder-badge">[ MIEJSCE_NA_LOGO ]</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEKJA 3: SPONSORZY PROJEKTOWI / OPROGRAMOWANIE -->
+    <div class="sponsor-category">
+        <h2 class="sponsor-section-title">[ Partnerzy_Oprogramowania ]</h2>
+        <p class="sponsor-section-desc">Dostawcy licencji, chmury oraz oprogramowania wykorzystywanego w środowisku wirtualizacji i narzędziach programistycznych.</p>
+        
+        <div class="sponsor-grid">
+            <div class="sponsor-card-placeholder">
+                <div class="placeholder-badge">[ MIEJSCE_NA_LOGO ]</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WEZWANIE DO DZIAŁANIA (CTA) -->
+    <div class="become-sponsor-card">
+        <h2>Chcesz zostać partnerem DevLab Study?</h2>
+        <p>Tworzymy przestrzeń dedykowaną architekturze sieciowej, wirtualizacji (Proxmox VE), homelabom oraz własnym projektom technologicznym. Zapraszamy do współpracy i wspólnego budowania środowiska.</p>
+        <a href="mailto:contact@devlabstudy.ovh" class="contact-btn">Nawiąż współpracę ➔</a>
+    </div>
+
+</div>
