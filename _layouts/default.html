@@ -18,7 +18,7 @@
         .nav-center a { text-decoration: none; color: var(--text-muted); font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
         .nav-center a:hover, .nav-center a.active { color: var(--accent-blue); }
         .nav-right { display: flex; justify-content: flex-end; }
-        
+
         .dropdown { position: relative; display: inline-block; }
         .dropbtn { background: #111; color: #fff; padding: 8px 16px; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.1); cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.9rem; }
         .dropdown-content { position: absolute; right: 0; top: 100%; padding-top: 15px; min-width: 180px; opacity: 0; visibility: hidden; transition: 0.25s ease; }
@@ -34,9 +34,9 @@
         .dashboard { width: 100%; max-width: 1260px; padding: 0 40px 0 140px; margin: 0 auto 40px auto; box-sizing: border-box; }
         .grid-container { display: grid; grid-template-columns: 240px 1px 1fr; gap: 80px; align-items: start; margin-left: -180px; }
         .vertical-divider { background: var(--border-color); width: 1px; min-height: 400px; }
-        
+
         .left-sidebar { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 100px; width: 240px; }
-        
+
         .card { background: rgba(10, 10, 10, 0.7); border: 1px solid var(--border-color); padding: 20px; border-radius: 12px; backdrop-filter: blur(10px); }
         .vinted-card { border-color: #00bfb2 !important; background: transparent !important; }
         .support-btn { display: block; text-decoration: none; padding: 12px; border-radius: 8px; font-weight: 800; font-size: 0.8rem; text-align: center; margin-top: 10px; transition: 0.3s; }
@@ -95,6 +95,7 @@
             <a href="/" {% if page.url == "/" %}class="active"{% endif %}>Hub</a>
             <a href="/blog" {% if page.url contains "blog" %}class="active"{% endif %}>Blog</a>
             <a href="/homelab" {% if page.url contains "homelab" %}class="active"{% endif %}>HomeLab</a>
+            <a href="/sponsors" {% if page.url contains "sponsors" %}class="active"{% endif %}>Sponsors</a>
             <a href="/benchmarks" {% if page.url contains "benchmarks" %}class="active"{% endif %}>Benchmarks</a>
             <a href="/orbit" {% if page.url contains "orbit" %}class="active"{% endif %}>Orbit™</a>
             <a href="/rokitos" {% if page.url contains "rokitos" %}class="active"{% endif %}>RokiTOS</a>
