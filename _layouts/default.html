@@ -45,7 +45,6 @@
 
         /* == POPRAWKI DLA TELEFONÓW (Poniżej 1024px) == */
         @media (max-width: 1024px) { 
-            /* 1. Naprawa głównego kontenera i odwrócenie kolejności */
             .grid-container { 
                 display: flex; 
                 flex-direction: column; 
@@ -53,36 +52,35 @@
                 gap: 40px; 
             } 
             .main-content {
-                order: 1; /* Główny tekst z pliku index.html idzie na samą górę! */
+                order: 1; 
                 width: 100%;
             }
             .left-sidebar {
-                order: 2; /* Panele boczne spadają na sam dół! */
+                order: 2; 
                 width: 100%;
-                position: relative; /* Wyłącza przyklejanie (sticky) na telefonie */
+                position: relative; 
                 top: 0;
                 display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Układa karty obok siebie na tabletach */
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
             }
             .vertical-divider { display: none; } 
             .dashboard { padding: 0 20px; }
 
-            /* 2. Naprawa nawigacji (Navbar) */
             .navbar {
                 display: flex;
-                flex-direction: column; /* Układa elementy jeden pod drugim */
+                flex-direction: column; 
                 padding: 15px 20px;
                 gap: 15px;
             }
             .nav-brand {
-                font-size: 1.3rem; /* Nieco mniejsze logo, by zaoszczędzić miejsce */
+                font-size: 1.3rem; 
             }
             .nav-center {
-                flex-wrap: wrap; /* Kluczowe! Pozwala linkom "Blog", "HomeLab" przeskoczyć do nowej linii, gdy brakuje miejsca */
+                flex-wrap: wrap; 
                 gap: 12px;
             }
             .hero-title {
-                font-size: 2.2rem; /* Trochę mniejszy tytuł środowiska dla wąskich ekranów */
+                font-size: 2.2rem; 
             }
         }
     </style>
