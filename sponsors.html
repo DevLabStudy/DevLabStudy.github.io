@@ -44,6 +44,32 @@ permalink: /sponsors
         gap: 20px;
     }
 
+    .sponsor-card {
+        background: rgba(15, 15, 15, 0.8);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+
+    .sponsor-card:hover {
+        border-color: var(--accent-blue);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 20px rgba(59, 130, 246, 0.15);
+    }
+
+    .sponsor-logo-img {
+        max-width: 100%;
+        max-height: 50px;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+    }
+
     .sponsor-card-placeholder {
         background: rgba(15, 15, 15, 0.6);
         border: 1px dashed var(--border-color);
@@ -107,22 +133,22 @@ permalink: /sponsors
 
 <div class="sponsors-container">
 
-    <!-- SEKJA 1: DOWSTAWCY SPRZĘTU -->
+    <!-- SEKCJA 1: DOSTAWCY SPRZĘTU -->
     <div class="sponsor-category">
         <h2 class="sponsor-section-title">[ Dostawcy_Sprzętu ]</h2>
         <p class="sponsor-section-desc">Partnerzy wspierający rozwój infrastruktury DevLab Study poprzez udostępnianie lub przekazywanie sprzętu sieciowego, serwerowego oraz podzespołów komputerowych.</p>
         
         <div class="sponsor-grid">
-            <div class="sponsor-card-placeholder">
-                <div class="placeholder-badge">[ MIEJSCE_NA_LOGO ]</div>
-            </div>
+            <a href="https://lanberg.pl" target="_blank" rel="noopener noreferrer" class="sponsor-card">
+                <img src="{{ '/assets/images/LOGO_LANBERG.jpg' | relative_url }}" alt="Lanberg" class="sponsor-logo-img">
+            </a>
             <div class="sponsor-card-placeholder">
                 <div class="placeholder-badge">[ MIEJSCE_NA_LOGO ]</div>
             </div>
         </div>
     </div>
 
-    <!-- SEKJA 2: STALI SPONSORZY -->
+    <!-- SEKCJA 2: STALI SPONSORZY -->
     <div class="sponsor-category">
         <h2 class="sponsor-section-title">[ Stali_Sponsorzy ]</h2>
         <p class="sponsor-section-desc">Firmy i organizacje wspierające projekt w trybie ciągłym, umożliwiające stałe prowadzenie badań, testów oraz tworzenie materiałów technicznych.</p>
@@ -137,7 +163,7 @@ permalink: /sponsors
         </div>
     </div>
 
-    <!-- SEKJA 3: SPONSORZY PROJEKTOWI / OPROGRAMOWANIE -->
+    <!-- SEKCJA 3: SPONSORZY PROJEKTOWI / OPROGRAMOWANIE -->
     <div class="sponsor-category">
         <h2 class="sponsor-section-title">[ Partnerzy_Oprogramowania ]</h2>
         <p class="sponsor-section-desc">Dostawcy licencji, chmury oraz oprogramowania wykorzystywanego w środowisku wirtualizacji i narzędziach programistycznych.</p>
