@@ -62,12 +62,6 @@ title: HomeLab Inventory
         <div class="spec-line"><span class="spec-label">Role:</span><span>Compact Access / VLAN Switch</span></div>
         <div class="spec-line"><span class="spec-label">Features:</span><span>LAN Base IOS (Fanless)</span></div>
     </div>
-    <div class="node-card">
-        <span class="status-badge mobile">Thin</span>
-        <span class="node-name">Fujitsu Futro S720</span>
-        <div class="spec-line"><span class="spec-label">CPU:</span><span>AMD GX-217GA</span></div>
-        <div class="spec-line"><span class="spec-label">Cooling:</span><span>5V USB Fan Assisted</span></div>
-    </div>
 </div>
 
 <!-- SZAFA RACK 10" (POMOCNICZA) -->
@@ -88,30 +82,32 @@ title: HomeLab Inventory
     </div>
 </div>
 
-<!-- INNE URZĄDZENIA SIECIOWE -->
-<h3 class="section-title">Wireless Access Points</h3>
+<!-- BEZPRZEWODOWE URZĄDZENIA SIECIOWE -->
+<h3 class="section-title">Wireless Access Points (Planned Migration)</h3>
 <div class="nodes-grid">
     <div class="node-card">
-        <span class="status-badge migration">Planned AP</span>
+        <span class="status-badge migration">Replacing</span>
         <span class="node-name">Redmi AC2100</span>
         <div class="spec-line"><span class="spec-label">Role:</span><span>Wireless AP/Router</span></div>
-        <div class="spec-line"><span class="spec-label">Status:</span><span>Active (Replacing with C6 v2)</span></div>
+        <div class="spec-line"><span class="spec-label">Status:</span><span>Phasing Out (Replacing with Archer C6 v2)</span></div>
     </div>
     <div class="node-card">
-        <span class="status-badge inactive">Legacy</span>
+        <span class="status-badge migration">Replacing</span>
         <span class="node-name">TP-Link WR1043ND v2.1</span>
         <div class="spec-line"><span class="spec-label">OS:</span><span>Factory / OpenWrt</span></div>
         <div class="spec-line"><span class="spec-label">Role:</span><span>Lab Router (Phasing Out)</span></div>
     </div>
 </div>
 
-<h3 class="section-title">Compute Layer (Workstations & Hosts)</h3>
+<!-- COMPUTE LAYER (HOSTY BIURKOWE I STACJE) -->
+<h3 class="section-title">Compute Layer (Desk Nodes & Workstations)</h3>
 <div class="nodes-grid">
     <div class="node-card">
-        <span class="status-badge">Main</span>
-        <span class="node-name">Gamingowy Host</span>
-        <div class="spec-line"><span class="spec-label">CPU:</span><span>Ryzen 5 3600</span></div>
-        <div class="spec-line"><span class="spec-label">RAM:</span><span>16GB DDR4</span></div>
+        <span class="status-badge mobile">Desk Node</span>
+        <span class="node-name">Fujitsu Futro S720</span>
+        <div class="spec-line"><span class="spec-label">CPU:</span><span>AMD GX-217GA</span></div>
+        <div class="spec-line"><span class="spec-label">Cooling:</span><span>5V USB Fan Pad Assisted</span></div>
+        <div class="spec-line"><span class="spec-label">Location:</span><span>Desk Node (24/7 Passive/Active)</span></div>
     </div>
     <div class="node-card">
         <span class="status-badge mobile">Workstation</span>
@@ -119,6 +115,12 @@ title: HomeLab Inventory
         <div class="spec-line"><span class="spec-label">CPU:</span><span>i5-5250U</span></div>
         <div class="spec-line"><span class="spec-label">RAM:</span><span>16GB DDR3L</span></div>
         <div class="spec-line"><span class="spec-label">Role:</span><span>Daily Workstation (Low-Power)</span></div>
+    </div>
+    <div class="node-card">
+        <span class="status-badge">Main PC</span>
+        <span class="node-name">Gamingowy Host</span>
+        <div class="spec-line"><span class="spec-label">CPU:</span><span>Ryzen 5 3600</span></div>
+        <div class="spec-line"><span class="spec-label">RAM:</span><span>16GB DDR4</span></div>
     </div>
     <div class="node-card">
         <span class="status-badge migration">USDT</span>
