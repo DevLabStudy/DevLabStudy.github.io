@@ -15,6 +15,16 @@ title: HomeLab Inventory
 
     .section-title { font-family: 'JetBrains Mono', monospace; color: #fff; border-left: 4px solid #3b82f6; padding-left: 15px; margin: 40px 0 20px 0; font-size: 1.5rem; text-transform: uppercase; }
     
+    .diagram-container {
+        background: rgba(10, 10, 10, 0.7);
+        border: 1px solid var(--border-color, #222);
+        padding: 20px;
+        border-radius: 12px;
+        margin-bottom: 35px;
+        backdrop-filter: blur(10px);
+        overflow-x: auto;
+    }
+
     .nodes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 30px; }
     
     .node-card { background: rgba(10, 10, 10, 0.7); border: 1px solid var(--border-color, #222); padding: 30px; border-radius: 12px; position: relative; transition: all 0.3s; backdrop-filter: blur(10px); }
@@ -32,12 +42,65 @@ title: HomeLab Inventory
     .spec-label { color: var(--text-muted, #9ca3af); width: 100px; font-weight: 600; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; flex-shrink: 0; }
 </style>
 
+<!-- SKRYPT REGENERACJI DIAGRAMU MERMAID -->
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+</script>
+
 <section class="hero-homelab">
     <div class="hero-text">
         <h2>Infrastructure & HomeLab</h2>
         <p>>_ Current Network Backbone, Compute Nodes & Cloud</p>
     </div>
 </section>
+
+<!-- INTERAKTYWNY DIAGRAM SIECIOWY -->
+<h3 class="section-title">Network Topology & Architecture</h3>
+<div class="diagram-container">
+    <pre class="mermaid" style="background: transparent; border: none; text-align: center;">
+graph LR
+    classDef edge fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#f8fafc;
+    classDef rack19 fill:#0f172a,stroke:#22c55e,stroke-width:2px,color:#f8fafc;
+    classDef rack10 fill:#1e1b4b,stroke:#818cf8,stroke-width:2px,color:#f8fafc;
+    classDef desk fill:#312e81,stroke:#a855f7,stroke-width:2px,color:#f8fafc;
+    classDef wifi fill:#451a03,stroke:#f97316,stroke-width:2px,color:#f8fafc;
+    classDef mobile fill:#4c0519,stroke:#f43f5e,stroke-width:2px,color:#f8fafc;
+
+    subgraph WAN ["1. Edge & Router"]
+        ISP([Internet / Modem]) --> MT["<b>MikroTik hEX gr3</b><br/>• Gateway & Core RouterOS<br/>• Hardware Crypto IPSec"]:::edge
+    end
+
+    subgraph HEX_CONNECTIONS ["2. Bezpośrednie Porty hEX gr3"]
+        MT --> CoreSwitch["<b>Lanberg RSGE-24P-2GE-2S-250</b><br/>• 24-Port Gigabit PoE+ (250W)<br/>• Główny Core Switch"]:::rack19
+        MT --> Cisco["<b>Cisco Catalyst 2960C-8TC-L</b><br/>• Compact Access / VLANs"]:::rack19
+        MT --> Redmi["<b>Redmi AC2100</b><br/>• Main Wi-Fi AP (hEX Direct)"]:::wifi
+    end
+
+    subgraph RACK10 ["3. Szafa RACK 10'"]
+        CoreSwitch --> Lanberg10["Lanberg 8-Port Switch"]:::rack10
+        Lanberg10 --> FutroS520["Fujitsu Futro S520<br/>(AMD GX-212ZC)"]:::rack10
+    end
+
+    subgraph DESK ["4. Stanowisko Biurkowe"]
+        CoreSwitch --> FutroS720["<b>Fujitsu Futro S720</b><br/>• 24/7 Desk Node<br/>• Chłodzenie podkładką 5V USB"]:::desk
+        CoreSwitch --> NUC["<b>Intel NUC</b> (i5-5250U)<br/>• Workstation"]:::desk
+        CoreSwitch --> PC["<b>Gaming PC Host</b> (Ryzen 5 3600)"]:::desk
+        CoreSwitch --> HP8200["<b>HP 8200 Elite USDT</b><br/>• Proxmox VE (Do wymiany)"]:::desk
+    end
+
+    subgraph PERIPHERALS ["5. Urządzenia Sieciowe & Druk"]
+        CoreSwitch --> Printer["<b>Canon Pixma TS705a</b><br/>• Drukarka Sieciowa (LAN/Wi-Fi)"]:::wifi
+        CoreSwitch --> TPLink["<b>TP-Link TL-WR1043ND v2.1</b><br/>• Secondary AP / Lab Wi-Fi"]:::wifi
+    end
+
+    subgraph MOBILES ["6. Urządzenia Mobilne"]
+        Redmi --- Moto["<b>Motorola G35 5G</b><br/>• Daily Driver (z Redmi Wi-Fi)"]:::mobile
+        TPLink --- Nokia["Nokia 8 Sirocco (FRP / Kuma)"]:::mobile
+        TPLink --- TestLab["Samsung S5/S4 & HTC Test Lab"]:::mobile
+    end
+    </pre>
+</div>
 
 <!-- SZAFA RACK 19" (GŁÓWNA) -->
 <h3 class="section-title">Rack 19" Main Cabinet</h3>
@@ -82,20 +145,26 @@ title: HomeLab Inventory
     </div>
 </div>
 
-<!-- BEZPRZEWODOWE URZĄDZENIA SIECIOWE -->
-<h3 class="section-title">Wireless Access Points (Planned Migration)</h3>
+<!-- BEZPRZEWODOWE URZĄDZENIA SIECIOWE & PERYFERIA -->
+<h3 class="section-title">Wireless Access Points & Peripherals</h3>
 <div class="nodes-grid">
     <div class="node-card">
         <span class="status-badge migration">Replacing</span>
         <span class="node-name">Redmi AC2100</span>
-        <div class="spec-line"><span class="spec-label">Role:</span><span>Wireless AP/Router</span></div>
+        <div class="spec-line"><span class="spec-label">Role:</span><span>Primary Wi-Fi AP (hEX Direct)</span></div>
         <div class="spec-line"><span class="spec-label">Status:</span><span>Phasing Out (Replacing with Archer C6 v2)</span></div>
     </div>
     <div class="node-card">
         <span class="status-badge migration">Replacing</span>
         <span class="node-name">TP-Link WR1043ND v2.1</span>
         <div class="spec-line"><span class="spec-label">OS:</span><span>Factory / OpenWrt</span></div>
-        <div class="spec-line"><span class="spec-label">Role:</span><span>Lab Router (Phasing Out)</span></div>
+        <div class="spec-line"><span class="spec-label">Role:</span><span>Secondary / Mobile Lab Wi-Fi</span></div>
+    </div>
+    <div class="node-card">
+        <span class="status-badge mobile">Printer</span>
+        <span class="node-name">Canon Pixma TS705a</span>
+        <div class="spec-line"><span class="spec-label">Role:</span><span>Network Inkjet Printer</span></div>
+        <div class="spec-line"><span class="spec-label">Conn:</span><span>LAN / Wi-Fi</span></div>
     </div>
 </div>
 
