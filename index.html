@@ -5,234 +5,496 @@ title: Home | DevLabStudy
 <meta name="facebook-domain-verification" content="iyq6csa05w60ox2ouz7tjma4owsvlf" />
 
 <style>
-    /* Pancerne resetowanie szerokości pod mobile */
+    :root {
+        --bg-main: #0a0c10;
+        --bg-card: rgba(18, 22, 31, 0.75);
+        --bg-card-hover: rgba(26, 32, 46, 0.9);
+        --border-color: #1e2638;
+        --border-highlight: #22c55e;
+        --accent-green: #22c55e;
+        --accent-blue: #3b82f6;
+        --accent-cyan: #06b6d4;
+        --text-primary: #f3f4f6;
+        --text-secondary: #9ca3af;
+        --text-muted: #6b7280;
+    }
+
     html, body {
         max-width: 100%;
         overflow-x: hidden;
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        background-color: #09090b;
-    }
-
-    *, *:before, *:after {
-        box-sizing: inherit;
-    }
-
-    .page-container {
-        width: 100%;
-        max-width: 950px;
-        margin: 0 auto;
-        padding: 40px 20px;
+        background-color: var(--bg-main);
+        color: var(--text-primary);
         font-family: 'JetBrains Mono', monospace;
     }
 
-    /* Hero Banner / Terminal Header */
-    .hero-header {
-        background: radial-gradient(circle at top left, rgba(16, 185, 129, 0.15), transparent 50%),
-                    radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.15), transparent 50%),
-                    #121216;
-        border: 1px solid #27272a;
-        border-radius: 16px;
-        padding: 35px;
-        margin-bottom: 25px;
-        position: relative;
-        overflow: hidden;
-        box-shadow: 0 20px 40px -15px rgba(0,0,0,0.7);
+    *, *:before, *:after { box-sizing: inherit; }
+
+    .page-container {
+        width: 100%;
+        max-width: 1050px;
+        margin: 0 auto;
+        padding: 40px 20px;
     }
 
-    .terminal-bar {
+    /* Top Live Status Bar */
+    .system-status-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        backdrop-filter: blur(12px);
+        border-radius: 12px;
+        padding: 12px 20px;
+        margin-bottom: 25px;
+        font-size: 0.82rem;
+    }
+
+    .status-indicator {
         display: flex;
         align-items: center;
-        gap: 8px;
-        margin-bottom: 25px;
-        padding-bottom: 12px;
-        border-bottom: 1px solid rgba(255,255,255,0.08);
+        gap: 10px;
     }
 
-    .dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
-    .dot-red { background: #ef4444; }
-    .dot-yellow { background: #f59e0b; }
-    .dot-green { background: #10b981; }
-    .terminal-title { color: #71717a; font-size: 0.8rem; margin-left: auto; }
+    .pulse-dot {
+        width: 8px;
+        height: 8px;
+        background-color: var(--accent-green);
+        border-radius: 50%;
+        box-shadow: 0 0 10px var(--accent-green);
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+        70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+        100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+    }
+
+    .metrics-group {
+        display: flex;
+        gap: 20px;
+        color: var(--text-secondary);
+    }
+
+    .metric-item span { color: var(--accent-green); font-weight: bold; }
+
+    /* Hero Section */
+    .hero-grid {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        gap: 20px;
+        margin-bottom: 25px;
+    }
+
+    .hero-main {
+        background: radial-gradient(circle at 0% 0%, rgba(34, 197, 94, 0.12), transparent 45%),
+                    radial-gradient(circle at 100% 100%, rgba(59, 130, 246, 0.1), transparent 45%),
+                    var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        padding: 35px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        backdrop-filter: blur(12px);
+    }
+
+    .hero-tag {
+        color: var(--accent-cyan);
+        font-size: 0.8rem;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+        display: block;
+    }
 
     .hero-title {
-        font-size: 2.2rem;
+        font-size: 2.4rem;
         font-weight: 800;
-        margin: 0 0 10px 0;
-        background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+        margin: 0 0 15px 0;
+        line-height: 1.15;
+        background: linear-gradient(135deg, #ffffff 30%, var(--text-secondary) 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        letter-spacing: -1px;
     }
 
-    .hero-subtitle {
-        color: #a1a1aa;
-        font-size: 1rem;
-        margin: 0 0 25px 0;
-        line-height: 1.6;
-    }
-
-    /* Grid Kafelków / Quick Stats */
-    .quick-stats {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 15px;
-        margin-bottom: 25px;
-    }
-
-    .stat-card {
-        background: rgba(18, 18, 22, 0.6);
-        border: 1px solid #27272a;
-        border-radius: 12px;
-        padding: 20px;
-        backdrop-filter: blur(10px);
-        transition: all 0.3s ease;
-    }
-
-    .stat-card:hover {
-        border-color: #10b981;
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px -10px rgba(16, 185, 129, 0.2);
-    }
-
-    .stat-label {
-        color: #71717a;
-        font-size: 0.75rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        display: block;
-        margin-bottom: 5px;
-    }
-
-    .stat-value {
-        color: #f4f4f5;
-        font-size: 1.1rem;
-        font-weight: bold;
-    }
-
-    .stat-value.highlight { color: #10b981; }
-    .stat-value.blue { color: #3b82f6; }
-
-    /* Sekcja Główna Content */
-    .content-box {
-        background: #121216;
-        border: 1px solid #27272a;
-        border-radius: 16px;
-        padding: 35px;
-        color: #f4f4f5;
-    }
-
-    .section-header {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        color: #10b981;
-        font-size: 1.2rem;
-        margin-top: 0;
-        margin-bottom: 20px;
-        border-bottom: 1px dashed #27272a;
-        padding-bottom: 12px;
-    }
-
-    .content-box p {
-        color: #a1a1aa;
+    .hero-desc {
+        color: var(--text-secondary);
         font-size: 0.95rem;
-        line-height: 1.7;
-        margin-bottom: 20px;
+        line-height: 1.6;
+        margin: 0 0 25px 0;
     }
 
-    .content-box strong { color: #f4f4f5; }
-
-    /* Badges / Tag Cloud */
-    .about-badges {
+    .hero-actions {
         display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 30px;
-        padding-top: 20px;
-        border-top: 1px solid #27272a;
+        gap: 12px;
     }
 
-    .about-badges span {
-        background: rgba(16, 185, 129, 0.08);
-        color: #10b981;
-        border: 1px solid rgba(16, 185, 129, 0.2);
-        padding: 8px 14px;
+    .btn {
+        padding: 10px 20px;
         border-radius: 8px;
-        font-size: 0.8rem;
+        font-size: 0.85rem;
         font-weight: 600;
+        text-decoration: none;
         transition: all 0.2s ease;
     }
 
-    .about-badges span:hover {
-        background: rgba(16, 185, 129, 0.2);
-        border-color: #10b981;
+    .btn-primary {
+        background: var(--accent-green);
+        color: #000;
+        box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
     }
 
-    /* RWD */
-    @media (max-width: 768px) {
-        .page-container { padding: 15px 10px; }
-        .hero-header, .content-box { padding: 20px; border-radius: 12px; }
-        .hero-title { font-size: 1.6rem; }
-        .hero-subtitle { font-size: 0.85rem; }
-        .quick-stats { grid-template-columns: 1fr 1fr; gap: 10px; }
-        .stat-card { padding: 15px; }
-        .stat-value { font-size: 0.95rem; }
+    .btn-primary:hover {
+        background: #16a34a;
+        transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--text-primary);
+        border: 1px solid var(--border-color);
+    }
+
+    .btn-secondary:hover {
+        border-color: var(--accent-cyan);
+        color: var(--accent-cyan);
+    }
+
+    /* Side Telemetry Card */
+    .hero-telemetry {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .telemetry-title {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+        border-bottom: 1px dashed var(--border-color);
+        padding-bottom: 10px;
+    }
+
+    .telemetry-node {
+        margin-bottom: 15px;
+    }
+
+    .node-header {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.85rem;
+        margin-bottom: 6px;
+    }
+
+    .node-name { color: var(--text-primary); font-weight: 600; }
+    .node-status { color: var(--accent-green); }
+
+    .node-bar-bg {
+        height: 6px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 3px;
+        overflow: hidden;
+    }
+
+    .node-bar-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent-green), var(--accent-blue));
+        border-radius: 3px;
+    }
+
+    /* Showcase Szaf RACK */
+    .section-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin: 35px 0 20px 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .section-title::before {
+        content: '//';
+        color: var(--accent-green);
+    }
+
+    .rack-showcase-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    .rack-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        overflow: hidden;
+        position: relative;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .rack-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(34, 197, 94, 0.5);
+    }
+
+    .rack-img-wrapper {
+        width: 100%;
+        height: 280px;
+        position: relative;
+        overflow: hidden;
+        background: #050608;
+    }
+
+    .rack-img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.85;
+        transition: opacity 0.3s ease, transform 0.4s ease;
+    }
+
+    .rack-card:hover .rack-img-wrapper img {
+        opacity: 1;
+        transform: scale(1.03);
+    }
+
+    .rack-info {
+        padding: 20px;
+    }
+
+    .rack-tag {
+        font-size: 0.7rem;
+        padding: 4px 8px;
+        border-radius: 4px;
+        background: rgba(34, 197, 94, 0.15);
+        color: var(--accent-green);
+        border: 1px solid rgba(34, 197, 94, 0.3);
+        display: inline-block;
+        margin-bottom: 8px;
+    }
+
+    .rack-title {
+        font-size: 1.1rem;
+        margin: 0 0 8px 0;
+        color: var(--text-primary);
+    }
+
+    .rack-details {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    /* Stack & About Grid */
+    .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .info-box {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        padding: 30px;
+    }
+
+    .info-box h3 {
+        margin-top: 0;
+        font-size: 1.1rem;
+        color: var(--text-primary);
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 12px;
+        margin-bottom: 18px;
+    }
+
+    .info-box p {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .tech-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 15px;
+    }
+
+    .badge {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--border-color);
+        color: var(--text-secondary);
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 0.78rem;
+    }
+
+    .badge.active {
+        border-color: rgba(6, 182, 212, 0.4);
+        color: var(--accent-cyan);
+        background: rgba(6, 182, 212, 0.08);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 850px) {
+        .hero-grid, .rack-showcase-grid, .info-grid {
+            grid-template-columns: 1fr;
+        }
+        .system-status-bar {
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-start;
+        }
+        .rack-img-wrapper { height: 220px; }
+        .hero-title { font-size: 1.8rem; }
     }
 </style>
 
 <div class="page-container">
-    <!-- Hero Box z klimatem terminala -->
-    <div class="hero-header">
-        <div class="terminal-bar">
-            <span class="dot dot-red"></span>
-            <span class="dot dot-yellow"></span>
-            <span class="dot dot-green"></span>
-            <span class="terminal-title">bash - devlabstudy@node-01:~</span>
+    <!-- Top System Telemetry Bar -->
+    <div class="system-status-bar">
+        <div class="status-indicator">
+            <div class="pulse-dot"></div>
+            <span>HOMELAB CORE: <strong>ONLINE</strong></span>
         </div>
-        <h1 class="hero-title">DevLabStudy Workspace</h1>
-        <p class="hero-subtitle">> System Admin / Networking / Homelab Infrastructure & Hardware Testing</p>
-    </div>
-
-    <!-- Szybkie Kafelki ze Statusami -->
-    <div class="quick-stats">
-        <div class="stat-card">
-            <span class="stat-label">Main OS Focus</span>
-            <span class="stat-value highlight">Debian / Linux</span>
-        </div>
-        <div class="stat-card">
-            <span class="stat-label">Virtualization</span>
-            <span class="stat-value blue">Proxmox VE</span>
-        </div>
-        <div class="stat-card">
-            <span class="stat-label">Network Edge</span>
-            <span class="stat-value">MikroTik RouterOS</span>
-        </div>
-        <div class="stat-card">
-            <span class="stat-label">Primary Stack</span>
-            <span class="stat-value">Docker & Containers</span>
+        <div class="metrics-group">
+            <div class="metric-item">Baseline Power: <span>~32.8W</span></div>
+            <div class="metric-item">Router: <span>MikroTik hEX gr3</span></div>
+            <div class="metric-item">Core Switch: <span>Cisco 2960C</span></div>
         </div>
     </div>
 
-    <!-- Główna sekcja "O mnie" -->
-    <div class="content-box">
-        <h2 class="section-header"><span>//</span> ABOUT_ME & MISSION</h2>
-        
-        <p>Cześć! Na co dzień jestem uczniem technikum informatycznego, a po godzinach zgłębiam tajniki administracji serwerami, sieci komputerowych i budowania własnej infrastruktury. Wiedzę teoretyczną z przygotowań do egzaminów zawodowych (m.in. sprzęt i sieci) natychmiast przekuwam w praktykę we własnym <strong>domowym laboratorium (Homelab)</strong>.</p>
-        
-        <p>DevLabStudy to moje centrum dowodzenia i publiczny notatnik. Dokumentuję tu swoje projekty, zarządzanie klastrami w <strong>Proxmoxie</strong>, konfigurację kontenerów (Docker) oraz testy sprzętu sieciowego pokroju routerów MikroTik czy systemów OpenWrt.</p>
+    <!-- Hero Header -->
+    <div class="hero-grid">
+        <div class="hero-main">
+            <span class="hero-tag">Homelab & Infrastructure Project</span>
+            <h1 class="hero-title">DevLabStudy Workspace</h1>
+            <p class="hero-desc">
+                Cześć! Jestem uczniem technikum informatycznego, który teorię sprzętową i sieciową natychmiast przenosi do własnej serwerowni. Buduję energooszczędne środowisko serwerowe, przetestuję dystrybucje Linuksa oraz ustrukturyzowane sieci RACK.
+            </p>
+            <div class="hero-actions">
+                <a href="#rack-section" class="btn btn-primary">Zobacz Szafy RACK</a>
+                <a href="#about-section" class="btn btn-secondary">O Projekcie</a>
+            </div>
+        </div>
 
-        <p>Mam słabość do testowania nietypowych systemów operacyjnych. Znajdziesz tu ślady moich eksperymentów z mnóstwem dystrybucji Linuksa – od konfigurowanego deklaratywnie <strong>NixOS</strong>, przez minimalistyczne środowiska bez systemd (jak Void czy antiX), po systemy działające całkowicie w RAM-ie (Tiny Core).</p>
+        <!-- Telemetry Side Box -->
+        <div class="hero-telemetry">
+            <div class="telemetry-title">// Active Nodes & Load</div>
+            
+            <div class="telemetry-node">
+                <div class="node-header">
+                    <span class="node-name">Network Core (19" Rack)</span>
+                    <span class="node-status">33W (Idle)</span>
+                </div>
+                <div class="node-bar-bg"><div class="node-bar-fill" style="width: 25%;"></div></div>
+            </div>
 
-        <p>Poza warstwą serwerową, lubię też ubrudzić ręce przy sprzęcie komputerowym i mikrokontrolerach (Arduino, ESP32). Kiedy akurat nie stawiam nowych usług i nie walczę z routingiem, najpewniej relaksyję się przy simracingu lub grach turniejowych.</p>
-        
-        <div class="about-badges">
-            <span>Proxmox & Virtualization</span>
-            <span>Linux Distro Hopping</span>
-            <span>MikroTik & Networking</span>
-            <span>Hardware & DIY</span>
-            <span>Docker & Homelab</span>
+            <div class="telemetry-node">
+                <div class="node-header">
+                    <span class="node-name">Fujitsu Futro (Services)</span>
+                    <span class="node-status">Cooling: Active 5V</span>
+                </div>
+                <div class="node-bar-bg"><div class="node-bar-fill" style="width: 40%;"></div></div>
+            </div>
+
+            <div class="telemetry-node">
+                <div class="node-header">
+                    <span class="node-name">Intel NUC (Workstation)</span>
+                    <span class="node-status">Primary PC</span>
+                </div>
+                <div class="node-bar-bg"><div class="node-bar-fill" style="width: 65%;"></div></div>
+            </div>
+
+            <div class="telemetry-node">
+                <div class="node-header">
+                    <span class="node-name">Proxmox VE Node</span>
+                    <span class="node-status">Standby / On-Demand</span>
+                </div>
+                <div class="node-bar-bg"><div class="node-bar-fill" style="width: 15%;"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RACK Showcase Section -->
+    <h2 class="section-title" id="rack-section">PHYSICAL INFRASTRUCTURE</h2>
+    <div class="rack-showcase-grid">
+        <!-- Main 19 Rack Card -->
+        <div class="rack-card">
+            <div class="rack-img-wrapper">
+                <img src="assets/images/duża.png" alt="Główna szafa 19 cali 9U Lanberg">
+            </div>
+            <div class="rack-info">
+                <span class="rack-tag">PRIMARY RACK 19" 9U</span>
+                <h3 class="rack-title">Węzeł Główny & Zasilanie PDU</h3>
+                <p class="rack-details">
+                    Serce sieci. Zawiera router MikroTik hEX gr3, pasywny przełącznik zarządzalny Cisco Catalyst 2960C-8TC-L, 24-portowy gigabitowy switch Lanberg PoE+ (250W), listwę PDU z pomiarem energii Tuya/Smart Life oraz terminale serwerowe z aktywnym nawiewem.
+                </p>
+            </div>
+        </div>
+
+        <!-- Secondary 10 Rack Card -->
+        <div class="rack-card">
+            <div class="rack-img-wrapper">
+                <img src="assets/images/mała.png" alt="Szafa 10 cali Lanberg">
+            </div>
+            <div class="rack-info">
+                <span class="rack-tag">SECONDARY RACK 10"</span>
+                <h3 class="rack-title">Węzeł Pomocniczy</h3>
+                <p class="rack-details">
+                    Niezależna szafa dostępowa 10" obsługująca dodatkowe punkty dostępowe oraz poboczne połączenia kablowe na stanowisku.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Information & Stack Grid -->
+    <div class="info-grid" id="about-section">
+        <div class="info-box">
+            <h3>// O MNIE & WIZJA</h3>
+            <p>
+                Projekt <strong>DevLabStudy</strong> powstał jako przestrzeń do dokumentowania mojej nauki administracji systemami operacyjnymi, sieciami i sprzętem serwerowym. 
+            </p>
+            <p>
+                Stawiam na optymalizację energetyczną – cała baza sieciowa w głównej szafie pobiera zaledwie ~33W, a do codziennej pracy używam energooszczędnego NUC-a zamiast prądożernego zestawu PC.
+            </p>
+            <div class="tech-badges">
+                <span class="badge active">Debian Linux</span>
+                <span class="badge active">Proxmox VE</span>
+                <span class="badge active">MikroTik RouterOS</span>
+                <span class="badge active">Cisco IOS</span>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>// ROADMAP & PLANS</h3>
+            <p>
+                Akurat dopracowuję okablowanie oraz reorganizuję punkty Wi-Fi (przejście na Archera C6 v2 w trybie AP). 
+            </p>
+            <p>
+                W najbliższych planach mam zamianę panelu LSA na modułowy <strong>Patch Panel 1U z 24 gniazdami Keystone</strong> oraz zastąpienie serwera HP 8200 USDT nowszym komputerem typu Tiny PC / NUC pod wirtualizację.
+            </p>
+            <div class="tech-badges">
+                <span class="badge">Keystone Patch Panel</span>
+                <span class="badge">Archer C6 AP</span>
+                <span class="badge">Tiny PC Upgrade</span>
+                <span class="badge">8-Bay NAS Goal</span>
+            </div>
         </div>
     </div>
 </div>
