@@ -39,41 +39,73 @@ title: HomeLab Inventory
     </div>
 </section>
 
-<h3 class="section-title">Network Layer (Connectivity)</h3>
+<!-- SZAFA RACK 19" (GŁÓWNA) -->
+<h3 class="section-title">Rack 19" Main Cabinet</h3>
 <div class="nodes-grid">
     <div class="node-card">
-        <span class="status-badge">Agg</span>
-        <span class="node-name">D-Link DGS-1100-16</span>
-        <div class="spec-line"><span class="spec-label">Role:</span><span>ISP/Gateway Distribution</span></div>
-        <div class="spec-line"><span class="spec-label">Ports:</span><span>16x 1GbE</span></div>
+        <span class="status-badge mobile">Gateway</span>
+        <span class="node-name">MikroTik hEX gr3</span>
+        <div class="spec-line"><span class="spec-label">Model:</span><span>RB750Gr3 (Dual-Core 880MHz)</span></div>
+        <div class="spec-line"><span class="spec-label">Role:</span><span>Main Gateway / RouterOS</span></div>
+        <div class="spec-line"><span class="spec-label">Ports:</span><span>5x 1GbE / Hardware Crypto</span></div>
     </div>
     <div class="node-card">
-        <span class="status-badge">Switch</span>
-        <span class="node-name">Cisco Catalyst 2960C</span>
-        <div class="spec-line"><span class="spec-label">Role:</span><span>Lab Switch / Compact Access</span></div>
-        <div class="spec-line"><span class="spec-label">Features:</span><span>LAN Base Software</span></div>
+        <span class="status-badge mobile">PoE Switch</span>
+        <span class="node-name">Lanberg RSGE-24P-2GE-2S-250</span>
+        <div class="spec-line"><span class="spec-label">Role:</span><span>24-Port Gigabit PoE+ Core Switch</span></div>
+        <div class="spec-line"><span class="spec-label">PoE Budget:</span><span>250W (IEEE 802.3af/at)</span></div>
+        <div class="spec-line"><span class="spec-label">Uplinks:</span><span>2x 1GbE Combo + 2x SFP</span></div>
     </div>
     <div class="node-card">
-        <span class="status-badge">Edge</span>
-        <span class="node-name">MikroTik RB951G</span>
-        <div class="spec-line"><span class="spec-label">CPU:</span><span>600MHz</span></div>
-        <div class="spec-line"><span class="spec-label">Usage:</span><span>Mgmt VLAN & AP</span></div>
+        <span class="status-badge">Managed</span>
+        <span class="node-name">Cisco Catalyst 2960C-8TC-L</span>
+        <div class="spec-line"><span class="spec-label">Role:</span><span>Compact Access / VLAN Switch</span></div>
+        <div class="spec-line"><span class="spec-label">Features:</span><span>LAN Base IOS (Fanless)</span></div>
     </div>
     <div class="node-card">
-        <span class="status-badge">Legacy</span>
-        <span class="node-name">TP-Link WR1043ND v2.1</span>
-        <div class="spec-line"><span class="spec-label">OS:</span><span>Fabric</span></div>
-        <div class="spec-line"><span class="spec-label">Role:</span><span>Lab Router</span></div>
-    </div>
-    <div class="node-card">
-        <span class="status-badge">Router</span>
-        <span class="node-name">Redmi AC2100</span>
-        <div class="spec-line"><span class="spec-label">Role:</span><span>Wireless AP/Router</span></div>
-        <div class="spec-line"><span class="spec-label">Status:</span><span>Active</span></div>
+        <span class="status-badge mobile">Thin</span>
+        <span class="node-name">Fujitsu Futro S720</span>
+        <div class="spec-line"><span class="spec-label">CPU:</span><span>AMD GX-217GA</span></div>
+        <div class="spec-line"><span class="spec-label">Cooling:</span><span>5V USB Fan Assisted</span></div>
     </div>
 </div>
 
-<h3 class="section-title">Compute Layer (Servers & Hosts)</h3>
+<!-- SZAFA RACK 10" (POMOCNICZA) -->
+<h3 class="section-title">Rack 10" Auxiliary Cabinet</h3>
+<div class="nodes-grid">
+    <div class="node-card">
+        <span class="status-badge mobile">Unmanaged</span>
+        <span class="node-name">Lanberg 8-Port Switch</span>
+        <div class="spec-line"><span class="spec-label">Role:</span><span>Auxiliary 10" Cabinet Switch</span></div>
+        <div class="spec-line"><span class="spec-label">Ports:</span><span>8x 1GbE</span></div>
+    </div>
+    <div class="node-card">
+        <span class="status-badge">Small</span>
+        <span class="node-name">Fujitsu Futro S520</span>
+        <div class="spec-line"><span class="spec-label">CPU:</span><span>AMD GX-212ZC</span></div>
+        <div class="spec-line"><span class="spec-label">RAM:</span><span>4GB DDR3L</span></div>
+        <div class="spec-line"><span class="spec-label">Location:</span><span>10" Rack Node</span></div>
+    </div>
+</div>
+
+<!-- INNE URZĄDZENIA SIECIOWE -->
+<h3 class="section-title">Wireless Access Points</h3>
+<div class="nodes-grid">
+    <div class="node-card">
+        <span class="status-badge migration">Planned AP</span>
+        <span class="node-name">Redmi AC2100</span>
+        <div class="spec-line"><span class="spec-label">Role:</span><span>Wireless AP/Router</span></div>
+        <div class="spec-line"><span class="spec-label">Status:</span><span>Active (Replacing with C6 v2)</span></div>
+    </div>
+    <div class="node-card">
+        <span class="status-badge inactive">Legacy</span>
+        <span class="node-name">TP-Link WR1043ND v2.1</span>
+        <div class="spec-line"><span class="spec-label">OS:</span><span>Factory / OpenWrt</span></div>
+        <div class="spec-line"><span class="spec-label">Role:</span><span>Lab Router (Phasing Out)</span></div>
+    </div>
+</div>
+
+<h3 class="section-title">Compute Layer (Workstations & Hosts)</h3>
 <div class="nodes-grid">
     <div class="node-card">
         <span class="status-badge">Main</span>
@@ -82,29 +114,18 @@ title: HomeLab Inventory
         <div class="spec-line"><span class="spec-label">RAM:</span><span>16GB DDR4</span></div>
     </div>
     <div class="node-card">
-        <span class="status-badge">Mini PC</span>
+        <span class="status-badge mobile">Workstation</span>
         <span class="node-name">Intel NUC</span>
         <div class="spec-line"><span class="spec-label">CPU:</span><span>i5-5250U</span></div>
         <div class="spec-line"><span class="spec-label">RAM:</span><span>16GB DDR3L</span></div>
+        <div class="spec-line"><span class="spec-label">Role:</span><span>Daily Workstation (Low-Power)</span></div>
     </div>
     <div class="node-card">
-        <span class="status-badge">USDT</span>
+        <span class="status-badge migration">USDT</span>
         <span class="node-name">HP Compaq Elite 8200 USDT</span>
         <div class="spec-line"><span class="spec-label">CPU:</span><span>i5-2400S</span></div>
         <div class="spec-line"><span class="spec-label">RAM:</span><span>8GB DDR3</span></div>
         <div class="spec-line"><span class="spec-label">Storage:</span><span>256GB SSD + 1TB HDD</span></div>
-    </div>
-    <div class="node-card">
-        <span class="status-badge">Thin</span>
-        <span class="node-name">Fujitsu Futro S720</span>
-        <div class="spec-line"><span class="spec-label">CPU:</span><span>AMD GX-217GA</span></div>
-        <div class="spec-line"><span class="spec-label">Status:</span><span>4GB DDR3L</span></div>
-    </div>
-    <div class="node-card">
-        <span class="status-badge">Small</span>
-        <span class="node-name">Fujitsu Futro S520</span>
-        <div class="spec-line"><span class="spec-label">CPU:</span><span>AMD GX-212ZC</span></div>
-        <div class="spec-line"><span class="spec-label">RAM:</span><span>4GB DDR3L</span></div>
     </div>
 </div>
 
@@ -162,7 +183,7 @@ title: HomeLab Inventory
         <div class="spec-line"><span class="spec-label">Status:</span><span>Decommissioned / Disabled</span></div>
     </div>
     <div class="node-card">
-        <span class="status-badge active">OCI</span>
+        <span class="status-badge mobile">OCI</span>
         <span class="node-name">Oracle Cloud Instance</span>
         <div class="spec-line"><span class="spec-label">Status:</span><span>In Production / Active</span></div>
         <div class="spec-line"><span class="spec-label">Tier:</span><span>Free Tier (Always On Setup)</span></div>
