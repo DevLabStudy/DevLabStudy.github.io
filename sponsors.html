@@ -57,6 +57,12 @@ permalink: /sponsors
         min-height: 90px;
     }
 
+    /* Karta z białym tłem dla logotypów o ciemnej kolorystyce */
+    .sponsor-card-light {
+        background: #ffffff;
+        border-color: #ffffff;
+    }
+
     .sponsor-card:hover {
         border-color: var(--accent-blue);
         transform: translateY(-2px);
@@ -143,7 +149,7 @@ permalink: /sponsors
             <a href="https://lanberg.pl" target="_blank" rel="noopener noreferrer" class="sponsor-card">
                 <img src="{{ '/assets/images/LOGO_LANBERG.jpg' | relative_url }}" alt="Lanberg" class="sponsor-logo-img">
             </a>
-            <a href="https://eupress.ifixit.com" target="_blank" rel="noopener noreferrer" class="sponsor-card">
+            <a href="https://eupress.ifixit.com" target="_blank" rel="noopener noreferrer" class="sponsor-card sponsor-card-light">
                 <img src="{{ '/assets/images/IFixit.webp' | relative_url }}" alt="iFixit" class="sponsor-logo-img">
             </a>
             <div class="sponsor-card-placeholder">
