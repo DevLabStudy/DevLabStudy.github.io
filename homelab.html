@@ -72,12 +72,12 @@ graph LR
     subgraph HEX_CONNECTIONS ["2. Bezpośrednie Porty hEX gr3"]
         MT --> CoreSwitch["<b>Lanberg RSGE-24P-2GE-2S-250</b><br/>• 24-Port Gigabit PoE+ (250W)<br/>• Główny Core Switch"]:::rack19
         MT --> Cisco["<b>Cisco Catalyst 2960C-8TC-L</b><br/>• Compact Access / VLANs"]:::rack19
-        MT --> Archer1["<b>Archer C6 v2 #1</b><br/>• Primary AP (hEX Direct)<br/>• OpenWrt Firmware"]:::wifi
     end
 
     subgraph RACK10 ["3. Szafa RACK 10'"]
         CoreSwitch --> Lanberg10["Lanberg 8-Port Switch"]:::rack10
         Lanberg10 --> FutroS520["Fujitsu Futro S520<br/>(AMD GX-212ZC)"]:::rack10
+        Lanberg10 --> Archer2["<b>Archer C6 v2 #2</b><br/>• Secondary AP (Rack 10')<br/>• OpenWrt Firmware"]:::wifi
     end
 
     subgraph DESK ["4. Stanowisko Biurkowe"]
@@ -88,8 +88,8 @@ graph LR
     end
 
     subgraph PERIPHERALS ["5. Urządzenia Sieciowe & Druk"]
+        CoreSwitch --> Archer1["<b>Archer C6 v2 #1</b><br/>• Primary AP (Core Switch)<br/>• OpenWrt Firmware"]:::wifi
         CoreSwitch --> Printer["<b>Canon Pixma TS705a</b><br/>• Drukarka Sieciowa (LAN/Wi-Fi)"]:::wifi
-        CoreSwitch --> Archer2["<b>Archer C6 v2 #2</b><br/>• Secondary AP / Mesh<br/>• OpenWrt Firmware"]:::wifi
         CoreSwitch --> TPLink["<b>TP-Link TL-WR1043ND v2.1</b><br/>• Legacy Lab Wi-Fi"]:::wifi
     end
 
@@ -140,6 +140,13 @@ graph LR
         <div class="spec-line"><span class="spec-label">RAM:</span><span>4GB DDR3L</span></div>
         <div class="spec-line"><span class="spec-label">Location:</span><span>10" Rack Node</span></div>
     </div>
+    <div class="node-card">
+        <span class="status-badge mobile">Secondary AP</span>
+        <span class="node-name">TP-Link Archer C6 v2 (#2)</span>
+        <div class="spec-line"><span class="spec-label">OS:</span><span>OpenWrt Firmware</span></div>
+        <div class="spec-line"><span class="spec-label">Uplink:</span><span>Lanberg 8-Port Switch (10")</span></div>
+        <div class="spec-line"><span class="spec-label">Standard:</span><span>AC1200 Dual-Band</span></div>
+    </div>
 </div>
 
 <h3 class="section-title">Wireless Access Points & Peripherals</h3>
@@ -148,14 +155,7 @@ graph LR
         <span class="status-badge mobile">Primary AP</span>
         <span class="node-name">TP-Link Archer C6 v2 (#1)</span>
         <div class="spec-line"><span class="spec-label">OS:</span><span>OpenWrt Firmware</span></div>
-        <div class="spec-line"><span class="spec-label">Role:</span><span>Primary Wi-Fi AP (hEX Direct)</span></div>
-        <div class="spec-line"><span class="spec-label">Standard:</span><span>AC1200 Dual-Band</span></div>
-    </div>
-    <div class="node-card">
-        <span class="status-badge mobile">Secondary AP</span>
-        <span class="node-name">TP-Link Archer C6 v2 (#2)</span>
-        <div class="spec-line"><span class="spec-label">OS:</span><span>OpenWrt Firmware</span></div>
-        <div class="spec-line"><span class="spec-label">Role:</span><span>Secondary AP / Coverage Extension</span></div>
+        <div class="spec-line"><span class="spec-label">Uplink:</span><span>Lanberg 24-Port Core Switch</span></div>
         <div class="spec-line"><span class="spec-label">Standard:</span><span>AC1200 Dual-Band</span></div>
     </div>
     <div class="node-card">
@@ -262,4 +262,3 @@ graph LR
         <div class="spec-line"><span class="spec-label">Status:</span><span>In Production / Active</span></div>
         <div class="spec-line"><span class="spec-label">Tier:</span><span>Free Tier (Always On Setup)</span></div>
     </div>
-</div>
