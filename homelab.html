@@ -15,14 +15,24 @@ title: HomeLab Inventory
 
     .section-title { font-family: 'JetBrains Mono', monospace; color: #fff; border-left: 4px solid #3b82f6; padding-left: 15px; margin: 40px 0 20px 0; font-size: 1.5rem; text-transform: uppercase; }
     
+    /* Zwiększony i elastyczny obszar dla wykresu Mermaid */
     .diagram-container {
-        background: rgba(10, 10, 10, 0.7);
+        background: rgba(10, 10, 10, 0.75);
         border: 1px solid var(--border-color, #222);
-        padding: 20px;
+        padding: 30px;
         border-radius: 12px;
         margin-bottom: 35px;
         backdrop-filter: blur(10px);
+        width: 100%;
+        box-sizing: border-box;
         overflow-x: auto;
+    }
+
+    .mermaid {
+        min-width: 950px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
     }
 
     .nodes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 30px; }
@@ -44,7 +54,7 @@ title: HomeLab Inventory
 
 <script type="module">
   import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+  mermaid.initialize({ startOnLoad: true, theme: 'dark', flowChart: { useMaxWidth: false, htmlLabels: true } });
 </script>
 
 <section class="hero-homelab">
@@ -57,7 +67,7 @@ title: HomeLab Inventory
 <h3 class="section-title">Network Topology & Architecture</h3>
 <div class="diagram-container">
     <pre class="mermaid" style="background: transparent; border: none; text-align: center;">
-graph LR
+graph TD
     classDef edge fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#f8fafc;
     classDef rack19 fill:#0f172a,stroke:#22c55e,stroke-width:2px,color:#f8fafc;
     classDef rack10 fill:#1e1b4b,stroke:#818cf8,stroke-width:2px,color:#f8fafc;
@@ -74,16 +84,17 @@ graph LR
         MT --> Cisco["<b>Cisco Catalyst 2960C-8TC-L</b><br/>• Compact Access / VLANs"]:::rack19
     end
 
-    subgraph RACK10_1 ["3. Open-Rack 10' 6U #1"]
-        CoreSwitch --> Switch10_1["Lanberg 8-Port Switch #1"]:::rack10
-        Switch10_1 --> FutroS520_1["Fujitsu Futro S520 #1<br/>(AMD GX-212ZC)"]:::rack10
-        Switch10_1 --> FutroS520_2["Fujitsu Futro S520 #2<br/>(AMD GX-212ZC)"]:::rack10
-        Switch10_1 --> Archer2["<b>Archer C6 v2 #2</b><br/>• Secondary AP (Rack 10')<br/>• OpenWrt Firmware"]:::wifi
+    subgraph RACK10_WALL ["3. Szafa RACK 10' Wisząca"]
+        CoreSwitch --> Lanberg10_Wall["Lanberg 8-Port Switch (Wiszący)"]:::rack10
+        Lanberg10_Wall --> FutroS520_1["Fujitsu Futro S520 #1<br/>(AMD GX-212ZC)"]:::rack10
+        Lanberg10_Wall --> Archer2["<b>Archer C6 v2 #2</b><br/>• Secondary AP (Rack 10')<br/>• OpenWrt Firmware"]:::wifi
     end
 
-    subgraph RACK10_2 ["4. Open-Rack 10' 6U #2"]
-        CoreSwitch --> Switch10_2["Lanberg 8-Port Switch #2"]:::rack10
-        Switch10_2 --> NUC["<b>Intel NUC</b> (i5-5250U)<br/>• Node RACK / Workstation"]:::rack10
+    subgraph OPENRACKS ["4. Open-Racki 10' 6U (Dodatkowe)"]
+        CoreSwitch --> Switch10_Open1["Lanberg 8-Port Switch (Open-Rack #1)"]:::rack10
+        CoreSwitch --> Switch10_Open2["Lanberg 8-Port Switch (Open-Rack #2)"]:::rack10
+        Switch10_Open1 --> FutroS520_2["Fujitsu Futro S520 #2<br/>(AMD GX-212ZC)"]:::rack10
+        Switch10_Open2 --> NUC["<b>Intel NUC</b> (i5-5250U)<br/>• Rack Node / Workstation"]:::rack10
     end
 
     subgraph DESK ["5. Stanowisko Biurkowe"]
@@ -130,18 +141,12 @@ graph LR
     </div>
 </div>
 
-<h3 class="section-title">Rack 10" Open-Rack Cabinets (2x 6U)</h3>
+<h3 class="section-title">Rack 10" Auxiliary Wall Cabinet</h3>
 <div class="nodes-grid">
     <div class="node-card">
         <span class="status-badge mobile">Unmanaged</span>
-        <span class="node-name">Lanberg 8-Port Switch (#1)</span>
-        <div class="spec-line"><span class="spec-label">Role:</span><span>Auxiliary Switch (Open-Rack 10" #1)</span></div>
-        <div class="spec-line"><span class="spec-label">Ports:</span><span>8x 1GbE</span></div>
-    </div>
-    <div class="node-card">
-        <span class="status-badge mobile">Unmanaged</span>
-        <span class="node-name">Lanberg 8-Port Switch (#2)</span>
-        <div class="spec-line"><span class="spec-label">Role:</span><span>Auxiliary Switch (Open-Rack 10" #2)</span></div>
+        <span class="node-name">Lanberg 8-Port Switch</span>
+        <div class="spec-line"><span class="spec-label">Role:</span><span>Auxiliary 10" Cabinet Switch</span></div>
         <div class="spec-line"><span class="spec-label">Ports:</span><span>8x 1GbE</span></div>
     </div>
     <div class="node-card">
@@ -149,7 +154,30 @@ graph LR
         <span class="node-name">Fujitsu Futro S520 (#1)</span>
         <div class="spec-line"><span class="spec-label">CPU:</span><span>AMD GX-212ZC</span></div>
         <div class="spec-line"><span class="spec-label">RAM:</span><span>4GB DDR3L</span></div>
-        <div class="spec-line"><span class="spec-label">Location:</span><span>Open-Rack 10" #1 Node</span></div>
+        <div class="spec-line"><span class="spec-label">Location:</span><span>10" Wall Cabinet Node</span></div>
+    </div>
+    <div class="node-card">
+        <span class="status-badge mobile">Secondary AP</span>
+        <span class="node-name">TP-Link Archer C6 v2 (#2)</span>
+        <div class="spec-line"><span class="spec-label">OS:</span><span>OpenWrt Firmware</span></div>
+        <div class="spec-line"><span class="spec-label">Uplink:</span><span>Lanberg 8-Port Switch (10")</span></div>
+        <div class="spec-line"><span class="spec-label">Standard:</span><span>AC1200 Dual-Band</span></div>
+    </div>
+</div>
+
+<h3 class="section-title">Rack 10" Open-Rack Cabinets (2x 6U)</h3>
+<div class="nodes-grid">
+    <div class="node-card">
+        <span class="status-badge mobile">Unmanaged</span>
+        <span class="node-name">Lanberg 8-Port Switch (Open #1)</span>
+        <div class="spec-line"><span class="spec-label">Role:</span><span>Auxiliary Switch (Open-Rack 10" #1)</span></div>
+        <div class="spec-line"><span class="spec-label">Ports:</span><span>8x 1GbE</span></div>
+    </div>
+    <div class="node-card">
+        <span class="status-badge mobile">Unmanaged</span>
+        <span class="node-name">Lanberg 8-Port Switch (Open #2)</span>
+        <div class="spec-line"><span class="spec-label">Role:</span><span>Auxiliary Switch (Open-Rack 10" #2)</span></div>
+        <div class="spec-line"><span class="spec-label">Ports:</span><span>8x 1GbE</span></div>
     </div>
     <div class="node-card">
         <span class="status-badge">Small</span>
@@ -164,13 +192,6 @@ graph LR
         <div class="spec-line"><span class="spec-label">CPU:</span><span>i5-5250U</span></div>
         <div class="spec-line"><span class="spec-label">RAM:</span><span>16GB DDR3L</span></div>
         <div class="spec-line"><span class="spec-label">Location:</span><span>Open-Rack 10" #2 Node</span></div>
-    </div>
-    <div class="node-card">
-        <span class="status-badge mobile">Secondary AP</span>
-        <span class="node-name">TP-Link Archer C6 v2 (#2)</span>
-        <div class="spec-line"><span class="spec-label">OS:</span><span>OpenWrt Firmware</span></div>
-        <div class="spec-line"><span class="spec-label">Uplink:</span><span>Lanberg 8-Port Switch (Rack 10" #1)</span></div>
-        <div class="spec-line"><span class="spec-label">Standard:</span><span>AC1200 Dual-Band</span></div>
     </div>
 </div>
 
