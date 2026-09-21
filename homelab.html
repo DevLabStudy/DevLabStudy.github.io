@@ -74,26 +74,31 @@ graph LR
         MT --> Cisco["<b>Cisco Catalyst 2960C-8TC-L</b><br/>• Compact Access / VLANs"]:::rack19
     end
 
-    subgraph RACK10 ["3. Szafa RACK 10'"]
-        CoreSwitch --> Lanberg10["Lanberg 8-Port Switch"]:::rack10
-        Lanberg10 --> FutroS520["Fujitsu Futro S520<br/>(AMD GX-212ZC)"]:::rack10
-        Lanberg10 --> Archer2["<b>Archer C6 v2 #2</b><br/>• Secondary AP (Rack 10')<br/>• OpenWrt Firmware"]:::wifi
+    subgraph RACK10_1 ["3. Open-Rack 10' 6U #1"]
+        CoreSwitch --> Switch10_1["Lanberg 8-Port Switch #1"]:::rack10
+        Switch10_1 --> FutroS520_1["Fujitsu Futro S520 #1<br/>(AMD GX-212ZC)"]:::rack10
+        Switch10_1 --> FutroS520_2["Fujitsu Futro S520 #2<br/>(AMD GX-212ZC)"]:::rack10
+        Switch10_1 --> Archer2["<b>Archer C6 v2 #2</b><br/>• Secondary AP (Rack 10')<br/>• OpenWrt Firmware"]:::wifi
     end
 
-    subgraph DESK ["4. Stanowisko Biurkowe"]
+    subgraph RACK10_2 ["4. Open-Rack 10' 6U #2"]
+        CoreSwitch --> Switch10_2["Lanberg 8-Port Switch #2"]:::rack10
+        Switch10_2 --> NUC["<b>Intel NUC</b> (i5-5250U)<br/>• Node RACK / Workstation"]:::rack10
+    end
+
+    subgraph DESK ["5. Stanowisko Biurkowe"]
         CoreSwitch --> FutroS720["<b>Fujitsu Futro S720</b><br/>• 24/7 Desk Node<br/>• Chłodzenie podkładką 5V USB"]:::desk
-        CoreSwitch --> NUC["<b>Intel NUC</b> (i5-5250U)<br/>• Workstation"]:::desk
         CoreSwitch --> PC["<b>Gaming PC Host</b> (Ryzen 5 3600)"]:::desk
         CoreSwitch --> HP8200["<b>HP 8200 Elite USDT</b><br/>• Proxmox VE (Do wymiany)"]:::desk
     end
 
-    subgraph PERIPHERALS ["5. Urządzenia Sieciowe & Druk"]
+    subgraph PERIPHERALS ["6. Urządzenia Sieciowe & Druk"]
         CoreSwitch --> Archer1["<b>Archer C6 v2 #1</b><br/>• Primary AP (Core Switch)<br/>• OpenWrt Firmware"]:::wifi
         CoreSwitch --> Printer["<b>Canon Pixma TS705a</b><br/>• Drukarka Sieciowa (LAN/Wi-Fi)"]:::wifi
         CoreSwitch --> TPLink["<b>TP-Link TL-WR1043ND v2.1</b><br/>• Legacy Lab Wi-Fi"]:::wifi
     end
 
-    subgraph MOBILES ["6. Urządzenia Mobilne"]
+    subgraph MOBILES ["7. Urządzenia Mobilne"]
         Archer1 --- Moto["<b>Motorola G35 5G</b><br/>• Daily Driver (z Archer Wi-Fi)"]:::mobile
         TPLink --- Nokia["Nokia 8 Sirocco (FRP / Kuma)"]:::mobile
         TPLink --- TestLab["Samsung S5/S4 & HTC Test Lab"]:::mobile
@@ -125,26 +130,46 @@ graph LR
     </div>
 </div>
 
-<h3 class="section-title">Rack 10" Auxiliary Cabinet</h3>
+<h3 class="section-title">Rack 10" Open-Rack Cabinets (2x 6U)</h3>
 <div class="nodes-grid">
     <div class="node-card">
         <span class="status-badge mobile">Unmanaged</span>
-        <span class="node-name">Lanberg 8-Port Switch</span>
-        <div class="spec-line"><span class="spec-label">Role:</span><span>Auxiliary 10" Cabinet Switch</span></div>
+        <span class="node-name">Lanberg 8-Port Switch (#1)</span>
+        <div class="spec-line"><span class="spec-label">Role:</span><span>Auxiliary Switch (Open-Rack 10" #1)</span></div>
+        <div class="spec-line"><span class="spec-label">Ports:</span><span>8x 1GbE</span></div>
+    </div>
+    <div class="node-card">
+        <span class="status-badge mobile">Unmanaged</span>
+        <span class="node-name">Lanberg 8-Port Switch (#2)</span>
+        <div class="spec-line"><span class="spec-label">Role:</span><span>Auxiliary Switch (Open-Rack 10" #2)</span></div>
         <div class="spec-line"><span class="spec-label">Ports:</span><span>8x 1GbE</span></div>
     </div>
     <div class="node-card">
         <span class="status-badge">Small</span>
-        <span class="node-name">Fujitsu Futro S520</span>
+        <span class="node-name">Fujitsu Futro S520 (#1)</span>
         <div class="spec-line"><span class="spec-label">CPU:</span><span>AMD GX-212ZC</span></div>
         <div class="spec-line"><span class="spec-label">RAM:</span><span>4GB DDR3L</span></div>
-        <div class="spec-line"><span class="spec-label">Location:</span><span>10" Rack Node</span></div>
+        <div class="spec-line"><span class="spec-label">Location:</span><span>Open-Rack 10" #1 Node</span></div>
+    </div>
+    <div class="node-card">
+        <span class="status-badge">Small</span>
+        <span class="node-name">Fujitsu Futro S520 (#2)</span>
+        <div class="spec-line"><span class="spec-label">CPU:</span><span>AMD GX-212ZC</span></div>
+        <div class="spec-line"><span class="spec-label">RAM:</span><span>4GB DDR3L</span></div>
+        <div class="spec-line"><span class="spec-label">Location:</span><span>Open-Rack 10" #1 Node</span></div>
+    </div>
+    <div class="node-card">
+        <span class="status-badge mobile">Workstation</span>
+        <span class="node-name">Intel NUC</span>
+        <div class="spec-line"><span class="spec-label">CPU:</span><span>i5-5250U</span></div>
+        <div class="spec-line"><span class="spec-label">RAM:</span><span>16GB DDR3L</span></div>
+        <div class="spec-line"><span class="spec-label">Location:</span><span>Open-Rack 10" #2 Node</span></div>
     </div>
     <div class="node-card">
         <span class="status-badge mobile">Secondary AP</span>
         <span class="node-name">TP-Link Archer C6 v2 (#2)</span>
         <div class="spec-line"><span class="spec-label">OS:</span><span>OpenWrt Firmware</span></div>
-        <div class="spec-line"><span class="spec-label">Uplink:</span><span>Lanberg 8-Port Switch (10")</span></div>
+        <div class="spec-line"><span class="spec-label">Uplink:</span><span>Lanberg 8-Port Switch (Rack 10" #1)</span></div>
         <div class="spec-line"><span class="spec-label">Standard:</span><span>AC1200 Dual-Band</span></div>
     </div>
 </div>
@@ -180,13 +205,6 @@ graph LR
         <div class="spec-line"><span class="spec-label">CPU:</span><span>AMD GX-217GA</span></div>
         <div class="spec-line"><span class="spec-label">Cooling:</span><span>5V USB Fan Pad Assisted</span></div>
         <div class="spec-line"><span class="spec-label">Location:</span><span>Desk Node (24/7 Passive/Active)</span></div>
-    </div>
-    <div class="node-card">
-        <span class="status-badge mobile">Workstation</span>
-        <span class="node-name">Intel NUC</span>
-        <div class="spec-line"><span class="spec-label">CPU:</span><span>i5-5250U</span></div>
-        <div class="spec-line"><span class="spec-label">RAM:</span><span>16GB DDR3L</span></div>
-        <div class="spec-line"><span class="spec-label">Role:</span><span>Daily Workstation (Low-Power)</span></div>
     </div>
     <div class="node-card">
         <span class="status-badge">Main PC</span>
@@ -262,3 +280,4 @@ graph LR
         <div class="spec-line"><span class="spec-label">Status:</span><span>In Production / Active</span></div>
         <div class="spec-line"><span class="spec-label">Tier:</span><span>Free Tier (Always On Setup)</span></div>
     </div>
+</div>
