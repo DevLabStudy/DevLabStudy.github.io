@@ -8,7 +8,7 @@ title: Home | DevLabStudy
     :root {
         --bg-main: #0a0c10;
         --bg-card: rgba(18, 22, 31, 0.75);
-        --bg-card-hover: rgba(26, 32, 46, 0.9);
+        --bg-card-hover: rgba(26, 32, 46, 0.95);
         --border-color: #1e2638;
         --border-highlight: #22c55e;
         --accent-green: #22c55e;
@@ -34,7 +34,7 @@ title: Home | DevLabStudy
 
     .page-container {
         width: 100%;
-        max-width: 1050px;
+        max-width: 1100px;
         margin: 0 auto;
         padding: 40px 20px;
     }
@@ -48,20 +48,21 @@ title: Home | DevLabStudy
         border: 1px solid var(--border-color);
         backdrop-filter: blur(12px);
         border-radius: 12px;
-        padding: 12px 20px;
-        margin-bottom: 25px;
+        padding: 12px 24px;
+        margin-bottom: 30px;
         font-size: 0.82rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     }
 
     .status-indicator {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 12px;
     }
 
     .pulse-dot {
-        width: 8px;
-        height: 8px;
+        width: 9px;
+        height: 9px;
         background-color: var(--accent-green);
         border-radius: 50%;
         box-shadow: 0 0 10px var(--accent-green);
@@ -70,13 +71,13 @@ title: Home | DevLabStudy
 
     @keyframes pulse {
         0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
-        70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+        70% { transform: scale(1.05); box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
         100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
     }
 
     .metrics-group {
         display: flex;
-        gap: 20px;
+        gap: 24px;
         color: var(--text-secondary);
     }
 
@@ -85,22 +86,23 @@ title: Home | DevLabStudy
     /* Hero Section */
     .hero-grid {
         display: grid;
-        grid-template-columns: 1.4fr 1fr;
-        gap: 20px;
-        margin-bottom: 25px;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 24px;
+        margin-bottom: 40px;
     }
 
     .hero-main {
-        background: radial-gradient(circle at 0% 0%, rgba(34, 197, 94, 0.12), transparent 45%),
-                    radial-gradient(circle at 100% 100%, rgba(59, 130, 246, 0.1), transparent 45%),
+        background: radial-gradient(circle at 0% 0%, rgba(34, 197, 94, 0.12), transparent 50%),
+                    radial-gradient(circle at 100% 100%, rgba(59, 130, 246, 0.1), transparent 50%),
                     var(--bg-card);
         border: 1px solid var(--border-color);
         border-radius: 16px;
-        padding: 35px;
+        padding: 40px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         backdrop-filter: blur(12px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     }
 
     .hero-tag {
@@ -109,15 +111,16 @@ title: Home | DevLabStudy
         letter-spacing: 1.5px;
         text-transform: uppercase;
         margin-bottom: 12px;
-        display: block;
+        display: inline-block;
+        font-weight: 700;
     }
 
     .hero-title {
-        font-size: 2.4rem;
+        font-size: 2.5rem;
         font-weight: 800;
-        margin: 0 0 15px 0;
-        line-height: 1.15;
-        background: linear-gradient(135deg, #ffffff 30%, var(--text-secondary) 100%);
+        margin: 0 0 16px 0;
+        line-height: 1.2;
+        background: linear-gradient(135deg, #ffffff 40%, var(--text-secondary) 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
@@ -125,37 +128,41 @@ title: Home | DevLabStudy
     .hero-desc {
         color: var(--text-secondary);
         font-size: 0.95rem;
-        line-height: 1.6;
-        margin: 0 0 25px 0;
+        line-height: 1.7;
+        margin: 0 0 28px 0;
     }
 
     .hero-actions {
         display: flex;
-        gap: 12px;
+        gap: 14px;
     }
 
     .btn {
-        padding: 10px 20px;
+        padding: 12px 24px;
         border-radius: 8px;
         font-size: 0.85rem;
-        font-weight: 600;
+        font-weight: 700;
         text-decoration: none;
-        transition: all 0.2s ease;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
     }
 
     .btn-primary {
         background: var(--accent-green);
         color: #000;
-        box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+        box-shadow: 0 4px 20px rgba(34, 197, 94, 0.25);
     }
 
     .btn-primary:hover {
         background: #16a34a;
         transform: translateY(-2px);
+        box-shadow: 0 6px 24px rgba(34, 197, 94, 0.4);
     }
 
     .btn-secondary {
-        background: rgba(255, 255, 255, 0.05);
+        background: rgba(255, 255, 255, 0.03);
         color: var(--text-primary);
         border: 1px solid var(--border-color);
     }
@@ -163,6 +170,7 @@ title: Home | DevLabStudy
     .btn-secondary:hover {
         border-color: var(--accent-cyan);
         color: var(--accent-cyan);
+        background: rgba(6, 182, 212, 0.05);
     }
 
     /* Side Telemetry Card */
@@ -170,39 +178,41 @@ title: Home | DevLabStudy
         background: var(--bg-card);
         border: 1px solid var(--border-color);
         border-radius: 16px;
-        padding: 25px;
+        padding: 28px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
     }
 
     .telemetry-title {
-        font-size: 0.85rem;
+        font-size: 0.82rem;
         color: var(--text-muted);
         text-transform: uppercase;
         letter-spacing: 1px;
         margin-bottom: 20px;
         border-bottom: 1px dashed var(--border-color);
         padding-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
     }
 
     .telemetry-node {
-        margin-bottom: 15px;
+        margin-bottom: 16px;
     }
 
     .node-header {
         display: flex;
         justify-content: space-between;
-        font-size: 0.85rem;
-        margin-bottom: 6px;
+        font-size: 0.82rem;
+        margin-bottom: 8px;
     }
 
     .node-name { color: var(--text-primary); font-weight: 600; }
-    .node-status { color: var(--accent-green); }
+    .node-status { color: var(--accent-green); font-size: 0.78rem; }
 
     .node-bar-bg {
         height: 6px;
-        background: rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.06);
         border-radius: 3px;
         overflow: hidden;
     }
@@ -213,14 +223,15 @@ title: Home | DevLabStudy
         border-radius: 3px;
     }
 
-    /* Showcase Szaf RACK */
+    /* Section Headers */
     .section-title {
-        font-size: 1.2rem;
-        font-weight: 700;
-        margin: 35px 0 20px 0;
+        font-size: 1.25rem;
+        font-weight: 800;
+        margin: 40px 0 24px 0;
         display: flex;
         align-items: center;
         gap: 10px;
+        letter-spacing: 0.5px;
     }
 
     .section-title::before {
@@ -228,11 +239,12 @@ title: Home | DevLabStudy
         color: var(--accent-green);
     }
 
+    /* Rack Showcase Grid */
     .rack-showcase-grid {
         display: grid;
-        grid-template-columns: 2fr 1fr;
-        gap: 20px;
-        margin-bottom: 30px;
+        grid-template-columns: 1.6fr 1fr;
+        gap: 24px;
+        margin-bottom: 40px;
     }
 
     .rack-card {
@@ -241,17 +253,18 @@ title: Home | DevLabStudy
         border-radius: 16px;
         overflow: hidden;
         position: relative;
-        transition: transform 0.3s ease, border-color 0.3s ease;
+        transition: all 0.3s ease;
     }
 
     .rack-card:hover {
         transform: translateY(-4px);
-        border-color: rgba(34, 197, 94, 0.5);
+        border-color: rgba(34, 197, 94, 0.4);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
     }
 
     .rack-img-wrapper {
         width: 100%;
-        height: 280px;
+        height: 290px;
         position: relative;
         overflow: hidden;
         background: #050608;
@@ -262,7 +275,17 @@ title: Home | DevLabStudy
         height: 100%;
         object-fit: cover;
         opacity: 0.85;
-        transition: opacity 0.3s ease, transform 0.4s ease;
+        transition: all 0.4s ease;
+    }
+
+    .rack-img-wrapper::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 80px;
+        background: linear-gradient(to top, var(--bg-card), transparent);
     }
 
     .rack-card:hover .rack-img-wrapper img {
@@ -271,30 +294,32 @@ title: Home | DevLabStudy
     }
 
     .rack-info {
-        padding: 20px;
+        padding: 24px;
     }
 
     .rack-tag {
         font-size: 0.7rem;
-        padding: 4px 8px;
+        padding: 4px 10px;
         border-radius: 4px;
-        background: rgba(34, 197, 94, 0.15);
+        background: rgba(34, 197, 94, 0.12);
         color: var(--accent-green);
         border: 1px solid rgba(34, 197, 94, 0.3);
         display: inline-block;
-        margin-bottom: 8px;
+        margin-bottom: 10px;
+        font-weight: 700;
     }
 
     .rack-title {
-        font-size: 1.1rem;
-        margin: 0 0 8px 0;
+        font-size: 1.15rem;
+        margin: 0 0 10px 0;
         color: var(--text-primary);
+        font-weight: 700;
     }
 
     .rack-details {
-        font-size: 0.85rem;
+        font-size: 0.88rem;
         color: var(--text-secondary);
-        line-height: 1.5;
+        line-height: 1.6;
         margin: 0;
     }
 
@@ -302,14 +327,19 @@ title: Home | DevLabStudy
     .info-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 20px;
+        gap: 24px;
     }
 
     .info-box {
         background: var(--bg-card);
         border: 1px solid var(--border-color);
         border-radius: 16px;
-        padding: 30px;
+        padding: 32px;
+        transition: border-color 0.3s ease;
+    }
+
+    .info-box:hover {
+        border-color: rgba(59, 130, 246, 0.3);
     }
 
     .info-box h3 {
@@ -317,26 +347,29 @@ title: Home | DevLabStudy
         font-size: 1.1rem;
         color: var(--text-primary);
         border-bottom: 1px solid var(--border-color);
-        padding-bottom: 12px;
-        margin-bottom: 18px;
+        padding-bottom: 14px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
     }
 
     .info-box p {
         color: var(--text-secondary);
         font-size: 0.9rem;
-        line-height: 1.6;
-        margin-bottom: 15px;
+        line-height: 1.65;
+        margin-bottom: 16px;
     }
 
     .tech-badges {
         display: flex;
         flex-wrap: wrap;
         gap: 8px;
-        margin-top: 15px;
+        margin-top: 20px;
     }
 
     .badge {
-        background: rgba(255, 255, 255, 0.04);
+        background: rgba(255, 255, 255, 0.03);
         border: 1px solid var(--border-color);
         color: var(--text-secondary);
         padding: 6px 12px;
@@ -350,20 +383,20 @@ title: Home | DevLabStudy
         background: rgba(6, 182, 212, 0.08);
     }
 
-    /* Footer styling */
+    /* Footer */
     .page-footer {
-        margin-top: 40px;
-        padding-top: 20px;
+        margin-top: 50px;
+        padding-top: 24px;
         border-top: 1px solid var(--border-color);
         text-align: center;
-        font-size: 0.8rem;
+        font-size: 0.82rem;
         color: var(--text-muted);
     }
 
     .page-footer a {
         color: var(--text-secondary);
         text-decoration: none;
-        margin: 0 8px;
+        margin: 0 10px;
         transition: color 0.2s;
     }
 
@@ -371,10 +404,10 @@ title: Home | DevLabStudy
         color: var(--accent-green);
     }
 
-    /* Native Cookie Banner Styles */
+    /* Cookie Banner */
     #cookie-banner {
         position: fixed;
-        bottom: 20px;
+        bottom: 24px;
         left: 50%;
         transform: translateX(-50%);
         width: calc(100% - 40px);
@@ -382,8 +415,8 @@ title: Home | DevLabStudy
         background-color: #12161f;
         border: 1px solid var(--border-color);
         border-radius: 12px;
-        padding: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        padding: 22px;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8);
         z-index: 999999;
         display: none;
         font-family: 'JetBrains Mono', monospace;
@@ -393,18 +426,14 @@ title: Home | DevLabStudy
     .cookie-title {
         font-size: 0.95rem;
         font-weight: 700;
-        color: var(--text-primary);
         margin-bottom: 8px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
     }
 
     .cookie-content {
         font-size: 0.8rem;
-        line-height: 1.5;
+        line-height: 1.55;
         color: var(--text-secondary);
-        margin-bottom: 16px;
+        margin-bottom: 18px;
     }
 
     .cookie-content a {
@@ -414,15 +443,15 @@ title: Home | DevLabStudy
 
     .cookie-actions {
         display: flex;
-        gap: 10px;
+        gap: 12px;
         justify-content: flex-end;
     }
 
     .cookie-btn {
-        padding: 8px 16px;
+        padding: 8px 18px;
         border-radius: 6px;
         font-size: 0.78rem;
-        font-weight: 600;
+        font-weight: 700;
         font-family: 'JetBrains Mono', monospace;
         cursor: pointer;
         border: none;
@@ -446,7 +475,6 @@ title: Home | DevLabStudy
 
     .cookie-btn-reject:hover {
         background-color: rgba(255, 255, 255, 0.1);
-        border-color: var(--text-muted);
     }
 
     /* Responsive Design */
@@ -456,11 +484,15 @@ title: Home | DevLabStudy
         }
         .system-status-bar {
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
             align-items: flex-start;
         }
-        .rack-img-wrapper { height: 220px; }
-        .hero-title { font-size: 1.8rem; }
+        .metrics-group {
+            flex-wrap: wrap;
+            gap: 12px 20px;
+        }
+        .rack-img-wrapper { height: 230px; }
+        .hero-title { font-size: 1.9rem; }
     }
 </style>
 
@@ -472,7 +504,7 @@ title: Home | DevLabStudy
             <span>HOMELAB CORE: <strong>ONLINE</strong></span>
         </div>
         <div class="metrics-group">
-            <div class="metric-item">Baseline Power: <span>~32.8W</span></div>
+            <div class="metric-item">Baseline: <span>~32.8W</span></div>
             <div class="metric-item">Router: <span>MikroTik hEX gr3</span></div>
             <div class="metric-item">Core Switch: <span>Cisco 2960C</span></div>
         </div>
@@ -481,24 +513,27 @@ title: Home | DevLabStudy
     <!-- Hero Header -->
     <div class="hero-grid">
         <div class="hero-main">
-            <span class="hero-tag">Homelab & Infrastructure Project</span>
-            <h1 class="hero-title">DevLabStudy Workspace</h1>
+            <span class="hero-tag">// Homelab & Networking Project</span>
+            <h1 class="hero-title">DevLabStudy</h1>
             <p class="hero-desc">
-                Cześć! Jestem uczniem technikum informatycznego, który teorię sprzętową i sieciową natychmiast przenosi do własnej serwerowni. Buduję energooszczędne środowisko serwerowe, przetestuję dystrybucje Linuksa oraz ustrukturyzowane sieci RACK.
+                Cześć! Jestem uczniem technikum informatycznego. Na tej stronie dokumentuję praktyczną naukę administracji systemami Linux, inżynierii sieciowej oraz budowę własnego, energooszczędnego środowiska serwerowego RACK.
             </p>
             <div class="hero-actions">
-                <a href="#rack-section" class="btn btn-primary">Zobacz Szafy RACK</a>
+                <a href="#rack-section" class="btn btn-primary">Zobacz Szafy RACK ↓</a>
                 <a href="#about-section" class="btn btn-secondary">O Projekcie</a>
             </div>
         </div>
 
         <!-- Telemetry Side Box -->
         <div class="hero-telemetry">
-            <div class="telemetry-title">// Active Nodes & Load</div>
+            <div class="telemetry-title">
+                <span>// Active Nodes</span>
+                <span style="color: var(--accent-green);">[OK]</span>
+            </div>
             
             <div class="telemetry-node">
                 <div class="node-header">
-                    <span class="node-name">Network Core (19" Rack)</span>
+                    <span class="node-name">19" Main Rack Core</span>
                     <span class="node-status">33W (Idle)</span>
                 </div>
                 <div class="node-bar-bg"><div class="node-bar-fill" style="width: 25%;"></div></div>
@@ -506,26 +541,26 @@ title: Home | DevLabStudy
 
             <div class="telemetry-node">
                 <div class="node-header">
-                    <span class="node-name">Fujitsu Futro (Services)</span>
-                    <span class="node-status">Cooling: Active 5V</span>
+                    <span class="node-name">Fujitsu Futro Node</span>
+                    <span class="node-status">Cooling: 5V</span>
                 </div>
                 <div class="node-bar-bg"><div class="node-bar-fill" style="width: 40%;"></div></div>
             </div>
 
             <div class="telemetry-node">
                 <div class="node-header">
-                    <span class="node-name">Intel NUC (Workstation)</span>
-                    <span class="node-status">Primary PC</span>
+                    <span class="node-name">Workstation (NUC)</span>
+                    <span class="node-status">Primary OS</span>
                 </div>
-                <div class="node-bar-bg"><div class="node-bar-fill" style="width: 65%;"></div></div>
+                <div class="node-bar-bg"><div class="node-bar-fill" style="width: 60%;"></div></div>
             </div>
 
             <div class="telemetry-node">
                 <div class="node-header">
-                    <span class="node-name">Proxmox VE Node</span>
-                    <span class="node-status">Standby / On-Demand</span>
+                    <span class="node-name">Proxmox VE</span>
+                    <span class="node-status">Virtualization</span>
                 </div>
-                <div class="node-bar-bg"><div class="node-bar-fill" style="width: 15%;"></div></div>
+                <div class="node-bar-bg"><div class="node-bar-fill" style="width: 20%;"></div></div>
             </div>
         </div>
     </div>
@@ -542,7 +577,7 @@ title: Home | DevLabStudy
                 <span class="rack-tag">PRIMARY RACK 19" 9U</span>
                 <h3 class="rack-title">Węzeł Główny & Zasilanie PDU</h3>
                 <p class="rack-details">
-                    Serce sieci. Zawiera router MikroTik hEX gr3, pasywny przełącznik zarządzalny Cisco Catalyst 2960C-8TC-L, 24-portowy gigabitowy switch Lanberg PoE+ (250W), listwę PDU z pomiarem energii Tuya/Smart Life oraz terminale serwerowe z aktywnym nawiewem.
+                    Serce sieci. Zawiera router MikroTik hEX gr3, przełącznik Cisco Catalyst 2960C-8TC-L, 24-portowy gigabitowy switch Lanberg PoE+ (250W), inteligentne zasilanie PDU z pomiarem energii oraz terminale serwerowe z aktywnym chłodzeniem.
                 </p>
             </div>
         </div>
@@ -556,7 +591,7 @@ title: Home | DevLabStudy
                 <span class="rack-tag">SECONDARY RACK 10"</span>
                 <h3 class="rack-title">Węzeł Pomocniczy</h3>
                 <p class="rack-details">
-                    Niezależna szafa dostępowa 10" obsługująca dodatkowe punkty dostępowe oraz poboczne połączenia kablowe na stanowisku.
+                    Niezależna szafa dostępowa 10" obsługująca punkty dostępowe Wi-Fi oraz poboczne połączenia kablowe na stanowisku.
                 </p>
             </div>
         </div>
@@ -570,7 +605,7 @@ title: Home | DevLabStudy
                 Projekt <strong>DevLabStudy</strong> powstał jako przestrzeń do dokumentowania mojej nauki administracji systemami operacyjnymi, sieciami i sprzętem serwerowym. 
             </p>
             <p>
-                Stawiam na optymalizację energetyczną – cała baza sieciowa w głównej szafie pobiera zaledwie ~33W, a do codziennej pracy używam energooszczędnego NUC-a zamiast prądożernego zestawu PC.
+                Stawiam na optymalizację energetyczną – cała baza sieciowa w głównej szafie pobiera zaledwie ~33W, a do codziennej pracy używam energooszczędnego NUC-a zamiast prądożernego PC.
             </p>
             <div class="tech-badges">
                 <span class="badge active">Debian Linux</span>
@@ -583,10 +618,10 @@ title: Home | DevLabStudy
         <div class="info-box">
             <h3>// ROADMAP & PLANS</h3>
             <p>
-                Akurat dopracowuję okablowanie oraz reorganizuję punkty Wi-Fi (przejście na Archera C6 v2 w trybie AP). 
+                Obecnie dopracowuję okablowanie oraz reorganizuję punkty Wi-Fi (przejście na Archera C6 v2 w trybie AP). 
             </p>
             <p>
-                W najbliższych planach mam zamianę panelu LSA na modułowy <strong>Patch Panel 1U z 24 gniazdami Keystone</strong> oraz zastąpienie serwera HP 8200 USDT nowszym komputerem typu Tiny PC / NUC pod wirtualizację.
+                W najbliższych planach mam zamianę panelu LSA na modułowy <strong>Patch Panel 1U Keystone</strong> oraz zastąpienie serwera HP 8200 USDT nowszym komputerem typu Tiny PC / NUC pod wirtualizację.
             </p>
             <div class="tech-badges">
                 <span class="badge">Keystone Patch Panel</span>
@@ -597,7 +632,7 @@ title: Home | DevLabStudy
         </div>
     </div>
 
-    <!-- Footer z linkami do RODO/Cookies -->
+    <!-- Footer -->
     <footer class="page-footer">
         <p>
             © DevLabStudy | 
@@ -607,7 +642,7 @@ title: Home | DevLabStudy
     </footer>
 </div>
 
-<!-- Niewidoczna struktura banera cookie -->
+<!-- Cookie Banner -->
 <div id="cookie-banner">
     <div class="cookie-title">🍪 Strona używa plików cookie</div>
     <div class="cookie-content">
@@ -619,7 +654,6 @@ title: Home | DevLabStudy
     </div>
 </div>
 
-<!-- Czysty skrypt JavaScript bez bibliotek zewnętrznych -->
 <script>
     function checkCookieConsent() {
         var consent = localStorage.getItem('devlab_cookie_consent');
