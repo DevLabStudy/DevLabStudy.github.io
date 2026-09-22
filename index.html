@@ -4,6 +4,10 @@ title: Home | DevLabStudy
 ---
 <meta name="facebook-domain-verification" content="iyq6csa05w60ox2ouz7tjma4owsvlf" />
 
+<!-- Cookie Consent CSS & JS z CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.9.2/dist/cookieconsent.css">
+<script defer src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.9.2/dist/cookieconsent.js"></script>
+
 <style>
     :root {
         --bg-main: #0a0c10;
@@ -350,6 +354,41 @@ title: Home | DevLabStudy
         background: rgba(6, 182, 212, 0.08);
     }
 
+    /* Footer styling */
+    .page-footer {
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border-color);
+        text-align: center;
+        font-size: 0.8rem;
+        color: var(--text-muted);
+    }
+
+    .page-footer a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        margin: 0 8px;
+        transition: color 0.2s;
+    }
+
+    .page-footer a:hover {
+        color: var(--accent-green);
+    }
+
+    /* Dynamic Style Overrides for Cookie Consent Dark Theme */
+    #cc--main {
+        --cc-bg: #12161f;
+        --cc-text: #f3f4f6;
+        --cc-btn-primary-bg: #22c55e;
+        --cc-btn-primary-text: #000000;
+        --cc-btn-primary-hover-bg: #16a34a;
+        --cc-btn-secondary-bg: #1e2638;
+        --cc-btn-secondary-text: #f3f4f6;
+        --cc-btn-secondary-hover-bg: #2a344d;
+        --cc-cookie-category-title-color: #06b6d4;
+        font-family: 'JetBrains Mono', monospace !important;
+    }
+
     /* Responsive Design */
     @media (max-width: 850px) {
         .hero-grid, .rack-showcase-grid, .info-grid {
@@ -497,4 +536,52 @@ title: Home | DevLabStudy
             </div>
         </div>
     </div>
+
+    <!-- Footer z linkami do RODO/Cookies -->
+    <footer class="page-footer">
+        <p>
+            © DevLabStudy | 
+            <a href="/polityka-prywatnosci">Polityka Prywatności</a> | 
+            <a href="#" data-cc="c-settings">Ustawienia Cookies</a>
+        </p>
+    </footer>
 </div>
+
+<!-- Skrypt inicjalizujący Baner CookieConsent -->
+<script>
+    window.addEventListener('load', function () {
+        var cc = initCookieConsent();
+
+        cc.run({
+            current_lang: 'pl',
+            autoclear_cookies: true,
+            page_scripts: true,
+
+            gui_options: {
+                consent_modal: {
+                    layout: 'cloud',
+                    position: 'bottom center',
+                    transition: 'slide',
+                    swap_buttons: false
+                }
+            },
+
+            languages: {
+                'pl': {
+                    consent_modal: {
+                        title: 'Strona używa plików cookie 🍪',
+                        description: 'Używamy plików cookie w celu prawidłowego działania witryny oraz multimediów. Więcej dowiesz się w naszej <a href="/polityka-prywatnosci">Polityce Prywatności</a>.',
+                        primary_btn: {
+                            text: 'Akceptuję',
+                            role: 'accept_all'
+                        },
+                        secondary_btn: {
+                            text: 'Tylko niezbędne',
+                            role: 'accept_necessary'
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
