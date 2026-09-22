@@ -4,10 +4,6 @@ title: Home | DevLabStudy
 ---
 <meta name="facebook-domain-verification" content="iyq6csa05w60ox2ouz7tjma4owsvlf" />
 
-<!-- Cookie Consent CSS & JS z CDN -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.9.2/dist/cookieconsent.css">
-<script defer src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.9.2/dist/cookieconsent.js"></script>
-
 <style>
     :root {
         --bg-main: #0a0c10;
@@ -375,18 +371,82 @@ title: Home | DevLabStudy
         color: var(--accent-green);
     }
 
-    /* Dynamic Style Overrides for Cookie Consent Dark Theme */
-    #cc--main {
-        --cc-bg: #12161f;
-        --cc-text: #f3f4f6;
-        --cc-btn-primary-bg: #22c55e;
-        --cc-btn-primary-text: #000000;
-        --cc-btn-primary-hover-bg: #16a34a;
-        --cc-btn-secondary-bg: #1e2638;
-        --cc-btn-secondary-text: #f3f4f6;
-        --cc-btn-secondary-hover-bg: #2a344d;
-        --cc-cookie-category-title-color: #06b6d4;
-        font-family: 'JetBrains Mono', monospace !important;
+    /* Native Cookie Banner Styles */
+    #cookie-banner {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 40px);
+        max-width: 580px;
+        background-color: #12161f;
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        z-index: 999999;
+        display: none;
+        font-family: 'JetBrains Mono', monospace;
+        color: var(--text-primary);
+    }
+
+    .cookie-title {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .cookie-content {
+        font-size: 0.8rem;
+        line-height: 1.5;
+        color: var(--text-secondary);
+        margin-bottom: 16px;
+    }
+
+    .cookie-content a {
+        color: var(--accent-cyan);
+        text-decoration: underline;
+    }
+
+    .cookie-actions {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+    }
+
+    .cookie-btn {
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        font-family: 'JetBrains Mono', monospace;
+        cursor: pointer;
+        border: none;
+        transition: all 0.2s ease;
+    }
+
+    .cookie-btn-accept {
+        background-color: var(--accent-green);
+        color: #000;
+    }
+
+    .cookie-btn-accept:hover {
+        background-color: #16a34a;
+    }
+
+    .cookie-btn-reject {
+        background-color: rgba(255, 255, 255, 0.05);
+        color: var(--text-primary);
+        border: 1px solid var(--border-color);
+    }
+
+    .cookie-btn-reject:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-color: var(--text-muted);
     }
 
     /* Responsive Design */
@@ -542,46 +602,41 @@ title: Home | DevLabStudy
         <p>
             © DevLabStudy | 
             <a href="/polityka-prywatnosci">Polityka Prywatności</a> | 
-            <a href="#" data-cc="c-settings">Ustawienia Cookies</a>
+            <a href="#" onclick="openCookieSettings(event)">Ustawienia Cookies</a>
         </p>
     </footer>
 </div>
 
-<!-- Skrypt inicjalizujący Baner CookieConsent -->
+<!-- Niewidoczna struktura banera cookie -->
+<div id="cookie-banner">
+    <div class="cookie-title">🍪 Strona używa plików cookie</div>
+    <div class="cookie-content">
+        Używamy plików cookie w celu zapewnienia prawidłowego działania witryny oraz wyświetlania multimediów. Więcej szczegółów znajdziesz w naszej <a href="/polityka-prywatnosci">Polityce Prywatności</a>.
+    </div>
+    <div class="cookie-actions">
+        <button class="cookie-btn cookie-btn-reject" onclick="setCookieConsent('necessary')">Tylko niezbędne</button>
+        <button class="cookie-btn cookie-btn-accept" onclick="setCookieConsent('all')">Akceptuję</button>
+    </div>
+</div>
+
+<!-- Czysty skrypt JavaScript bez bibliotek zewnętrznych -->
 <script>
-    window.addEventListener('load', function () {
-        var cc = initCookieConsent();
+    function checkCookieConsent() {
+        var consent = localStorage.getItem('devlab_cookie_consent');
+        if (!consent) {
+            document.getElementById('cookie-banner').style.display = 'block';
+        }
+    }
 
-        cc.run({
-            current_lang: 'pl',
-            autoclear_cookies: true,
-            page_scripts: true,
+    function setCookieConsent(type) {
+        localStorage.setItem('devlab_cookie_consent', type);
+        document.getElementById('cookie-banner').style.display = 'none';
+    }
 
-            gui_options: {
-                consent_modal: {
-                    layout: 'cloud',
-                    position: 'bottom center',
-                    transition: 'slide',
-                    swap_buttons: false
-                }
-            },
+    function openCookieSettings(e) {
+        if (e) e.preventDefault();
+        document.getElementById('cookie-banner').style.display = 'block';
+    }
 
-            languages: {
-                'pl': {
-                    consent_modal: {
-                        title: 'Strona używa plików cookie 🍪',
-                        description: 'Używamy plików cookie w celu prawidłowego działania witryny oraz multimediów. Więcej dowiesz się w naszej <a href="/polityka-prywatnosci">Polityce Prywatności</a>.',
-                        primary_btn: {
-                            text: 'Akceptuję',
-                            role: 'accept_all'
-                        },
-                        secondary_btn: {
-                            text: 'Tylko niezbędne',
-                            role: 'accept_necessary'
-                        }
-                    }
-                }
-            }
-        });
-    });
+    document.addEventListener('DOMContentLoaded', checkCookieConsent);
 </script>
