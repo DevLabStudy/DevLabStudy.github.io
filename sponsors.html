@@ -55,6 +55,7 @@ permalink: /sponsors
         transition: all 0.3s ease;
         text-decoration: none;
         min-height: 90px;
+        cursor: pointer;
     }
 
     /* Karta z białym tłem dla logotypów o ciemnej kolorystyce */
@@ -66,7 +67,7 @@ permalink: /sponsors
     .sponsor-card:hover {
         border-color: var(--accent-blue);
         transform: translateY(-2px);
-        box-shadow: 0 4px 20px rgba(59, 130, 246, 0.15);
+        box-shadow: 0 4px 20px rgba(59, 130, 246, 0.25);
     }
 
     .sponsor-logo-img {
@@ -136,6 +137,105 @@ permalink: /sponsors
     .contact-btn:hover {
         background: #2563eb;
     }
+
+    /* Footer styling */
+    .page-footer {
+        margin-top: 50px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border-color);
+        text-align: center;
+        font-size: 0.8rem;
+        color: var(--text-muted);
+    }
+
+    .page-footer a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        margin: 0 8px;
+        transition: color 0.2s;
+    }
+
+    .page-footer a:hover {
+        color: var(--accent-blue);
+    }
+
+    /* Native Cookie Banner Styles */
+    #cookie-banner {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 40px);
+        max-width: 580px;
+        background-color: #12161f;
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        z-index: 999999;
+        display: none;
+        font-family: 'JetBrains Mono', monospace;
+        color: var(--text-primary);
+    }
+
+    .cookie-title {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .cookie-content {
+        font-size: 0.8rem;
+        line-height: 1.5;
+        color: var(--text-secondary);
+        margin-bottom: 16px;
+    }
+
+    .cookie-content a {
+        color: var(--accent-cyan);
+        text-decoration: underline;
+    }
+
+    .cookie-actions {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+    }
+
+    .cookie-btn {
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        font-family: 'JetBrains Mono', monospace;
+        cursor: pointer;
+        border: none;
+        transition: all 0.2s ease;
+    }
+
+    .cookie-btn-accept {
+        background-color: var(--accent-green);
+        color: #000;
+    }
+
+    .cookie-btn-accept:hover {
+        background-color: #16a34a;
+    }
+
+    .cookie-btn-reject {
+        background-color: rgba(255, 255, 255, 0.05);
+        color: var(--text-primary);
+        border: 1px solid var(--border-color);
+    }
+
+    .cookie-btn-reject:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-color: var(--text-muted);
+    }
 </style>
 
 <div class="sponsors-container">
@@ -146,10 +246,10 @@ permalink: /sponsors
         <p class="sponsor-section-desc">Partnerzy wspierający rozwój infrastruktury DevLab Study poprzez udostępnianie lub przekazywanie sprzętu sieciowego, serwerowego oraz podzespołów komputerowych.</p>
         
         <div class="sponsor-grid">
-            <a href="https://lanberg.pl" target="_blank" rel="noopener noreferrer" class="sponsor-card sponsor-card-light">
+            <a href="https://lanberg.eu" target="_blank" rel="noopener noreferrer" class="sponsor-card sponsor-card-light">
                 <img src="{{ '/assets/images/LOGO_LANBERG.jpg' | relative_url }}" alt="Lanberg" class="sponsor-logo-img">
             </a>
-            <a href="https://eupress.ifixit.com" target="_blank" rel="noopener noreferrer" class="sponsor-card sponsor-card-light">
+            <a href="https://www.ifixit.com" target="_blank" rel="noopener noreferrer" class="sponsor-card sponsor-card-light">
                 <img src="{{ '/assets/images/IFixit.webp' | relative_url }}" alt="iFixit" class="sponsor-logo-img">
             </a>
             <div class="sponsor-card-placeholder">
@@ -180,4 +280,46 @@ permalink: /sponsors
         <a href="mailto:contact@devlabstudy.ovh" class="contact-btn">Nawiąż współpracę ➔</a>
     </div>
 
+    <!-- Footer z linkami do RODO/Cookies -->
+    <footer class="page-footer">
+        <p>
+            © DevLabStudy | 
+            <a href="/polityka-prywatnosci">Polityka Prywatności</a> | 
+            <a href="#" onclick="openCookieSettings(event)">Ustawienia Cookies</a>
+        </p>
+    </footer>
+
 </div>
+
+<!-- Baner Cookie -->
+<div id="cookie-banner">
+    <div class="cookie-title">🍪 Strona używa plików cookie</div>
+    <div class="cookie-content">
+        Używamy plików cookie w celu zapewnienia prawidłowego działania witryny oraz multimediów. Więcej szczegółów znajdziesz w naszej <a href="/polityka-prywatnosci">Polityce Prywatności</a>.
+    </div>
+    <div class="cookie-actions">
+        <button class="cookie-btn cookie-btn-reject" onclick="setCookieConsent('necessary')">Tylko niezbędne</button>
+        <button class="cookie-btn cookie-btn-accept" onclick="setCookieConsent('all')">Akceptuję</button>
+    </div>
+</div>
+
+<script>
+    function checkCookieConsent() {
+        var consent = localStorage.getItem('devlab_cookie_consent');
+        if (!consent) {
+            document.getElementById('cookie-banner').style.display = 'block';
+        }
+    }
+
+    function setCookieConsent(type) {
+        localStorage.setItem('devlab_cookie_consent', type);
+        document.getElementById('cookie-banner').style.display = 'none';
+    }
+
+    function openCookieSettings(e) {
+        if (e) e.preventDefault();
+        document.getElementById('cookie-banner').style.display = 'block';
+    }
+
+    document.addEventListener('DOMContentLoaded', checkCookieConsent);
+</script>
