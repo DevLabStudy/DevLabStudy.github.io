@@ -14,26 +14,6 @@ title: HomeLab Inventory
     .hero-homelab p { color: var(--text-muted, #888); font-size: 0.95rem; font-family: 'JetBrains Mono', monospace; margin: 0; }
 
     .section-title { font-family: 'JetBrains Mono', monospace; color: #fff; border-left: 4px solid #3b82f6; padding-left: 15px; margin: 40px 0 20px 0; font-size: 1.5rem; text-transform: uppercase; }
-    
-    /* Zwiększony i elastyczny obszar dla wykresu Mermaid */
-    .diagram-container {
-        background: rgba(10, 10, 10, 0.75);
-        border: 1px solid var(--border-color, #222);
-        padding: 30px;
-        border-radius: 12px;
-        margin-bottom: 35px;
-        backdrop-filter: blur(10px);
-        width: 100%;
-        box-sizing: border-box;
-        overflow-x: auto;
-    }
-
-    .mermaid {
-        min-width: 950px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: center;
-    }
 
     .nodes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 30px; }
     
@@ -52,70 +32,12 @@ title: HomeLab Inventory
     .spec-label { color: var(--text-muted, #9ca3af); width: 100px; font-weight: 600; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; flex-shrink: 0; }
 </style>
 
-<script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true, theme: 'dark', flowChart: { useMaxWidth: false, htmlLabels: true } });
-</script>
-
 <section class="hero-homelab">
     <div class="hero-text">
         <h2>Infrastructure & HomeLab</h2>
         <p>>_ Current Network Backbone, Compute Nodes & Cloud</p>
     </div>
 </section>
-
-<h3 class="section-title">Network Topology & Architecture</h3>
-<div class="diagram-container">
-    <pre class="mermaid" style="background: transparent; border: none; text-align: center;">
-graph TD
-    classDef edge fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#f8fafc;
-    classDef rack19 fill:#0f172a,stroke:#22c55e,stroke-width:2px,color:#f8fafc;
-    classDef rack10 fill:#1e1b4b,stroke:#818cf8,stroke-width:2px,color:#f8fafc;
-    classDef desk fill:#312e81,stroke:#a855f7,stroke-width:2px,color:#f8fafc;
-    classDef wifi fill:#451a03,stroke:#f97316,stroke-width:2px,color:#f8fafc;
-    classDef mobile fill:#4c0519,stroke:#f43f5e,stroke-width:2px,color:#f8fafc;
-
-    subgraph WAN ["1. Edge & Router"]
-        ISP([Internet / Modem]) --> MT["<b>MikroTik hEX gr3</b><br/>• Gateway & Core RouterOS<br/>• Hardware Crypto IPSec"]:::edge
-    end
-
-    subgraph HEX_CONNECTIONS ["2. Bezpośrednie Porty hEX gr3"]
-        MT --> CoreSwitch["<b>Lanberg RSGE-24P-2GE-2S-250</b><br/>• 24-Port Gigabit PoE+ (250W)<br/>• Główny Core Switch"]:::rack19
-        MT --> Cisco["<b>Cisco Catalyst 2960C-8TC-L</b><br/>• Compact Access / VLANs"]:::rack19
-    end
-
-    subgraph RACK10_WALL ["3. Szafa RACK 10' Wisząca"]
-        CoreSwitch --> Lanberg10_Wall["Lanberg 8-Port Switch (Wiszący)"]:::rack10
-        Lanberg10_Wall --> FutroS520_1["Fujitsu Futro S520 #1<br/>(AMD GX-212ZC)"]:::rack10
-        Lanberg10_Wall --> Archer2["<b>Archer C6 v2 #2</b><br/>• Secondary AP (Rack 10')<br/>• OpenWrt Firmware"]:::wifi
-    end
-
-    subgraph OPENRACKS ["4. Open-Racki 10' 6U (Dodatkowe)"]
-        CoreSwitch --> Switch10_Open1["Lanberg 8-Port Switch (Open-Rack #1)"]:::rack10
-        CoreSwitch --> Switch10_Open2["Lanberg 8-Port Switch (Open-Rack #2)"]:::rack10
-        Switch10_Open1 --> FutroS520_2["Fujitsu Futro S520 #2<br/>(AMD GX-212ZC)"]:::rack10
-        Switch10_Open2 --> NUC["<b>Intel NUC</b> (i5-5250U)<br/>• Rack Node / Workstation"]:::rack10
-    end
-
-    subgraph DESK ["5. Stanowisko Biurkowe"]
-        CoreSwitch --> FutroS720["<b>Fujitsu Futro S720</b><br/>• 24/7 Desk Node<br/>• Chłodzenie podkładką 5V USB"]:::desk
-        CoreSwitch --> PC["<b>Gaming PC Host</b> (Ryzen 5 3600)"]:::desk
-        CoreSwitch --> HP8200["<b>HP 8200 Elite USDT</b><br/>• Proxmox VE (Do wymiany)"]:::desk
-    end
-
-    subgraph PERIPHERALS ["6. Urządzenia Sieciowe & Druk"]
-        CoreSwitch --> Archer1["<b>Archer C6 v2 #1</b><br/>• Primary AP (Core Switch)<br/>• OpenWrt Firmware"]:::wifi
-        CoreSwitch --> Printer["<b>Canon Pixma TS705a</b><br/>• Drukarka Sieciowa (LAN/Wi-Fi)"]:::wifi
-        CoreSwitch --> TPLink["<b>TP-Link TL-WR1043ND v2.1</b><br/>• Legacy Lab Wi-Fi"]:::wifi
-    end
-
-    subgraph MOBILES ["7. Urządzenia Mobilne"]
-        Archer1 --- Moto["<b>Motorola G35 5G</b><br/>• Daily Driver (z Archer Wi-Fi)"]:::mobile
-        TPLink --- Nokia["Nokia 8 Sirocco (FRP / Kuma)"]:::mobile
-        TPLink --- TestLab["Samsung S5/S4 & HTC Test Lab"]:::mobile
-    end
-    </pre>
-</div>
 
 <h3 class="section-title">Rack 19" Main Cabinet</h3>
 <div class="nodes-grid">
@@ -157,6 +79,13 @@ graph TD
         <div class="spec-line"><span class="spec-label">Location:</span><span>10" Wall Cabinet Node</span></div>
     </div>
     <div class="node-card">
+        <span class="status-badge">Small</span>
+        <span class="node-name">Fujitsu Futro S520 (#2)</span>
+        <div class="spec-line"><span class="spec-label">CPU:</span><span>AMD GX-212ZC</span></div>
+        <div class="spec-line"><span class="spec-label">RAM:</span><span>4GB DDR3L</span></div>
+        <div class="spec-line"><span class="spec-label">Location:</span><span>10" Wall Cabinet Node</span></div>
+    </div>
+    <div class="node-card">
         <span class="status-badge mobile">Secondary AP</span>
         <span class="node-name">TP-Link Archer C6 v2 (#2)</span>
         <div class="spec-line"><span class="spec-label">OS:</span><span>OpenWrt Firmware</span></div>
@@ -180,17 +109,11 @@ graph TD
         <div class="spec-line"><span class="spec-label">Ports:</span><span>8x 1GbE</span></div>
     </div>
     <div class="node-card">
-        <span class="status-badge">Small</span>
-        <span class="node-name">Fujitsu Futro S520 (#2)</span>
-        <div class="spec-line"><span class="spec-label">CPU:</span><span>AMD GX-212ZC</span></div>
-        <div class="spec-line"><span class="spec-label">RAM:</span><span>4GB DDR3L</span></div>
-        <div class="spec-line"><span class="spec-label">Location:</span><span>Open-Rack 10" #1 Node</span></div>
-    </div>
-    <div class="node-card">
-        <span class="status-badge mobile">Workstation</span>
+        <span class="status-badge mobile">Proxmox #1</span>
         <span class="node-name">Intel NUC</span>
         <div class="spec-line"><span class="spec-label">CPU:</span><span>i5-5250U</span></div>
         <div class="spec-line"><span class="spec-label">RAM:</span><span>16GB DDR3L</span></div>
+        <div class="spec-line"><span class="spec-label">Role:</span><span>Proxmox VE Node #1</span></div>
         <div class="spec-line"><span class="spec-label">Location:</span><span>Open-Rack 10" #2 Node</span></div>
     </div>
 </div>
@@ -221,6 +144,30 @@ graph TD
 <h3 class="section-title">Compute Layer (Desk Nodes & Workstations)</h3>
 <div class="nodes-grid">
     <div class="node-card">
+        <span class="status-badge mobile">Proxmox #2</span>
+        <span class="node-name">Dell Vostro SFF</span>
+        <div class="spec-line"><span class="spec-label">CPU:</span><span>i5-7400</span></div>
+        <div class="spec-line"><span class="spec-label">RAM:</span><span>8GB DDR4</span></div>
+        <div class="spec-line"><span class="spec-label">Storage:</span><span>ADATA SU900 SSD (MLC)</span></div>
+        <div class="spec-line"><span class="spec-label">Role:</span><span>Proxmox VE Node #2 (24/7)</span></div>
+    </div>
+    <div class="node-card">
+        <span class="status-badge mobile">Proxmox #3</span>
+        <span class="node-name">HP Compaq Elite 8200 USDT</span>
+        <div class="spec-line"><span class="spec-label">CPU:</span><span>i5-2400S</span></div>
+        <div class="spec-line"><span class="spec-label">RAM:</span><span>8GB DDR3</span></div>
+        <div class="spec-line"><span class="spec-label">Storage:</span><span>256GB SSD + 1TB HDD</span></div>
+        <div class="spec-line"><span class="spec-label">Role:</span><span>Proxmox VE Node #3</span></div>
+    </div>
+    <div class="node-card">
+        <span class="status-badge migration">Test Bench</span>
+        <span class="node-name">HP Compaq Pro 6300 SFF</span>
+        <div class="spec-line"><span class="spec-label">CPU:</span><span>i5-3470</span></div>
+        <div class="spec-line"><span class="spec-label">RAM:</span><span>16GB DDR3</span></div>
+        <div class="spec-line"><span class="spec-label">Storage:</span><span>320GB HDD</span></div>
+        <div class="spec-line"><span class="spec-label">Role:</span><span>Test Bench / Service Workstation</span></div>
+    </div>
+    <div class="node-card">
         <span class="status-badge mobile">Desk Node</span>
         <span class="node-name">Fujitsu Futro S720</span>
         <div class="spec-line"><span class="spec-label">CPU:</span><span>AMD GX-217GA</span></div>
@@ -232,13 +179,6 @@ graph TD
         <span class="node-name">Gamingowy Host</span>
         <div class="spec-line"><span class="spec-label">CPU:</span><span>Ryzen 5 3600</span></div>
         <div class="spec-line"><span class="spec-label">RAM:</span><span>16GB DDR4</span></div>
-    </div>
-    <div class="node-card">
-        <span class="status-badge migration">USDT</span>
-        <span class="node-name">HP Compaq Elite 8200 USDT</span>
-        <div class="spec-line"><span class="spec-label">CPU:</span><span>i5-2400S</span></div>
-        <div class="spec-line"><span class="spec-label">RAM:</span><span>8GB DDR3</span></div>
-        <div class="spec-line"><span class="spec-label">Storage:</span><span>256GB SSD + 1TB HDD</span></div>
     </div>
 </div>
 
