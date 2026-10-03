@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEVLABSTUDY_</title>
+    <title>DEVLABSTUDY | {{ page.title }}</title>
     
-    <!-- Bezpośredni Favicon SVG zakodowany w Base64 - zadziała od razu bez plików na serwerze -->
+    <!-- Ikona terminala w SVG jako Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff5e00' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='4 17 10 11 4 5'></polyline><line x1='12' y1='19' x2='20' y2='19'></line></svg>">
     
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -43,7 +43,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 30px 60px;
-            max-width: 1400px;
+            max-width: 1500px;
             width: 100%;
             margin: 0 auto;
             border-bottom: 1px solid rgba(255, 255, 255, 0.03);
@@ -93,9 +93,9 @@
             border-radius: 2px;
         }
 
-        /* GŁÓWNY KONTENER */
+        /* GŁÓWNY KONTENER - poszerzony, żeby nic się nie zbijało do środka */
         .container {
-            max-width: 1300px;
+            max-width: 1400px;
             width: 100%;
             margin: 0 auto;
             padding: 50px 60px;
@@ -122,9 +122,9 @@
             color: var(--accent-blue);
         }
 
-        /* STOPKA Z POLITYKĄ PRYWATNOŚCI */
+        /* STOPKA */
         footer {
-            max-width: 1300px;
+            max-width: 1500px;
             width: 100%;
             margin: 80px auto 40px auto;
             padding: 40px 60px;
@@ -188,7 +188,7 @@
         <div class="footer-links">
             <a href="/polityka-prywatnosci">Polityka Prywatności</a>
             <a href="/regulamin">Regulamin</a>
-            <a href="mailto:contact@devlabstudy.ovh">Kontakt</a>
+            <a href="/kontakt">Kontakt</a>
         </div>
     </footer>
 
