@@ -6,7 +6,7 @@ title: Home
     /* HERO SECTION */
     .hero {
         margin-top: 40px;
-        margin-bottom: 100px;
+        margin-bottom: 80px;
         max-width: 850px;
     }
 
@@ -36,6 +36,7 @@ title: Home
     .hero-buttons {
         display: flex;
         gap: 20px;
+        flex-wrap: wrap;
     }
 
     .btn {
@@ -71,6 +72,52 @@ title: Home
         background: rgba(0, 210, 255, 0.1);
         border-color: var(--accent-blue);
         transform: translateY(-2px);
+    }
+
+    /* QUICK LINKS / SOCIAL PANEL (Szybkie linki do social mediów i wsparcia) */
+    .quick-links-bar {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-bottom: 100px;
+    }
+
+    .quick-link-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        text-decoration: none;
+        transition: 0.3s;
+        backdrop-filter: blur(10px);
+    }
+
+    .quick-link-card:hover {
+        border-color: var(--accent-blue);
+        background: rgba(10, 15, 25, 0.8);
+        transform: translateY(-2px);
+    }
+
+    .quick-link-icon {
+        font-size: 1.2rem;
+        color: var(--accent-blue);
+        font-family: 'JetBrains Mono', monospace;
+    }
+
+    .quick-link-info .ql-title {
+        color: var(--text-main);
+        font-weight: 800;
+        font-size: 0.9rem;
+        font-family: 'JetBrains Mono', monospace;
+        display: block;
+    }
+
+    .quick-link-info .ql-sub {
+        color: var(--text-muted);
+        font-size: 0.75rem;
     }
 
     /* SOCIAL STATS CARDS */
@@ -233,7 +280,7 @@ title: Home
         text-decoration: underline;
     }
 
-    /* ARCHIVE LIST (Wzór tabeli) */
+    /* ARCHIVE LIST */
     .archive-list {
         display: flex;
         flex-direction: column;
@@ -288,7 +335,7 @@ title: Home
     }
 </style>
 
-<!-- SEKJCA HERO -->
+<!-- SEKCJA HERO -->
 <section class="hero">
     <span class="section-tag">INFRASTRUKTURA & KOD</span>
     <h1 class="hero-title">DEVLAB<br>STUDY<span>_</span></h1>
@@ -300,6 +347,42 @@ title: Home
         <a href="/apps" class="btn btn-secondary">Aplikacje</a>
     </div>
 </section>
+
+<!-- SZYBKI PANEL LINKÓW (SOCIAL MEDIA & WSPARCIE) -->
+<span class="section-tag">KANAŁY ZEWNĘTRZNE & WSPARCIE</span>
+<div class="quick-links-bar">
+    <a href="https://github.com" target="_blank" class="quick-link-card">
+        <div class="quick-link-icon">gh</div>
+        <div class="quick-link-info">
+            <span class="ql-title">GitHub</span>
+            <span class="ql-sub">Repozytoria kodu</span>
+        </div>
+    </a>
+
+    <a href="https://youtube.com" target="_blank" class="quick-link-card">
+        <div class="quick-link-icon">yt</div>
+        <div class="quick-link-info">
+            <span class="ql-title">YouTube</span>
+            <span class="ql-sub">DevLabStudy & PC Hub</span>
+        </div>
+    </a>
+
+    <a href="/sponsors" class="quick-link-card">
+        <div class="quick-link-icon">$$</div>
+        <div class="quick-link-info">
+            <span class="ql-title">Sponsorzy</span>
+            <span class="ql-sub">Partnerzy i wsparcie</span>
+        </div>
+    </a>
+
+    <a href="/kontakt" class="quick-link-card">
+        <div class="quick-link-icon">>_</div>
+        <div class="quick-link-info">
+            <span class="ql-title">Kontakt</span>
+            <span class="ql-sub">Skrzynki e-mail</span>
+        </div>
+    </a>
+</div>
 
 <!-- STATYSTYKI -->
 <span class="section-tag">AKTYWNE WĘZŁY SPOŁECZNOŚCI</span>
