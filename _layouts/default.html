@@ -4,26 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DEVLABSTUDY_</title>
+    <!-- Nowy Favicon w formacie SVG -->
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Nowa paleta kolorów */
             --bg-dark: #030305;
-            --bg-blue-glow: #0b192c; /* Ciemny błękit do przejść */
+            --bg-blue-glow: #0b192c;
             --text-main: #f1f5f9;
             --text-muted: #8b9bb4;
-            
-            /* Główne akcenty */
-            --accent-blue: #00d2ff; /* Jasny błękit */
-            --accent-contrast: #ff5e00; /* Kontrujący pomarańczowy na detale */
-            
+            --accent-blue: #00d2ff;
+            --accent-contrast: #ff5e00;
             --border: rgba(0, 210, 255, 0.15);
             --card-bg: rgba(10, 15, 25, 0.6);
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            /* Czerń przechodząca w ciemny błękit */
             background: radial-gradient(circle at top right, var(--bg-blue-glow), var(--bg-dark) 60%);
             background-color: var(--bg-dark);
             background-attachment: fixed;
@@ -54,17 +52,14 @@
             text-transform: uppercase;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
+            color: var(--text-main);
         }
         
-        .logo::before {
-            content: '';
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            background: var(--accent-contrast);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent-contrast);
+        .logo svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--accent-contrast);
         }
 
         .nav-links {
@@ -82,7 +77,6 @@
             color: var(--accent-blue); 
         }
         
-        /* Delikatna linia pod aktywnym linkiem */
         .nav-links a.active::after {
             content: '';
             position: absolute;
@@ -110,7 +104,6 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 25px;
-            display: block;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -144,7 +137,14 @@
 <body>
 
     <nav class="navbar">
-        <a href="/" class="logo">DEVLABSTUDY</a>
+        <a href="/" class="logo">
+            <!-- Ikona terminala (wbudowany SVG) -->
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="4 17 10 11 4 5"></polyline>
+                <line x1="12" y1="19" x2="20" y2="19"></line>
+            </svg>
+            DEVLABSTUDY
+        </a>
         <div class="nav-links">
             <a href="/" {% if page.url == "/" %}class="active"{% endif %}>Hub</a>
             <a href="/blog" {% if page.url contains "blog" %}class="active"{% endif %}>Blog</a>
