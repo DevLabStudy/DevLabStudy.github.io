@@ -3,22 +3,19 @@ layout: default
 title: Home
 ---
 <style>
-    /* HERO SECTION */
+    /* HERO SECTION (Zmienione na jednokulumnowe, wycentrowane do lewej) */
     .hero {
-        display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
-        gap: 60px;
-        align-items: center;
+        margin-top: 40px;
         margin-bottom: 120px;
+        max-width: 850px; /* Ograniczamy szerokość, by tekst nie rozlewał się na cały ekran */
     }
 
     .hero-title {
-        font-size: 5rem;
+        font-size: 5.5rem;
         font-weight: 900;
         margin: 0 0 25px 0;
         line-height: 1.05;
         letter-spacing: -2px;
-        /* Gradient tekstu: błękitny do białego */
         background: linear-gradient(135deg, var(--text-main) 30%, var(--accent-blue) 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -31,10 +28,9 @@ title: Home
 
     .hero-desc {
         color: var(--text-muted);
-        font-size: 1.1rem;
+        font-size: 1.15rem;
         line-height: 1.8;
         margin-bottom: 45px;
-        max-width: 540px;
     }
 
     .hero-buttons {
@@ -75,28 +71,6 @@ title: Home
         background: rgba(0, 210, 255, 0.1);
         border-color: var(--accent-blue);
         transform: translateY(-2px);
-    }
-
-    /* Zdjęcie z poświatą */
-    .hero-image-wrapper {
-        position: relative;
-    }
-    .hero-image-wrapper::before {
-        content: '';
-        position: absolute;
-        top: 20px; left: -20px; right: 20px; bottom: -20px;
-        background: linear-gradient(135deg, var(--accent-blue), transparent);
-        border-radius: 12px;
-        opacity: 0.15;
-        z-index: -1;
-    }
-    .hero-image {
-        width: 100%;
-        height: 550px;
-        background: #000;
-        border-radius: 12px;
-        object-fit: cover;
-        border: 1px solid var(--border);
     }
 
     /* SOCIAL STATS CARDS */
@@ -218,8 +192,6 @@ title: Home
     }
 
     @media (max-width: 1024px) {
-        .hero { grid-template-columns: 1fr; gap: 50px; }
-        .hero-image { height: 400px; }
         .stats-grid { grid-template-columns: 1fr; }
         .archive-item { grid-template-columns: 1fr; gap: 12px; padding: 25px 10px; }
         .archive-date { text-align: left; }
@@ -228,21 +200,14 @@ title: Home
 
 <!-- SEKJCA HERO -->
 <section class="hero">
-    <div>
-        <span class="section-tag">INFRASTRUKTURA & KOD</span>
-        <h1 class="hero-title">DEVLAB<br>STUDY<span>_</span></h1>
-        <p class="hero-desc">
-            Dokumentuję rozbudowę mojego środowiska homelab (Cisco, MikroTik, Proxmox), konfigurację sieci LAN/VLAN i optymalizację energetyczną. Dodatkowo tworzę autorskie aplikacje z linii DevLab Network Toolkit.
-        </p>
-        <div class="hero-buttons">
-            <a href="/homelab" class="btn btn-primary">Homelab</a>
-            <a href="/apps" class="btn btn-secondary">Aplikacje</a>
-        </div>
-    </div>
-    
-    <!-- Miejsce na zdjęcie (Rack, sprzęt itp.) -->
-    <div class="hero-image-wrapper">
-        <img src="/assets/images/homelab-rack.jpg" alt="DevLab Homelab Rack" class="hero-image">
+    <span class="section-tag">INFRASTRUKTURA & KOD</span>
+    <h1 class="hero-title">DEVLAB<br>STUDY<span>_</span></h1>
+    <p class="hero-desc">
+        Dokumentuję rozbudowę mojego środowiska homelab (Cisco, MikroTik, Proxmox), konfigurację sieci LAN/VLAN i optymalizację energetyczną. Dodatkowo tworzę autorskie aplikacje z linii DevLab Network Toolkit.
+    </p>
+    <div class="hero-buttons">
+        <a href="/homelab" class="btn btn-primary">Homelab</a>
+        <a href="/apps" class="btn btn-secondary">Aplikacje</a>
     </div>
 </section>
 
@@ -258,22 +223,23 @@ title: Home
             </div>
         </div>
         <div>
-            <div class="stat-number">1 240</div>
+            <div class="stat-number">34</div>
             <div class="stat-label">Subskrypcji</div>
         </div>
     </div>
 
+    <!-- Zaktualizowana karta PC Hub -->
     <div class="stat-card">
         <div class="stat-header">
-            <div class="stat-icon">♪</div>
+            <div class="stat-icon">💻</div>
             <div>
-                <div class="stat-name">DevLabStudy</div>
-                <div class="stat-platform">@TikTok</div>
+                <div class="stat-name">PC Hub</div>
+                <div class="stat-platform">@YouTube</div>
             </div>
         </div>
         <div>
-            <div class="stat-number">5 800</div>
-            <div class="stat-label">Obserwujących</div>
+            <div class="stat-number">0</div>
+            <div class="stat-label">Subskrypcji</div>
         </div>
     </div>
 
