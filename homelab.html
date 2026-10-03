@@ -4,32 +4,115 @@ title: HomeLab Inventory
 ---
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&display=swap');
-
     .hero-homelab { 
-        margin-bottom: 40px; 
+        margin-bottom: 50px; 
     }
     .hero-text { text-align: left; }
-    .hero-homelab h2 { font-size: 2.2rem; margin: 0 0 10px 0; background: linear-gradient(to right, #10b981, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 900; letter-spacing: -1px; }
-    .hero-homelab p { color: var(--text-muted, #888); font-size: 0.95rem; font-family: 'JetBrains Mono', monospace; margin: 0; }
+    
+    .hero-homelab h2 { 
+        font-size: 2.8rem; 
+        margin: 0 0 12px 0; 
+        background: linear-gradient(135deg, var(--text-main) 30%, var(--accent-blue) 100%); 
+        -webkit-background-clip: text; 
+        -webkit-text-fill-color: transparent; 
+        font-weight: 900; 
+        letter-spacing: -1.5px; 
+    }
+    
+    .hero-homelab p { 
+        color: var(--accent-contrast); 
+        font-size: 0.95rem; 
+        font-family: 'JetBrains Mono', monospace; 
+        margin: 0; 
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
 
-    .section-title { font-family: 'JetBrains Mono', monospace; color: #fff; border-left: 4px solid #3b82f6; padding-left: 15px; margin: 40px 0 20px 0; font-size: 1.5rem; text-transform: uppercase; }
+    .section-title { 
+        font-family: 'JetBrains Mono', monospace; 
+        color: #fff; 
+        border-left: 4px solid var(--accent-contrast); 
+        padding-left: 15px; 
+        margin: 50px 0 25px 0; 
+        font-size: 1.3rem; 
+        text-transform: uppercase; 
+        letter-spacing: 1px;
+    }
 
-    .nodes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 30px; }
+    .nodes-grid { 
+        display: grid; 
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+        gap: 25px; 
+        margin-bottom: 30px; 
+    }
     
-    .node-card { background: rgba(10, 10, 10, 0.7); border: 1px solid var(--border-color, #222); padding: 30px; border-radius: 12px; position: relative; transition: all 0.3s; backdrop-filter: blur(10px); }
-    .node-card:hover { border-color: #3b82f6; transform: translateY(-5px); box-shadow: 0 10px 30px rgba(59,130,246,0.1); }
+    .node-card { 
+        background: var(--card-bg); 
+        border: 1px solid var(--border); 
+        padding: 30px; 
+        border-radius: 12px; 
+        position: relative; 
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        backdrop-filter: blur(10px); 
+    }
     
-    .status-badge { position: absolute; top: 25px; right: 25px; background: rgba(59, 130, 246, 0.1); color: #3b82f6; padding: 5px 12px; border-radius: 20px; font-weight: 800; font-size: 0.7rem; border: 1px solid rgba(59, 130, 246, 0.2); text-transform: uppercase; font-family: 'JetBrains Mono', monospace; }
-    .status-badge.inactive { background: rgba(239, 68, 68, 0.1); color: #ef4444; border-color: rgba(239, 68, 68, 0.2); }
-    .status-badge.migration { background: rgba(245, 158, 11, 0.1); color: #f59e0b; border-color: rgba(245, 158, 11, 0.2); }
-    .status-badge.mobile { background: rgba(16, 185, 129, 0.1); color: #10b981; border-color: rgba(16, 185, 129, 0.2); }
-    .status-badge.phone { background: rgba(168, 85, 247, 0.1); color: #a855f7; border-color: rgba(168, 85, 247, 0.2); }
+    .node-card:hover { 
+        border-color: var(--accent-blue); 
+        transform: translateY(-4px); 
+        box-shadow: 0 10px 30px rgba(0, 210, 255, 0.1); 
+        background: rgba(10, 15, 25, 0.8);
+    }
     
-    .node-name { font-size: 1.2rem; font-weight: 700; margin-bottom: 20px; display: block; padding-right: 60px; color: #fff; font-family: 'JetBrains Mono', monospace; }
+    /* Status Badge z nową paletą kolorów */
+    .status-badge { 
+        position: absolute; 
+        top: 25px; 
+        right: 25px; 
+        background: rgba(0, 210, 255, 0.08); 
+        color: var(--accent-blue); 
+        padding: 5px 12px; 
+        border-radius: 20px; 
+        font-weight: 800; 
+        font-size: 0.7rem; 
+        border: 1px solid rgba(0, 210, 255, 0.25); 
+        text-transform: uppercase; 
+        font-family: 'JetBrains Mono', monospace; 
+    }
+    .status-badge.inactive { background: rgba(255, 94, 0, 0.08); color: var(--accent-contrast); border-color: rgba(255, 94, 0, 0.25); }
+    .status-badge.migration { background: rgba(245, 158, 11, 0.08); color: #f59e0b; border-color: rgba(245, 158, 11, 0.25); }
+    .status-badge.mobile { background: rgba(0, 210, 255, 0.08); color: var(--accent-blue); border-color: rgba(0, 210, 255, 0.25); }
+    .status-badge.phone { background: rgba(168, 85, 247, 0.08); color: #c084fc; border-color: rgba(168, 85, 247, 0.25); }
     
-    .spec-line { display: flex; align-items: center; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dashed rgba(255,255,255,0.05); font-size: 0.9rem; font-family: 'JetBrains Mono', monospace; color: #e5e7eb; }
-    .spec-label { color: var(--text-muted, #9ca3af); width: 100px; font-weight: 600; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; flex-shrink: 0; }
+    .node-name { 
+        font-size: 1.15rem; 
+        font-weight: 800; 
+        margin-bottom: 20px; 
+        display: block; 
+        padding-right: 70px; 
+        color: var(--text-main); 
+        font-family: 'JetBrains Mono', monospace; 
+        letter-spacing: -0.5px;
+    }
+    
+    .spec-line { 
+        display: flex; 
+        align-items: center; 
+        margin-bottom: 10px; 
+        padding-bottom: 10px; 
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.06); 
+        font-size: 0.88rem; 
+        font-family: 'JetBrains Mono', monospace; 
+        color: var(--text-main); 
+    }
+    
+    .spec-label { 
+        color: var(--text-muted); 
+        width: 105px; 
+        font-weight: 600; 
+        font-family: 'JetBrains Mono', monospace; 
+        font-size: 0.78rem; 
+        flex-shrink: 0; 
+    }
 </style>
 
 <section class="hero-homelab">
