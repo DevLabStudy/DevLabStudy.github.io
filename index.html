@@ -3,11 +3,11 @@ layout: default
 title: Home
 ---
 <style>
-    /* HERO SECTION (Zmienione na jednokulumnowe, wycentrowane do lewej) */
+    /* HERO SECTION */
     .hero {
         margin-top: 40px;
-        margin-bottom: 120px;
-        max-width: 850px; /* Ograniczamy szerokość, by tekst nie rozlewał się na cały ekran */
+        margin-bottom: 100px;
+        max-width: 850px;
     }
 
     .hero-title {
@@ -78,7 +78,7 @@ title: Home
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 25px;
-        margin-bottom: 120px;
+        margin-bottom: 100px;
     }
 
     .stat-card {
@@ -141,6 +141,96 @@ title: Home
         font-family: 'JetBrains Mono', monospace;
         text-transform: uppercase;
         font-weight: 700;
+    }
+
+    /* SPONSOR SECTION */
+    .sponsors-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 25px;
+        margin-bottom: 100px;
+    }
+
+    .sponsor-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 35px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        backdrop-filter: blur(10px);
+        transition: 0.3s;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .sponsor-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 4px; height: 100%;
+        background: var(--accent-contrast);
+    }
+
+    .sponsor-card:hover {
+        border-color: var(--accent-blue);
+        transform: translateY(-3px);
+        background: rgba(10, 15, 25, 0.8);
+    }
+
+    .sponsor-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+
+    .sponsor-name {
+        font-size: 1.4rem;
+        font-weight: 900;
+        color: #fff;
+        font-family: 'JetBrains Mono', monospace;
+        letter-spacing: -0.5px;
+    }
+
+    .sponsor-badge {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.7rem;
+        background: rgba(255, 94, 0, 0.1);
+        color: var(--accent-contrast);
+        padding: 4px 10px;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 94, 0, 0.2);
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .sponsor-desc {
+        color: var(--text-muted);
+        font-size: 0.92rem;
+        line-height: 1.6;
+        margin-bottom: 25px;
+    }
+
+    .sponsor-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px dashed rgba(255, 255, 255, 0.06);
+        padding-top: 20px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.8rem;
+        color: var(--text-muted);
+    }
+
+    .sponsor-link {
+        color: var(--accent-blue);
+        font-weight: 700;
+        text-decoration: none;
+        transition: 0.2s;
+    }
+    .sponsor-link:hover {
+        text-decoration: underline;
     }
 
     /* ARCHIVE LIST (Wzór tabeli) */
@@ -228,7 +318,6 @@ title: Home
         </div>
     </div>
 
-    <!-- Zaktualizowana karta PC Hub -->
     <div class="stat-card">
         <div class="stat-header">
             <div class="stat-icon">💻</div>
@@ -254,6 +343,26 @@ title: Home
         <div>
             <div class="stat-number">v1.0</div>
             <div class="stat-label">Wersja Build</div>
+        </div>
+    </div>
+</div>
+
+<!-- SEKCJA SPONSORÓW I PARTNERÓW -->
+<span class="section-tag">PARTNERZY TECHNOLOGICZNI</span>
+<div class="sponsors-grid">
+    <div class="sponsor-card">
+        <div>
+            <div class="sponsor-header">
+                <div class="sponsor-name">LANBERG</div>
+                <div class="sponsor-badge">Hardware Partner</div>
+            </div>
+            <p class="sponsor-desc">
+                Współpraca w ramach dostarczenia elementów infrastruktury sieciowej oraz szaf rackowych (19" i 10"), które tworzą fizyczny szkielet mojego homelabu.
+            </p>
+        </div>
+        <div class="sponsor-footer">
+            <span>// STATUS: ACTIVE_BARTER</span>
+            <a href="https://lanberg.pl" target="_blank" class="sponsor-link">lanberg.pl →</a>
         </div>
     </div>
 </div>
