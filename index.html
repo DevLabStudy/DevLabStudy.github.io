@@ -3,24 +3,24 @@ layout: default
 title: Home
 ---
 <style>
-    /* POSZERZENIE STRONY GŁÓWNEJ NA BOKI */
+    /* PEŁNA SZEROKOŚĆ KONTENERA BEZ POWIĘSZANIA ELEMENTÓW */
     .dashboard {
-        max-width: 1550px !important;
-        padding-left: 50px !important;
-        padding-right: 50px !important;
+        max-width: 100% !important;
+        padding-left: 60px !important;
+        padding-right: 60px !important;
     }
 
     /* HERO SECTION */
     .hero {
-        margin-top: 40px;
-        margin-bottom: 70px;
-        max-width: 950px;
+        margin-top: 20px;
+        margin-bottom: 60px;
+        max-width: 900px;
     }
 
     .hero-title {
-        font-size: 5.5rem;
+        font-size: 4.5rem;
         font-weight: 900;
-        margin: 0 0 25px 0;
+        margin: 0 0 20px 0;
         line-height: 1.05;
         letter-spacing: -2px;
         background: linear-gradient(135deg, var(--text-main) 30%, var(--accent-blue) 100%);
@@ -35,9 +35,9 @@ title: Home
 
     .hero-desc {
         color: var(--text-muted);
-        font-size: 1.15rem;
+        font-size: 1.1rem;
         line-height: 1.8;
-        margin-bottom: 45px;
+        margin-bottom: 35px;
     }
 
     .hero-buttons {
@@ -47,9 +47,9 @@ title: Home
     }
 
     .btn {
-        padding: 16px 36px;
+        padding: 14px 32px;
         font-weight: 800;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         border-radius: 6px;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         cursor: pointer;
@@ -86,14 +86,14 @@ title: Home
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 25px;
-        margin-bottom: 70px;
+        margin-bottom: 60px;
     }
 
     .stat-card {
         background: var(--card-bg);
         border: 1px solid var(--border);
         border-radius: 12px;
-        padding: 30px;
+        padding: 25px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -113,29 +113,28 @@ title: Home
         display: flex;
         align-items: center;
         gap: 15px;
-        margin-bottom: 25px;
+        margin-bottom: 20px;
     }
 
     .stat-icon {
-        width: 45px;
-        height: 45px;
+        width: 40px;
+        height: 40px;
         background: rgba(0, 210, 255, 0.1);
         color: var(--accent-blue);
         border-radius: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.4rem;
+        font-size: 1.2rem;
         border: 1px solid rgba(0, 210, 255, 0.2);
     }
 
-    .stat-name { font-weight: 800; font-size: 1.15rem; color: #fff; }
-    .stat-platform { color: var(--text-muted); font-size: 0.85rem; font-family: 'JetBrains Mono', monospace; }
+    .stat-name { font-weight: 800; font-size: 1.05rem; color: #fff; }
+    .stat-platform { color: var(--text-muted); font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; }
 
-    .stat-number-row { display: flex; justify-content: space-between; align-items: flex-end; }
-    .stat-number { font-size: 2.8rem; font-weight: 900; color: var(--text-main); font-family: 'JetBrains Mono', monospace; line-height: 1; }
-    .stat-label { font-size: 0.85rem; color: var(--accent-contrast); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; font-weight: 700; }
-    .stat-external { color: var(--text-muted); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; transition: 0.2s; }
+    .stat-number { font-size: 2.4rem; font-weight: 900; color: var(--text-main); font-family: 'JetBrains Mono', monospace; line-height: 1; }
+    .stat-label { font-size: 0.8rem; color: var(--accent-contrast); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; font-weight: 700; }
+    .stat-external { color: var(--text-muted); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; transition: 0.2s; }
     .stat-card:hover .stat-external { color: var(--accent-blue); transform: translateX(3px); }
 
     /* SEKCJA SPONSORÓW I PARTNERÓW */
@@ -143,14 +142,14 @@ title: Home
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         gap: 25px;
-        margin-bottom: 70px;
+        margin-bottom: 60px;
     }
 
     .sponsor-card {
         background: var(--card-bg);
         border: 1px solid var(--border);
         border-radius: 12px;
-        padding: 35px;
+        padding: 30px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -173,20 +172,20 @@ title: Home
         background: rgba(10, 15, 25, 0.8);
     }
 
-    .sponsor-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
-    .sponsor-name { font-size: 1.4rem; font-weight: 900; color: #fff; font-family: 'JetBrains Mono', monospace; letter-spacing: -0.5px; }
-    .sponsor-badge { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; background: rgba(255, 94, 0, 0.1); color: var(--accent-contrast); padding: 4px 10px; border-radius: 20px; border: 1px solid rgba(255, 94, 0, 0.2); font-weight: 700; text-transform: uppercase; }
-    .sponsor-desc { color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; margin-bottom: 25px; }
-    .sponsor-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed rgba(255, 255, 255, 0.06); padding-top: 20px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted); }
+    .sponsor-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+    .sponsor-name { font-size: 1.2rem; font-weight: 900; color: #fff; font-family: 'JetBrains Mono', monospace; }
+    .sponsor-badge { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; background: rgba(255, 94, 0, 0.1); color: var(--accent-contrast); padding: 4px 10px; border-radius: 20px; border: 1px solid rgba(255, 94, 0, 0.2); font-weight: 700; text-transform: uppercase; }
+    .sponsor-desc { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px; }
+    .sponsor-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed rgba(255, 255, 255, 0.06); padding-top: 15px; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--text-muted); }
     .sponsor-link { color: var(--accent-blue); font-weight: 700; text-decoration: none; transition: 0.2s; }
     .sponsor-link:hover { text-decoration: underline; }
 
-    /* MARKETPLACE & SUPPORT GRID */
+    /* MARKETPLACE & SUPPORT (ESTETYCZNE KAFLE W STYLU DARK TECH) */
     .extra-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         gap: 25px;
-        margin-bottom: 70px;
+        margin-bottom: 60px;
     }
 
     .extra-card {
@@ -205,18 +204,41 @@ title: Home
         background: rgba(10, 15, 25, 0.8);
     }
 
+    .mini-btn-group {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 15px;
+    }
+
+    .mini-btn {
+        padding: 9px 16px;
+        border-radius: 6px;
+        font-weight: 800;
+        font-size: 0.78rem;
+        text-decoration: none;
+        font-family: 'JetBrains Mono', monospace;
+        text-transform: uppercase;
+        transition: 0.2s;
+        display: inline-block;
+    }
+    .mini-btn:hover {
+        transform: translateY(-2px);
+        filter: brightness(1.1);
+    }
+
     /* DYNAMICZNA LISTA WPISÓW (BLOG FEED) */
     .archive-list {
         display: flex;
         flex-direction: column;
-        margin-bottom: 80px;
+        margin-bottom: 60px;
         border-top: 1px solid var(--border);
     }
 
     .archive-item {
         display: grid;
         grid-template-columns: 160px 1fr 120px;
-        padding: 25px 15px;
+        padding: 22px 15px;
         border-bottom: 1px solid var(--border);
         align-items: center;
         transition: 0.2s;
@@ -238,7 +260,7 @@ title: Home
 
     .archive-title {
         font-weight: 700;
-        font-size: 1.05rem;
+        font-size: 1rem;
         color: var(--text-main);
         letter-spacing: 0.5px;
     }
@@ -250,13 +272,13 @@ title: Home
     .archive-date {
         color: var(--text-muted);
         font-family: 'JetBrains Mono', monospace;
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         text-align: right;
     }
 
     @media (max-width: 1024px) {
         .stats-grid { grid-template-columns: 1fr; }
-        .archive-item { grid-template-columns: 1fr; gap: 12px; padding: 25px 10px; }
+        .archive-item { grid-template-columns: 1fr; gap: 10px; padding: 20px 10px; }
         .archive-date { text-align: left; }
     }
 </style>
@@ -292,8 +314,8 @@ title: Home
                 <div class="stat-label">Subskrypcji</div>
             </div>
         </div>
-        <div style="margin-top: 25px; display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed rgba(255,255,255,0.08); padding-top: 15px;">
-            <span style="font-size: 0.8rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">// GŁÓWNY KANAŁ</span>
+        <div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed rgba(255,255,255,0.08); padding-top: 12px;">
+            <span style="font-size: 0.75rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">// GŁÓWNY KANAŁ</span>
             <span class="stat-external">Otwórz kanał ↗</span>
         </div>
     </a>
@@ -313,8 +335,8 @@ title: Home
                 <div class="stat-label">Subskrypcji</div>
             </div>
         </div>
-        <div style="margin-top: 25px; display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed rgba(255,255,255,0.08); padding-top: 15px;">
-            <span style="font-size: 0.8rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">// HARDWARE & TEARDOWNS</span>
+        <div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed rgba(255,255,255,0.08); padding-top: 12px;">
+            <span style="font-size: 0.75rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">// HARDWARE & TEARDOWNS</span>
             <span class="stat-external">Otwórz kanał ↗</span>
         </div>
     </a>
@@ -340,38 +362,33 @@ title: Home
     </div>
 </div>
 
-<!-- GIEŁDA & WSPARCIE PROJEKTU -->
+<!-- MARKETPLACE & SUPPORT -->
 <span class="section-tag">MARKETPLACE & WSPARCIE</span>
 <div class="extra-grid">
-    <!-- Giełda / Hardware -->
+    <!-- Marketplace -->
     <div class="extra-card">
         <div style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: #00bfb2;"></div>
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-            <div style="font-family: 'JetBrains Mono', monospace; font-weight: 900; font-size: 1.1rem; color: #fff;">// GIEŁDA & SPRZEDAŻ</div>
-            <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; background: rgba(0, 191, 178, 0.1); color: #00bfb2; padding: 4px 10px; border-radius: 20px; border: 1px solid rgba(0, 191, 178, 0.2); font-weight: 700;">MARKETPLACE</span>
-        </div>
-        <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 25px;">
-            Wyprzedaż nadwyżek sprzętowych, komponentów PC oraz sprawdzonych akcesoriów z testów homelabowych.
+        <h3 style="font-size: 0.8rem; color: #00bfb2; margin: 0 0 10px 0; text-transform: uppercase; font-family: 'JetBrains Mono', monospace;">// Giełda i Sprzedaż:</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; margin-bottom: 15px;">
+            Wyprzedaż nadwyżek sprzętowych i komponentów z testów.
         </p>
-        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-            <a href="https://www.vinted.pl/member/306118036" target="_blank" style="padding: 10px 18px; background: rgba(0, 191, 178, 0.1); border: 1px solid rgba(0, 191, 178, 0.3); color: #00bfb2; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; font-weight: 800; text-decoration: none; transition: 0.2s;">Vinted ↗</a>
-            <a href="https://allegrolokalnie.pl/uzytkownik/Client:137881965" target="_blank" style="padding: 10px 18px; background: rgba(255, 90, 0, 0.1); border: 1px solid rgba(255, 90, 0, 0.3); color: #ff5a00; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; font-weight: 800; text-decoration: none; transition: 0.2s;">Allegro Lokalnie ↗</a>
+        <div class="mini-btn-group">
+            <a href="https://www.vinted.pl/member/306118036" target="_blank" class="mini-btn" style="background: #00bfb2; color: #fff;">Vinted</a>
+            <a href="#" target="_blank" class="mini-btn" style="background: #002f34; border: 1px solid #23e5db; color: #fff;">OLX</a>
+            <a href="https://allegrolokalnie.pl/uzytkownik/Client:137881965" target="_blank" class="mini-btn" style="background: #ff5a00; color: #fff;">Allegro Lokalnie</a>
         </div>
     </div>
 
-    <!-- Wsparcie Projektu -->
-    <div class="extra-card">
+    <!-- Support -->
+    <div class="extra-card" style="border-color: var(--accent-blue);">
         <div style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--accent-blue);"></div>
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-            <div style="font-family: 'JetBrains Mono', monospace; font-weight: 900; font-size: 1.1rem; color: #fff;">// WSPARCIE PROJEKTU</div>
-            <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; background: rgba(0, 210, 255, 0.1); color: var(--accent-blue); padding: 4px 10px; border-radius: 20px; border: 1px solid rgba(0, 210, 255, 0.2); font-weight: 700;">DONATE</span>
-        </div>
-        <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 25px;">
-            Jeśli materiały, dokumentacja homelabu lub aplikacje są dla Ciebie przydatne, możesz wesprzeć dalszy rozwój projektu.
+        <h3 style="font-size: 0.8rem; color: var(--accent-blue); margin: 0 0 10px 0; text-transform: uppercase; font-family: 'JetBrains Mono', monospace;">// Wsparcie Projektu:</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; margin-bottom: 15px;">
+            Jeśli materiały i homelab są przydatne, możesz wesprzeć rozwój projektu.
         </p>
-        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-            <a href="https://patreon.com/DevLabStudy" target="_blank" style="padding: 10px 18px; background: rgba(225, 29, 72, 0.1); border: 1px solid rgba(225, 29, 72, 0.3); color: #fb7185; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; font-weight: 800; text-decoration: none; transition: 0.2s;">Patreon ↗</a>
-            <a href="https://www.buymeacoffee.com/DevLabStudy" target="_blank" style="padding: 10px 18px; background: rgba(255, 221, 0, 0.1); border: 1px solid rgba(255, 221, 0, 0.3); color: #fde047; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; font-weight: 800; text-decoration: none; transition: 0.2s;">Buy Me a Coffee ↗</a>
+        <div class="mini-btn-group">
+            <a href="https://patreon.com/DevLabStudy" target="_blank" class="mini-btn" style="background: #e11d48; color: #fff;">Patreon</a>
+            <a href="https://www.buymeacoffee.com/DevLabStudy" target="_blank" class="mini-btn" style="background: #FFDD00; color: #000;">Buy Me a Coffee</a>
         </div>
     </div>
 </div>
