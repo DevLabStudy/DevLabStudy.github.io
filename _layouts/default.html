@@ -8,197 +8,277 @@
     <link rel="icon" type="image/png" href="/assets/images/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --bg-body: #050505; --bg-nav: #050505; --text-main: #f0f0f0; --text-muted: #8b9bb4; --border-color: rgba(255, 255, 255, 0.08); --accent-blue: #3b82f6; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg-body); color: var(--text-main); margin: 0; overflow-x: hidden; background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.015) 1px, transparent 0); background-size: 32px 32px; }
+        :root { 
+            --bg-body: #030303; 
+            --bg-sidebar: #080808; 
+            --card-bg: rgba(12, 12, 12, 0.75); 
+            --text-main: #f1f5f9; 
+            --text-muted: #94a3b8; 
+            --border-color: rgba(255, 255, 255, 0.08); 
+            --accent-blue: #3b82f6; 
+        }
 
-        .navbar { background: var(--bg-nav); border-bottom: 1px solid var(--border-color); padding: 22px 40px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; position: sticky; top: 0; z-index: 1000; }
-        .nav-left { display: flex; align-items: center; }
-        .nav-brand { font-size: 1.5rem; font-weight: 900; text-decoration: none; color: #fff; letter-spacing: -0.5px; }
-        .nav-center { display: flex; justify-content: center; align-items: center; gap: 20px; }
-        .nav-center a { text-decoration: none; color: var(--text-muted); font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
-        .nav-center a:hover, .nav-center a.active { color: var(--accent-blue); }
-        .nav-right { display: flex; justify-content: flex-end; }
+        * { box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--bg-body); 
+            color: var(--text-main); 
+            margin: 0; 
+            display: flex; 
+            min-height: 100vh;
+            overflow-x: hidden; 
+            background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.015) 1px, transparent 0); 
+            background-size: 32px 32px; 
+        }
 
-        .dropdown { position: relative; display: inline-block; }
-        .dropbtn { background: #111; color: #fff; padding: 8px 16px; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.1); cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.9rem; }
-        .dropdown-content { position: absolute; right: 0; top: 100%; padding-top: 15px; min-width: 180px; opacity: 0; visibility: hidden; transition: 0.25s ease; }
-        .dropdown-links-wrapper { background: #0a0a0a; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 6px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); overflow: hidden; }
-        .dropdown-content a { display: flex; justify-content: space-between; align-items: center; color: #fff; padding: 12px 16px; text-decoration: none; font-size: 0.85rem; font-weight: 600; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-        .dropdown-content a:hover { color: var(--accent-blue); background: rgba(255, 255, 255, 0.02); }
-        .dropdown:hover .dropdown-content { opacity: 1; visibility: visible; }
+        /* == PIONOWY PANEL BOCZNY (SIDEBAR) == */
+        .sidebar {
+            width: 280px;
+            background: var(--bg-sidebar);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 30px 20px;
+        }
 
-        .hero-header { max-width: 1000px; margin: 60px auto 40px auto; text-align: center; padding: 0 20px; }
-        .hero-title { font-size: 3.5rem; font-weight: 900; margin: 0; letter-spacing: -2px; color: #fff; }
-        .hero-title span { color: var(--accent-blue); }
+        .sidebar-top {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
 
-        .dashboard { width: 100%; max-width: 1260px; padding: 0 40px 0 140px; margin: 0 auto 40px auto; box-sizing: border-box; }
-        .grid-container { display: grid; grid-template-columns: 240px 1px 1fr; gap: 80px; align-items: start; margin-left: -180px; }
-        .vertical-divider { background: var(--border-color); width: 1px; min-height: 400px; }
+        .sidebar-brand {
+            font-size: 1.4rem;
+            font-weight: 900;
+            text-decoration: none;
+            color: #fff;
+            letter-spacing: -0.5px;
+            font-family: 'JetBrains Mono', monospace;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .sidebar-brand span { color: var(--accent-blue); }
 
-        .left-sidebar { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 100px; width: 240px; }
+        .sidebar-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .sidebar-nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 10px 14px;
+            border-radius: 8px;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .sidebar-nav a:hover, .sidebar-nav a.active {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 3px solid var(--accent-blue);
+        }
 
-        .card { background: rgba(10, 10, 10, 0.7); border: 1px solid var(--border-color); padding: 20px; border-radius: 12px; backdrop-filter: blur(10px); }
-        .vinted-card { border-color: #00bfb2 !important; background: transparent !important; }
-        .support-btn { display: block; text-decoration: none; padding: 12px; border-radius: 8px; font-weight: 800; font-size: 0.8rem; text-align: center; margin-top: 10px; transition: 0.3s; }
-        .do-badge { display: block; margin-top: 10px; }
-        .do-badge img { width: 100%; border-radius: 8px; }
+        .sidebar-section-title {
+            font-size: 0.7rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            margin-top: 15px;
+        }
 
-        /* == POPRAWKI DLA TELEFONÓW (Poniżej 1024px) == */
-        @media (max-width: 1024px) { 
-            .grid-container { 
-                display: flex; 
-                flex-direction: column; 
-                margin-left: 0; 
-                gap: 40px; 
-            } 
-            .main-content {
-                order: 1; 
+        .sidebar-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .card { 
+            background: var(--card-bg); 
+            border: 1px solid var(--border-color); 
+            padding: 14px; 
+            border-radius: 10px; 
+            backdrop-filter: blur(10px); 
+        }
+        .vinted-card { border-color: rgba(0, 191, 178, 0.3) !important; }
+        .support-btn { 
+            display: block; 
+            text-decoration: none; 
+            padding: 10px; 
+            border-radius: 6px; 
+            font-weight: 800; 
+            font-size: 0.75rem; 
+            text-align: center; 
+            margin-top: 8px; 
+            transition: 0.2s; 
+        }
+        .support-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+        /* == GŁÓWNA TREŚĆ == */
+        .main-wrapper {
+            margin-left: 280px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .top-header {
+            padding: 40px 60px 20px 60px;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(3, 3, 3, 0.5);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .page-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            margin: 0;
+            letter-spacing: -1px;
+            color: #fff;
+        }
+        .page-title span { color: var(--accent-blue); }
+
+        .content-area {
+            padding: 50px 60px;
+            flex: 1;
+            max-width: 1100px;
+        }
+
+        /* == STOPKA == */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 40px 60px;
+            background: var(--bg-sidebar);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            font-size: 0.85rem;
+        }
+        footer h4 {
+            color: #fff;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+        footer a { color: var(--text-muted); text-decoration: none; transition: 0.2s; }
+        footer a:hover { color: #fff; }
+
+        /* == RESPONSYWNOŚĆ DLA TELEFONÓW == */
+        @media (max-width: 1024px) {
+            body { flex-direction: column; }
+            .sidebar {
+                position: relative;
                 width: 100%;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                padding: 20px;
             }
-            .left-sidebar {
-                order: 2; 
-                width: 100%;
-                position: relative; 
-                top: 0;
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            .main-wrapper {
+                margin-left: 0;
             }
-            .vertical-divider { display: none; } 
-            .dashboard { padding: 0 20px; }
-
-            .navbar {
-                display: flex;
-                flex-direction: column; 
-                padding: 15px 20px;
-                gap: 15px;
+            .top-header, .content-area, footer {
+                padding: 30px 20px;
             }
-            .nav-brand {
-                font-size: 1.3rem; 
-            }
-            .nav-center {
-                flex-wrap: wrap; 
-                gap: 12px;
-            }
-            .hero-title {
-                font-size: 2.2rem; 
-            }
+            .page-title { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="nav-left"><a href="/" class="nav-brand">DevLabStudy</a></div>
-        <div class="nav-center">
-            <a href="/" {% if page.url == "/" %}class="active"{% endif %}>Hub</a>
-            <a href="/blog" {% if page.url contains "blog" %}class="active"{% endif %}>Blog</a>
-            <a href="/homelab" {% if page.url contains "homelab" %}class="active"{% endif %}>HomeLab</a>
-            <a href="/sponsors" {% if page.url contains "sponsors" %}class="active"{% endif %}>Sponsors</a>
-            <a href="/apps" {% if page.url contains "apps" %}class="active"{% endif %}>Apps</a>
-            <a href="/benchmarks" {% if page.url contains "benchmarks" %}class="active"{% endif %}>Benchmarks</a>
-            <a href="/orbit" {% if page.url contains "orbit" %}class="active"{% endif %}>Orbit™</a>
-            <a href="/rokitos" {% if page.url contains "rokitos" %}class="active"{% endif %}>RokiTOS</a>
-        </div>
-        <div class="nav-right">
-            <div class="dropdown">
-                <button class="dropbtn">Community ▾</button>
-                <div class="dropdown-content">
-                    <div class="dropdown-links-wrapper">
-                        <a href="https://github.com/DevLabStudy" target="_blank">GitHub <span>&#x2197;</span></a>
-                        <a href="https://www.youtube.com/@devlabstudy" target="_blank">YouTube <span>&#x2197;</span></a>
-                        <a href="https://discord.gg/uwUTgEQcwj" target="_blank">Discord <span>&#x2197;</span></a>
-                        <a href="https://www.tiktok.com/@devlabstudy_official" target="_blank">TikTok <span>&#x2197;</span></a>
-                        <a href="https://www.reddit.com/user/TobiMessi201/" target="_blank">Reddit <span>&#x2197;</span></a>
-                        <a href="https://x.com/DevLabStudy" target="_blank">X/Twitter <span>&#x2197;</span></a>
-                        <a href="https://www.instagram.com/devlabstudy" target="_blank">Instagram <span>&#x2197;</span></a>
-                        <a href="https://pl.pinterest.com/DevLabStudy_Official/" target="_blank">Pinterest <span>&#x2197;</span></a>
-                        <a href="https://www.facebook.com/devlabstudy" target="_blank">Fanpage <span>&#x2197;</span></a>
-                        <a href="https://www.linkedin.com/in/tobiaszkajzer" target="_blank">LinkedIn <span>&#x2197;</span></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <!-- PIONOWY PANEL BOCZNY -->
+    <aside class="sidebar">
+        <div class="sidebar-top">
+            <a href="/" class="sidebar-brand">
+                <span>//</span> DevLabStudy
+            </a>
 
-    <header class="hero-header">
-        <h1 class="hero-title">{% if page.url == "/" %}DevLab <span>Environment</span>{% else %}<span>{{ page.title }}</span>{% endif %}</h1>
-    </header>
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Nawigacja</div>
+                <a href="/" {% if page.url == "/" %}class="active"{% endif %}>Hub Główny <span>→</span></a>
+                <a href="/blog" {% if page.url contains "blog" %}class="active"{% endif %}>Blog & Artykuły <span>→</span></a>
+                <a href="/homelab" {% if page.url contains "homelab" %}class="active"{% endif %}>HomeLab <span>→</span></a>
+                <a href="/apps" {% if page.url contains "apps" %}class="active"{% endif %}>Aplikacje (Apps) <span>→</span></a>
+                <a href="/benchmarks" {% if page.url contains "benchmarks" %}class="active"{% endif %}>Benchmarks <span>→</span></a>
+                <a href="/orbit" {% if page.url contains "orbit" %}class="active"{% endif %}>Project Orbit™ <span>→</span></a>
+                <a href="/rokitos" {% if page.url contains "rokitos" %}class="active"{% endif %}>RokiTOS <span>→</span></a>
+                <a href="/sponsors" {% if page.url contains "sponsors" %}class="active"{% endif %}>Sponsors <span>→</span></a>
+                <a href="/updates" {% if page.url contains "updates" %}class="active"{% endif %}>DevLog / Updates <span>→</span></a>
+            </nav>
 
-    <main class="dashboard">
-        <div class="grid-container">
-            <aside class="left-sidebar">
+            <div class="sidebar-cards">
+                <div class="sidebar-section-title">Marketplace</div>
                 <div class="card vinted-card">
-                    <h3 style="font-size: 0.8rem; color: #00bfb2; margin: 0 0 10px 0; text-transform: uppercase; font-family: 'JetBrains Mono', monospace;">Marketplace:</h3>
                     <a href="https://www.vinted.pl/member/306118036" target="_blank" class="support-btn" style="background: #00bfb2; color: #fff;">VINTED</a>
-                    <a href="#" target="_blank" class="support-btn" style="background: #002f34; border: 1px solid #23e5db; color: #fff;">OLX</a>
                     <a href="https://allegrolokalnie.pl/uzytkownik/Client:137881965" target="_blank" class="support-btn" style="background: #ff5a00; color: #fff;">ALLEGRO LOKALNIE</a>
                 </div>
 
-                <div class="card" style="border-color: var(--accent-blue); background: rgba(59, 130, 246, 0.05);">
-                    <h3 style="font-size: 0.8rem; color: var(--accent-blue); margin: 0 0 10px 0; text-transform: uppercase; font-family: 'JetBrains Mono', monospace;">Support:</h3>
+                <div class="sidebar-section-title">Support</div>
+                <div class="card" style="border-color: rgba(59, 130, 246, 0.3);">
                     <a href="https://patreon.com/DevLabStudy" target="_blank" class="support-btn" style="background: #e11d48; color: #fff;">PATREON</a>
-                    <a href="https://www.digitalocean.com/?refcode=6fd6e2226432" class="do-badge" target="_blank"><img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg" /></a>
                     <a href="https://www.buymeacoffee.com/DevLabStudy" target="_blank" class="support-btn" style="background: #FFDD00; color: #000;">BUY ME A COFFEE</a>
                 </div>
-
-                <div class="card" style="border-color: #8b5cf6; background: rgba(139, 92, 246, 0.05);">
-                    <h3 style="font-size: 0.8rem; color: #8b5cf6; margin: 0 0 10px 0; text-transform: uppercase; font-family: 'JetBrains Mono', monospace;">DevLog:</h3>
-                    <a href="/updates" class="support-btn" style="background: #8b5cf6; color: #fff;">VIEW UPDATES</a>
-                </div>
-            </aside>
-
-            <div class="vertical-divider"></div>
-            <section class="main-content">
-                {{ content }}
-            </section>
-        </div>
-    </main>
-
-    <footer style="max-width: 1260px; margin: 80px auto 40px auto; padding: 0 40px; border-top: 1px solid var(--border-color); padding-top: 50px;">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 50px;">
-            
-            <!-- Kolumna 1: O projekcie -->
-            <div>
-                <h4 style="color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 0.5px;">O projekcie</h4>
-                <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; margin: 0 0 15px 0;">DevLabStudy to autorskie środowisko homelab, dokumentacje sieciowe i aplikacje tworzone z pasji do IT.</p>
-                <div style="font-size: 0.8rem; color: var(--text-muted);">© 2026 Tobiasz Kajzer</div>
             </div>
-
-            <!-- Kolumna 2: Pomoc -->
-            <div>
-                <h4 style="color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 0.5px;">Pomoc</h4>
-                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">
-                    <li><a href="/apps" style="color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-muted)'">Pobieranie aplikacji (APK)</a></li>
-                    <li><a href="mailto:bledy@devlabstudy.ovh" style="color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-muted)'">Zgłoś błąd w apce</a></li>
-                    <li><a href="/homelab" style="color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-muted)'">Dokumentacja Homelab</a></li>
-                </ul>
-            </div>
-
-            <!-- Kolumna 3: Struktura -->
-            <div>
-                <h4 style="color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 0.5px;">Struktura</h4>
-                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">
-                    <li><a href="/" style="color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-muted)'">Strona Główna (Hub)</a></li>
-                    <li><a href="/blog" style="color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-muted)'">Blog & Artykuły</a></li>
-                    <li><a href="/sponsors" style="color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-muted)'">Partnerzy i Sponsorzy</a></li>
-                </ul>
-            </div>
-
-            <!-- Kolumna 4: Kontakt -->
-            <div>
-                <h4 style="color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 0.5px;">Kontakt</h4>
-                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem;">
-                    <li><span style="color: var(--text-muted); display: block; font-size: 0.75rem; margin-bottom: 2px;">Współpraca:</span><a href="mailto:contact@devlabstudy.ovh" style="color: #fff; text-decoration: none; font-weight: 600;">contact@devlabstudy.ovh</a></li>
-                    <li><span style="color: var(--text-muted); display: block; font-size: 0.75rem; margin-bottom: 2px; margin-top: 5px;">Społeczność:</span><a href="mailto:widzowie@devlabstudy.ovh" style="color: #fff; text-decoration: none; font-weight: 600;">widzowie@devlabstudy.ovh</a></li>
-                </ul>
-            </div>
-
         </div>
 
-        <!-- Dolny minimalistyczny pasek -->
-        <div style="text-align: center; padding: 20px 0; border-top: 1px solid rgba(255, 255, 255, 0.04); font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">
-            [ DevLabStudy Infrastructure — All systems operational ]
+        <div style="margin-top: 30px; font-size: 0.75rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">
+            STATUS: <span style="color: #10b981;">● ONLINE</span>
         </div>
-    </footer>
+    </aside>
+
+    <!-- GŁÓWNA ZAWARTOŚĆ STRONY -->
+    <div class="main-wrapper">
+        <header class="top-header">
+            <h1 class="page-title">{% if page.url == "/" %}DevLab <span>Environment</span>{% else %}<span>{{ page.title }}</span>{% endif %}</h1>
+        </header>
+
+        <main class="content-area">
+            {{ content }}
+        </main>
+
+        <footer>
+            <div>
+                <h4>O projekcie</h4>
+                <p style="color: var(--text-muted); line-height: 1.5; margin: 0 0 10px 0;">Autorskie środowisko homelab, dokumentacje sieciowe i aplikacje systemowe.</p>
+                <div style="color: var(--text-muted);">© 2026 Tobiasz Kajzer</div>
+            </div>
+            <div>
+                <h4>Pomoc</h4>
+                <ul>
+                    <li><a href="/apps">Pobieranie aplikacji (APK)</a></li>
+                    <li><a href="mailto:bledy@devlabstudy.ovh">Zgłoś błąd w apce</a></li>
+                    <li><a href="/homelab">Dokumentacja Homelab</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Kontakt</h4>
+                <ul>
+                    <li><a href="mailto:contact@devlabstudy.ovh">contact@devlabstudy.ovh</a></li>
+                    <li><a href="mailto:widzowie@devlabstudy.ovh">widzowie@devlabstudy.ovh</a></li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
 </body>
 </html>
