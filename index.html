@@ -79,7 +79,7 @@ title: Home
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 15px;
-        margin-bottom: 100px;
+        margin-bottom: 80px;
     }
 
     .quick-link-card {
@@ -120,19 +120,19 @@ title: Home
         font-size: 0.75rem;
     }
 
-    /* STATYSTYKI KANALÓW (KLIKALNE KAFLE) */
+    /* STATYSTYKI YOUTUBE (KLIKALNE KAFLE) */
     .stats-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 25px;
-        margin-bottom: 100px;
+        margin-bottom: 80px;
     }
 
     .stat-card {
         background: var(--card-bg);
         border: 1px solid var(--border);
         border-radius: 12px;
-        padding: 35px;
+        padding: 30px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -152,7 +152,7 @@ title: Home
         display: flex;
         align-items: center;
         gap: 15px;
-        margin-bottom: 30px;
+        margin-bottom: 25px;
     }
 
     .stat-icon {
@@ -168,55 +168,21 @@ title: Home
         border: 1px solid rgba(0, 210, 255, 0.2);
     }
 
-    .stat-name {
-        font-weight: 800;
-        font-size: 1.15rem;
-        color: #fff;
-    }
-    .stat-platform {
-        color: var(--text-muted);
-        font-size: 0.85rem;
-        font-family: 'JetBrains Mono', monospace;
-    }
+    .stat-name { font-weight: 800; font-size: 1.15rem; color: #fff; }
+    .stat-platform { color: var(--text-muted); font-size: 0.85rem; font-family: 'JetBrains Mono', monospace; }
 
-    .stat-number-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-    }
-
-    .stat-number {
-        font-size: 3rem;
-        font-weight: 900;
-        color: var(--text-main);
-        font-family: 'JetBrains Mono', monospace;
-        line-height: 1;
-        margin-bottom: 5px;
-    }
-    .stat-label {
-        font-size: 0.85rem;
-        color: var(--accent-contrast);
-        font-family: 'JetBrains Mono', monospace;
-        text-transform: uppercase;
-        font-weight: 700;
-    }
-    .stat-external {
-        color: var(--text-muted);
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.85rem;
-        transition: 0.2s;
-    }
-    .stat-card:hover .stat-external {
-        color: var(--accent-blue);
-        transform: translateX(3px);
-    }
+    .stat-number-row { display: flex; justify-content: space-between; align-items: flex-end; }
+    .stat-number { font-size: 2.8rem; font-weight: 900; color: var(--text-main); font-family: 'JetBrains Mono', monospace; line-height: 1; }
+    .stat-label { font-size: 0.85rem; color: var(--accent-contrast); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; font-weight: 700; }
+    .stat-external { color: var(--text-muted); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; transition: 0.2s; }
+    .stat-card:hover .stat-external { color: var(--accent-blue); transform: translateX(3px); }
 
     /* SPONSOR SECTION */
     .sponsors-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         gap: 25px;
-        margin-bottom: 100px;
+        margin-bottom: 80px;
     }
 
     .sponsor-card {
@@ -246,62 +212,15 @@ title: Home
         background: rgba(10, 15, 25, 0.8);
     }
 
-    .sponsor-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        margin-bottom: 20px;
-    }
+    .sponsor-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+    .sponsor-name { font-size: 1.4rem; font-weight: 900; color: #fff; font-family: 'JetBrains Mono', monospace; letter-spacing: -0.5px; }
+    .sponsor-badge { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; background: rgba(255, 94, 0, 0.1); color: var(--accent-contrast); padding: 4px 10px; border-radius: 20px; border: 1px solid rgba(255, 94, 0, 0.2); font-weight: 700; text-transform: uppercase; }
+    .sponsor-desc { color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; margin-bottom: 25px; }
+    .sponsor-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed rgba(255, 255, 255, 0.06); padding-top: 20px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted); }
+    .sponsor-link { color: var(--accent-blue); font-weight: 700; text-decoration: none; transition: 0.2s; }
+    .sponsor-link:hover { text-decoration: underline; }
 
-    .sponsor-name {
-        font-size: 1.4rem;
-        font-weight: 900;
-        color: #fff;
-        font-family: 'JetBrains Mono', monospace;
-        letter-spacing: -0.5px;
-    }
-
-    .sponsor-badge {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.7rem;
-        background: rgba(255, 94, 0, 0.1);
-        color: var(--accent-contrast);
-        padding: 4px 10px;
-        border-radius: 20px;
-        border: 1px solid rgba(255, 94, 0, 0.2);
-        font-weight: 700;
-        text-transform: uppercase;
-    }
-
-    .sponsor-desc {
-        color: var(--text-muted);
-        font-size: 0.92rem;
-        line-height: 1.6;
-        margin-bottom: 25px;
-    }
-
-    .sponsor-footer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-top: 1px dashed rgba(255, 255, 255, 0.06);
-        padding-top: 20px;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.8rem;
-        color: var(--text-muted);
-    }
-
-    .sponsor-link {
-        color: var(--accent-blue);
-        font-weight: 700;
-        text-decoration: none;
-        transition: 0.2s;
-    }
-    .sponsor-link:hover {
-        text-decoration: underline;
-    }
-
-    /* ARCHIVE LIST */
+    /* DYNAMICZNA LISTA WPISÓW (BLOG FEED) */
     .archive-list {
         display: flex;
         flex-direction: column;
@@ -311,11 +230,12 @@ title: Home
 
     .archive-item {
         display: grid;
-        grid-template-columns: 140px 1fr 120px;
+        grid-template-columns: 160px 1fr 120px;
         padding: 25px 15px;
         border-bottom: 1px solid var(--border);
         align-items: center;
         transition: 0.2s;
+        text-decoration: none;
     }
     
     .archive-item:hover {
@@ -441,27 +361,6 @@ title: Home
             <span class="stat-external">Otwórz kanał ↗</span>
         </div>
     </a>
-
-    <!-- Status Build -->
-    <div class="stat-card" style="cursor: default;">
-        <div>
-            <div class="stat-header">
-                <div class="stat-icon">/</div>
-                <div>
-                    <div class="stat-name">DevLab Network</div>
-                    <div class="stat-platform">@App_Status</div>
-                </div>
-            </div>
-            <div>
-                <div class="stat-number">v1.0</div>
-                <div class="stat-label">Wersja Build</div>
-            </div>
-        </div>
-        <div style="margin-top: 25px; display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed rgba(255,255,255,0.08); padding-top: 15px;">
-            <span style="font-size: 0.8rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">// STATUS SYSTEMU</span>
-            <span style="font-size: 0.8rem; color: var(--accent-blue); font-family: 'JetBrains Mono', monospace;">STABLE</span>
-        </div>
-    </div>
 </div>
 
 <!-- SEKCJA SPONSORÓW I PARTNERÓW -->
@@ -484,32 +383,14 @@ title: Home
     </div>
 </div>
 
-<!-- ARCHIWUM WPISÓW / PROJEKTÓW -->
-<span class="section-tag">DZIENNIK SYSTEMOWY</span>
+<!-- DYNAMICZNY DZIENNIK SYSTEMOWY (NAJNOWSZE WPISY Z BLOGA) -->
+<span class="section-tag">OSTATNIE WPISY / DZIENNIK SYSTEMOWY</span>
 <div class="archive-list">
-    
-    <a href="/apps" class="archive-item">
-        <div class="archive-category">[APP_RELEASE]</div>
-        <div class="archive-title">PREMIERA: DEVLAB NETWORK TOOLKIT NA ANDROIDA</div>
-        <div class="archive-date">2026.10.03</div>
+    {% for post in site.posts limit:5 %}
+    <a href="{{ post.url | relative_url }}" class="archive-item">
+        <div class="archive-category">[{{ post.category | default: "SYSTEM" | upcase }}]</div>
+        <div class="archive-title">{{ post.title | upcase }}</div>
+        <div class="archive-date">{{ post.date | date: "%Y.%m.%d" }}</div>
     </a>
-
-    <a href="/homelab" class="archive-item">
-        <div class="archive-category">[HARDWARE]</div>
-        <div class="archive-title">NOWA SZAFA 19" 9U I ZASILANIE PDU W HOMELABIE</div>
-        <div class="archive-date">2026.08.25</div>
-    </a>
-
-    <a href="/blog/proxmox-setup" class="archive-item">
-        <div class="archive-category">[VIRTUAL]</div>
-        <div class="archive-title">WDRAŻANIE PROXMOX VE NA INTEL NUC I TERMINALACH FUJITSU</div>
-        <div class="archive-date">2026.08.12</div>
-    </a>
-
-    <a href="/blog/networking" class="archive-item">
-        <div class="archive-category">[NETWORK]</div>
-        <div class="archive-title">ROUTER-ON-A-STICK: MIKROTIK + CISCO CATALYST 2960C</div>
-        <div class="archive-date">2026.07.28</div>
-    </a>
-
+    {% endfor %}
 </div>
