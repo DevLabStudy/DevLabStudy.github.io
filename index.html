@@ -74,7 +74,7 @@ title: Home
         transform: translateY(-2px);
     }
 
-    /* QUICK LINKS / SOCIAL PANEL (Szybkie linki do social mediów i wsparcia) */
+    /* QUICK LINKS / SOCIAL PANEL */
     .quick-links-bar {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -120,7 +120,7 @@ title: Home
         font-size: 0.75rem;
     }
 
-    /* SOCIAL STATS CARDS */
+    /* STATYSTYKI KANALÓW (KLIKALNE KAFLE) */
     .stats-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -135,13 +135,17 @@ title: Home
         padding: 35px;
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
+        text-decoration: none;
         backdrop-filter: blur(10px);
         transition: 0.3s;
     }
     
     .stat-card:hover {
-        border-color: rgba(0, 210, 255, 0.4);
-        background: rgba(10, 15, 25, 0.8);
+        border-color: var(--accent-blue);
+        background: rgba(10, 15, 25, 0.85);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(0, 210, 255, 0.1);
     }
 
     .stat-header {
@@ -167,11 +171,18 @@ title: Home
     .stat-name {
         font-weight: 800;
         font-size: 1.15rem;
+        color: #fff;
     }
     .stat-platform {
         color: var(--text-muted);
         font-size: 0.85rem;
         font-family: 'JetBrains Mono', monospace;
+    }
+
+    .stat-number-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
     }
 
     .stat-number {
@@ -188,6 +199,16 @@ title: Home
         font-family: 'JetBrains Mono', monospace;
         text-transform: uppercase;
         font-weight: 700;
+    }
+    .stat-external {
+        color: var(--text-muted);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85rem;
+        transition: 0.2s;
+    }
+    .stat-card:hover .stat-external {
+        color: var(--accent-blue);
+        transform: translateX(3px);
     }
 
     /* SPONSOR SECTION */
@@ -351,19 +372,11 @@ title: Home
 <!-- SZYBKI PANEL LINKÓW (SOCIAL MEDIA & WSPARCIE) -->
 <span class="section-tag">KANAŁY ZEWNĘTRZNE & WSPARCIE</span>
 <div class="quick-links-bar">
-    <a href="https://github.com" target="_blank" class="quick-link-card">
+    <a href="https://github.com/DevLabStudy" target="_blank" class="quick-link-card">
         <div class="quick-link-icon">gh</div>
         <div class="quick-link-info">
             <span class="ql-title">GitHub</span>
             <span class="ql-sub">Repozytoria kodu</span>
-        </div>
-    </a>
-
-    <a href="https://youtube.com" target="_blank" class="quick-link-card">
-        <div class="quick-link-icon">yt</div>
-        <div class="quick-link-info">
-            <span class="ql-title">YouTube</span>
-            <span class="ql-sub">DevLabStudy & PC Hub</span>
         </div>
     </a>
 
@@ -384,48 +397,69 @@ title: Home
     </a>
 </div>
 
-<!-- STATYSTYKI -->
+<!-- STATYSTYKI YOUTUBE (KLIKALNE KAFLE) -->
 <span class="section-tag">AKTYWNE WĘZŁY SPOŁECZNOŚCI</span>
 <div class="stats-grid">
-    <div class="stat-card">
-        <div class="stat-header">
-            <div class="stat-icon">▶</div>
+    <!-- DevLabStudy YouTube -->
+    <a href="https://www.youtube.com/channel/UCisFPSU_Y8hznpqrcewcJAg" target="_blank" class="stat-card">
+        <div>
+            <div class="stat-header">
+                <div class="stat-icon">▶</div>
+                <div>
+                    <div class="stat-name">DevLabStudy</div>
+                    <div class="stat-platform">@YouTube</div>
+                </div>
+            </div>
             <div>
-                <div class="stat-name">DevLabStudy</div>
-                <div class="stat-platform">@YouTube</div>
+                <div class="stat-number">34</div>
+                <div class="stat-label">Subskrypcji</div>
             </div>
         </div>
-        <div>
-            <div class="stat-number">34</div>
-            <div class="stat-label">Subskrypcji</div>
+        <div style="margin-top: 25px; display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed rgba(255,255,255,0.08); padding-top: 15px;">
+            <span style="font-size: 0.8rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">// GŁÓWNY KANAŁ</span>
+            <span class="stat-external">Otwórz kanał ↗</span>
         </div>
-    </div>
+    </a>
 
-    <div class="stat-card">
-        <div class="stat-header">
-            <div class="stat-icon">💻</div>
+    <!-- PC Hub YouTube -->
+    <a href="https://www.youtube.com/channel/UCaTfVaE8Pb95CZvblqjNheA" target="_blank" class="stat-card">
+        <div>
+            <div class="stat-header">
+                <div class="stat-icon">💻</div>
+                <div>
+                    <div class="stat-name">PC Hub</div>
+                    <div class="stat-platform">@YouTube</div>
+                </div>
+            </div>
             <div>
-                <div class="stat-name">PC Hub</div>
-                <div class="stat-platform">@YouTube</div>
+                <div class="stat-number">0</div>
+                <div class="stat-label">Subskrypcji</div>
             </div>
         </div>
-        <div>
-            <div class="stat-number">0</div>
-            <div class="stat-label">Subskrypcji</div>
+        <div style="margin-top: 25px; display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed rgba(255,255,255,0.08); padding-top: 15px;">
+            <span style="font-size: 0.8rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">// HARDWARE & TEARDOWNS</span>
+            <span class="stat-external">Otwórz kanał ↗</span>
         </div>
-    </div>
+    </a>
 
-    <div class="stat-card">
-        <div class="stat-header">
-            <div class="stat-icon">/</div>
+    <!-- Status Build -->
+    <div class="stat-card" style="cursor: default;">
+        <div>
+            <div class="stat-header">
+                <div class="stat-icon">/</div>
+                <div>
+                    <div class="stat-name">DevLab Network</div>
+                    <div class="stat-platform">@App_Status</div>
+                </div>
+            </div>
             <div>
-                <div class="stat-name">DevLab Network</div>
-                <div class="stat-platform">@App_Status</div>
+                <div class="stat-number">v1.0</div>
+                <div class="stat-label">Wersja Build</div>
             </div>
         </div>
-        <div>
-            <div class="stat-number">v1.0</div>
-            <div class="stat-label">Wersja Build</div>
+        <div style="margin-top: 25px; display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed rgba(255,255,255,0.08); padding-top: 15px;">
+            <span style="font-size: 0.8rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">// STATUS SYSTEMU</span>
+            <span style="font-size: 0.8rem; color: var(--accent-blue); font-family: 'JetBrains Mono', monospace;">STABLE</span>
         </div>
     </div>
 </div>
