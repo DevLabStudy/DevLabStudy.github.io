@@ -1,0 +1,228 @@
+---
+layout: default
+title: Kontakt
+---
+<style>
+    .contact-intro {
+        max-width: 800px;
+        margin-bottom: 50px;
+    }
+    .contact-intro h1 {
+        font-size: 3rem;
+        font-weight: 900;
+        margin: 0 0 15px 0;
+        letter-spacing: -1px;
+    }
+    .contact-intro p {
+        color: var(--text-muted);
+        font-size: 1.05rem;
+        line-height: 1.7;
+    }
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+        gap: 25px;
+        margin-bottom: 60px;
+    }
+
+    .contact-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 30px;
+        backdrop-filter: blur(10px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: 0.3s;
+    }
+
+    .contact-card:hover {
+        border-color: rgba(0, 210, 255, 0.4);
+        transform: translateY(-3px);
+    }
+
+    .contact-category {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.75rem;
+        color: var(--accent-contrast);
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 10px;
+        font-weight: 700;
+    }
+
+    .contact-title {
+        font-size: 1.2rem;
+        font-weight: 800;
+        margin: 0 0 12px 0;
+        color: #fff;
+    }
+
+    .contact-desc {
+        color: var(--text-muted);
+        font-size: 0.88rem;
+        line-height: 1.6;
+        margin-bottom: 25px;
+    }
+
+    .email-box {
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px dashed var(--border);
+        padding: 12px 16px;
+        border-radius: 8px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85rem;
+        color: var(--accent-blue);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        word-break: break-all;
+    }
+
+    .email-box a {
+        color: var(--accent-blue);
+        text-decoration: none;
+    }
+    .email-box a:hover {
+        text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+        .contact-grid { grid-template-columns: 1fr; }
+        .contact-intro h1 { font-size: 2.2rem; }
+    }
+</style>
+
+<div class="contact-intro">
+    <span class="section-tag">CENTRUM KOMUNIKACJI</span>
+    <h1>Kanały Kontaktowe</h1>
+    <p>
+        W zależności od tego, z czym się do mnie zgłaszasz, wybierz odpowiedni adres e-mail poniżej. Pozwala mi to na szybkie sortowanie i obsługę zgłoszeń technicznych, błędów oraz propozycji współprac.
+    </p>
+</div>
+
+<div class="contact-grid">
+
+    <!-- DevLabStudy Główny -->
+    <div class="contact-card">
+        <div>
+            <div class="contact-category">// OGÓLNE & BIZNES</div>
+            <h3 class="contact-title">DevLabStudy - Kontakt Główny</h3>
+            <p class="contact-desc">Główny adres do korespondencji ogólnej, oficjalnych zapytań i propozycji współpracy sponsorskiej.</p>
+        </div>
+        <div class="email-box">
+            <a href="mailto:contact@devlabstudy.ovh">contact@devlabstudy.ovh</a>
+        </div>
+    </div>
+
+    <!-- DevLabStudy Ogólny / Alternate -->
+    <div class="contact-card">
+        <div>
+            <div class="contact-category">// PORTAL / SYSTEM</div>
+            <h3 class="contact-title">DevLabStudy System</h3>
+            <p class="contact-desc">Zapasowy adres systemowy powiązany z domeną główną platformy.</p>
+        </div>
+        <div class="email-box">
+            <a href="mailto:devlabstudy@devlabstudy.ovh">devlabstudy@devlabstudy.ovh</a>
+        </div>
+    </div>
+
+    <!-- Wsparcie / Błędy aplikacyjne -->
+    <div class="contact-card">
+        <div>
+            <div class="contact-category">// SUPPORT & APPS</div>
+            <h3 class="contact-title">Zgłaszanie Błędów (Aplikacje / Homelab)</h3>
+            <p class="contact-desc">Znalazłeś buga w DevLab Network Toolkit lub masz problem z działaniem skryptu? Pisz tutaj.</p>
+        </div>
+        <div class="email-box">
+            <a href="mailto:bledy@devlabstudy.ovh">bledy@devlabstudy.ovh</a>
+        </div>
+    </div>
+
+    <!-- Support Ogólny DevLab -->
+    <div class="contact-card">
+        <div>
+            <div class="contact-category">// POMOC TECHNICZNA</div>
+            <h3 class="contact-title">DevLab Support</h3>
+            <p class="contact-desc">Ogólne wsparcie techniczne dla użytkowników i widzów korzystających z zasobów.</p>
+        </div>
+        <div class="email-box">
+            <a href="mailto:support@devlabstudy.ovh">support@devlabstudy.ovh</a>
+        </div>
+    </div>
+
+    <!-- Widzowie DevLab -->
+    <div class="contact-card">
+        <div>
+            <div class="contact-category">// SPOŁECZNOŚĆ</div>
+            <h3 class="contact-title">Widzowie DevLabStudy</h3>
+            <p class="contact-desc">Sekcja dedykowana społeczności, pytania od widzów i luźniejsze inicjatywy.</p>
+        </div>
+        <div class="email-box">
+            <a href="mailto:widzowie@devlabstudy.ovh">widzowie@devlabstudy.ovh</a>
+        </div>
+    </div>
+
+    <!-- PC HUB Główny -->
+    <div class="contact-card">
+        <div>
+            <div class="contact-category">// KANAŁ SPRZĘTOWY</div>
+            <h3 class="contact-title">PC Hub</h3>
+            <p class="contact-desc">Adres dedykowany projektowi drugiego kanału skupionego na testach hardware i retro PC.</p>
+        </div>
+        <div class="email-box">
+            <a href="mailto:pc-hub@devlabstudy.ovh">pc-hub@devlabstudy.ovh</a>
+        </div>
+    </div>
+
+    <!-- PC HUB Collab -->
+    <div class="contact-card">
+        <div>
+            <div class="contact-category">// PC HUB BIZNES</div>
+            <h3 class="contact-title">PC Hub - Współpraca</h3>
+            <p class="contact-desc">Zapytania komercyjne oraz testy sprzętu od producentów skierowane dla kanału PC Hub.</p>
+        </div>
+        <div class="email-box">
+            <a href="mailto:contact.pc-hub@devlabstudy.ovh">contact.pc-hub@devlabstudy.ovh</a>
+        </div>
+    </div>
+
+    <!-- PC HUB Widzowie -->
+    <div class="contact-card">
+        <div>
+            <div class="contact-category">// PC HUB SPOŁECZNOŚĆ</div>
+            <h3 class="contact-title">PC Hub Widzowie</h3>
+            <p class="contact-desc">Kontakt bezpośrednio od widzów i entuzjastów majsterkowania sprzętowego.</p>
+        </div>
+        <div class="email-box">
+            <a href="mailto:widzowie.pc-hub@devlabstudy.ovh">widzowie.pc-hub@devlabstudy.ovh</a>
+        </div>
+    </div>
+
+    <!-- RokiTOS Support -->
+    <div class="contact-card">
+        <div>
+            <div class="contact-category">// PROJEKT ROKITOS</div>
+            <h3 class="contact-title">RokiTOS Support</h3>
+            <p class="contact-desc">Wsparcie techniczne i zapytania dotyczące rozwoju i modyfikacji systemu RokiTOS.</p>
+        </div>
+        <div class="email-box">
+            <a href="mailto:support.rokitos@devlabstudy.ovh">support.rokitos@devlabstudy.ovh</a>
+        </div>
+    </div>
+
+    <!-- RokiTOS Bugs -->
+    <div class="contact-card">
+        <div>
+            <div class="contact-category">// PROJEKT ROKITOS</div>
+            <h3 class="contact-title">RokiTOS Bug Tracker</h3>
+            <p class="contact-desc">Zgłaszanie błędów, problemów z kompatybilnością oraz issue reports dla RokiTOS.</p>
+        </div>
+        <div class="email-box">
+            <a href="mailto:bugs.rokitos@devlabstudy.ovh">bugs.rokitos@devlabstudy.ovh</a>
+        </div>
+    </div>
+
+</div>
