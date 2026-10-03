@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: update
 title: Aktualizacja homelabu i premiera DevLab Network Toolkit!
 permalink: /updates/homelab-and-apps-update/
 ---
