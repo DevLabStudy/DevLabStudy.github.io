@@ -154,23 +154,50 @@
         </div>
     </main>
 
-    <footer style="max-width: 1200px; margin: 60px auto 40px auto; padding: 0 40px;">
-        <div class="card" style="border-style: dashed; text-align: center; padding: 40px; background: rgba(10, 10, 10, 0.5);">
-            <h3 style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 25px; text-transform: uppercase;">[ Communication_Channels ]</h3>
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px;">
-                <div style="text-align: center;">
-                    <div style="font-size: 0.7rem; color: var(--text-muted); margin-bottom: 5px;">BUSINESS / COLLABORATION</div>
-                    <a href="mailto:contact@devlabstudy.ovh" style="color: #fff; font-weight: 700; text-decoration: none; border-bottom: 2px solid var(--accent-blue);">contact@devlabstudy.ovh</a>
-                </div>
-                <div style="text-align: center;">
-                    <div style="font-size: 0.7rem; color: var(--text-muted); margin-bottom: 5px;">COMMUNITY / SUPPORT</div>
-                    <a href="mailto:widzowie@devlabstudy.ovh" style="color: #fff; font-weight: 700; text-decoration: none; border-bottom: 2px solid #64748b;">widzowie@devlabstudy.ovh</a>
-                </div>
-                <div style="text-align: center;">
-                    <div style="font-size: 0.7rem; color: var(--text-muted); margin-bottom: 5px;">BUG REPORTING / APPS</div>
-                    <a href="mailto:bledy@devlabstudy.ovh" style="color: #fff; font-weight: 700; text-decoration: none; border-bottom: 2px solid #ef4444;">bledy@devlabstudy.ovh</a>
-                </div>
+    <footer style="max-width: 1260px; margin: 80px auto 40px auto; padding: 0 40px; border-top: 1px solid var(--border-color); padding-top: 50px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 50px;">
+            
+            <!-- Kolumna 1: O projekcie -->
+            <div>
+                <h4 style="color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 0.5px;">O projekcie</h4>
+                <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; margin: 0 0 15px 0;">DevLabStudy to autorskie środowisko homelab, dokumentacje sieciowe i aplikacje tworzone z pasji do IT.</p>
+                <div style="font-size: 0.8rem; color: var(--text-muted);">© 2026 Tobiasz Kajzer</div>
             </div>
+
+            <!-- Kolumna 2: Pomoc -->
+            <div>
+                <h4 style="color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 0.5px;">Pomoc</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">
+                    <li><a href="/apps" style="color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-muted)'">Pobieranie aplikacji (APK)</a></li>
+                    <li><a href="mailto:bledy@devlabstudy.ovh" style="color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-muted)'">Zgłoś błąd w apce</a></li>
+                    <li><a href="/homelab" style="color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-muted)'">Dokumentacja Homelab</a></li>
+                </ul>
+            </div>
+
+            <!-- Kolumna 3: Struktura -->
+            <div>
+                <h4 style="color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 0.5px;">Struktura</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">
+                    <li><a href="/" style="color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-muted)'">Strona Główna (Hub)</a></li>
+                    <li><a href="/blog" style="color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-muted)'">Blog & Artykuły</a></li>
+                    <li><a href="/sponsors" style="color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-muted)'">Partnerzy i Sponsorzy</a></li>
+                </ul>
+            </div>
+
+            <!-- Kolumna 4: Kontakt -->
+            <div>
+                <h4 style="color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 0.5px;">Kontakt</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem;">
+                    <li><span style="color: var(--text-muted); display: block; font-size: 0.75rem; margin-bottom: 2px;">Współpraca:</span><a href="mailto:contact@devlabstudy.ovh" style="color: #fff; text-decoration: none; font-weight: 600;">contact@devlabstudy.ovh</a></li>
+                    <li><span style="color: var(--text-muted); display: block; font-size: 0.75rem; margin-bottom: 2px; margin-top: 5px;">Społeczność:</span><a href="mailto:widzowie@devlabstudy.ovh" style="color: #fff; text-decoration: none; font-weight: 600;">widzowie@devlabstudy.ovh</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Dolny minimalistyczny pasek -->
+        <div style="text-align: center; padding: 20px 0; border-top: 1px solid rgba(255, 255, 255, 0.04); font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">
+            [ DevLabStudy Infrastructure — All systems operational ]
         </div>
     </footer>
 </body>
