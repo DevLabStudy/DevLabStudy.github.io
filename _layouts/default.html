@@ -51,7 +51,7 @@
         .sidebar-top {
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 25px;
         }
 
         .sidebar-brand {
@@ -70,14 +70,14 @@
         .sidebar-nav {
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 4px;
         }
         .sidebar-nav a {
             text-decoration: none;
             color: var(--text-muted);
             font-weight: 600;
             font-size: 0.9rem;
-            padding: 10px 14px;
+            padding: 9px 14px;
             border-radius: 8px;
             transition: 0.2s;
             display: flex;
@@ -96,37 +96,37 @@
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 8px;
-            margin-top: 15px;
+            margin-bottom: 6px;
+            margin-top: 12px;
         }
 
         .sidebar-cards {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin-top: 10px;
+            gap: 10px;
         }
 
         .card { 
             background: var(--card-bg); 
             border: 1px solid var(--border-color); 
-            padding: 14px; 
+            padding: 12px; 
             border-radius: 10px; 
             backdrop-filter: blur(10px); 
         }
-        .vinted-card { border-color: rgba(0, 191, 178, 0.3) !important; }
         .support-btn { 
             display: block; 
             text-decoration: none; 
-            padding: 10px; 
+            padding: 9px; 
             border-radius: 6px; 
             font-weight: 800; 
             font-size: 0.75rem; 
             text-align: center; 
-            margin-top: 8px; 
+            margin-top: 6px; 
             transition: 0.2s; 
         }
         .support-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+        .do-badge { display: block; margin-top: 6px; }
+        .do-badge img { width: 100%; border-radius: 6px; display: block; }
 
         /* == GŁÓWNA TREŚĆ == */
         .main-wrapper {
@@ -228,20 +228,22 @@
 
             <div class="sidebar-cards">
                 <div class="sidebar-section-title">Marketplace</div>
-                <div class="card vinted-card">
+                <div class="card" style="border-color: rgba(0, 191, 178, 0.3);">
                     <a href="https://www.vinted.pl/member/306118036" target="_blank" class="support-btn" style="background: #00bfb2; color: #fff;">VINTED</a>
+                    <a href="#" target="_blank" class="support-btn" style="background: #002f34; border: 1px solid #23e5db; color: #fff;">OLX</a>
                     <a href="https://allegrolokalnie.pl/uzytkownik/Client:137881965" target="_blank" class="support-btn" style="background: #ff5a00; color: #fff;">ALLEGRO LOKALNIE</a>
                 </div>
 
                 <div class="sidebar-section-title">Support</div>
                 <div class="card" style="border-color: rgba(59, 130, 246, 0.3);">
                     <a href="https://patreon.com/DevLabStudy" target="_blank" class="support-btn" style="background: #e11d48; color: #fff;">PATREON</a>
+                    <a href="https://www.digitalocean.com/?refcode=6fd6e2226432" class="do-badge" target="_blank"><img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg" /></a>
                     <a href="https://www.buymeacoffee.com/DevLabStudy" target="_blank" class="support-btn" style="background: #FFDD00; color: #000;">BUY ME A COFFEE</a>
                 </div>
             </div>
         </div>
 
-        <div style="margin-top: 30px; font-size: 0.75rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">
+        <div style="margin-top: 20px; font-size: 0.75rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">
             STATUS: <span style="color: #10b981;">● ONLINE</span>
         </div>
     </aside>
