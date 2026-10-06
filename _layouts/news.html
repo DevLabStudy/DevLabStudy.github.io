@@ -252,7 +252,7 @@ layout: default
     .comment-action-btn:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
     .comment-action-btn.delete:hover { color: #ef4444; }
 
-    /* PŁYWAJĄCY PRZYCISK POWROTU DO ARCHIWUM NEWSÓW */
+    /* STAŁY PŁYWAJĄCY PRZYCISK POWROTU DO NEWSÓW (ZAWSZE WIDOCZNY) */
     .back-to-news-floating {
         position: fixed;
         bottom: 30px;
@@ -273,14 +273,7 @@ layout: default
         gap: 8px;
         z-index: 999;
         transition: 0.3s ease;
-        opacity: 0;
-        visibility: hidden;
         text-decoration: none;
-    }
-
-    .back-to-news-floating.visible {
-        opacity: 1;
-        visibility: visible;
     }
 
     .back-to-news-floating:hover {
@@ -333,7 +326,7 @@ layout: default
         </section>
     </article>
 
-    <!-- BOCZNY PANEL: SPIS TREŚCI (TOC) -->
+    <!-- BOCZny PANEL: SPIS TREŚCI (TOC) -->
     <aside class="sidebar-toc">
         <h4 class="toc-title">// Spis Treści</h4>
         <ul class="toc-list" id="tocList"></ul>
@@ -341,8 +334,8 @@ layout: default
 
 </div>
 
-<!-- PŁYWAJĄCY PRZYCISK POWROTU DO LISTY NEWSÓW -->
-<a href="/newsy.html" id="backToNewsBtn" class="back-to-news-floating">
+<!-- STAŁY PŁYWAJĄCY PRZYCISK POWROTU DO LISTY NEWSÓW -->
+<a href="/newsy" class="back-to-news-floating">
     <span>&larr;</span> // NEWSY
 </a>
 
@@ -370,18 +363,6 @@ layout: default
     const currentTitle = encodeURIComponent(document.title);
     document.getElementById('shareX').href = `https://twitter.com/intent/tweet?url=${currentUrl}&text=${currentTitle}`;
     document.getElementById('shareFB').href = `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`;
-
-    // OBSŁUGA PŁYWAJĄCEGO PRZYCISKU POWROTU DO NEWSÓW
-    const backToNewsBtn = document.getElementById('backToNewsBtn');
-
-    window.addEventListener('scroll', () => {
-        // Pokaż przycisk, gdy użytkownik przewinie stronę w dół o więcej niż 300px
-        if (window.scrollY > 300) {
-            backToNewsBtn.classList.add('visible');
-        } else {
-            backToNewsBtn.classList.remove('visible');
-        }
-    });
 
     // SYSTEM KOMENTARZY (LOCALSTORAGE)
     const postId = window.location.pathname;
