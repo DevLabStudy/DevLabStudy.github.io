@@ -2,8 +2,7 @@
 layout: post
 title: "Dostawa sprzętu: Profesjonalne narzędzia do zarabiania kabli i keystonów"
 date: 2026-08-15
-categories: [homelab, networking, hardware]
-image: /assets/images/narzedzia.jpg
+category: homelab
 ---
 
 Kolejny krok w stronę uporządkowania sieci i przygotowań pod szafy rackowe zrobiony! Do DevLabu dotarła paczka z kompletem narzędzi oraz akcesoriów do tworzenia własnego okablowania ethernetowego.
