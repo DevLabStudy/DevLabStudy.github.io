@@ -4,7 +4,6 @@ title: "Tech Briefs & News"
 ---
 
 <style>
-    /* SEKCJA NAGŁÓWKA I WYSZUKIWARKI */
     .newsy-hero {
         max-width: 1200px;
         margin: 0 auto 30px auto;
@@ -31,7 +30,6 @@ title: "Tech Briefs & News"
         color: #fff;
     }
 
-    /* PASEK FILTRÓW KATEGORII (DYNAMICZNY) */
     .newsy-filters {
         max-width: 1200px;
         margin: 0 auto 30px auto;
@@ -66,7 +64,6 @@ title: "Tech Briefs & News"
         color: #0f172a;
     }
 
-    /* WYSZUKIWARKA W STYLU TERMINALA */
     .search-container {
         position: relative;
         width: 100%;
@@ -103,7 +100,6 @@ title: "Tech Briefs & News"
         pointer-events: none;
     }
 
-    /* SIATKA KAFELKÓW NEWSÓW */
     .newsy-grid {
         max-width: 1200px;
         margin: 0 auto;
@@ -146,7 +142,6 @@ title: "Tech Briefs & News"
         background: var(--accent-blue);
     }
 
-    /* MINIATURKA ZDJĘCIA NA KAFELKU */
     .news-card-thumb {
         width: 100%;
         height: 200px;
@@ -239,7 +234,6 @@ title: "Tech Briefs & News"
             <h1>Tech Briefs & News</h1>
         </div>
         
-        <!-- WYSZUKIWARKA -->
         <div class="search-container">
             <span class="search-icon">&gt;</span>
             <input type="text" id="newsSearch" class="search-input" placeholder="Szukaj po tytule newsa...">
@@ -247,16 +241,11 @@ title: "Tech Briefs & News"
     </div>
 </div>
 
-<!-- DYNAMICZNY PASEK FILTRÓW KATEGORII (Pobiera kategorie bezpośrednio z postów) -->
 <div class="newsy-filters" id="categoryFilters">
     <button class="filter-btn active" data-filter="all">Wszystkie</button>
     {% assign raw_cats = "" %}
     {% for post in site.newsy %}
-        {% if post.categories %}
-            {% for cat in post.categories %}
-                {% assign raw_cats = raw_cats | append: cat | append: "," %}
-            {% endfor %}
-        {% elsif post.category %}
+        {% if post.category %}
             {% assign raw_cats = raw_cats | append: post.category | append: "," %}
         {% endif %}
     {% endfor %}
@@ -271,7 +260,6 @@ title: "Tech Briefs & News"
 
 <div class="newsy-grid" id="newsGrid">
     {% for post in site.newsy %}
-        <!-- BEZPIECZNE POBIERANIE MINIATURKI (Najpierw zmienna 'image', potem szukanie w tekście) -->
         {% assign post_thumb = post.image %}
         {% unless post_thumb %}
             {% if post.content contains '<img' %}
@@ -283,10 +271,9 @@ title: "Tech Briefs & News"
             {% endif %}
         {% endunless %}
 
-        <!-- OBSŁUGA WIELU KATEGORII W ATRYBUCIE DATA -->
-        {% capture cat_attr %}{% if post.categories %}{% for c in post.categories %}{{ c | downcase }} {% endfor %}{% else %}{{ post.category | default: "brief" | downcase }}{% endif %}{% endcapture %}
+        {% assign post_cat = post.category | default: "brief" | downcase %}
 
-    <a href="{{ post.url }}" class="news-card" data-title="{{ post.title | downcase }}" data-categories="{{ cat_attr | strip }}">
+    <a href="{{ post.url }}" class="news-card" data-title="{{ post.title | downcase }}" data-category="{{ post_cat }}">
         <div style="display: flex; flex-direction: column; height: 100%;">
             {% if post_thumb %}
                 <img src="{{ post_thumb }}" alt="{{ post.title }}" class="news-card-thumb">
@@ -294,7 +281,7 @@ title: "Tech Briefs & News"
             <div class="news-card-content">
                 <div>
                     <div class="news-card-meta">
-                        <span class="news-card-tag">[{{ post.category | default: post.categories.first | default: "BRIEF" | upcase }}]</span>
+                        <span class="news-card-tag">[{{ post.category | default: "BRIEF" | upcase }}]</span>
                         <span>// {{ post.date | date: "%Y.%m.%d" }}</span>
                     </div>
                     <h2 class="news-card-title">{{ post.title }}</h2>
@@ -335,9 +322,9 @@ title: "Tech Briefs & News"
 
         cards.forEach(card => {
             const title = card.getAttribute('data-title');
-            const categories = card.getAttribute('data-categories');
+            const category = card.getAttribute('data-category');
 
-            const matchesCategory = (currentCategory === 'all' || categories.includes(currentCategory));
+            const matchesCategory = (currentCategory === 'all' || category.includes(currentCategory));
             const matchesQuery = title.includes(currentQuery);
 
             if (matchesCategory && matchesQuery) {
