@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Inwestycja w Hardware: Dlaczego Homelab potrzebuje nowej lutownicy i multimetru?"
+category: hardware
 ---
 
 Zwykle piszę o tym, co dzieje się wewnątrz systemu **Linux Mint**, ale każdy admin wie, że w końcu przychodzi moment, kiedy trzeba zdjąć obudowę z serwera. Mój warsztat wzbogacił się właśnie o dwa kluczowe narzędzia: nową stację lutowniczą i precyzyjny multimetr.
