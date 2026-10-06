@@ -9,7 +9,6 @@ title: System Logs & Blog
         padding: 50px 40px !important;
     }
 
-    /* NAGŁÓWEK SEKCJI */
     .blog-header {
         margin-bottom: 40px;
         border-bottom: 1px solid var(--border);
@@ -28,7 +27,6 @@ title: System Logs & Blog
         font-family: 'JetBrains Mono', monospace;
     }
 
-    /* PANEL STEROWANIA: FILTRY I WYSZUKIWARKA */
     .blog-controls {
         display: flex;
         justify-content: space-between;
@@ -86,7 +84,6 @@ title: System Logs & Blog
         box-shadow: 0 0 15px rgba(0, 210, 255, 0.15);
     }
 
-    /* SIATKA / LISTA WPISÓW TECHNICZNYCH */
     .posts-container {
         display: flex;
         flex-direction: column;
@@ -179,14 +176,14 @@ title: System Logs & Blog
     <div class="blog-subtitle">// REJESTR ZMIAN, KONFIGURACJI I WDROŻEŃ W HOMELABIE</div>
 </div>
 
-<!-- PANEL FILTRÓW I WYSZUKIWARKI -->
+<!-- PANEL FILTRÓW GENEROWANY DYNAMICZNIE Z POSTÓW + WYSZUKIWARKA -->
 <div class="blog-controls">
     <div class="filter-group" id="categoryFilters">
         <button class="filter-btn active" data-filter="all">Wszystkie</button>
-        <button class="filter-btn" data-filter="homelab">Homelab</button>
-        <button class="filter-btn" data-filter="networking">Networking</button>
-        <button class="filter-btn" data-filter="hardware">Hardware</button>
-        <button class="filter-btn" data-filter="code">Code & Apps</button>
+        {% assign raw_categories = site.posts | map: "category" | compact | uniq %}
+        {% for cat in raw_categories %}
+        <button class="filter-btn" data-filter="{{ cat | downcase }}">{{ cat | upcase }}</button>
+        {% endfor %}
     </div>
     <div>
         <input type="text" id="searchInput" class="search-input" placeholder="Szukaj we wpisach...">
@@ -210,7 +207,7 @@ title: System Logs & Blog
     {% endfor %}
 </div>
 
-<!-- SKRYPT DO FILTROWANIA I WYSZUKIWANIA W CZASIE RZECZYWISTYM -->
+<!-- SKRYPT DO FILTROWANIA I WYSZUKIWANIA -->
 <script>
     const filterBtns = document.querySelectorAll('.filter-btn');
     const searchInput = document.getElementById('searchInput');
@@ -218,7 +215,6 @@ title: System Logs & Blog
 
     let currentCategory = 'all';
 
-    // Obsługa kliknięcia filtrów kategorii
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             filterBtns.forEach(b => b.classList.remove('active'));
@@ -228,7 +224,6 @@ title: System Logs & Blog
         });
     });
 
-    // Obsługa wyszukiwarki
     searchInput.addEventListener('input', () => {
         filterPosts();
     });
@@ -240,7 +235,7 @@ title: System Logs & Blog
             const category = card.getAttribute('data-category');
             const title = card.getAttribute('data-title');
 
-            const matchesCategory = (currentCategory === 'all' || category.includes(currentCategory));
+            const matchesCategory = (currentCategory === 'all' || category === currentCategory);
             const matchesSearch = title.includes(query);
 
             if (matchesCategory && matchesSearch) {
