@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Starcie z rzeczywistością: 17 Mb/s u dziadków kontra mój domowy stack sieciowy"
+category: networking
 ---
 
 [![Wykres zapytań DNS](/assets/images/54c5c053-32d8-461d-b65b-fe70903c3900.png)](/assets/images/54c5c053-32d8-461d-b65b-fe70903c3900.png)
