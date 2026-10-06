@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Hardware-owa archeologia: Czy w 2026 roku złącze AGP może nas jeszcze czegoś nauczyć?"
+category: hardware
 ---
 
 [![Karta graficzna AGP](/assets/images/IMG_20260313_190450.jpg)](/assets/images/IMG_20260313_190450.jpg)
