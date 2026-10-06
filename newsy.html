@@ -31,7 +31,7 @@ title: "Tech Briefs & News"
         color: #fff;
     }
 
-    /* PASEK FILTRÓW KATEGORII (W STYLU PORTALU) */
+    /* PASEK FILTRÓW KATEGORII */
     .newsy-filters {
         max-width: 1200px;
         margin: 0 auto 30px auto;
@@ -121,7 +121,6 @@ title: "Tech Briefs & News"
         backdrop-filter: blur(10px);
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
         transition: 0.3s;
         position: relative;
         overflow: hidden;
@@ -147,6 +146,7 @@ title: "Tech Briefs & News"
         background: var(--accent-blue);
     }
 
+    /* MINIATURKA ZDJĘCIA NA KAFELKU */
     .news-card-thumb {
         width: 100%;
         height: 200px;
@@ -271,7 +271,7 @@ title: "Tech Briefs & News"
         {% assign post_cat = post.category | default: "brief" | downcase %}
 
     <a href="{{ post.url }}" class="news-card" data-title="{{ post.title | downcase }}" data-category="{{ post_cat }}">
-        <div>
+        <div style="display: flex; flex-direction: column; height: 100%;">
             {% if post_thumb %}
                 <img src="{{ post_thumb }}" alt="{{ post.title }}" class="news-card-thumb">
             {% endif %}
@@ -339,13 +339,11 @@ title: "Tech Briefs & News"
         }
     }
 
-    // Nasłuchiwanie wpisywania w wyszukiwarkę
     searchInput.addEventListener('input', (e) => {
         currentQuery = e.target.value.toLowerCase().trim();
         filterCards();
     });
 
-    // Nasłuchiwanie kliknięć w przyciski filtrów kategorii
     filterButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             filterButtons.forEach(b => b.classList.remove('active'));
