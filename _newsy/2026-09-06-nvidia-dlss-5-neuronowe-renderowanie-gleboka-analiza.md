@@ -4,7 +4,7 @@ title: "NVIDIA DLSS 5 – Wszystko o premierze, wymaganiach i transformacji AI w
 description: "Kompleksowa analiza technologii NVIDIA DLSS 5. Sprawdzamy działanie renderowania neuronowego, suwaki kontroli artystycznej deweloperów, wymagania dla architektury Blackwell oraz wpływ na wydajność w 4K."
 date: 2026-09-06
 category: HARDWARE
-icon: /assets/images/babcia.jpg
+image: /assets/images/babcia.jpg
 ---
 
 NVIDIA DLSS 5, technologia renderowania neuronowego oparta na sztucznej inteligencji, zadebiutowała 4 września 2026 roku wraz z grą *NBA 2K27*. W przeciwieństwie do poprzednich generacji, skoncentrowanych głównie na skalowaniu rozdzielczości i generowaniu klatek, DLSS 5 wykorzystuje generatywną AI do przebudowy i wzbogacania scen w grach. Jensen Huang, szef NVIDIA, określił ten moment jako „GPT-moment dla grafiki” — największy przełom od czasu wprowadzenia ray tracingu w czasie rzeczywistym w 2018 roku.
