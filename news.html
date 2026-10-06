@@ -1,352 +1,392 @@
 ---
 layout: default
-title: "Briefy & Newsy"
+title: "{{ page.title }}"
 ---
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Briefy & Newsy | DevLabStudy</title>
-    <link rel="icon" type="image/jpeg" href="/profileIcon_g3ffyg7edeeg1.jpeg">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            --bg-nav: rgba(5, 5, 5, 0.9);
-            --card-bg: rgba(10, 15, 25, 0.75);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border: rgba(255, 255, 255, 0.1);
-            --accent-blue: #00d2ff;
-            --accent-contrast: #ff5e00;
-        }
+<style>
+    /* UKŁAD PORTALOWY DLA POJEDYNCZEGO NEWSA / BRIEFU */
+    .post-container {
+        max-width: 1200px;
+        margin: 40px auto 60px auto;
+        padding: 0 60px;
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        gap: 40px;
+        align-items: start;
+    }
 
-        body { 
-            font-family: 'Inter', -apple-system, sans-serif; 
-            margin: 0; 
-            min-height: 100vh;
-            background: #000 url('/background.png') no-repeat center center fixed; 
-            background-size: cover; 
-            color: var(--text-main); 
-            line-height: 1.7;
-        }
+    .news-article {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 40px;
+        backdrop-filter: blur(10px);
+        position: relative;
+        overflow: hidden;
+    }
+    .news-article::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 4px; height: 100%;
+        background: var(--accent-contrast);
+    }
 
-        .navbar { 
-            position: sticky; 
-            top: 0; 
-            z-index: 100; 
-            background: var(--bg-nav); 
-            backdrop-filter: blur(15px); 
-            border-bottom: 1px solid var(--border); 
-            padding: 15px 40px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between; 
-            font-family: 'JetBrains Mono', monospace;
-        }
-        .nav-brand { 
-            font-size: 1.3rem; 
-            font-weight: 900; 
-            text-decoration: none; 
-            color: var(--text-main); 
-            letter-spacing: -0.5px;
-        }
-        .nav-brand span { color: var(--accent-contrast); }
-        
-        .nav-links { display: flex; gap: 15px; }
-        .nav-btn {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border);
-            color: var(--text-muted);
-            padding: 8px 16px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 700;
-            transition: all 0.2s ease;
-        }
-        .nav-btn:hover, .nav-btn.active {
-            background: rgba(0, 210, 255, 0.08);
-            border-color: var(--accent-blue);
-            color: var(--accent-blue);
-        }
+    .news-header {
+        border-bottom: 1px dashed var(--border);
+        padding-bottom: 25px;
+        margin-bottom: 30px;
+    }
 
-        /* Układ portalowy: Lewa kolumna (katalog newsów) + Prawa kolumna (sidebar) */
-        .portal-container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: 1fr 320px;
-            gap: 30px;
-            align-items: start;
-        }
+    .news-category-tag {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.75rem;
+        color: var(--accent-contrast);
+        background: rgba(255, 94, 0, 0.1);
+        padding: 4px 10px;
+        border-radius: 4px;
+        border: 1px solid rgba(255, 94, 0, 0.2);
+        text-transform: uppercase;
+        font-weight: 800;
+    }
 
-        .main-feed {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
+    .news-title {
+        font-size: 2.2rem;
+        font-weight: 900;
+        margin: 15px 0 20px 0;
+        letter-spacing: -1px;
+        line-height: 1.2;
+        color: #fff;
+    }
 
-        .news-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(15px);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.2s ease, border-color 0.2s ease;
-        }
-        .news-card:hover {
-            border-color: rgba(0, 210, 255, 0.3);
-            transform: translateY(-2px);
-        }
-        .news-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 4px; height: 100%;
-            background: var(--accent-contrast);
-        }
+    .news-meta-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        flex-wrap: wrap;
+        gap: 15px;
+    }
 
-        .news-meta-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-        }
-        .news-category {
-            color: var(--accent-contrast);
-            background: rgba(255, 94, 0, 0.1);
-            padding: 4px 10px;
-            border-radius: 4px;
-            border: 1px solid rgba(255, 94, 0, 0.2);
-            text-transform: uppercase;
-            font-weight: 800;
-        }
-        .news-date { color: var(--text-muted); }
+    /* PRZYCISKI UDOSTĘPNIANIA */
+    .share-buttons {
+        display: flex;
+        gap: 10px;
+    }
+    .share-btn {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border);
+        color: var(--text-main);
+        padding: 6px 12px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-family: 'JetBrains Mono', monospace;
+        text-decoration: none;
+        transition: 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .share-btn:hover {
+        background: rgba(0, 210, 255, 0.15);
+        border-color: var(--accent-blue);
+        color: var(--accent-blue);
+    }
 
-        .news-title {
-            font-size: 1.6rem;
-            font-weight: 900;
-            margin: 0 0 12px 0;
-            letter-spacing: -0.5px;
-            line-height: 1.3;
-            color: #fff;
-        }
+    /* TREŚĆ ARTYKUŁU ORAZ CZYSTE FORMATOWANIE ZDJĘĆ */
+    .news-body {
+        font-size: 1.05rem;
+        color: #cbd5e1;
+        line-height: 1.8;
+    }
+    .news-body h2, .news-body h3 {
+        color: #fff;
+        font-family: 'JetBrains Mono', monospace;
+        margin-top: 40px;
+        margin-bottom: 15px;
+    }
+    .news-body h2 { font-size: 1.4rem; border-left: 3px solid var(--accent-blue); padding-left: 10px; }
+    .news-body p { margin-bottom: 20px; }
+    .news-body a { color: var(--accent-blue); text-decoration: none; font-weight: 600; }
+    .news-body a:hover { text-decoration: underline; }
 
-        .news-snippet {
-            color: #cbd5e1;
-            font-size: 0.98rem;
-            margin-bottom: 20px;
-        }
+    /* PROFESJONALNY WYGLĄD ZDJĘĆ W TREŚCI */
+    .news-body img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        margin: 25px 0;
+        display: block;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
 
-        .news-footer-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px dashed var(--border);
-            padding-top: 15px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-        }
+    /* SPIS TREŚCI (TOC) W BOCZNYM PANELU */
+    .sidebar-toc {
+        position: sticky;
+        top: 90px;
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 25px;
+        backdrop-filter: blur(10px);
+    }
+    .toc-title {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85rem;
+        color: #fff;
+        margin: 0 0 15px 0;
+        text-transform: uppercase;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 10px;
+    }
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.8rem;
+    }
+    .toc-item a {
+        color: var(--text-muted);
+        text-decoration: none;
+        display: block;
+        transition: 0.2s;
+    }
+    .toc-item a:hover {
+        color: var(--accent-blue);
+        transform: translateX(4px);
+    }
 
-        .news-kudos-btn {
-            background: rgba(255, 94, 0, 0.1);
-            border: 1px solid rgba(255, 94, 0, 0.3);
-            color: #fff;
-            padding: 6px 14px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 700;
-            font-size: 0.75rem;
-            transition: 0.2s;
-        }
-        .news-kudos-btn:hover { background: var(--accent-contrast); }
+    /* SEKCJA KOMENTARZY NA DOLE */
+    .comments-section {
+        margin-top: 50px;
+        border-top: 1px dashed var(--border);
+        padding-top: 35px;
+    }
+    .comments-title {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 1rem;
+        color: #fff;
+        margin: 0 0 20px 0;
+        text-transform: uppercase;
+    }
+    .comment-form {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 30px;
+    }
+    .comment-input, .comment-textarea {
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid var(--border);
+        color: #fff;
+        padding: 12px 15px;
+        border-radius: 6px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85rem;
+        outline: none;
+    }
+    .comment-input:focus, .comment-textarea:focus { border-color: var(--accent-blue); }
+    .comment-textarea { resize: vertical; min-height: 90px; }
 
-        /* Sidebar boczny */
-        .sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-        .sidebar-widget {
-            background: var(--card-bg);
-            backdrop-filter: blur(15px);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 25px;
-        }
-        .sidebar-title {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            color: #fff;
-            margin: 0 0 15px 0;
-            text-transform: uppercase;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .sidebar-title::before { content: '//'; color: var(--accent-blue); }
+    .comment-submit {
+        background: rgba(0, 210, 255, 0.1);
+        border: 1px solid rgba(0, 210, 255, 0.3);
+        color: var(--accent-blue);
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.2s;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        align-self: flex-start;
+    }
+    .comment-submit:hover { background: var(--accent-blue); color: #000; }
 
-        .sidebar-links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-        }
-        .sidebar-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            display: block;
-            transition: 0.2s;
-        }
-        .sidebar-links a:hover {
-            color: var(--accent-blue);
-            transform: translateX(4px);
-        }
+    .user-comment {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 15px;
+        border-radius: 6px;
+        margin-bottom: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    .user-comment-meta {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.75rem;
+        color: var(--accent-blue);
+        margin-bottom: 4px;
+    }
+    .comment-actions {
+        display: flex;
+        gap: 8px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.75rem;
+    }
+    .comment-action-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--text-muted);
+        padding: 2px 6px;
+        border-radius: 4px;
+        transition: 0.2s;
+    }
+    .comment-action-btn:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
+    .comment-action-btn.delete:hover { color: #ef4444; }
 
-        footer { 
-            text-align: center; 
-            color: var(--text-muted); 
-            font-size: 0.8rem; 
-            font-family: 'JetBrains Mono', monospace;
-            margin-top: 60px; 
-            margin-bottom: 40px; 
-        }
+    @media (max-width: 1024px) {
+        .post-container { grid-template-columns: 1fr; padding: 0 20px; }
+        .sidebar-toc { position: static; }
+    }
+</style>
 
-        @media (max-width: 900px) {
-            .portal-container { grid-template-columns: 1fr; }
-            .navbar { padding: 15px 20px; flex-direction: column; gap: 15px; }
-        }
-    </style>
-</head>
-<body>
+<div class="post-container">
+    
+    <!-- GŁÓWNA KOLUMNA ARTYKUŁU -->
+    <article class="news-article">
+        <header class="news-header">
+            <span class="news-category-tag">[{{ page.category | default: "NEWS" | upcase }}]</span>
+            <h1 class="news-title">{{ page.title }}</h1>
+            
+            <div class="news-meta-bar">
+                <span>// Opublikowano: {{ page.date | date: "%Y.%m.%d" }}</span>
+                <div class="share-buttons">
+                    <a href="#" id="shareX" class="share-btn" target="_blank">𝕏 X (Twitter)</a>
+                    <a href="#" id="shareFB" class="share-btn" target="_blank">f Facebook</a>
+                </div>
+            </div>
+        </header>
 
-    <nav class="navbar">
-        <a href="/" class="nav-brand">DEVLABSTUDY<span>_</span></a>
-        <div class="nav-links">
-            <a href="/" class="nav-btn">// GŁÓWNA</a>
-            <a href="/blog" class="nav-btn">// REJESTR</a>
-            <a href="/news" class="nav-btn active">// BRIEFY</a>
+        <!-- TREŚĆ WPISU Z JEKILLA (DYNAMIKA) -->
+        <div class="news-body" id="articleBody">
+            {{ content }}
         </div>
-    </nav>
 
-    <main class="portal-container">
-        
-        <!-- Lewa kolumna: Strumień newsów/briefów -->
-        <section class="main-feed">
-            <h1 style="font-family: 'JetBrains Mono', monospace; font-size: 1.5rem; color: #fff; margin: 0 0 10px 0;">
-                // BIEŻĄCE BRIEFY TECHNOLOGICZNE
-            </h1>
+        <!-- SEKCJA KOMENTARZY -->
+        <section class="comments-section">
+            <h3 class="comments-title">// Komentarze & Opinie</h3>
+            
+            <div class="comment-form">
+                <input type="text" id="commentAuthor" class="comment-input" placeholder="Twoje imię / nick...">
+                <textarea id="commentText" class="comment-textarea" placeholder="Treść komentarza..."></textarea>
+                <button class="comment-submit" id="commentSubmit">Dodaj komentarz</button>
+            </div>
 
-            <!-- Przykładowy News 1 -->
-            <article class="news-card">
-                <div class="news-meta-top">
-                    <span class="news-category">[HARDWARE]</span>
-                    <span class="news-date">// 2026.10.06</span>
-                </div>
-                <h2 class="news-title">Core i9-14900K jako abonament? Kontrowersyjne posunięcie w świecie komponentów</h2>
-                <p class="news-snippet">
-                    Płacenie subskrypcji za odblokowanie pełnej mocy rdzeni to kierunek, który budzi ogromny sprzeciw społeczności DIY. Czy to początek niebezpiecznego trendu na rynku?
-                </p>
-                <div class="news-footer-bar">
-                    <button class="news-kudos-btn" onclick="toggleKudos('news-1', this)">❤️ <span id="kudos-news-1">0</span> Kudos</button>
-                    <span style="color: var(--text-muted);">Operator: DevLabStudy</span>
-                </div>
-            </article>
-
-            <!-- Przykładowy News 2 -->
-            <article class="news-card">
-                <div class="news-meta-top">
-                    <span class="news-category">[NETWORKING]</span>
-                    <span class="news-date">// 2026.10.05</span>
-                </div>
-                <h2 class="news-title">Nowy standard Wi-Fi 7 w domowych labach – co realnie zmienia w routingu?</h2>
-                <p class="news-snippet">
-                    Testujemy stabilność połączeń wielopasmowych na sprzęcie MikroTik i sprawdzamy, czy przesiadka na wyższe częstotliwości ma sens przy gęstej zabudowie miejskiej.
-                </p>
-                <div class="news-footer-bar">
-                    <button class="news-kudos-btn" onclick="toggleKudos('news-2', this)">❤️ <span id="kudos-news-2">0</span> Kudos</button>
-                    <span style="color: var(--text-muted);">Operator: DevLabStudy</span>
-                </div>
-            </article>
-
+            <div id="commentsList"></div>
         </section>
+    </article>
 
-        <!-- Prawa kolumna: Sidebar z filtrami i statusem -->
-        <aside class="sidebar">
-            <div class="sidebar-widget">
-                <h3 class="sidebar-title">Kategorie Briefów</h3>
-                <ul class="sidebar-links">
-                    <li><a href="/news">&rarr; Wszystkie wpisy</a></li>
-                    <li><a href="/news">&rarr; [HARDWARE] Sprzęt & CPU</a></li>
-                    <li><a href="/news">&rarr; [NETWORKING] Sieci & Routing</a></li>
-                    <li><a href="/news">&rarr; [HOMELAB] Serwery & Proxmox</a></li>
-                </ul>
-            </div>
+    <!-- BOCZNY PANEL: SPIS TREŚCI (TOC) -->
+    <aside class="sidebar-toc">
+        <h4 class="toc-title">// Spis Treści</h4>
+        <ul class="toc-list" id="tocList"></ul>
+    </aside>
 
-            <div class="sidebar-widget">
-                <h3 class="sidebar-title">O projekcie</h3>
-                <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted); margin: 0;">
-                    Krótkie raporty, testy podzespołów i surowe opinie prosto z warsztatu DevLabStudy.
-                </p>
-            </div>
-        </aside>
+</div>
 
-    </main>
+<script>
+    // AUTOMATYCZNY SPIS TREŚCI ZE STRUKTURY NAGŁÓWKÓW
+    const articleBody = document.getElementById('articleBody');
+    const tocList = document.getElementById('tocList');
+    const headings = articleBody.querySelectorAll('h2, h3');
 
-    <footer>
-        <p>// DevLabStudy Tech Hub 2026</p>
-    </footer>
+    if(headings.length === 0) {
+        tocList.innerHTML = '<li style="color: var(--text-muted)">// Brak nagłówków</li>';
+    } else {
+        headings.forEach((heading, index) => {
+            if(!heading.id) { heading.id = 'heading-' + index; }
+            const li = document.createElement('li');
+            li.className = 'toc-item';
+            li.style.paddingLeft = heading.tagName === 'H3' ? '12px' : '0';
+            li.innerHTML = `<a href="#${heading.id}">&rarr; ${heading.textContent}</a>`;
+            tocList.appendChild(li);
+        });
+    }
 
-    <script>
-        // Prosta obsługa liczników kudos zapisywanych w pamięci przeglądarki dla każdego kafelka
-        function toggleKudos(newsId, btn) {
-            let countSpan = document.getElementById('kudos-' + newsId);
-            let likedKey = 'devlab_news_liked_' + newsId;
-            let countKey = 'devlab_news_count_' + newsId;
+    // PRZYCISKI UDOSTĘPNIANIA (TWITTER & FACEBOOK)
+    const currentUrl = encodeURIComponent(window.location.href);
+    const currentTitle = encodeURIComponent(document.title);
+    document.getElementById('shareX').href = `https://twitter.com/intent/tweet?url=${currentUrl}&text=${currentTitle}`;
+    document.getElementById('shareFB').href = `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`;
 
-            let currentCount = parseInt(localStorage.getItem(countKey)) || 0;
-            let hasLiked = localStorage.getItem(likedKey) === 'true';
+    // SYSTEM KOMENTARZY (LOCALSTORAGE)
+    const postId = window.location.pathname;
+    const commentAuthor = document.getElementById('commentAuthor');
+    const commentText = document.getElementById('commentText');
+    const commentSubmit = document.getElementById('commentSubmit');
+    const commentsList = document.getElementById('commentsList');
 
-            if (!hasLiked) {
-                currentCount++;
-                hasLiked = true;
-                btn.style.background = 'rgba(255, 94, 0, 0.4)';
-            } else {
-                currentCount = Math.max(0, currentCount - 1);
-                hasLiked = false;
-                btn.style.background = 'rgba(255, 94, 0, 0.1)';
-            }
+    let commentsKey = 'devlab_comments_' + postId;
+    let savedComments = JSON.parse(localStorage.getItem(commentsKey)) || [];
 
-            localStorage.setItem(countKey, currentCount);
-            localStorage.setItem(likedKey, hasLiked);
-            countSpan.textContent = currentCount;
+    function renderComments() {
+        commentsList.innerHTML = '';
+        if(savedComments.length === 0) {
+            commentsList.innerHTML = '<div style="color: var(--text-muted); font-size: 0.85rem; font-family: \'JetBrains Mono\', monospace;">// Brak komentarzy. Bądź pierwszy!</div>';
+            return;
         }
 
-        // Inicjalizacja stanów przy załadowaniu strony
-        document.addEventListener('DOMContentLoaded', () => {
-            ['news-1', 'news-2'].forEach(id => {
-                let count = localStorage.getItem('devlab_news_count_' + id) || 0;
-                let liked = localStorage.getItem('devlab_news_liked_' + id) === 'true';
-                document.getElementById('kudos-' + id).textContent = count;
-                if(liked) {
-                    // opcjonalnie zaznacz przycisk
-                }
-            });
+        savedComments.forEach((c, index) => {
+            const div = document.createElement('div');
+            div.className = 'user-comment';
+            div.innerHTML = `
+                <div>
+                    <div class="user-comment-meta">// ${escapeHtml(c.author)} — ${c.date}</div>
+                    <div style="color: #cbd5e1; font-size: 0.95rem; word-break: break-word;">${escapeHtml(c.text)}</div>
+                </div>
+                <div class="comment-actions">
+                    <button class="comment-action-btn" onclick="editComment(${index})">Edytuj</button>
+                    <button class="comment-action-btn delete" onclick="deleteComment(${index})">Usuń</button>
+                </div>
+            `;
+            commentsList.appendChild(div);
         });
-    </script>
-</body>
-</html>
+    }
+
+    commentSubmit.addEventListener('click', () => {
+        const author = commentAuthor.value.trim() || "Anonim";
+        const text = commentText.value.trim();
+        if(text.length < 2) return;
+
+        const now = new Date();
+        const dateStr = now.getFullYear() + '.' + String(now.getMonth()+1).padStart(2, '0') + '.' + String(now.getDate()).padStart(2, '0');
+
+        savedComments.push({ author, text, date: dateStr });
+        localStorage.setItem(commentsKey, JSON.stringify(savedComments));
+        
+        commentText.value = '';
+        renderComments();
+    });
+
+    window.deleteComment = function(index) {
+        savedComments.splice(index, 1);
+        localStorage.setItem(commentsKey, JSON.stringify(savedComments));
+        renderComments();
+    }
+
+    window.editComment = function(index) {
+        const current = savedComments[index];
+        const newText = prompt("Edytuj treść komentarza:", current.text);
+        if(newText !== null && newText.trim().length >= 2) {
+            savedComments[index].text = newText.trim();
+            localStorage.setItem(commentsKey, JSON.stringify(savedComments));
+            renderComments();
+        }
+    }
+
+    function escapeHtml(str) {
+        return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+
+    renderComments();
+</script>
