@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }} | DevLabStudy</title>
     <link rel="icon" type="image/jpeg" href="/profileIcon_g3ffyg7edeeg1.jpeg">
-    <!-- Czcionki Google Fonts dopasowane do reszty portalu -->
+    <!-- Czcionki Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
 
     <style>
@@ -73,7 +73,6 @@
             position: relative;
             overflow: hidden;
         }
-        /* Cienki pasek akcentu po lewej stronie kontenera w stylu terminala */
         .container::before {
             content: '';
             position: absolute;
@@ -106,9 +105,7 @@
             border: 1px solid rgba(255, 94, 0, 0.2);
         }
 
-        .article-date { 
-            color: var(--text-muted); 
-        }
+        .article-date { color: var(--text-muted); }
         
         .article-title { 
             font-size: 2.4rem; 
@@ -118,7 +115,7 @@
             line-height: 1.2;
         }
         
-        /* Stylizacja treści wpisu */
+        /* Treść wpisu */
         .article-content { 
             font-size: 1.05rem; 
             color: #cbd5e1; 
@@ -136,7 +133,7 @@
         .article-content a { color: var(--accent-blue); text-decoration: none; font-weight: 600; }
         .article-content a:hover { text-decoration: underline; }
         
-        /* Tabeli w markdownie nadajemy inżynieryjny sznyt */
+        /* Tabele */
         .article-content table {
             width: 100%;
             border-collapse: collapse;
@@ -153,11 +150,9 @@
             background: rgba(0, 210, 255, 0.08);
             color: var(--accent-blue);
         }
-        .article-content tr:nth-child(even) {
-            background: rgba(255, 255, 255, 0.02);
-        }
+        .article-content tr:nth-child(even) { background: rgba(255, 255, 255, 0.02); }
 
-        /* Zabezpieczenie zdjęć i kodu */
+        /* Obrazy i kod */
         .article-content img { 
             max-width: 100%; 
             height: auto; 
@@ -185,7 +180,136 @@
             color: var(--accent-blue);
         }
         .article-content pre code { background: none; padding: 0; color: #f8fafc; }
-        
+
+        /* SEKCJA INTERAKTYWNA: KUDOS / SERDUSZKO I KOMENTARZE */
+        .post-interactions {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px dashed var(--border);
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .kudos-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(0, 210, 255, 0.03);
+            border: 1px solid var(--border);
+            padding: 20px 25px;
+            border-radius: 10px;
+        }
+
+        .kudos-info {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .kudos-btn {
+            background: rgba(255, 94, 0, 0.15);
+            border: 1px solid rgba(255, 94, 0, 0.4);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+        }
+        .kudos-btn:hover {
+            background: var(--accent-contrast);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 94, 0, 0.3);
+        }
+
+        .comments-section {
+            background: rgba(3, 3, 5, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 25px;
+        }
+
+        .comments-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            color: #fff;
+            margin: 0 0 15px 0;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .comments-title::before { content: '//'; color: var(--accent-blue); }
+
+        .comments-placeholder {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-family: 'JetBrains Mono', monospace;
+            margin: 0 0 15px 0;
+        }
+
+        .comment-input-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .comment-input {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border);
+            color: #fff;
+            padding: 12px 15px;
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            outline: none;
+        }
+        .comment-input:focus { border-color: var(--accent-blue); }
+
+        .comment-submit {
+            background: rgba(0, 210, 255, 0.1);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            color: var(--accent-blue);
+            padding: 0 20px;
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+        .comment-submit:hover {
+            background: var(--accent-blue);
+            color: #030305;
+        }
+
+        .submitted-comments {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .user-comment {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 12px 15px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+        .user-comment-meta {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent-blue);
+            margin-bottom: 4px;
+        }
+
         footer { 
             text-align: center; 
             color: var(--text-muted); 
@@ -199,6 +323,7 @@
             .container { margin: 20px 15px; padding: 25px; }
             .article-title { font-size: 1.8rem; }
             .navbar { padding: 15px 20px; }
+            .comment-input-group { flex-direction: column; }
         }
     </style>
 </head>
@@ -221,11 +346,121 @@
         <article class="article-content">
             {{ content }}
         </article>
+
+        <!-- SEKCJA INTERAKTYWNA (KUDOS & KOMENTARZE) -->
+        <div class="post-interactions">
+            <!-- Przycisk Kudos / Serduszko -->
+            <div class="kudos-box">
+                <div class="kudos-info">
+                    // DOCENIASZ MATERIAŁ? ZOSTAW SYGNAŁ KUDOS.
+                </div>
+                <button class="kudos-btn" id="kudosBtn">
+                    ❤️ <span id="kudosCount">14</span> Kudos
+                </button>
+            </div>
+
+            <!-- Panel Komentarzy / Feedbacku -->
+            <div class="comments-section">
+                <h3 class="comments-title">Rejestr Komentarzy & Feedback</h3>
+                <p class="comments-placeholder">// Masz pytanie lub uwagi do konfiguracji? Zostaw wpis w lokalnym buforze:</p>
+                
+                <div class="comment-input-group">
+                    <input type="text" id="commentInput" class="comment-input" placeholder="Wpisz swój komentarz...">
+                    <button class="comment-submit" id="commentSubmit">Wyślij</button>
+                </div>
+
+                <div class="submitted-comments" id="commentsList">
+                    <!-- Dynamiczne komentarze -->
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>
-        <p>// 1 Gbps Fiber - Linux Fedora - DevLabStudy System Hub 2026</p>
+        <p>// 1 Gbps Fiber - Proxmox VE / MikroTik - DevLabStudy Hub 2026</p>
     </footer>
 
+    <!-- Skrypt obsługujący serduszka (Kudos) i lokalne komentarze -->
+    <script>
+        // Unikalny klucz dla konkretnego wpisu oparty na jego URL
+        const postId = window.location.pathname;
+        
+        // --- OBSŁUGA KUDOS (SERDECZNEK) ---
+        const kudosBtn = document.getElementById('kudosBtn');
+        const kudosCountSpan = document.getElementById('kudosCount');
+        
+        let kudosKey = 'devlab_kudos_' + postId;
+        let likedKey = 'devlab_liked_' + postId;
+
+        // Pobierz stan z localStorage lub ustaw domyślną bazę
+        let currentKudos = parseInt(localStorage.getItem(kudosKey)) || 12;
+        let hasLiked = localStorage.getItem(likedKey) === 'true';
+
+        kudosCountSpan.textContent = currentKudos;
+        if(hasLiked) {
+            kudosBtn.style.opacity = '0.7';
+            kudosBtn.innerHTML = '❤️ <span id="kudosCount">' + currentKudos + '</span> (Zapisano)';
+        }
+
+        kudosBtn.addEventListener('click', () => {
+            if(!hasLiked) {
+                currentKudos++;
+                hasLiked = true;
+                localStorage.setItem(kudosKey, currentKudos);
+                localStorage.setItem(likedKey, 'true');
+                
+                kudosCountSpan.textContent = currentKudos;
+                kudosBtn.style.opacity = '0.7';
+                kudosBtn.innerHTML = '❤️ <span id="kudosCount">' + currentKudos + '</span> (Dziękuję!)';
+            }
+        });
+
+        // --- OBSŁUGA LOKALNYCH KOMENTARZY ---
+        const commentInput = document.getElementById('commentInput');
+        const commentSubmit = document.getElementById('commentSubmit');
+        const commentsList = document.getElementById('commentsList');
+
+        let commentsKey = 'devlab_comments_' + postId;
+        let savedComments = JSON.parse(localStorage.getItem(commentsKey)) || [
+            { author: "Admin (Tobiasz)", text: "Dziennik otwarty. Piszcie, jak wam idzie optymalizacja!", date: "2026.03.20" }
+        ];
+
+        function renderComments() {
+            commentsList.innerHTML = '';
+            savedComments.forEach(c => {
+                const div = document.createElement('div');
+                div.className = 'user-comment';
+                div.innerHTML = `
+                    <div class="user-meta">// ${c.author} — ${c.date}</div>
+                    <div>${escapeHtml(c.text)}</div>
+                `;
+                commentsList.appendChild(div);
+            });
+        }
+
+        commentSubmit.addEventListener('click', () => {
+            const text = commentInput.value.trim();
+            if(text.length < 2) return;
+
+            const now = new Date();
+            const dateStr = now.getFullYear() + '.' + String(now.getMonth()+1).padStart(2, '0') + '.' + String(now.getDate()).padStart(2, '0');
+
+            savedComments.push({
+                author: "Gość (Operator)",
+                text: text,
+                date: dateStr
+            });
+
+            localStorage.setItem(commentsKey, JSON.stringify(savedComments));
+            commentInput.value = '';
+            renderComments();
+        });
+
+        function escapeHtml(str) {
+            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
+
+        renderComments();
+    </script>
 </body>
 </html>
