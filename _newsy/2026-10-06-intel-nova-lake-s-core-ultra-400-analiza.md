@@ -4,7 +4,7 @@ title: "Intel Nova Lake-S (Core Ultra 400): socket LGA 1954, bLLC, brak Hyper-Th
 description: "Szczegółowe zestawienie wszystkiego, co przecieki mówią o procesorach Intel Nova Lake-S: harmonogram premiery, platforma LGA 1954 i chipsety serii 900, konfiguracje rdzeni, pamięć bLLC, DDR5-8000, iGPU, NPU oraz porównanie z Arrow Lake Refresh i AMD Zen 6."
 date: 2026-10-06
 category: HARDWARE
-icon: /assets/images/nova-lake-s-ikona.svg
+image: /assets/images/nova-lake-s-ikona.svg
 ---
 
 Po latach drobnych korekt Intel szykuje na pulpitach zmianę większą niż zwykle: nowe gniazdo, nowe chipsety, rdzenie bez Hyper-Threadingu, własny odpowiednik dużej pamięci cache znanej z procesorów AMD X3D i konfiguracje sięgające 52 rdzeni. Mowa o rodzinie **Nova Lake-S**, która na rynku ma się nazywać **Intel Core Ultra 400**.
