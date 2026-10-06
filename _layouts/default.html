@@ -66,7 +66,6 @@
         }
         .nav-brand svg { width: 22px; height: 22px; stroke: var(--accent-contrast); }
         
-        /* MENU ŚRODKOWE / PRAWE */
         .nav-center { 
             display: flex; 
             justify-content: flex-end; 
@@ -94,7 +93,7 @@
             border-radius: 2px;
         }
 
-        /* DROPDOWN APPS W NAVBARZE */
+        /* DROPDOWN APPS */
         .dropdown { position: relative; display: inline-block; }
         .dropbtn { 
             background: none; 
@@ -136,7 +135,7 @@
         }
         .section-tag::before { content: '///'; color: var(--accent-blue); }
 
-        /* STOPKA W STYLU NASA */
+        /* STOPKA W STYLU NASA Z IKONKAMI */
         footer { 
             background: rgba(3, 3, 5, 0.95);
             border-top: 1px solid var(--border); 
@@ -149,15 +148,43 @@
             max-width: 1400px;
             margin: 0 auto 40px auto;
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
             gap: 40px;
         }
         .footer-col h4 { color: #fff; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 1px; }
         .footer-col p { color: var(--text-muted); font-size: 0.8rem; line-height: 1.6; margin: 0; font-family: 'Inter', sans-serif; }
         .footer-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
-        .footer-col ul a { color: var(--text-muted); font-size: 0.8rem; transition: 0.2s; }
+        .footer-col ul a { color: var(--text-muted); font-size: 0.8rem; transition: 0.2s; font-family: 'Inter', sans-serif; }
         .footer-col ul a:hover { color: var(--accent-blue); }
         
+        /* IKONKI SPOŁECZNOŚCIOWE W STYLU NASA */
+        .social-icons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        .social-icon-btn {
+            width: 42px;
+            height: 42px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: 0.25s;
+        }
+        .social-icon-btn:hover {
+            background: var(--accent-blue);
+            color: #000;
+            border-color: var(--accent-blue);
+            transform: translateY(-2px);
+        }
+
         .footer-bottom {
             max-width: 1400px;
             margin: 0 auto;
@@ -201,7 +228,6 @@
             <a href="/homelab" {% if page.url contains "homelab" %}class="active"{% endif %}>HomeLab</a>
             <a href="/sponsors" {% if page.url contains "sponsors" %}class="active"{% endif %}>Sponsors</a>
             
-            <!-- ROZWIJANE MENU APPS -->
             <div class="dropdown">
                 <button class="dropbtn">Apps ▾</button>
                 <div class="dropdown-content">
@@ -221,7 +247,6 @@
         {{ content }}
     </main>
 
-    <!-- ROZBUDOWANA STOPKA W STYLU NASA -->
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
@@ -246,13 +271,18 @@
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>Follow Community</h4>
-                <ul>
-                    <li><a href="https://www.youtube.com/channel/UCisFPSU_Y8hznpqrcewcJAg" target="_blank">YouTube (DevLabStudy) ↗</a></li>
-                    <li><a href="https://github.com/DevLabStudy" target="_blank">GitHub Repository ↗</a></li>
-                    <li><a href="https://discord.gg/uwUTgEQcwj" target="_blank">Discord Server ↗</a></li>
-                    <li><a href="https://www.instagram.com/devlabstudy" target="_blank">Instagram ↗</a></li>
-                </ul>
+                <h4>Follow DevLabStudy</h4>
+                <div class="social-icons">
+                    <a href="https://www.youtube.com/channel/UCisFPSU_Y8hznpqrcewcJAg" target="_blank" class="social-icon-btn" title="YouTube">YT</a>
+                    <a href="https://github.com/DevLabStudy" target="_blank" class="social-icon-btn" title="GitHub">GH</a>
+                    <a href="https://discord.gg/uwUTgEQcwj" target="_blank" class="social-icon-btn" title="Discord">DC</a>
+                    <a href="https://www.tiktok.com/@devlabstudy_official" target="_blank" class="social-icon-btn" title="TikTok">TT</a>
+                    <a href="https://www.instagram.com/devlabstudy" target="_blank" class="social-icon-btn" title="Instagram">IG</a>
+                    <a href="https://x.com/DevLabStudy" target="_blank" class="social-icon-btn" title="X / Twitter">X</a>
+                    <a href="https://www.reddit.com/user/TobiMessi201/" target="_blank" class="social-icon-btn" title="Reddit">RD</a>
+                    <a href="https://www.facebook.com/devlabstudy" target="_blank" class="social-icon-btn" title="Facebook">FB</a>
+                    <a href="https://www.linkedin.com/in/tobiaszkajzer" target="_blank" class="social-icon-btn" title="LinkedIn">IN</a>
+                </div>
             </div>
         </div>
         <div class="footer-bottom">
