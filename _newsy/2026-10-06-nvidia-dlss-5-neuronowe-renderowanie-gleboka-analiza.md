@@ -2,7 +2,7 @@
 layout: news
 title: "NVIDIA DLSS 5 – Wszystko o premierze, wymaganiach i transformacji AI w grafice gier"
 description: "Kompleksowa analiza technologii NVIDIA DLSS 5. Sprawdzamy działanie renderowania neuronowego, suwaki kontroli artystycznej deweloperów, wymagania dla architektury Blackwell oraz wpływ na wydajność w 4K."
-date: 2026-09-06
+date: 2026-10-06
 category: HARDWARE
 image: /assets/images/babcia.jpg
 ---
