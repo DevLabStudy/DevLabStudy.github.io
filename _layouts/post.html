@@ -181,7 +181,7 @@
         }
         .article-content pre code { background: none; padding: 0; color: #f8fafc; }
 
-        /* SEKCJA INTERAKTYWNA: KUDOS / SERDUSZKO I KOMENTARZE */
+        /* SEKCJA INTERAKTYWNA */
         .post-interactions {
             margin-top: 50px;
             padding-top: 30px;
@@ -208,8 +208,8 @@
         }
 
         .kudos-btn {
-            background: rgba(255, 94, 0, 0.15);
-            border: 1px solid rgba(255, 94, 0, 0.4);
+            background: rgba(255, 94, 0, 0.1);
+            border: 1px solid rgba(255, 94, 0, 0.3);
             color: #fff;
             padding: 10px 20px;
             border-radius: 6px;
@@ -224,7 +224,10 @@
         .kudos-btn:hover {
             background: var(--accent-contrast);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 94, 0, 0.3);
+        }
+        .kudos-btn.liked {
+            background: rgba(255, 94, 0, 0.3);
+            border-color: var(--accent-contrast);
         }
 
         .comments-section {
@@ -293,21 +296,48 @@
             margin-top: 15px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
         }
 
         .user-comment {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 12px 15px;
+            padding: 15px;
             border-radius: 6px;
-            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .user-comment-content {
+            flex: 1;
         }
         .user-comment-meta {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.75rem;
             color: var(--accent-blue);
             margin-bottom: 4px;
+        }
+        .comment-actions {
+            display: flex;
+            gap: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+        }
+        .comment-action-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-muted);
+            padding: 2px 6px;
+            border-radius: 4px;
+            transition: 0.2s;
+        }
+        .comment-action-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+        }
+        .comment-action-btn.delete:hover {
+            color: #ef4444;
         }
 
         footer { 
@@ -347,19 +377,19 @@
             {{ content }}
         </article>
 
-        <!-- SEKCJA INTERAKTYWNA (KUDOS & KOMENTARZE) -->
+        <!-- SEKCJA INTERAKTYWNA -->
         <div class="post-interactions">
-            <!-- Przycisk Kudos / Serduszko -->
+            <!-- Przycisk Kudos (Przełącznik z 0 na start) -->
             <div class="kudos-box">
                 <div class="kudos-info">
                     // DOCENIASZ MATERIAŁ? ZOSTAW SYGNAŁ KUDOS.
                 </div>
                 <button class="kudos-btn" id="kudosBtn">
-                    ❤️ <span id="kudosCount">14</span> Kudos
+                    ❤️ <span id="kudosCount">0</span> Kudos
                 </button>
             </div>
 
-            <!-- Panel Komentarzy / Feedbacku -->
+            <!-- Panel Komentarzy z opcją Edycji i Usuwania -->
             <div class="comments-section">
                 <h3 class="comments-title">Rejestr Komentarzy & Feedback</h3>
                 <p class="comments-placeholder">// Masz pytanie lub uwagi do konfiguracji? Zostaw wpis w lokalnym buforze:</p>
@@ -380,59 +410,66 @@
         <p>// 1 Gbps Fiber - Proxmox VE / MikroTik - DevLabStudy Hub 2026</p>
     </footer>
 
-    <!-- Skrypt obsługujący serduszka (Kudos) i lokalne komentarze -->
     <script>
-        // Unikalny klucz dla konkretnego wpisu oparty na jego URL
         const postId = window.location.pathname;
         
-        // --- OBSŁUGA KUDOS (SERDECZNEK) ---
+        // --- OBSŁUGA KUDOS (PRZEŁĄCZNIK Z 0 NA START) ---
         const kudosBtn = document.getElementById('kudosBtn');
         const kudosCountSpan = document.getElementById('kudosCount');
         
         let kudosKey = 'devlab_kudos_' + postId;
         let likedKey = 'devlab_liked_' + postId;
 
-        // Pobierz stan z localStorage lub ustaw domyślną bazę
-        let currentKudos = parseInt(localStorage.getItem(kudosKey)) || 12;
+        let currentKudos = parseInt(localStorage.getItem(kudosKey)) || 0;
         let hasLiked = localStorage.getItem(likedKey) === 'true';
 
         kudosCountSpan.textContent = currentKudos;
         if(hasLiked) {
-            kudosBtn.style.opacity = '0.7';
-            kudosBtn.innerHTML = '❤️ <span id="kudosCount">' + currentKudos + '</span> (Zapisano)';
+            kudosBtn.classList.add('liked');
         }
 
         kudosBtn.addEventListener('click', () => {
             if(!hasLiked) {
                 currentKudos++;
                 hasLiked = true;
-                localStorage.setItem(kudosKey, currentKudos);
-                localStorage.setItem(likedKey, 'true');
-                
-                kudosCountSpan.textContent = currentKudos;
-                kudosBtn.style.opacity = '0.7';
-                kudosBtn.innerHTML = '❤️ <span id="kudosCount">' + currentKudos + '</span> (Dziękuję!)';
+                kudosBtn.classList.add('liked');
+            } else {
+                currentKudos = Math.max(0, currentKudos - 1);
+                hasLiked = false;
+                kudosBtn.classList.remove('liked');
             }
+            localStorage.setItem(kudosKey, currentKudos);
+            localStorage.setItem(likedKey, hasLiked);
+            kudosCountSpan.textContent = currentKudos;
         });
 
-        // --- OBSŁUGA LOKALNYCH KOMENTARZY ---
+        // --- OBSŁUGA KOMENTARZY (Z EDYCJĄ I USUANIEM) ---
         const commentInput = document.getElementById('commentInput');
         const commentSubmit = document.getElementById('commentSubmit');
         const commentsList = document.getElementById('commentsList');
 
         let commentsKey = 'devlab_comments_' + postId;
-        let savedComments = JSON.parse(localStorage.getItem(commentsKey)) || [
-            { author: "Admin (Tobiasz)", text: "Dziennik otwarty. Piszcie, jak wam idzie optymalizacja!", date: "2026.03.20" }
-        ];
+        let savedComments = JSON.parse(localStorage.getItem(commentsKey)) || [];
 
         function renderComments() {
             commentsList.innerHTML = '';
-            savedComments.forEach(c => {
+            if(savedComments.length === 0) {
+                commentsList.innerHTML = '<div style="color: var(--text-muted); font-size: 0.85rem; font-family: \'JetBrains Mono\', monospace;">// Brak wpisów w buforze. Bądź pierwszy!</div>';
+                return;
+            }
+
+            savedComments.forEach((c, index) => {
                 const div = document.createElement('div');
                 div.className = 'user-comment';
                 div.innerHTML = `
-                    <div class="user-meta">// ${c.author} — ${c.date}</div>
-                    <div>${escapeHtml(c.text)}</div>
+                    <div class="user-comment-content">
+                        <div class="user-meta">// ${c.author} — ${c.date}</div>
+                        <div class="comment-text-view" id="text-${index}">${escapeHtml(c.text)}</div>
+                    </div>
+                    <div class="comment-actions">
+                        <button class="comment-action-btn" onclick="editComment(${index})">Edytuj</button>
+                        <button class="comment-action-btn delete" onclick="deleteComment(${index})">Usuń</button>
+                    </div>
                 `;
                 commentsList.appendChild(div);
             });
@@ -446,7 +483,7 @@
             const dateStr = now.getFullYear() + '.' + String(now.getMonth()+1).padStart(2, '0') + '.' + String(now.getDate()).padStart(2, '0');
 
             savedComments.push({
-                author: "Gość (Operator)",
+                author: "Operator",
                 text: text,
                 date: dateStr
             });
@@ -455,6 +492,24 @@
             commentInput.value = '';
             renderComments();
         });
+
+        window.deleteComment = function(index) {
+            savedComments.splice(index, 1);
+            localStorage.setItem(commentsKey, JSON.stringify(savedComments));
+            renderComments();
+        }
+
+        window.editComment = function(index) {
+            const textView = document.getElementById(`text-${index}`);
+            const currentText = savedComments[index].text;
+            
+            const newText = prompt("Edytuj treść komentarza:", currentText);
+            if(newText !== null && newText.trim().length >= 2) {
+                savedComments[index].text = newText.trim();
+                localStorage.setItem(commentsKey, JSON.stringify(savedComments));
+                renderComments();
+            }
+        }
 
         function escapeHtml(str) {
             return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
