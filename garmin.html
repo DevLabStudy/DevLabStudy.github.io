@@ -1,0 +1,192 @@
+---
+layout: default
+title: Garmin Apps
+---
+
+<style>
+    .app-container {
+        max-width: 900px;
+        margin: 20px auto;
+    }
+    .app-header {
+        margin-bottom: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    .app-title {
+        font-size: 3rem;
+        font-weight: 900;
+        margin: 0 0 15px 0;
+        font-family: 'Inter', sans-serif;
+        letter-spacing: -1px;
+    }
+    .app-desc {
+        color: var(--text-muted);
+        font-size: 1.05rem;
+        line-height: 1.7;
+    }
+    .status-badge {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.75rem;
+        background: rgba(255, 94, 0, 0.15);
+        color: var(--accent-contrast);
+        padding: 6px 14px;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 94, 0, 0.3);
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    .garmin-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 25px;
+        margin-bottom: 30px;
+    }
+    .garmin-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 30px;
+        backdrop-filter: blur(10px);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: 0.3s;
+    }
+    .garmin-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 4px; height: 100%;
+        background: var(--accent-blue);
+    }
+    .garmin-card:hover {
+        border-color: var(--accent-blue);
+        transform: translateY(-3px);
+        background: rgba(10, 15, 25, 0.85);
+    }
+    .card-meta {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 15px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.7rem;
+    }
+    .tech-tag {
+        background: rgba(0, 210, 255, 0.1);
+        color: var(--accent-blue);
+        padding: 3px 8px;
+        border-radius: 4px;
+        border: 1px solid rgba(0, 210, 255, 0.2);
+    }
+    .license-tag {
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--text-muted);
+        padding: 3px 8px;
+        border-radius: 4px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .btn-github {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--text-main);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 10px 20px;
+        font-weight: 800;
+        font-size: 0.8rem;
+        border-radius: 6px;
+        text-transform: uppercase;
+        font-family: 'JetBrains Mono', monospace;
+        transition: 0.2s;
+        text-decoration: none;
+        margin-top: 20px;
+        width: fit-content;
+    }
+    .btn-github:hover {
+        background: var(--accent-blue);
+        color: #030305;
+        border-color: var(--accent-blue);
+        transform: translateY(-2px);
+    }
+    .legal-note {
+        background: rgba(255, 94, 0, 0.05);
+        border: 1px solid rgba(255, 94, 0, 0.2);
+        border-radius: 8px;
+        padding: 20px;
+        margin-top: 30px;
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        font-family: 'JetBrains Mono', monospace;
+        line-height: 1.6;
+    }
+    .legal-note span {
+        color: var(--accent-contrast);
+        font-weight: 700;
+    }
+
+    @media (max-width: 768px) {
+        .garmin-grid { grid-template-columns: 1fr; }
+    }
+</style>
+
+<div class="app-container">
+    <div class="app-header">
+        <div>
+            <span class="section-tag">WEARABLE DEVELOPMENT</span>
+            <h1 class="app-title">Garmin Connect Apps</h1>
+            <p class="app-desc">
+                Autorskie aplikacje i tarcze zegarków (Watchfaces) stworzone na platformę Garmin w języku Monkey C.
+            </p>
+        </div>
+        <div>
+            <span class="status-badge">⚡ In Work</span>
+        </div>
+    </div>
+
+    <div class="garmin-grid">
+        <!-- Garmin To-Do List -->
+        <div class="garmin-card">
+            <div>
+                <div class="card-meta">
+                    <span class="tech-tag">Monkey C</span>
+                    <span class="license-tag">MIT License</span>
+                </div>
+                <h3 style="margin: 0 0 10px 0; font-family: 'JetBrains Mono', monospace; color: #fff; font-size: 1.1rem;">Garmin-to-do-list</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px;">
+                    Source code of my app to do list on Garmin. Lekka aplikacja do zarządzania listą zadań bezpośrednio na nadgarstku.
+                </p>
+            </div>
+            <a href="https://github.com/DevLabStudy/Garmin-to-do-list" target="_blank" class="btn-github">
+                Kod źródłowy (GitHub) ↗
+            </a>
+        </div>
+
+        <!-- Garmin Watchface -->
+        <div class="garmin-card">
+            <div>
+                <div class="card-meta">
+                    <span class="tech-tag">Monkey C</span>
+                    <span class="license-tag">MIT License</span>
+                </div>
+                <h3 style="margin: 0 0 10px 0; font-family: 'JetBrains Mono', monospace; color: #fff; font-size: 1.1rem;">Garmin-watchface</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px;">
+                    Source code of my own garmin watch face. Autorska tarcza zegarka projektowana z myślą o czytelności i niskim zużyciu energii.
+                </p>
+            </div>
+            <a href="https://github.com/DevLabStudy/Garmin-watchface" target="_blank" class="btn-github">
+                Kod źródłowy (GitHub) ↗
+            </a>
+        </div>
+    </div>
+
+    <div class="legal-note">
+        <span>// INFORMACJA FORMALNA:</span> Projekty na urządzenia Garmin (w tym tarcze zegarków oraz aplikacje narzędziowe) są rozwijane hobbystycznie w ramach ekosystemu Connect IQ przez Tobiasza Kajzera.
+    </div>
+</div>
