@@ -3,14 +3,12 @@ layout: default
 title: Home
 ---
 <style>
-    /* PEŁNA SZEROKOŚĆ KONTENERA BEZ POWIĘSZANIA ELEMENTÓW */
     .dashboard {
         max-width: 100% !important;
         padding-left: 60px !important;
         padding-right: 60px !important;
     }
 
-    /* HERO SECTION */
     .hero {
         margin-top: 20px;
         margin-bottom: 60px;
@@ -81,7 +79,6 @@ title: Home
         transform: translateY(-2px);
     }
 
-    /* STATYSTYKI YOUTUBE (KLIKALNE KAFLE) */
     .stats-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -131,13 +128,48 @@ title: Home
 
     .stat-name { font-weight: 800; font-size: 1.05rem; color: #fff; }
     .stat-platform { color: var(--text-muted); font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; }
-
     .stat-number { font-size: 2.4rem; font-weight: 900; color: var(--text-main); font-family: 'JetBrains Mono', monospace; line-height: 1; }
     .stat-label { font-size: 0.8rem; color: var(--accent-contrast); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; font-weight: 700; }
     .stat-external { color: var(--text-muted); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; transition: 0.2s; }
     .stat-card:hover .stat-external { color: var(--accent-blue); transform: translateX(3px); }
 
-    /* SEKCJA SPONSORÓW I PARTNERÓW */
+    /* SEKCJA NEWSÓW NA STRONIE GŁÓWNEJ */
+    .newsy-home-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 25px;
+        margin-bottom: 60px;
+    }
+
+    .home-news-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        overflow: hidden;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        transition: 0.3s;
+    }
+    .home-news-card:hover {
+        border-color: var(--accent-blue);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(0,210,255,0.15);
+    }
+    .home-news-thumb {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-bottom: 1px solid var(--border);
+    }
+    .home-news-content {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-grow: 1;
+    }
+
     .sponsors-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -180,7 +212,6 @@ title: Home
     .sponsor-link { color: var(--accent-blue); font-weight: 700; text-decoration: none; transition: 0.2s; }
     .sponsor-link:hover { text-decoration: underline; }
 
-    /* MARKETPLACE & SUPPORT */
     .extra-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -227,7 +258,6 @@ title: Home
         filter: brightness(1.1);
     }
 
-    /* DYNAMICZNA LISTA WPISÓW (BLOG FEED) */
     .archive-list {
         display: flex;
         flex-direction: column;
@@ -296,10 +326,9 @@ title: Home
     </div>
 </section>
 
-<!-- STATYSTYKI YOUTUBE (KLIKALNE KAFLE) -->
+<!-- STATYSTYKI YOUTUBE -->
 <span class="section-tag">AKTYWNE WĘZŁY SPOŁECZNOŚCI</span>
 <div class="stats-grid">
-    <!-- DevLabStudy YouTube -->
     <a href="https://www.youtube.com/channel/UCisFPSU_Y8hznpqrcewcJAg" target="_blank" class="stat-card">
         <div>
             <div class="stat-header">
@@ -320,7 +349,6 @@ title: Home
         </div>
     </a>
 
-    <!-- PC Hub YouTube -->
     <a href="https://www.youtube.com/channel/UCaTfVaE8Pb95CZvblqjNheA" target="_blank" class="stat-card">
         <div>
             <div class="stat-header">
@@ -342,7 +370,43 @@ title: Home
     </a>
 </div>
 
-<!-- SEKCJA SPONSORÓW I PARTNERÓW -->
+<!-- SEKCJA NAJNOWSZE NEWSY -->
+<span class="section-tag">NAJNOWSZE RAPORTY TECHNOLOGICZNE (NEWSY)</span>
+<div class="newsy-home-grid">
+    {% for post in site.newsy limit:3 %}
+        {% assign home_thumb = post.image %}
+        {% unless home_thumb %}
+            {% if post.content contains '<img' %}
+                {% assign img_tag = post.content | split: '<img' | second %}
+                {% assign img_src = img_tag | split: 'src="' | second | split: '"' | first %}
+                {% if img_src %}
+                    {% assign home_thumb = img_src %}
+                {% endif %}
+            {% endif %}
+        {% endunless %}
+
+    <a href="{{ post.url }}" class="home-news-card">
+        {% if home_thumb %}
+            <img src="{{ home_thumb }}" alt="{{ post.title }}" class="home-news-thumb">
+        {% endif %}
+        <div class="home-news-content">
+            <div>
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent-contrast); margin-bottom: 8px; font-weight: 800;">
+                    [{{ post.category | default: "BRIEF" | upcase }}] // {{ post.date | date: "%Y.%m.%d" }}
+                </div>
+                <h3 style="font-size: 1.15rem; font-weight: 800; color: #fff; margin: 0 0 10px 0; line-height: 1.3;">
+                    {{ post.title }}
+                </h3>
+            </div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--accent-blue); margin-top: 15px; font-weight: 700;">
+                // CZYTAJ RAPORT &rarr;
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+<!-- SEKCJA SPONSORÓW -->
 <span class="section-tag">PARTNERZY TECHNOLOGICZNI</span>
 <div class="sponsors-grid">
     <div class="sponsor-card">
@@ -365,7 +429,6 @@ title: Home
 <!-- MARKETPLACE & SUPPORT -->
 <span class="section-tag">MARKETPLACE & WSPARCIE</span>
 <div class="extra-grid">
-    <!-- Marketplace -->
     <div class="extra-card">
         <div style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: #00bfb2;"></div>
         <h3 style="font-size: 0.8rem; color: #00bfb2; margin: 0 0 10px 0; text-transform: uppercase; font-family: 'JetBrains Mono', monospace;">// Giełda i Sprzedaż:</h3>
@@ -379,7 +442,6 @@ title: Home
         </div>
     </div>
 
-    <!-- Support -->
     <div class="extra-card" style="border-color: var(--accent-blue);">
         <div style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--accent-blue);"></div>
         <h3 style="font-size: 0.8rem; color: var(--accent-blue); margin: 0 0 10px 0; text-transform: uppercase; font-family: 'JetBrains Mono', monospace;">// Wsparcie Projektu:</h3>
@@ -393,7 +455,7 @@ title: Home
     </div>
 </div>
 
-<!-- DYNAMICZNY DZIENNIK SYSTEMOWY (NAJNOWSZE WPISY Z BLOGA) -->
+<!-- DYNAMICZNY DZIENNIK SYSTEMOWY (BLOG) -->
 <span class="section-tag">OSTATNIE WPISY / DZIENNIK SYSTEMOWY</span>
 <div class="archive-list">
     {% for post in site.posts limit:5 %}
