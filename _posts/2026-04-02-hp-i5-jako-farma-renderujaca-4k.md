@@ -1,3 +1,9 @@
+---
+layout: post
+title: "Analogowa misja: Gdy fan Dockera naprawia radio gumką recepturką"
+category: homelab
+---
+
 # Od starego biurowca do farmy renderującej: Jak i5-3470 ratuje mój montaż 4K
 
 Często słyszycie, że do montażu wideo 4K i nowoczesnych kodeków potrzebujecie sprzętu za miliony. Dzisiaj udowodniłem, że wystarczy odrobina sprytu, **Proxmox** i stary, poleasingowy komputer **HP z procesorem i5-3470**.
