@@ -7,6 +7,6 @@ collections:
   updates:
     output: true
     permalink: /updates/:path/
-  news:
+  newsy:
     output: true
     permalink: /newsy/:year/:month/:day/:title/
