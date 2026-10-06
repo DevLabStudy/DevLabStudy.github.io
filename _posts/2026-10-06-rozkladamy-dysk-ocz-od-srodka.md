@@ -2,7 +2,7 @@
 layout: post
 title: "Rozkładamy dysk OCZ od środka: Co kryje się pod obudową legendarnego SSD?"
 category: hardware
-date: 2026-03-22 15:00:00 +0100
+date: 2026-10-06 19:30:00 +0200
 ---
 
 [![Widok z lewej strony - dysk OCZ](/assets/images/lewo.jpeg)](/assets/images/lewo.jpeg)
