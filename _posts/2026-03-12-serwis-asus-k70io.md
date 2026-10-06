@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Serwis ASUS K70IO: Pierwszy krok do niższych temperatur"
+category: hardware
 ---
 
 [![Rozebrany ASUS K70IO](/assets/images/IMG_20260312_012637.jpg)](/assets/images/IMG_20260312_012637.jpg)
