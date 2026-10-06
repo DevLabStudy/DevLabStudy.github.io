@@ -2,7 +2,7 @@
 layout: post
 title: "Modernizacja DevLabu: Fundamenty i Inwentaryzacja"
 date: 2026-06-08
-categories: [homelab, networking]
+category: homelab
 ---
 
 ## Dziennik Inżyniera: Kolejny etap
