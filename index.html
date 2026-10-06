@@ -391,7 +391,43 @@ title: Home
 <div class="newsy-home-grid">
     {% for post in site.newsy limit:3 %}
     <a href="{{ post.url | relative_url }}" class="home-news-card">
-        {% include news-thumb.html post=post %}
+        {% assign t = post %}
+        {% assign thumb = t.icon | default: t.image %}
+        {% assign is_icon = false %}
+        {% if t.icon %}{% assign is_icon = true %}{% endif %}
+
+        {% if thumb == blank %}
+          {% if t.content contains '<img' %}
+            {% assign thumb = t.content | split: '<img' | second | split: 'src="' | second | split: '"' | first %}
+          {% elsif t.content contains '![' %}
+            {% assign thumb = t.content | split: '![' | second | split: '](' | second | split: ')' | first %}
+          {% endif %}
+        {% endif %}
+
+        {% assign cat = t.category | default: "brief" | downcase %}
+        {% case cat %}
+          {% when "hardware" %}{% assign emoji = "💻" %}
+          {% when "homelab" %}{% assign emoji = "🗄️" %}
+          {% when "mikrotik", "sieć", "siec", "network" %}{% assign emoji = "🌐" %}
+          {% when "proxmox" %}{% assign emoji = "🖥️" %}
+          {% when "cisco" %}{% assign emoji = "🔌" %}
+          {% else %}{% assign emoji = "⚡" %}
+        {% endcase %}
+
+        <div class="news-thumb">
+          {% if thumb != blank %}
+            {% assign thumb_src = thumb %}
+            {% unless thumb contains '://' %}
+              {% assign thumb_src = thumb | relative_url %}
+            {% endunless %}
+            <img src="{{ thumb_src }}" alt="" loading="lazy"
+                 class="news-thumb-img {% if is_icon %}is-icon{% endif %}"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <span class="news-thumb-fallback" style="display:none">{{ emoji }}</span>
+          {% else %}
+            <span class="news-thumb-fallback">{{ emoji }}</span>
+          {% endif %}
+        </div>
         <div class="home-news-content">
             <div>
                 <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent-contrast); margin-bottom: 8px; font-weight: 800;">
