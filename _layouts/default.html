@@ -135,7 +135,7 @@
         }
         .section-tag::before { content: '///'; color: var(--accent-blue); }
 
-        /* STOPKA W STYLU NASA (DOPRACOWANA) */
+        /* STOPKA W STYLU NASA (POPRAWIONA SZEROKOŚĆ I IKONY) */
         footer { 
             background: #010204;
             border-top: 1px solid var(--border); 
@@ -148,8 +148,8 @@
             max-width: 1400px;
             margin: 0 auto 50px auto;
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1.5fr;
-            gap: 50px;
+            grid-template-columns: 1.8fr 1fr 1fr 1.8fr;
+            gap: 40px;
         }
         .footer-col h4 { color: #fff; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 1.5px; }
         .footer-col p { color: var(--text-muted); font-size: 0.8rem; line-height: 1.7; margin: 0; font-family: 'Inter', sans-serif; }
@@ -157,16 +157,16 @@
         .footer-col ul a { color: var(--text-muted); font-size: 0.8rem; transition: 0.2s; font-family: 'Inter', sans-serif; }
         .footer-col ul a:hover { color: var(--accent-blue); }
         
-        /* ELEGANCKIE IKONKI W STYLU NASA */
+        /* ZGRABNE IKONKI 5 W RZĘDZIE */
         .social-icons-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            max-width: 240px;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            max-width: 230px;
         }
         .social-icon-btn {
-            width: 44px;
-            height: 44px;
+            width: 36px;
+            height: 36px;
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 50%;
@@ -178,8 +178,8 @@
             transition: 0.25s;
         }
         .social-icon-btn svg {
-            width: 18px;
-            height: 18px;
+            width: 15px;
+            height: 15px;
             fill: currentColor;
         }
         .social-icon-btn:hover {
