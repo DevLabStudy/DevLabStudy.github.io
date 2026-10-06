@@ -2,7 +2,7 @@
 layout: post
 title: "Nowy bezprzewodowy potwór w HomeLabie!"
 date: 2026-05-29 19:15:00 +0200
-categories: homelab network
+category: homelab
 ---
 
 Moje domowe laboratorium doczekało się małej, ale mega ważnej aktualizacji sieciowej. Stary TP-Link Archer z powodu słabego procesora potrafił całkowicie zapchać sieć i rozłączać moje lekcje online, kiedy tylko ktoś odpalił zwykły Speedtest. 
