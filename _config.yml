@@ -9,4 +9,4 @@ collections:
     permalink: /updates/:path/
   news:
     output: true
-    permalink: /news/:year/:month/:day/:title/
+    permalink: /newsy/:year/:month/:day/:title/
