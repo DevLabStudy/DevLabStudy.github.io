@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} | DevLabStudy</title>
+    <link rel="icon" type="image/jpeg" href="/profileIcon_g3ffyg7edeeg1.jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-nav: rgba(5, 5, 5, 0.9);
+            --card-bg: rgba(10, 15, 25, 0.75);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: rgba(255, 255, 255, 0.1);
+            --accent-blue: #00d2ff;
+            --accent-contrast: #ff5e00;
+        }
+
+        body { 
+            font-family: 'Inter', -apple-system, sans-serif; 
+            margin: 0; 
+            min-height: 100vh;
+            background: #000 url('/background.png') no-repeat center center fixed; 
+            background-size: cover; 
+            color: var(--text-main); 
+            line-height: 1.7;
+        }
+
+        .navbar { 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+            background: var(--bg-nav); 
+            backdrop-filter: blur(15px); 
+            border-bottom: 1px solid var(--border); 
+            padding: 15px 40px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .nav-brand { 
+            font-size: 1.3rem; 
+            font-weight: 900; 
+            text-decoration: none; 
+            color: var(--text-main); 
+            letter-spacing: -0.5px;
+        }
+        .nav-brand span { color: var(--accent-contrast); }
+        
+        .nav-links { display: flex; gap: 15px; }
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 700;
+            transition: all 0.2s ease;
+        }
+        .nav-btn:hover, .nav-btn.active {
+            background: rgba(0, 210, 255, 0.08);
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+        }
+
+        /* Układ główny: Treść (środek) + Spis treści (boczny panel) */
+        .portal-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .main-news-column {
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            position: relative;
+            overflow: hidden;
+        }
+        .main-news-column::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background: var(--accent-contrast);
+        }
+
+        .news-header {
+            border-bottom: 1px dashed var(--border);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .news-category-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent-contrast);
+            background: rgba(255, 94, 0, 0.1);
+            padding: 4px 10px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 94, 0, 0.2);
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+        .news-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            margin: 15px 0 15px 0;
+            letter-spacing: -1px;
+            line-height: 1.25;
+        }
+        
+        .news-meta-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        /* Przyciski udostępniania */
+        .share-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .share-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            text-decoration: none;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .share-btn:hover {
+            background: rgba(0, 210, 255, 0.15);
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+        }
+
+        /* Treść artykułu */
+        .news-body { font-size: 1.05rem; color: #cbd5e1; }
+        .news-body h2, .news-body h3 {
+            margin-top: 40px;
+            color: #fff;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .news-body h2 { font-size: 1.4rem; border-left: 3px solid var(--accent-blue); padding-left: 10px; }
+        .news-body p { margin-bottom: 20px; }
+        .news-body a { color: var(--accent-blue); text-decoration: none; font-weight: 600; }
+        .news-body a:hover { text-decoration: underline; }
+
+        /* Panel boczny ze Spisem Treści (TOC) */
+        .sidebar-toc {
+            position: sticky;
+            top: 90px;
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+        }
+        .toc-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: #fff;
+            margin: 0 0 15px 0;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .toc-title::before { content: '//'; color: var(--accent-blue); }
+        
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+        }
+        .toc-item a {
+            color: var(--text-muted);
+            text-decoration: none;
+            display: block;
+            transition: 0.2s;
+        }
+        .toc-item a:hover {
+            color: var(--accent-blue);
+            transform: translateX(4px);
+        }
+
+        /* Sekcja Komentarzy na dole */
+        .comments-section {
+            margin-top: 50px;
+            background: rgba(3, 3, 5, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 25px;
+        }
+        .comments-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            color: #fff;
+            margin: 0 0 15px 0;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .comments-title::before { content: '//'; color: var(--accent-blue); }
+
+        .comment-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+        .comment-input, .comment-textarea {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border);
+            color: #fff;
+            padding: 12px 15px;
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            outline: none;
+        }
+        .comment-input:focus, .comment-textarea:focus { border-color: var(--accent-blue); }
+        .comment-textarea { resize: vertical; min-height: 80px; }
+
+        .comment-submit {
+            background: rgba(0, 210, 255, 0.1);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            color: var(--accent-blue);
+            padding: 12px;
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            align-self: flex-start;
+        }
+        .comment-submit:hover { background: var(--accent-blue); color: #030305; }
+
+        .submitted-comments {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .user-comment {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .user-comment-content { flex: 1; }
+        .user-comment-meta {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent-blue);
+            margin-bottom: 4px;
+        }
+        .comment-actions {
+            display: flex;
+            gap: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+        }
+        .comment-action-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-muted);
+            padding: 2px 6px;
+            border-radius: 4px;
+            transition: 0.2s;
+        }
+        .comment-action-btn:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
+        .comment-action-btn.delete:hover { color: #ef4444; }
+
+        footer { 
+            text-align: center; 
+            color: var(--text-muted); 
+            font-size: 0.8rem; 
+            font-family: 'JetBrains Mono', monospace;
+            margin-top: 60px; 
+            margin-bottom: 40px; 
+        }
+
+        @media (max-width: 900px) {
+            .portal-container { grid-template-columns: 1fr; }
+            .sidebar-toc { position: static; }
+            .navbar { padding: 15px 20px; flex-direction: column; gap: 15px; }
+            .main-news-column { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="/" class="nav-brand">DEVLABSTUDY<span>_</span></a>
+        <div class="nav-links">
+            <a href="/" class="nav-btn">// GŁÓWNA</a>
+            <a href="/blog" class="nav-btn">// REJESTR</a>
+            <a href="/news" class="nav-btn active">// BRIEFY</a>
+        </div>
+    </nav>
+
+    <main class="portal-container">
+        
+        <!-- Lewa/Środkowa kolumna: Artykuł i komentarze -->
+        <article class="main-news-column">
+            <header class="news-header">
+                <span class="news-category-tag">[{{ page.category | default: "NEWS" | upcase }}]</span>
+                <h1 class="news-title">{{ page.title }}</h1>
+                
+                <div class="news-meta-bar">
+                    <span>// Opublikowano: {{ page.date | date: "%Y.%m.%d" }}</span>
+                    <div class="share-buttons">
+                        <a href="#" id="shareX" class="share-btn" target="_blank">𝕏 X (Twitter)</a>
+                        <a href="#" id="shareGitHub" class="share-btn" target="_blank">💻 GitHub</a>
+                    </div>
+                </div>
+            </header>
+
+            <div class="news-body" id="articleBody">
+                {{ content }}
+            </div>
+
+            <!-- Sekcja Komentarzy (Imię + Treść + Edycja/Usuwanie) -->
+            <div class="comments-section">
+                <h3 class="comments-title">Komentarze & Opinie</h3>
+                
+                <div class="comment-form">
+                    <input type="text" id="commentAuthor" class="comment-input" placeholder="Twoje imię / nick...">
+                    <textarea id="commentText" class="comment-textarea" placeholder="Treść komentarza..."></textarea>
+                    <button class="comment-submit" id="commentSubmit">Dodaj komentarz</button>
+                </div>
+
+                <div class="submitted-comments" id="commentsList">
+                    <!-- Dynamiczne wpisy -->
+                </div>
+            </div>
+        </article>
+
+        <!-- Prawa kolumna: Dynamiczny Spis Treści (TOC) -->
+        <aside class="sidebar-toc">
+            <h4 class="toc-title">Spis Treści</h4>
+            <ul class="toc-list" id="tocList">
+                <!-- Generowane automatycznie przez JavaScript ze struktur nagłówków h2/h3 -->
+            </ul>
+        </aside>
+
+    </main>
+
+    <footer>
+        <p>// DevLabStudy Tech Hub 2026</p>
+    </footer>
+
+    <script>
+        // --- AUTOMATYCZNE GENEROWANIE SPISU TREŚCI (TOC) ---
+        const articleBody = document.getElementById('articleBody');
+        const tocList = document.getElementById('tocList');
+        const headings = articleBody.querySelectorAll('h2, h3');
+
+        if(headings.length === 0) {
+            tocList.innerHTML = '<li style="color: var(--text-muted)">// Brak nagłówków</li>';
+        } else {
+            headings.forEach((heading, index) => {
+                if(!heading.id) {
+                    heading.id = 'heading-' + index;
+                }
+                const li = document.createElement('li');
+                li.className = 'toc-item';
+                li.style.paddingLeft = heading.tagName === 'H3' ? '12px' : '0';
+                li.innerHTML = `<a href="#${heading.id}">&rarr; ${heading.textContent}</a>`;
+                tocList.appendChild(li);
+            });
+        }
+
+        // --- PRZYCISKI UDOSTĘPNIANIA ---
+        const currentUrl = encodeURIComponent(window.location.href);
+        const currentTitle = encodeURIComponent(document.title);
+        document.getElementById('shareX').href = `https://twitter.com/intent/tweet?url=${currentUrl}&text=${currentTitle}`;
+        document.getElementById('shareGitHub').href = `https://github.com/`; // Możesz podmienić na link do repozytorium
+
+        // --- OBSŁUGA KOMENTARZY (Z IMIENIEM, EDYCJĄ I USUANIEM) ---
+        const postId = window.location.pathname;
+        const commentAuthor = document.getElementById('commentAuthor');
+        const commentText = document.getElementById('commentText');
+        const commentSubmit = document.getElementById('commentSubmit');
+        const commentsList = document.getElementById('commentsList');
+
+        let commentsKey = 'devlab_comments_' + postId;
+        let savedComments = JSON.parse(localStorage.getItem(commentsKey)) || [];
+
+        function renderComments() {
+            commentsList.innerHTML = '';
+            if(savedComments.length === 0) {
+                commentsList.innerHTML = '<div style="color: var(--text-muted); font-size: 0.85rem; font-family: \'JetBrains Mono\', monospace;">// Brak komentarzy. Bądź pierwszy!</div>';
+                return;
+            }
+
+            savedComments.forEach((c, index) => {
+                const div = document.createElement('div');
+                div.className = 'user-comment';
+                div.innerHTML = `
+                    <div class="user-comment-content">
+                        <div class="user-comment-meta">// ${escapeHtml(c.author)} — ${c.date}</div>
+                        <div id="text-${index}" style="word-break: break-word;">${escapeHtml(c.text)}</div>
+                    </div>
+                    <div class="comment-actions">
+                        <button class="comment-action-btn" onclick="editComment(${index})">Edytuj</button>
+                        <button class="comment-action-btn delete" onclick="deleteComment(${index})">Usuń</button>
+                    </div>
+                `;
+                commentsList.appendChild(div);
+            });
+        }
+
+        commentSubmit.addEventListener('click', () => {
+            const author = commentAuthor.value.trim() || "Anonim";
+            const text = commentText.value.trim();
+            if(text.length < 2) return;
+
+            const now = new Date();
+            const dateStr = now.getFullYear() + '.' + String(now.getMonth()+1).padStart(2, '0') + '.' + String(now.getDate()).padStart(2, '0');
+
+            savedComments.push({ author, text, date: dateStr });
+            localStorage.setItem(commentsKey, JSON.stringify(savedComments));
+            
+            commentText.value = '';
+            renderComments();
+        });
+
+        window.deleteComment = function(index) {
+            savedComments.splice(index, 1);
+            localStorage.setItem(commentsKey, JSON.stringify(savedComments));
+            renderComments();
+        }
+
+        window.editComment = function(index) {
+            const current = savedComments[index];
+            const newText = prompt("Edytuj treść komentarza:", current.text);
+            if(newText !== null && newText.trim().length >= 2) {
+                savedComments[index].text = newText.trim();
+                localStorage.setItem(commentsKey, JSON.stringify(savedComments));
+                renderComments();
+            }
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
+
+        renderComments();
+    </script>
+</body>
+</html>
