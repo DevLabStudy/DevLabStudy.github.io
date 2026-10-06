@@ -14,13 +14,13 @@ NVIDIA DLSS 5, technologia renderowania neuronowego oparta na sztucznej intelige
 
 DLSS 5 fundamentalnie zmienia sposób generowania obrazu. Zamiast tradycyjnego skalowania rozdzielczości przestrzennej, system korzysta z renderowania neuronowego. Nie rekonstruuje pikseli z niższej bazy za pomocą prostych algorytmów, lecz aktywnie przebudowuje i wzbogaca elementy sceny za pomocą modeli generatywnej AI. W odróżnieniu od DLSS 3, technologia nie tworzy dodatkowych klatek w celu podbicia płynności, lecz modyfikuje klatki już wyrenderowane, by zbliżyć je do fotorealizmu.
 
-W praktyce sztuczna inteligencja analizuje gotową klatkę i na podstawie danych dostarczanych bezpośrednio z silnika gry — takich jak wektory ruchu i koloru — generuje zaawansowane tekstury, oświetlenie oraz cienie. NVIDIA nazywa to podejście **„3D-guided AI”**: model ściśle trzyma się geometrii dostarczonej przez silnik gry, zamiast arbitralnie „wymyślać” nowe obiekty.
+W praktyce sztuczna inteligencja analizuje gotową klatkę i na podstawie danych dostarczanych bezpośrednio z silnika gry — takich jak wektory ruchu i koloru — generuje zaawansowane tekstury, oświetlenie oraz cienie. NVIDIA nazwało to podejście **„3D-guided AI”**: model ściśle trzyma się geometrii dostarczonej przez silnik gry, zamiast arbitralnie „wymyślać” nowe obiekty.
 
 ### Jak generatywna AI zmienia tekstury i oświetlenie?
 
 Modele generatywne w DLSS 5 operują na poziomie niedostępnym dla tradycyjnych filtrów ekranowych:
 * **Mikrotekstury:** Gładka, syntetyczna skóra postaci zyskuje realistyczne pory, zmarszczki i nieregularności, a metalowe powierzchnie – realistyczne ślady zużycia i mikro-zarysowania.
-* **Neural Lighting:** AI oblicza interakcję światła z materiałami na podstawie fizycznych właściwości (pbr), dynamicznie reagując na zmiany oświetlenia otoczenia.
+* **Neural Lighting:** AI oblicza interakcję światła z materiałami na podstawie fizycznych właściwości (PBR), dynamicznie reagując na zmiany oświetlenia otoczenia.
 
 ---
 
@@ -40,16 +40,16 @@ DLSS 5 wymaga głębokiej integracji z silnikiem gry. Pobiera z niego dwa kluczo
 
 ---
 
-## 4. Analiza wizualna i testy modeli (Demo "Pani" i Horror)
+## 4. Analiza wizualna i testy modeli (Demo postaci oraz Horror)
 
 Wczesne implementacje oraz materiały demonstracyjne ujawniają zarówno potężny potencjalny skok jakościowy, jak i wyzwania związane z utrzymaniem spójności artystycznej.
 
-![Analiza renderowania postaci](/assets/img/news/pani.png)
-*Ryc. 1: Zastosowanie DLSS 5 w demach technologicznych (np. postacie typu "Pani"). Algorytm drastycznie zwiększa realizm mikrokontrastu i detali skóry, choć w skrajnych przypadkach może nadawać cerze nienaturalną gładkość w stylu modeli generatywnych.*
+![Analiza renderowania postaci](/assets/images/pani.png)
+*Ryc. 1: Zastosowanie DLSS 5 w demach technologicznych (renderowanie twarzy i detali postaci). Algorytm drastycznie zwiększa realizm mikrokontrastu i tekstur, choć w dynamicznym ruchu może niekiedy nadawać skórze nadmierną gładkość charakterystyczną dla modeli generatywnych.*
 
 W przypadku mrocznych tytułów o wysokim kontraście, takich jak nadchodzące gry z nurtu survival horror, algorytmy rekonstrukcji oświetlenia radzą sobie ze zmiennym źródłem światła wolumetrycznego:
 
-![Resident Evil Requiem z DLSS 5](/assets/img/news/resident.jpg)
+![Resident Evil Requiem z DLSS 5](/assets/images/resident.jpg)
 *Ryc. 2: Integracja DLSS 5 w Resident Evil Requiem. Cienie kontaktowe zyskują fizyczną miękkość, a rozpraszanie światła we mgle buduje niespotykany dotąd klimat grozy.*
 
 ---
@@ -58,7 +58,7 @@ W przypadku mrocznych tytułów o wysokim kontraście, takich jak nadchodzące g
 
 Rozwój technologii pędzi w zawrotnym tempie, wymagając ciągłego monitorowania trendów, optymalizacji sieci i modernizacji infrastruktury testowej. Czasami jednak warto na chwilę odetchnąć od monitora i spojrzeć na pasję komputerową z szerszej perspektywy codzienności:
 
-![Codzienność entuzjasty technologii](/assets/img/news/babcia.jpg)
+![Codzienność entuzjasty technologii](/assets/images/babcia.jpg)
 *Ryc. 3: Chwila wytchnienia od testów benchmarkowych i konfiguracji krosownic w szafie rackowej. Nowe karty i algorytmy AI to jedno, ale kluczem do równowagi są solidne fundamenty poza cyfrowym światem.*
 
 ---
