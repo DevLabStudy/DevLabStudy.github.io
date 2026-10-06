@@ -2,7 +2,7 @@
 layout: post
 title: "Reorganizacja Homelabu: Przejście na szafy RACK 19\" oraz 10\" z udziałem marki Lanberg!"
 date: 2026-08-26 10:00:00 +0200
-category: Homelab
+category: homelab
 tags: [lanberg, rack, mikrotik, cisco, homelab, devlabstudy, poe]
 ---
 
