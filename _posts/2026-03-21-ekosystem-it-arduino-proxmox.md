@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Mój mały ekosystem IT: Od Arduino do 2TB NAS na Proxmoxie"
+category: homelab
 ---
 
 W dzisiejszym świecie chmura jest wszędzie, ale nic nie daje takiej satysfakcji jak własny, fizyczny sprzęt stojący na biurku. Dziś chciałem Wam pokazać, jak u mnie wygląda połączenie świata mikrokontrolerów z domową infrastrukturą serwerową.
