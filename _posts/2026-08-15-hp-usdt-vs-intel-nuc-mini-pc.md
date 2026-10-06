@@ -2,8 +2,7 @@
 layout: post
 title: "Dwóch nowych zawodników w DevLabie: HP 8200 USDT vs Intel NUC"
 date: 2026-08-15
-categories: [homelab, hardware, mini-pc]
-image: /assets/images/nuc.jpg
+category: homelab
 ---
 
 Do mojego laboratorium sieciowo-serwerowego trafiły niedawno dwa osobne komputery w małych formatach: **Intel NUC** oraz **HP Compaq Elite 8200 USDT**. Mimo że oba służą jako kompaktowe maszyny, różnią się konstrukcją, rozmiarem i przeznaczeniem w moim setupie.
