@@ -31,7 +31,7 @@ title: "Tech Briefs & News"
         color: #fff;
     }
 
-    /* PASEK FILTRÓW KATEGORII */
+    /* PASEK FILTRÓW KATEGORII (DYNAMICZNY) */
     .newsy-filters {
         max-width: 1200px;
         margin: 0 auto 30px auto;
@@ -247,16 +247,31 @@ title: "Tech Briefs & News"
     </div>
 </div>
 
-<!-- PASEK SZYBKICH FILTRÓW KATEGORII -->
+<!-- DYNAMICZNY PASEK FILTRÓW KATEGORII (Pobiera kategorie bezpośrednio z postów) -->
 <div class="newsy-filters" id="categoryFilters">
     <button class="filter-btn active" data-filter="all">Wszystkie</button>
-    <button class="filter-btn" data-filter="hardware">Hardware</button>
-    <button class="filter-btn" data-filter="ai">AI / Soft</button>
-    <button class="filter-btn" data-filter="homelab">Homelab</button>
+    {% assign raw_cats = "" %}
+    {% for post in site.newsy %}
+        {% if post.categories %}
+            {% for cat in post.categories %}
+                {% assign raw_cats = raw_cats | append: cat | append: "," %}
+            {% endfor %}
+        {% elsif post.category %}
+            {% assign raw_cats = raw_cats | append: post.category | append: "," %}
+        {% endif %}
+    {% endfor %}
+    {% assign unique_cats = raw_cats | split: "," | uniq | sort %}
+    
+    {% for cat in unique_cats %}
+        {% if cat != "" %}
+            <button class="filter-btn" data-filter="{{ cat | downcase }}">{{ cat | upcase }}</button>
+        {% endif %}
+    {% endfor %}
 </div>
 
 <div class="newsy-grid" id="newsGrid">
     {% for post in site.newsy %}
+        <!-- BEZPIECZNE POBIERANIE MINIATURKI (Najpierw zmienna 'image', potem szukanie w tekście) -->
         {% assign post_thumb = post.image %}
         {% unless post_thumb %}
             {% if post.content contains '<img' %}
@@ -268,9 +283,10 @@ title: "Tech Briefs & News"
             {% endif %}
         {% endunless %}
 
-        {% assign post_cat = post.category | default: "brief" | downcase %}
+        <!-- OBSŁUGA WIELU KATEGORII W ATRYBUCIE DATA -->
+        {% capture cat_attr %}{% if post.categories %}{% for c in post.categories %}{{ c | downcase }} {% endfor %}{% else %}{{ post.category | default: "brief" | downcase }}{% endif %}{% endcapture %}
 
-    <a href="{{ post.url }}" class="news-card" data-title="{{ post.title | downcase }}" data-category="{{ post_cat }}">
+    <a href="{{ post.url }}" class="news-card" data-title="{{ post.title | downcase }}" data-categories="{{ cat_attr | strip }}">
         <div style="display: flex; flex-direction: column; height: 100%;">
             {% if post_thumb %}
                 <img src="{{ post_thumb }}" alt="{{ post.title }}" class="news-card-thumb">
@@ -278,7 +294,7 @@ title: "Tech Briefs & News"
             <div class="news-card-content">
                 <div>
                     <div class="news-card-meta">
-                        <span class="news-card-tag">[{{ post.category | default: "BRIEF" | upcase }}]</span>
+                        <span class="news-card-tag">[{{ post.category | default: post.categories.first | default: "BRIEF" | upcase }}]</span>
                         <span>// {{ post.date | date: "%Y.%m.%d" }}</span>
                     </div>
                     <h2 class="news-card-title">{{ post.title }}</h2>
@@ -319,9 +335,9 @@ title: "Tech Briefs & News"
 
         cards.forEach(card => {
             const title = card.getAttribute('data-title');
-            const category = card.getAttribute('data-category');
+            const categories = card.getAttribute('data-categories');
 
-            const matchesCategory = (currentCategory === 'all' || category.includes(currentCategory));
+            const matchesCategory = (currentCategory === 'all' || categories.includes(currentCategory));
             const matchesQuery = title.includes(currentQuery);
 
             if (matchesCategory && matchesQuery) {
