@@ -42,7 +42,7 @@
             border-bottom: 1px solid var(--border); 
             padding: 22px 50px; 
             display: grid; 
-            grid-template-columns: auto 1fr auto; 
+            grid-template-columns: auto 1fr; 
             align-items: center; 
             gap: 30px;
             position: sticky; 
@@ -66,7 +66,7 @@
         }
         .nav-brand svg { width: 22px; height: 22px; stroke: var(--accent-contrast); }
         
-        /* MENU ŚRODKOWE PRZESUNIĘTE W PRAWO */
+        /* MENU ŚRODKOWE / PRAWE */
         .nav-center { 
             display: flex; 
             justify-content: flex-end; 
@@ -94,30 +94,30 @@
             border-radius: 2px;
         }
 
-        .nav-right { display: flex; justify-content: flex-end; }
-
-        /* DROPDOWN COMMUNITY */
+        /* DROPDOWN APPS W NAVBARZE */
         .dropdown { position: relative; display: inline-block; }
         .dropbtn { 
-            background: rgba(0, 210, 255, 0.05); 
-            color: var(--accent-blue); 
-            padding: 9px 18px; 
-            border-radius: 6px; 
-            border: 1px solid rgba(0, 210, 255, 0.3); 
+            background: none; 
+            border: none; 
+            color: var(--text-muted); 
+            font-family: 'Inter', sans-serif;
+            font-weight: 600; 
+            font-size: 0.9rem; 
             cursor: pointer; 
-            font-family: 'JetBrains Mono', monospace; 
-            font-weight: 700; 
-            font-size: 0.8rem; 
-            text-transform: uppercase;
-            transition: 0.2s;
+            padding: 0;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
-        .dropbtn:hover { background: rgba(0, 210, 255, 0.1); border-color: var(--accent-blue); }
+        .dropbtn:hover, .dropdown:hover .dropbtn { color: var(--accent-blue); }
         
-        .dropdown-content { position: absolute; right: 0; top: 100%; padding-top: 12px; min-width: 200px; opacity: 0; visibility: hidden; transition: 0.25s ease; z-index: 1001; }
+        .dropdown-content { position: absolute; right: 0; top: 100%; padding-top: 12px; min-width: 220px; opacity: 0; visibility: hidden; transition: 0.25s ease; z-index: 1001; }
         .dropdown-links-wrapper { background: rgba(10, 15, 25, 0.98); border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); overflow: hidden; backdrop-filter: blur(10px); }
         .dropdown-content a { display: flex; justify-content: space-between; align-items: center; color: var(--text-main); padding: 12px 18px; text-decoration: none; font-size: 0.85rem; font-weight: 600; border-bottom: 1px solid rgba(255, 255, 255, 0.03); }
         .dropdown-content a:hover { color: var(--accent-blue); background: rgba(0, 210, 255, 0.05); }
         .dropdown:hover .dropdown-content { opacity: 1; visibility: visible; }
+        .badge-work { font-size: 0.65rem; background: rgba(255, 94, 0, 0.15); color: var(--accent-contrast); padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(255, 94, 0, 0.3); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
 
         /* DASHBOARD */
         .dashboard { width: 100%; max-width: 1400px; padding: 50px; margin: 0 auto; box-sizing: border-box; flex: 1; }
@@ -136,32 +136,50 @@
         }
         .section-tag::before { content: '///'; color: var(--accent-blue); }
 
-        /* STOPKA */
+        /* STOPKA W STYLU NASA */
         footer { 
-            max-width: 1400px; 
-            width: 100%; 
-            margin: 80px auto 40px auto; 
-            padding: 40px 50px; 
+            background: rgba(3, 3, 5, 0.95);
             border-top: 1px solid var(--border); 
+            padding: 60px 50px 40px 50px; 
+            margin-top: 80px;
+            box-sizing: border-box; 
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto 40px auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+        .footer-col h4 { color: #fff; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 1px; }
+        .footer-col p { color: var(--text-muted); font-size: 0.8rem; line-height: 1.6; margin: 0; font-family: 'Inter', sans-serif; }
+        .footer-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+        .footer-col ul a { color: var(--text-muted); font-size: 0.8rem; transition: 0.2s; }
+        .footer-col ul a:hover { color: var(--accent-blue); }
+        
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 25px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.08);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.8rem; 
-            color: var(--text-muted); 
-            font-family: 'JetBrains Mono', monospace; 
-            box-sizing: border-box; 
+            font-size: 0.75rem;
+            color: var(--text-muted);
         }
-        .footer-links { display: flex; gap: 20px; }
-        .footer-links a { color: var(--text-muted); transition: 0.2s; }
-        .footer-links a:hover { color: var(--accent-blue); }
+        .footer-bottom-links { display: flex; gap: 20px; }
+        .footer-bottom-links a { color: var(--text-muted); transition: 0.2s; }
+        .footer-bottom-links a:hover { color: var(--accent-blue); }
 
         @media (max-width: 1024px) { 
             .navbar { grid-template-columns: 1fr; gap: 15px; padding: 20px; text-align: center; }
             .nav-center { justify-content: center; flex-wrap: wrap; gap: 15px; }
-            .nav-right { justify-content: center; }
             .dashboard { padding: 30px 20px; }
-            footer { flex-direction: column; gap: 20px; text-align: center; padding: 30px 20px; }
-            .footer-links { justify-content: center; }
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+            .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
+            .footer-bottom-links { justify-content: center; }
         }
     </style>
 </head>
@@ -182,26 +200,20 @@
             <a href="/blog" {% if page.url contains "blog" %}class="active"{% endif %}>Blog</a>
             <a href="/homelab" {% if page.url contains "homelab" %}class="active"{% endif %}>HomeLab</a>
             <a href="/sponsors" {% if page.url contains "sponsors" %}class="active"{% endif %}>Sponsors</a>
-            <a href="/apps" {% if page.url contains "apps" %}class="active"{% endif %}>Apps</a>
-            <a href="/kontakt" {% if page.url contains "kontakt" %}class="active"{% endif %}>Kontakt</a>
-        </div>
-        <div class="nav-right">
+            
+            <!-- ROZWIJANE MENU APPS -->
             <div class="dropdown">
-                <button class="dropbtn">Community ▾</button>
+                <button class="dropbtn">Apps ▾</button>
                 <div class="dropdown-content">
                     <div class="dropdown-links-wrapper">
-                        <a href="https://github.com/DevLabStudy" target="_blank">GitHub <span>↗</span></a>
-                        <a href="https://discord.gg/uwUTgEQcwj" target="_blank">Discord <span>↗</span></a>
-                        <a href="https://www.tiktok.com/@devlabstudy_official" target="_blank">TikTok <span>↗</span></a>
-                        <a href="https://www.reddit.com/user/TobiMessi201/" target="_blank">Reddit <span>↗</span></a>
-                        <a href="https://x.com/DevLabStudy" target="_blank">X/Twitter <span>↗</span></a>
-                        <a href="https://www.instagram.com/devlabstudy" target="_blank">Instagram <span>↗</span></a>
-                        <a href="https://pl.pinterest.com/DevLabStudy_Official/" target="_blank">Pinterest <span>↗</span></a>
-                        <a href="https://www.facebook.com/devlabstudy" target="_blank">Fanpage <span>↗</span></a>
-                        <a href="https://www.linkedin.com/in/tobiaszkajzer" target="_blank">LinkedIn <span>↗</span></a>
+                        <a href="/orbit">Orbit <span>↗</span></a>
+                        <a href="/garmin">Garmin <span class="badge-work">In Work</span></a>
+                        <a href="/phone">Mobile App <span>↗</span></a>
                     </div>
                 </div>
             </div>
+
+            <a href="/kontakt" {% if page.url contains "kontakt" %}class="active"{% endif %}>Kontakt</a>
         </div>
     </nav>
 
@@ -209,12 +221,47 @@
         {{ content }}
     </main>
 
+    <!-- ROZBUDOWANA STOPKA W STYLU NASA -->
     <footer>
-        <div>// SYSTEM_ARCHIVE_2026 — Tobiasz Kajzer</div>
-        <div class="footer-links">
-            <a href="/polityka-prywatnosci">Polityka Prywatności</a>
-            <a href="/regulamin">Regulamin</a>
-            <a href="/kontakt">Kontakt</a>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4 style="color: var(--accent-contrast);">DevLabStudy_</h4>
+                <p>Dokumentacja infrastruktury homelab, konfiguracji sieci fizycznych i wirtualnych oraz autorskie projekty narzędziowe.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Nawigacja</h4>
+                <ul>
+                    <li><a href="/">Strona Główna (Hub)</a></li>
+                    <li><a href="/blog">Dziennik / Blog</a></li>
+                    <li><a href="/homelab">Infrastruktura HomeLab</a></li>
+                    <li><a href="/sponsors">Partnerzy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Projekty (Apps)</h4>
+                <ul>
+                    <li><a href="/orbit">Orbit Dashboard</a></li>
+                    <li><a href="/garmin">Garmin Connect Apps</a></li>
+                    <li><a href="/phone">Mobile Toolkits</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Community</h4>
+                <ul>
+                    <li><a href="https://www.youtube.com/channel/UCisFPSU_Y8hznpqrcewcJAg" target="_blank">YouTube (DevLabStudy) ↗</a></li>
+                    <li><a href="https://github.com/DevLabStudy" target="_blank">GitHub Repository ↗</a></li>
+                    <li><a href="https://discord.gg/uwUTgEQcwj" target="_blank">Discord Server ↗</a></li>
+                    <li><a href="https://www.instagram.com/devlabstudy" target="_blank">Instagram ↗</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>// SYSTEM_ARCHIVE_2026 — Tobiasz Kajzer</div>
+            <div class="footer-bottom-links">
+                <a href="/polityka-prywatnosci">Polityka Prywatności</a>
+                <a href="/regulamin">Regulamin</a>
+                <a href="/kontakt">Kontakt</a>
+            </div>
         </div>
     </footer>
 
