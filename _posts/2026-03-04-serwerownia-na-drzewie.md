@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Wspieraj Serwerownię na Drzewie!"
+category: homelab
 ---
 
 [![Serwerownia w domku na drzewie](/assets/images/IMG_20260304_153435_hdr.jpg)](/assets/images/IMG_20260304_153435_hdr.jpg)
