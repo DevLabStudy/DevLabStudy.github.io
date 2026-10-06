@@ -1,7 +1,6 @@
 ---
 layout: default
 title: "Tech Briefs & News"
-image: /assets/images/babcia.jpg
 ---
 
 <style>
@@ -155,7 +154,13 @@ image: /assets/images/babcia.jpg
         overflow: hidden;
     }
     .news-thumb-img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .news-thumb-img.is-icon { width: 96px; height: 96px; object-fit: contain; }
+    .news-thumb-img.is-icon {
+        width: 96px; height: 96px;
+        object-fit: cover;
+        border-radius: 18px;
+        border: 1px solid rgba(0, 210, 255, 0.25);
+        background: rgba(0, 210, 255, 0.08);
+    }
     .news-thumb-fallback {
         font-size: 3.2rem;
         width: 96px; height: 96px;
@@ -286,9 +291,9 @@ image: /assets/images/babcia.jpg
 
             {% if thumb == blank %}
               {% if t.content contains '<img' %}
-                {% assign thumb = t.content | split: '<img' | second | split: 'src="' | second | split: '"' | first %}
+                {% assign img_parts = t.content | split: '<img' %}{% assign src_parts = img_parts[1] | split: 'src="' %}{% assign thumb = src_parts[1] | split: '"' | first %}
               {% elsif t.content contains '![' %}
-                {% assign thumb = t.content | split: '![' | second | split: '](' | second | split: ')' | first %}
+                {% assign md_parts = t.content | split: '![' %}{% assign md_parts2 = md_parts[1] | split: '](' %}{% assign thumb = md_parts2[1] | split: ')' | first %}
               {% endif %}
             {% endif %}
 
