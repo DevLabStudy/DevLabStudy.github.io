@@ -39,6 +39,12 @@ title: Mobile App
         top: 0; left: 0; width: 4px; height: 100%;
         background: var(--accent-blue);
     }
+    .btn-group {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
     .btn-download {
         display: inline-flex;
         align-items: center;
@@ -52,13 +58,34 @@ title: Mobile App
         text-transform: uppercase;
         font-family: 'JetBrains Mono', monospace;
         transition: 0.3s;
-        margin-top: 20px;
         text-decoration: none;
     }
     .btn-download:hover {
         background: #fff;
         transform: translateY(-2px);
         box-shadow: 0 5px 20px rgba(0, 210, 255, 0.3);
+    }
+    .btn-github {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--text-main);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 14px 28px;
+        font-weight: 800;
+        font-size: 0.9rem;
+        border-radius: 6px;
+        text-transform: uppercase;
+        font-family: 'JetBrains Mono', monospace;
+        transition: 0.3s;
+        text-decoration: none;
+    }
+    .btn-github:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: var(--accent-blue);
+        color: var(--accent-blue);
+        transform: translateY(-2px);
     }
     .legal-note {
         background: rgba(255, 94, 0, 0.05);
@@ -87,13 +114,19 @@ title: Mobile App
     </div>
 
     <div class="download-card">
-        <h3 style="margin-top: 0; font-family: 'JetBrains Mono', monospace; color: #fff;">// POBIERZ PLIK INSTALLACYJNY (APK)</h3>
+        <h3 style="margin-top: 0; font-family: 'JetBrains Mono', monospace; color: #fff;">// POBIERZ APLIKACJĘ & KOD ŹRÓDLOWY</h3>
         <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
-            Najnowsza wersja aplikacji mobilnej przygotowana do instalacji na system Android. Pobierz plik bezpośrednio z dysku Google.
+            Pobierz gotowy plik instalacyjny APK lub przejdź do otwartego repozytorium GitHub, aby zapoznać się ze strukturą projektu (licencja MIT). <br>
+            <em style="font-size: 0.85rem; color: var(--text-muted);">Uwaga: Wersja darmowa posiada celowe ograniczenia prędkości i wydajności wybranych funkcji w celach demonstracyjnych.</em>
         </p>
-        <a href="https://drive.google.com/file/d/1xdTBBCe0W4w71GezUI-I0fhwHYADkG2y/view?usp=sharing" target="_blank" class="btn-download">
-            Pobierz APK (Google Drive) ↗
-        </a>
+        <div class="btn-group">
+            <a href="https://drive.google.com/file/d/1xdTBBCe0W4w71GezUI-I0fhwHYADkG2y/view?usp=sharing" target="_blank" class="btn-download">
+                Pobierz APK (Google Drive) ↗
+            </a>
+            <a href="https://github.com/DevLabStudy/DevLabNetworkToolkit" target="_blank" class="btn-github">
+                Kod źródłowy (GitHub) ↗
+            </a>
+        </div>
     </div>
 
     <div class="legal-note">
