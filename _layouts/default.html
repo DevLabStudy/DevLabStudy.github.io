@@ -36,11 +36,11 @@
 
         a { color: inherit; text-decoration: none; }
 
-        /* NAVBAR - GRID */
+        /* NAVBAR - SZEROKI I PROFESJONALNY */
         .navbar { 
             background: var(--bg-nav); 
             border-bottom: 1px solid var(--border); 
-            padding: 22px 50px; 
+            padding: 22px 60px; 
             display: grid; 
             grid-template-columns: auto 1fr; 
             align-items: center; 
@@ -70,7 +70,7 @@
             display: flex; 
             justify-content: flex-end; 
             align-items: center; 
-            gap: 30px; 
+            gap: 35px; 
         }
         .nav-center a { 
             text-decoration: none; 
@@ -118,7 +118,7 @@
         .dropdown:hover .dropdown-content { opacity: 1; visibility: visible; }
         .badge-work { font-size: 0.65rem; background: rgba(255, 94, 0, 0.15); color: var(--accent-contrast); padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(255, 94, 0, 0.3); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
 
-        /* NIEKLIKALNY ELEMENT GARMIN Z HOVEREM [ IN BETA TESTS ] */
+        /* NIEKLIKALNY ELEMENT GARMIN Z HOVEREM */
         .disabled-link {
             color: var(--text-muted);
             cursor: default;
@@ -140,18 +140,12 @@
             letter-spacing: 0.5px;
             transition: opacity 0.2s ease;
         }
-        .disabled-link:hover {
-            background: rgba(255, 94, 0, 0.04);
-        }
-        .disabled-link:hover .link-text {
-            opacity: 0;
-        }
-        .disabled-link:hover .beta-hover-text {
-            opacity: 1;
-        }
+        .disabled-link:hover { background: rgba(255, 94, 0, 0.04); }
+        .disabled-link:hover .link-text { opacity: 0; }
+        .disabled-link:hover .beta-hover-text { opacity: 1; }
 
-        /* DASHBOARD */
-        .dashboard { width: 100%; max-width: 1400px; padding: 50px; margin: 0 auto; box-sizing: border-box; flex: 1; }
+        /* DASHBOARD - ROZSZERZONY I PRZESTRONNY */
+        .dashboard { width: 100%; max-width: 1550px; padding: 50px 60px; margin: 0 auto; box-sizing: border-box; flex: 1; }
 
         .section-tag {
             font-family: 'JetBrains Mono', monospace;
@@ -167,30 +161,29 @@
         }
         .section-tag::before { content: '///'; color: var(--accent-blue); }
 
-        /* STOPKA ROZCIĄGNIĘTA DO KRAWĘDZI */
+        /* STOPKA W STYLU NASA (PEŁNA SKALA I DETALE) */
         footer { 
             background: #010204;
             border-top: 1px solid var(--border); 
-            padding: 60px 40px 30px 40px; 
-            margin-top: 80px;
+            padding: 70px 60px 40px 60px; 
+            margin-top: 100px;
             box-sizing: border-box; 
             font-family: 'JetBrains Mono', monospace;
             width: 100%;
         }
         .footer-grid {
             width: 100%;
-            max-width: none;
-            margin: 0 auto 40px auto;
+            max-width: 1550px;
+            margin: 0 auto 50px auto;
             display: grid;
-            grid-template-columns: 2fr 1fr 1.2fr 2fr;
-            gap: 40px;
-            padding: 0 20px;
+            grid-template-columns: 2.2fr 1fr 1fr 1.5fr;
+            gap: 60px;
             box-sizing: border-box;
         }
         .footer-col h4 { color: #fff; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 1.5px; }
-        .footer-col p { color: var(--text-muted); font-size: 0.8rem; line-height: 1.7; margin: 0; font-family: 'Inter', sans-serif; }
+        .footer-col p { color: var(--text-muted); font-size: 0.82rem; line-height: 1.7; margin: 0; font-family: 'Inter', sans-serif; }
         .footer-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
-        .footer-col ul a, .footer-col ul .disabled-footer-link { color: var(--text-muted); font-size: 0.8rem; transition: 0.2s; font-family: 'Inter', sans-serif; text-decoration: none; }
+        .footer-col ul a, .footer-col ul .disabled-footer-link { color: var(--text-muted); font-size: 0.82rem; transition: 0.2s; font-family: 'Inter', sans-serif; text-decoration: none; }
         .footer-col ul a:hover { color: var(--accent-blue); }
         
         /* STOPKA - GARMIN HOVER */
@@ -199,9 +192,7 @@
             position: relative;
             display: inline-block;
         }
-        .disabled-footer-link .footer-link-text {
-            transition: opacity 0.2s ease;
-        }
+        .disabled-footer-link .footer-link-text { transition: opacity 0.2s ease; }
         .disabled-footer-link .footer-beta-text {
             position: absolute;
             left: 0;
@@ -212,12 +203,8 @@
             font-size: 0.75rem;
             transition: opacity 0.2s ease;
         }
-        .disabled-footer-link:hover .footer-link-text {
-            opacity: 0;
-        }
-        .disabled-footer-link:hover .footer-beta-text {
-            opacity: 1;
-        }
+        .disabled-footer-link:hover .footer-link-text { opacity: 0; }
+        .disabled-footer-link:hover .footer-beta-text { opacity: 1; }
 
         /* IKONKI SPOŁECZNOŚCIOWE */
         .social-icons-grid {
@@ -239,11 +226,7 @@
             text-decoration: none;
             transition: 0.25s;
         }
-        .social-icon-btn svg {
-            width: 15px;
-            height: 15px;
-            fill: currentColor;
-        }
+        .social-icon-btn svg { width: 15px; height: 15px; fill: currentColor; }
         .social-icon-btn:hover {
             background: var(--accent-blue);
             color: #030305;
@@ -254,31 +237,56 @@
 
         .footer-divider {
             width: 100%;
-            margin: 0 0 25px 0;
+            max-width: 1550px;
+            margin: 0 auto 30px auto;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .footer-bottom {
+        /* GŁÓWNY PAS Z PRZEKIEROWANIAMI W STYLU NASA (SZYTWNA SZEROKOŚĆ) */
+        .footer-sublinks-bar {
             width: 100%;
-            padding: 0 20px;
-            box-sizing: border-box;
+            max-width: 1550px;
+            margin: 0 auto 25px auto;
             display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            font-size: 0.78rem;
+            font-family: 'Inter', sans-serif;
+        }
+        .footer-sublinks-bar a {
+            color: var(--text-muted);
+            transition: color 0.2s;
+            text-decoration: none;
+        }
+        .footer-sublinks-bar a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* DOLNY PAS SYSTEMOWY Z METADANYMI (JAK W NASA) */
+        .footer-meta-bar {
+            width: 100%;
+            max-width: 1550px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.75rem;
+            font-size: 0.73rem;
             color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+            gap: 15px;
         }
-        .footer-bottom-links { display: flex; gap: 25px; }
-        .footer-bottom-links a { color: var(--text-muted); transition: 0.2s; font-family: 'Inter', sans-serif; }
-        .footer-bottom-links a:hover { color: var(--accent-blue); }
+        .footer-meta-bar span {
+            color: #fff;
+            font-weight: 700;
+        }
 
         @media (max-width: 1024px) { 
             .navbar { grid-template-columns: 1fr; gap: 15px; padding: 20px; text-align: center; }
             .nav-center { justify-content: center; flex-wrap: wrap; gap: 15px; }
             .dashboard { padding: 30px 20px; }
-            .footer-grid { grid-template-columns: 1fr; gap: 30px; padding: 0 10px; }
-            .footer-bottom { flex-direction: column; gap: 20px; text-align: center; padding: 0 10px; }
-            .footer-bottom-links { justify-content: center; }
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+            .footer-meta-bar { flex-direction: column; text-align: center; gap: 10px; }
             .social-icons-grid { max-width: 100%; justify-content: center; }
         }
     </style>
@@ -397,13 +405,22 @@
         
         <div class="footer-divider"></div>
 
-        <div class="footer-bottom">
-            <div>// SYSTEM_ARCHIVE_2026 — Tobiasz Kajzer</div>
-            <div class="footer-bottom-links">
-                <a href="/polityka-prywatnosci">Polityka Prywatności</a>
-                <a href="/regulamin">Regulamin</a>
-                <a href="/kontakt">Kontakt</a>
-            </div>
+        <!-- DODATKOWY PAS PRZEKIEROWAŃ W STYLU NASA -->
+        <div class="footer-sublinks-bar">
+            <a href="/">Sitemap</a>
+            <a href="/blog">For Media & Press</a>
+            <a href="/polityka-prywatnosci">Privacy Policy</a>
+            <a href="/homelab">Infrastructure & Specs</a>
+            <a href="/sponsors">Partners & Sponsors</a>
+            <a href="/kontakt">Contact & Support</a>
+            <a href="https://github.com/DevLabStudy" target="_blank">Source Code (GitHub)</a>
+        </div>
+
+        <!-- DOLNY PAS METADANYCH (JAK W NASA) -->
+        <div class="footer-meta-bar">
+            <div>Page Last Updated: <span>October 06, 2026</span></div>
+            <div>Page Editor: <span>Tobiasz Kajzer</span></div>
+            <div>Responsible System Official: <span>DevLabStudy Administrator</span></div>
         </div>
     </footer>
 
