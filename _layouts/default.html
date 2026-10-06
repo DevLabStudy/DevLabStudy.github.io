@@ -113,10 +113,42 @@
         
         .dropdown-content { position: absolute; right: 0; top: 100%; padding-top: 12px; min-width: 220px; opacity: 0; visibility: hidden; transition: 0.25s ease; z-index: 1001; }
         .dropdown-links-wrapper { background: rgba(10, 15, 25, 0.98); border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); overflow: hidden; backdrop-filter: blur(10px); }
-        .dropdown-content a { display: flex; justify-content: space-between; align-items: center; color: var(--text-main); padding: 12px 18px; text-decoration: none; font-size: 0.85rem; font-weight: 600; border-bottom: 1px solid rgba(255, 255, 255, 0.03); }
+        .dropdown-content a, .dropdown-content .disabled-link { display: flex; justify-content: space-between; align-items: center; color: var(--text-main); padding: 12px 18px; text-decoration: none; font-size: 0.85rem; font-weight: 600; border-bottom: 1px solid rgba(255, 255, 255, 0.03); }
         .dropdown-content a:hover { color: var(--accent-blue); background: rgba(0, 210, 255, 0.05); }
         .dropdown:hover .dropdown-content { opacity: 1; visibility: visible; }
         .badge-work { font-size: 0.65rem; background: rgba(255, 94, 0, 0.15); color: var(--accent-contrast); padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(255, 94, 0, 0.3); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
+
+        /* NIEKLIKALNY ELEMENT GARMIN Z HOVEREM [ IN BETA TESTS ] */
+        .disabled-link {
+            color: var(--text-muted);
+            cursor: default;
+            position: relative;
+            background: transparent;
+            transition: 0.25s;
+        }
+        .disabled-link .link-text {
+            display: inline-block;
+            transition: opacity 0.2s ease;
+        }
+        .disabled-link .beta-hover-text {
+            position: absolute;
+            left: 18px;
+            opacity: 0;
+            color: var(--accent-contrast);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+            transition: opacity 0.2s ease;
+        }
+        .disabled-link:hover {
+            background: rgba(255, 94, 0, 0.04);
+        }
+        .disabled-link:hover .link-text {
+            opacity: 0;
+        }
+        .disabled-link:hover .beta-hover-text {
+            opacity: 1;
+        }
 
         /* DASHBOARD */
         .dashboard { width: 100%; max-width: 1400px; padding: 50px; margin: 0 auto; box-sizing: border-box; flex: 1; }
@@ -135,29 +167,59 @@
         }
         .section-tag::before { content: '///'; color: var(--accent-blue); }
 
-        /* STOPKA W STYLU NASA (POPRAWIONA SZEROKOŚĆ I IKONY) */
+        /* STOPKA ROZCIĄGNIĘTA DO KRAWĘDZI */
         footer { 
             background: #010204;
             border-top: 1px solid var(--border); 
-            padding: 70px 50px 40px 50px; 
+            padding: 60px 40px 30px 40px; 
             margin-top: 80px;
             box-sizing: border-box; 
             font-family: 'JetBrains Mono', monospace;
+            width: 100%;
         }
         .footer-grid {
-            max-width: 1400px;
-            margin: 0 auto 50px auto;
+            width: 100%;
+            max-width: none;
+            margin: 0 auto 40px auto;
             display: grid;
-            grid-template-columns: 1.8fr 1fr 1fr 1.8fr;
+            grid-template-columns: 2fr 1fr 1.2fr 2fr;
             gap: 40px;
+            padding: 0 20px;
+            box-sizing: border-box;
         }
         .footer-col h4 { color: #fff; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 1.5px; }
         .footer-col p { color: var(--text-muted); font-size: 0.8rem; line-height: 1.7; margin: 0; font-family: 'Inter', sans-serif; }
         .footer-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
-        .footer-col ul a { color: var(--text-muted); font-size: 0.8rem; transition: 0.2s; font-family: 'Inter', sans-serif; }
+        .footer-col ul a, .footer-col ul .disabled-footer-link { color: var(--text-muted); font-size: 0.8rem; transition: 0.2s; font-family: 'Inter', sans-serif; text-decoration: none; }
         .footer-col ul a:hover { color: var(--accent-blue); }
         
-        /* ZGRABNE IKONKI 5 W RZĘDZIE */
+        /* STOPKA - GARMIN HOVER */
+        .disabled-footer-link {
+            cursor: default;
+            position: relative;
+            display: inline-block;
+        }
+        .disabled-footer-link .footer-link-text {
+            transition: opacity 0.2s ease;
+        }
+        .disabled-footer-link .footer-beta-text {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            color: var(--accent-contrast);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            transition: opacity 0.2s ease;
+        }
+        .disabled-footer-link:hover .footer-link-text {
+            opacity: 0;
+        }
+        .disabled-footer-link:hover .footer-beta-text {
+            opacity: 1;
+        }
+
+        /* IKONKI SPOŁECZNOŚCIOWE */
         .social-icons-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
@@ -191,14 +253,15 @@
         }
 
         .footer-divider {
-            max-width: 1400px;
-            margin: 0 auto 30px auto;
+            width: 100%;
+            margin: 0 0 25px 0;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .footer-bottom {
-            max-width: 1400px;
-            margin: 0 auto;
+            width: 100%;
+            padding: 0 20px;
+            box-sizing: border-box;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -213,8 +276,8 @@
             .navbar { grid-template-columns: 1fr; gap: 15px; padding: 20px; text-align: center; }
             .nav-center { justify-content: center; flex-wrap: wrap; gap: 15px; }
             .dashboard { padding: 30px 20px; }
-            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
-            .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; padding: 0 10px; }
+            .footer-bottom { flex-direction: column; gap: 20px; text-align: center; padding: 0 10px; }
             .footer-bottom-links { justify-content: center; }
             .social-icons-grid { max-width: 100%; justify-content: center; }
         }
@@ -243,7 +306,11 @@
                 <div class="dropdown-content">
                     <div class="dropdown-links-wrapper">
                         <a href="/orbit">Orbit <span>↗</span></a>
-                        <a href="/garmin">Garmin <span class="badge-work">In Work</span></a>
+                        <div class="disabled-link">
+                            <span class="link-text">Garmin</span>
+                            <span class="beta-hover-text">[ In Beta Tests ]</span>
+                            <span class="badge-work">In Work</span>
+                        </div>
                         <a href="/phone">Mobile App <span>↗</span></a>
                     </div>
                 </div>
@@ -276,7 +343,12 @@
                 <h4>Projekty (Apps)</h4>
                 <ul>
                     <li><a href="/orbit">Orbit Dashboard</a></li>
-                    <li><a href="/garmin">Garmin Connect Apps</a></li>
+                    <li>
+                        <div class="disabled-footer-link">
+                            <span class="footer-link-text">Garmin Connect Apps</span>
+                            <span class="footer-beta-text">[ In Beta Tests ]</span>
+                        </div>
+                    </li>
                     <li><a href="/phone">Mobile Toolkits</a></li>
                 </ul>
             </div>
