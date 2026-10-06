@@ -2,7 +2,7 @@
 layout: post
 title: "Optymalizacja infrastruktury"
 date: 2026-07-27
-categories: [homelab, hardware, proxmox]
+category: homelab
 ---
 
 Czas na mały update z tego, co ostatnio działo się w moim domowym laboratorium. Środowisko stale rośnie, a ostatnie zmiany sprzętowe pozwoliły mi znacznie zoptymalizować zarządzanie zasobami i siecią.
