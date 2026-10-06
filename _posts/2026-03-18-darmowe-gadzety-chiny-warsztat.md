@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Lekcja pokory wobec chińskich opisów: Darmowe gadżety na warsztacie"
+category: hardware
 ---
 
 [![Zrzut ekranu z zamówienia](/assets/images/zamowienie-chiny.png)](/assets/images/zamowienie-chiny.png)
