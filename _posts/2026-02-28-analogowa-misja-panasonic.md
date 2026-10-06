@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Analogowa misja: Gdy fan Dockera naprawia radio gumką recepturką"
+category: hardware
 ---
 
 Mój blog zwykle kręci się wokół kontenerów, logów i **Linux Mint**, ale ostatni wyjazd udowodnił mi jedno: myślenie "homelabowca" przydaje się wszędzie. Nawet tam, gdzie nie ma SSH, a jedynym interfejsem są fizyczne przyciski i magnetofonowa taśma.
