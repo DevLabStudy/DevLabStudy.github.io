@@ -260,13 +260,20 @@ title: "Tech Briefs & News"
 
 <div class="newsy-grid" id="newsGrid">
     {% for post in site.newsy %}
-        {% assign post_thumb = post.image %}
+        <!-- Automatyczne wyciąganie pierwszego obrazka z treści posta -->
+        {% assign post_thumb = nil %}
+        {% if post.content contains '<img' %}
+            {% assign img_tag = post.content | split: '<img' | second %}
+            {% assign img_src = img_tag | split: 'src="' | second | split: '"' | first %}
+            {% if img_src %}
+                {% assign post_thumb = img_src %}
+            {% endif %}
+        {% endif %}
         {% unless post_thumb %}
-            {% if post.content contains '<img' %}
-                {% assign img_tag = post.content | split: '<img' | second %}
-                {% assign img_src = img_tag | split: 'src="' | second | split: '"' | first %}
-                {% if img_src %}
-                    {% assign post_thumb = img_src %}
+            {% if post.content contains '![' %}
+                {% assign md_img = post.content | split: '![' | second | split: ']' | second | split: '(' | second | split: ')' | first %}
+                {% if md_img %}
+                    {% assign post_thumb = md_img %}
                 {% endif %}
             {% endif %}
         {% endunless %}
@@ -276,7 +283,7 @@ title: "Tech Briefs & News"
     <a href="{{ post.url }}" class="news-card" data-title="{{ post.title | downcase }}" data-category="{{ post_cat }}">
         <div style="display: flex; flex-direction: column; height: 100%;">
             {% if post_thumb %}
-                <img src="{{ post_thumb }}" alt="{{ post.title }}" class="news-card-thumb">
+                <img src="{{ post_thumb | relative_url }}" alt="{{ post.title }}" class="news-card-thumb">
             {% endif %}
             <div class="news-card-content">
                 <div>
