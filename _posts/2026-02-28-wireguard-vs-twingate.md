@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "WireGuard vs. Twingate: Wybieram czystą moc i pełną kontrolę nad siecią. Porównanie w praktyce."
+category: networking
 ---
 
 [![Konfiguracja WireGuard](/assets/images/1772235812520290-0.jpg)](/assets/images/1772235812520290-0.jpg)
@@ -11,10 +12,10 @@ Dlaczego przy budowie własnego klastra opartego na komputerach z odzysku i serw
 
 W tym artykule rozkładam oba rozwiązania na czynniki pierwsze:
 
-* **⚡ Wydajność bez filtra:** Zobacz, dlaczego WireGuard, będąc częścią jądra Linuxa, oferuje transfery nieosiągalne dla chmurowych pośredników. Porównamy opóźnienia, które przy zdalnym zarządzaniu serwerem Minecraft czy panelem zamówień mają krytyczne znaczenie.
-* **🔐 Klucze w moich rękach:** Dowiesz się, dlaczego samodzielne generowanie par kluczy kryptograficznych na własnym VPS-ie daje mi większy spokój ducha niż zaufanie do panelu zarządzania firmy trzeciej.
-* **🔋 Lekkość dla Hardware'u:** Analizuję zużycie zasobów. Moje darmowe laptopy i Asus nie mają mocy do marnowania na ciężkie klienty VPN – tutaj WireGuard ze swoją minimalistyczną architekturą po prostu nie ma konkurencji.
-* **🛠️ Prawdziwy Self-Hosting:** Wyjaśniam, jak własny tunel pozwala na stworzenie spójnej sieci między domowym klastrem Proxmox a mobilnym punktem sprzedaży, bez oglądania się na limity darmowych planów korporacyjnych.
+* **Wydajność bez filtra:** Zobacz, dlaczego WireGuard, będąc częścią jądra Linuxa, oferuje transfery nieosiągalne dla chmurowych pośredników. Porównamy opóźnienia, które przy zdalnym zarządzaniu serwerem Minecraft czy panelem zamówień mają krytyczne znaczenie.
+* **Klucze w moich rękach:** Dowiesz się, dlaczego samodzielne generowanie par kluczy kryptograficznych na własnym VPS-ie daje mi większy spokój ducha niż zaufanie do panelu zarządzania firmy trzeciej.
+* **Lekkość dla Hardware'u:** Analizuję zużycie zasobów. Moje darmowe laptopy i Asus nie mają mocy do marnowania na ciężkie klienty VPN – tutaj WireGuard ze swoją minimalistyczną architekturą po prostu nie ma konkurencji.
+* **Prawdziwy Self-Hosting:** Wyjaśniam, jak własny tunel pozwala na stworzenie spójnej sieci między domowym klastrem Proxmox a mobilnym punktem sprzedaży, bez oglądania się na limity darmowych planów korporacyjnych.
 
 Zapomnij o "czarnych skrzynkach" i abonamentach. Pokażę Ci, jak wykorzystując darmowy sprzęt i potęgę Open Source, zbudować bezpieczny tunel, który przetrwa każdą awarię zewnętrznych dostawców. Czas przejąć kontrolę nad własnymi danymi!
 
