@@ -2,7 +2,7 @@
 layout: post
 title: "Ratowanie klastra i Nokia jako serwer? Nietypowy dzień w DevLab"
 date: 2026-07-08
-categories: [homelab, hardware, dev]
+category: homelab
 ---
 
 Każdy, kto bawi się w self-hosting i budowanie własnego HomeLabu, zna ten moment: wszystko działa idealnie, aż nagle jedna drobna zmiana wywołuje lawinę niespodziewanych problemów. Ostatnie dni w moim labie w Cieszynie były prawdziwym rollercoasterem – od walki z pętlą resetów sprzętu, po odpalenie Ubuntu na... smartfonie Nokii.
