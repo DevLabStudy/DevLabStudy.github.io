@@ -121,7 +121,8 @@
             height: 3px;
             background: var(--accent-blue);
             border-radius: 3px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            /* Płynna, naturalna animacja */
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 1;
             box-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
         }
@@ -447,10 +448,35 @@
             indicator.style.left = el.offsetLeft + 'px';
         }
 
-        // Ustawienie początkowe na aktywną stronę
-        moveIndicator(activeLink);
+        // Sprawdzamy czy w pamięci przeglądarki (sessionStorage) mamy zapisaną poprzednią pozycję wskaźnika,
+        // dzięki czemu po kliknięciu linku animacja rusza z miejsca, w którym użytkownik aktualnie znajdował się na stronie!
+        const savedLeft = sessionStorage.getItem('nav_indicator_left');
+        const savedWidth = sessionStorage.getItem('nav_indicator_width');
 
+        if (savedLeft !== null && savedWidth !== null) {
+            // Tymczasowo ustawiamy wskaźnik dokładnie w miejscu sprzed przeładowania bez animacji
+            indicator.style.transition = 'none';
+            indicator.style.left = savedLeft;
+            indicator.style.width = savedWidth;
+            
+            // Wymuszenie odświeżenia layoutu (reflow)
+            void indicator.offsetHeight;
+            
+            // Przywracamy płynne przejście i płynnie animujemy do faktycznego aktywnego elementu nowej strony
+            indicator.style.transition = '';
+            moveIndicator(activeLink);
+        } else {
+            // Jeśli brak historii sesji, ustawiamy standardowo na aktywny link
+            moveIndicator(activeLink);
+        }
+
+        // Zapisujemy pozycję po kliknięciu w jakikolwiek link nawigacji
         navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                sessionStorage.setItem('nav_indicator_left', link.offsetLeft + 'px');
+                sessionStorage.setItem('nav_indicator_width', link.offsetWidth + 'px');
+            });
+
             link.addEventListener('mouseenter', () => {
                 moveIndicator(link);
             });
