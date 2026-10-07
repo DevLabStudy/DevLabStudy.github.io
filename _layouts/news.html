@@ -130,6 +130,74 @@ layout: default
         margin-top: 10px;
     }
 
+    /* FAQ ACCORDION W TREŚCI NEWSA */
+    .faq-accordion {
+        margin: 20px 0 35px 0;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.02);
+        overflow: hidden;
+    }
+    .faq-accordion-intro {
+        padding: 18px 20px 4px 20px;
+    }
+    .faq-item {
+        border-top: 1px solid var(--border);
+    }
+    .faq-item:first-of-type {
+        border-top: 0;
+    }
+    .faq-question {
+        list-style: none;
+        cursor: pointer;
+        padding: 16px 20px;
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 700;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+        transition: background 0.2s ease, color 0.2s ease;
+        outline: none;
+    }
+    .faq-question::-webkit-details-marker {
+        display: none;
+    }
+    .faq-question::after {
+        content: '⌄';
+        font-size: 1.05rem;
+        color: var(--accent-blue);
+        transition: transform 0.2s ease;
+        flex-shrink: 0;
+    }
+    .faq-item[open] .faq-question::after {
+        transform: rotate(180deg);
+    }
+    .faq-question:hover {
+        background: rgba(0, 210, 255, 0.08);
+        color: var(--accent-blue);
+    }
+    .faq-question:focus-visible {
+        box-shadow: inset 0 0 0 2px var(--accent-blue);
+        border-radius: 4px;
+    }
+    .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.28s ease, opacity 0.2s ease;
+        padding: 0 20px;
+    }
+    .faq-item[open] .faq-answer {
+        max-height: 1200px;
+        opacity: 1;
+        padding: 0 20px 18px 20px;
+    }
+    .faq-answer > *:last-child {
+        margin-bottom: 0;
+    }
+
     /* SPIS TREŚCI (TOC) W BOCZNYM PANELU */
     .sidebar-toc {
         position: sticky;
@@ -287,6 +355,9 @@ layout: default
         .post-container { grid-template-columns: 1fr; padding: 0 20px; }
         .sidebar-toc { position: static; }
         .back-to-news-floating { bottom: 20px; right: 20px; padding: 10px 14px; font-size: 0.75rem; }
+        .faq-question { padding: 14px 16px; font-size: 0.9rem; }
+        .faq-item[open] .faq-answer { padding: 0 16px 16px 16px; }
+        .faq-answer { padding: 0 16px; }
     }
 </style>
 
@@ -340,10 +411,89 @@ layout: default
 </a>
 
 <script>
+    // FAQ markdown structure expected in the post body:
+    // - `## FAQ` / `## Najczęściej zadawane pytania` (or heading containing these phrases) starts FAQ section
+    // - each `###` in this section is treated as one question
+    // - all elements under that `###` until next `###` or next `##` are treated as answer content
+    function normalizeHeadingText(text) {
+        return (text || '')
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .trim();
+    }
+
+    function isFaqSectionHeading(text) {
+        const normalized = normalizeHeadingText(text);
+        return normalized.includes('faq') || normalized.includes('najczesciej zadawane pytania');
+    }
+
+    function transformFaqToAccordion(articleBody) {
+        const headings = Array.from(articleBody.querySelectorAll('h2'));
+        const faqHeading = headings.find((heading) => isFaqSectionHeading(heading.textContent));
+        if (!faqHeading) return;
+
+        const sectionNodes = [];
+        let cursor = faqHeading.nextElementSibling;
+        while (cursor) {
+            if (cursor.tagName === 'H1' || cursor.tagName === 'H2') break;
+            sectionNodes.push(cursor);
+            cursor = cursor.nextElementSibling;
+        }
+
+        if (sectionNodes.length === 0) return;
+        if (!sectionNodes.some((node) => node.tagName === 'H3')) return;
+
+        const faqWrapper = document.createElement('section');
+        faqWrapper.className = 'faq-accordion';
+        faqWrapper.setAttribute('aria-label', 'Najczęściej zadawane pytania');
+
+        const faqIntro = document.createElement('div');
+        faqIntro.className = 'faq-accordion-intro';
+
+        let currentAnswer = null;
+        let hasQuestions = false;
+
+        sectionNodes.forEach((node) => {
+            if (node.tagName === 'H3') {
+                const details = document.createElement('details');
+                details.className = 'faq-item';
+
+                const summary = document.createElement('summary');
+                summary.className = 'faq-question';
+                summary.textContent = node.textContent.trim();
+                details.appendChild(summary);
+
+                currentAnswer = document.createElement('div');
+                currentAnswer.className = 'faq-answer';
+                details.appendChild(currentAnswer);
+
+                faqWrapper.appendChild(details);
+                node.remove();
+                hasQuestions = true;
+                return;
+            }
+
+            if (currentAnswer) {
+                currentAnswer.appendChild(node);
+            } else {
+                faqIntro.appendChild(node);
+            }
+        });
+
+        if (!hasQuestions) return;
+        if (faqIntro.childNodes.length > 0) faqWrapper.prepend(faqIntro);
+        faqHeading.insertAdjacentElement('afterend', faqWrapper);
+    }
+
     // AUTOMATYCZNY SPIS TREŚCI ZE STRUKTURY NAGŁÓWKÓW
     const articleBody = document.getElementById('articleBody');
     const tocList = document.getElementById('tocList');
-    const headings = articleBody.querySelectorAll('h2, h3');
+    transformFaqToAccordion(articleBody);
+
+    const headings = Array.from(articleBody.querySelectorAll('h2, h3')).filter(
+        (heading) => !heading.closest('.faq-accordion')
+    );
 
     if(headings.length === 0) {
         tocList.innerHTML = '<li style="color: var(--text-muted)">// Brak nagłówków</li>';
