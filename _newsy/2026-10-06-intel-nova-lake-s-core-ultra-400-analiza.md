@@ -235,32 +235,25 @@ Ogólna zasada przy przeciekach brzmi: czekanie ma sens tylko wtedy, gdy twój o
 
 ## 10. FAQ i Źródła
 
-**Czy Nova Lake-S będzie działać na starych płytach?**
+1. **Czy Nova Lake-S będzie działać na starych płytach?**  
+   Nie. Potrzebna jest płyta z gniazdem LGA 1954 i chipsetem serii 900.
 
-Nie. Potrzebna jest płyta z gniazdem LGA 1954 i chipsetem serii 900.
+2. **Czy zachowam stare chłodzenie?**  
+   Najprawdopodobniej tak, bo wymiary procesora i otworów montażowych są takie jak w LGA 1700 i LGA 1851, a Noctua i Thermaltake potwierdziły zgodność. Sprawdź jednak dokumentację swojego modelu.
 
-**Czy zachowam stare chłodzenie?**
+3. **Czy będzie Hyper-Threading?**  
+   Według przecieków nie. Liczba wątków będzie równa liczbie rdzeni.
 
-Najprawdopodobniej tak, bo wymiary procesora i otworów montażowych są takie jak w LGA 1700 i LGA 1851, a Noctua i Thermaltake potwierdziły zgodność. Sprawdź jednak dokumentację swojego modelu.
+4. **Kiedy można się spodziewać pierwszych testów?**  
+   Zapowiedź jest oczekiwana na CES 2027, a niezależne testy zwykle pojawiają się tuż przed sprzedażą.
 
-**Czy będzie Hyper-Threading?**
+5. **Czy 52 rdzenie trafią do zwykłych graczy?**  
+   Mało prawdopodobne. Ten wariant jest dwukafelkowy, ma największy pobór mocy (do 175 W) i pojawi się jako ostatni, w drugiej połowie 2027.
 
-Według przecieków nie. Liczba wątków będzie równa liczbie rdzeni.
+6. **Czy to wszystko jest pewne?**  
+   Nie. Większość parametrów pochodzi z przecieków i może się zmienić do oficjalnej premiery.
 
-**Kiedy można się spodziewać pierwszych testów?**
-
-Zapowiedź jest oczekiwana na CES 2027, a niezależne testy zwykle pojawiają się tuż przed sprzedażą.
-
-**Czy 52 rdzenie trafią do zwykłych graczy?**
-
-Mało prawdopodobne. Ten wariant jest dwukafelkowy, ma największy pobór mocy (do 175 W) i pojawi się jako ostatni, w drugiej połowie 2027.
-
-**Czy to wszystko jest pewne?**
-
-Nie. Większość parametrów pochodzi z przecieków i może się zmienić do oficjalnej premiery.
-
-**Źródła:**
-
+**Źródła:**  
 Zestawienie opracowałem na podstawie informacji z przecieków publikowanych i opisywanych przez: VideoCardz, Tom's Hardware, TweakTown, HotHardware, igor'sLAB, Club386, Wccftech, TechPowerUp, PCGamesN, ITHome oraz polski serwis x-kom. Dane o generacji Core Ultra 200S Plus pochodzą z komunikatów Intela przytaczanych przez serwisy branżowe, a informacje o AMD Zen 6 z dokumentacji AMD i doniesień prasy technicznej.
 
 *Artykuł nie zawiera oficjalnych materiałów producenta. Wszystkie wartości dotyczące niewydanych produktów mogą ulec zmianie. Ceny sklepowe są orientacyjne.*
