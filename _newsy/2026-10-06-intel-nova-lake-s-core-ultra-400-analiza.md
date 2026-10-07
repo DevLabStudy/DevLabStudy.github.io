@@ -19,17 +19,17 @@ W tym zestawieniu zbieram w jednym miejscu to, co dotąd wyciekło z map drogowy
 
 Zanim przejdziemy do szczegółów, warto rozdzielić fakty od plotek. Poniższa tabela pokazuje, jak mocno można ufać poszczególnym informacjom.
 
-|  | Informacja | Status | Uwagi |  |
-| --- | --- | --- | --- | --- |
-|  | Istnienie rodziny Nova Lake i jej zapowiedź na koniec 2026 r. | Potwierdzone przez Intela | Producent publicznie wskazywał rok 2026, ale nie podał dat dla desktopu |  |
-|  | Nazwa handlowa Core Ultra 400 | Przeciek (bardzo spójny) | Powtarza się w wielu niezależnych źródłach |  |
-|  | Socket LGA 1954 i chipsety serii 900 | Przeciek + prototypowe płyty | Płyty pokazywano na Computex 2026 |  |
-|  | Rdzenie Coyote Cove, Arctic Wolf, LP-E | Przeciek | Brak HT w całej rodzinie |  |
-|  | Pamięć bLLC | Przeciek | Pojemności różnią się między źródłami |  |
-|  | Do 52 rdzeni | Przeciek | Prawdopodobnie tylko wariant dwukafelkowy, nie typowy konsumencki |  |
-|  | Dokładna data premiery | Brak oficjalnej | Przecieki wskazują Q1 2027 |  |
-|  | Taktowania | Brak wiarygodnych danych | Wartości 5,5–6,0 GHz to spekulacje |  |
-|  | Ceny | Brak danych | Wszystko, co się pojawia, to szacunki |  |
+| Informacja | Status | Uwagi |
+| --- | --- | --- |
+| Istnienie rodziny Nova Lake i jej zapowiedź na koniec 2026 r. | Potwierdzone przez Intela | Producent publicznie wskazywał rok 2026, ale nie podał dat dla desktopu |
+| Nazwa handlowa Core Ultra 400 | Przeciek (bardzo spójny) | Powtarza się w wielu niezależnych źródłach |
+| Socket LGA 1954 i chipsety serii 900 | Przeciek + prototypowe płyty | Płyty pokazywano na Computex 2026 |
+| Rdzenie Coyote Cove, Arctic Wolf, LP-E | Przeciek | Brak HT w całej rodzinie |
+| Pamięć bLLC | Przeciek | Pojemności różnią się między źródłami |
+| Do 52 rdzeni | Przeciek | Prawdopodobnie tylko wariant dwukafelkowy, nie typowy konsumencki |
+| Dokładna data premiery | Brak oficjalnej | Przecieki wskazują Q1 2027 |
+| Taktowania | Brak wiarygodnych danych | Wartości 5,5–6,0 GHz to spekulacje |
+| Ceny | Brak danych | Wszystko, co się pojawia, to szacunki |
 
 ## 2. Harmonogram premiery
 
@@ -39,12 +39,12 @@ Wcześniejsze założenia mówiły o debiucie jeszcze pod koniec 2026 roku. Obec
 
 Według przecieku opisanego m.in. przez VideoCardz i TweakTown premiery mają być rozłożone na prawie cały rok 2027:
 
-|  | Fala | Wariant | Okno premiery (przeciek) |  |
-| --- | --- | --- | --- | --- |
-|  | **1** | 28 rdzeni, modele „DS" (wersje z dużą pamięcią cache) | koniec stycznia – marzec 2027 |  |
-|  | **2** | 28 rdzeni, odblokowane modele „K" | marzec – kwiecień 2027 |  |
-|  | **3** | Modele 16- i 8-rdzeniowe | koniec marca – maj 2027 |  |
-|  | **4** | Flagowy model 52-rdzeniowy | maj – wrzesień 2027 |  |
+| Fala | Wariant | Okno premiery (przeciek) |
+| --- | --- | --- |
+| **1** | 28 rdzeni, modele „DS" (wersje z dużą pamięcią cache) | koniec stycznia – marzec 2027 |
+| **2** | 28 rdzeni, odblokowane modele „K" | marzec – kwiecień 2027 |
+| **3** | Modele 16- i 8-rdzeniowe | koniec marca – maj 2027 |
+| **4** | Flagowy model 52-rdzeniowy | maj – wrzesień 2027 |
 
 Tak rozłożona oferta ma sens: najpierw dostajemy to, co interesuje największą grupę (gaming na 28 rdzeniach), a najbardziej skomplikowany, dwukafelkowy układ pojawia się na końcu.
 
@@ -54,13 +54,13 @@ Powody opóźnienia względem pierwotnych planów to według komentatorów m.in.
 
 Nova Lake-S wymaga nowej płyty głównej. Intel wprowadza gniazdo LGA 1954 w miejsce LGA 1851 (Arrow Lake-S), a przecieki mówią o planach dłuższego wsparcia niż dotąd.
 
-|  | Cecha | LGA 1700 | LGA 1851 | LGA 1954 |  |
-| --- | --- | --- | --- | --- | --- |
-|  | **Liczba styków** | 1700 | 1851 | 1954 |  |
-|  | **Wymiary procesora** | 45 x 37,5 mm | 45 x 37,5 mm | 45 x 37,5 mm |  |
-|  | **Generacje CPU** | Alder Lake – Raptor Lake (Refresh) | Arrow Lake-S (+ Refresh) | Nova Lake i kolejne (wg przecieków) |  |
-|  | **Mechanizm dociskowy** | RL-ILM | RL-ILM | 2L-ILM (dwie dźwignie) |  |
-|  | **Chipsety** | seria 600/700 | seria 800 | seria 900 |  |
+| Cecha | LGA 1700 | LGA 1851 | LGA 1954 |
+| --- | --- | --- | --- |
+| **Liczba styków** | 1700 | 1851 | 1954 |
+| **Wymiary procesora** | 45 x 37,5 mm | 45 x 37,5 mm | 45 x 37,5 mm |
+| **Generacje CPU** | Alder Lake – Raptor Lake (Refresh) | Arrow Lake-S (+ Refresh) | Nova Lake i kolejne (wg przecieków) |
+| **Mechanizm dociskowy** | RL-ILM | RL-ILM | 2L-ILM (dwie dźwignie) |
+| **Chipsety** | seria 600/700 | seria 800 | seria 900 |
 
 Dobra wiadomość dla osób, które mają już dobry cooler. Wymiary obudowy procesora pozostają takie same jak w LGA 1700 i LGA 1851, więc dotychczasowe zestawy montażowe powinny pasować. Noctua potwierdziła, że jej chłodzenia zgodne z LGA 1700 i LGA 1851 będą obsługiwać także LGA 1954 bez dodatkowych elementów, a podobną informację publikował też Thermaltake. Producenci wskazują jednak, że nowy mechanizm wymaga od chłodzenia odpowiedniego docisku (około 35 funtów siły).
 
@@ -70,13 +70,13 @@ Jeśli chodzi o to, jak długo wytrzyma socket, źródła się rozchodzą: przec
 
 Wraz z nowym gniazdem przychodzi nowa rodzina chipsetów. Według przecieków (autor Jaykihn, opisywany m.in. przez VideoCardz, Club386 i igor'sLAB) w ofercie znajdzie się pięć układów. Co ciekawe, nie będzie wersji budżetowej „H", a najniższą półkę ma zająć B960.
 
-|  | Chipset | Segment | Łączna liczba linii PCIe | Linie PCIe 5.0 z chipsetu | Podkręcanie |  |
-| --- | --- | --- | --- | --- | --- | --- |
-|  | **Z990** | Flagowy dla entuzjastów | 48 | 12 | CPU (w tym BCLK) i pamięć |  |
-|  | **Z970** | Wyższy mainstream | 34 | 0 | CPU i pamięć (bez BCLK) |  |
-|  | **W980** | Stacje robocze | 48 | 12 | Pamięć; za to vPro, RAID i ECC |  |
-|  | **Q970** | Biznes | 44 | 8 | Brak |  |
-|  | **B960** | Podstawowy | mniej niż Z970 | 0 | Tylko pamięć RAM |  |
+| Chipset | Segment | Łączna liczba linii PCIe | Linie PCIe 5.0 z chipsetu | Podkręcanie |
+| --- | --- | --- | --- | --- |
+| **Z990** | Flagowy dla entuzjastów | 48 | 12 | CPU (w tym BCLK) i pamięć |
+| **Z970** | Wyższy mainstream | 34 | 0 | CPU i pamięć (bez BCLK) |
+| **W980** | Stacje robocze | 48 | 12 | Pamięć; za to vPro, RAID i ECC |
+| **Q970** | Biznes | 44 | 8 | Brak |
+| **B960** | Podstawowy | mniej niż Z970 | 0 | Tylko pamięć RAM |
 
 *Uwaga: Źródła różnią się co do niektórych szczegółów Q970, dlatego dane w jego wierszu traktuj ostrożnie.*
 
@@ -89,13 +89,13 @@ Ważne praktyczne wnioski z układu chipsetów:
 
 Z990 i Z970 mają współdzielić ten sam układ krzemowy, ale z różnymi włączonymi funkcjami. Z przecieków wynika też, że producenci płyt będą musieli lepiej chłodzić okolice chipsetu.
 
-|  | Parametr | Z890 (obecny) | Z970 | Z990 |  |
-| --- | --- | --- | --- | --- | --- |
-|  | **Moc bazowa** | 6,0 W | 6,4 W | 7,9 W |  |
-|  | **Moc szczytowa (pełne wykorzystanie Gen5)** | brak danych | brak danych | do 14 W |  |
-|  | **Maks. temperatura pracy (TJMax)** | 108 °C | 113 °C | 113 °C |  |
-|  | **Rozmiar krzemu** | ok. 92,9 mm2 | ok. 72,5 mm2 | ok. 72,5 mm2 |  |
-|  | **Rozmiar obudowy** | ok. 658 mm2 | ok. 600 mm2 | ok. 600 mm2 |  |
+| Parametr | Z890 (obecny) | Z970 | Z990 |
+| --- | --- | --- | --- |
+| **Moc bazowa** | 6,0 W | 6,4 W | 7,9 W |
+| **Moc szczytowa (pełne wykorzystanie Gen5)** | brak danych | brak danych | do 14 W |
+| **Maks. temperatura pracy (TJMax)** | 108 °C | 113 °C | 113 °C |
+| **Rozmiar krzemu** | ok. 92,9 mm2 | ok. 72,5 mm2 | ok. 72,5 mm2 |
+| **Rozmiar obudowy** | ok. 658 mm2 | ok. 600 mm2 | ok. 600 mm2 |
 
 Układ jest więc o około 22% mniejszy pod względem krzemu, ale pobór mocy rośnie. Z990 ma też mocniej stawiać na PCIe 5.0 kosztem części linii Gen4. Pierwsze płyty z Z990 mają być pokazane na CES 2027.
 
@@ -103,23 +103,23 @@ Układ jest więc o około 22% mniejszy pod względem krzemu, ale pobór mocy ro
 
 Procesory Core Ultra 400 mają mieć strukturę kafelkową (jak Arrow Lake-S) i trzy rodzaje rdzeni:
 
-|  | Typ rdzenia | Architektura | Rola |  |
-| --- | --- | --- | --- | --- |
-|  | **P-Core** | Coyote Cove | Zadania jednowątkowe, gry, ciężkie obliczenia |  |
-|  | **E-Core** | Arctic Wolf | Wielowątkowość, zadania w tle, gęstość upakowania |  |
-|  | **LP-E Core** | Wariant Arctic Wolf | Bardzo niski pobór mocy w spoczynku, obsługa zadań systemowych |  |
+| Typ rdzenia | Architektura | Rola |
+| --- | --- | --- |
+| **P-Core** | Coyote Cove | Zadania jednowątkowe, gry, ciężkie obliczenia |
+| **E-Core** | Arctic Wolf | Wielowątkowość, zadania w tle, gęstość upakowania |
+| **LP-E Core** | Wariant Arctic Wolf | Bardzo niski pobór mocy w spoczynku, obsługa zadań systemowych |
 
 Podobnie jak w Arrow Lake, w całej rodzinie liczba wątków jest równa liczbie rdzeni. 28 rdzeni oznacza 28 wątków, a 52 rdzenie 52 wątki. To wpływa na to, jak należy czytać liczby: 28 rdzeni bez HT nie jest tym samym co 28 rdzeni z HT.
 
 Według przecieków Intel połączy dwa węzły: N2P od TSMC (klasa 2 nm) oraz własny Intel 18A (klasa 1,8 nm). Komentatorzy przypisują przejściu na 2 nm do 15% wyższą wydajność przy tym samym poborze mocy względem poprzedniego węzła, choć to wartość ogólna dla tego procesu, a nie wynik testu konkretnego procesora.
 
-|  | Wskaźnik | Wartość z przecieków | Komentarz |  |
-| --- | --- | --- | --- | --- |
-|  | **Wzrost IPC rdzeni P względem Lion Cove (Arrow Lake)** | ok. +15% | Solidny, ale to nie jest skok na miarę Alder Lake |  |
-|  | **Zadania jednowątkowe względem Arrow Lake Refresh** | co najmniej +10% | Wstępne szacunki |  |
-|  | **Zadania wielowątkowe względem Arrow Lake Refresh** | do +60% | Głównie zasługa większej liczby rdzeni |  |
-|  | **Gry z bLLC** | brak wiarygodnych danych | Tu największa niewiadoma |  |
-|  | **Taktowania** | brak oficjalnych danych | Obecne topowe modele dochodzą do ok. 5,5 GHz |  |
+| Wskaźnik | Wartość z przecieków | Komentarz |
+| --- | --- | --- |
+| **Wzrost IPC rdzeni P względem Lion Cove (Arrow Lake)** | ok. +15% | Solidny, ale to nie jest skok na miarę Alder Lake |
+| **Zadania jednowątkowe względem Arrow Lake Refresh** | co najmniej +10% | Wstępne szacunki |
+| **Zadania wielowątkowe względem Arrow Lake Refresh** | do +60% | Głównie zasługa większej liczby rdzeni |
+| **Gry z bLLC** | brak wiarygodnych danych | Tu największa niewiadoma |
+| **Taktowania** | brak oficjalnych danych | Obecne topowe modele dochodzą do ok. 5,5 GHz |
 
 Wartości te nie są wynikami testów, tylko założeniami z przecieków. IPC nie przekłada się liniowo na wydajność w grach i programach.
 
@@ -127,34 +127,34 @@ Wartości te nie są wynikami testów, tylko założeniami z przecieków. IPC ni
 
 Poniższa tabela porządkuje konfiguracje rdzeni z różnych przecieków. Pojemność cache w ostatniej kolumnie pochodzi z zestawienia polskiego serwisu, który nie ujawnia, jak sumuje poszczególne poziomy, więc traktuj ją orientacyjnie.
 
-|  | Warianty | P + E + LP-E | Razem rdzeni | Cache (wg przecieku) | TDP |  |
-| --- | --- | --- | --- | --- | --- | --- |
-|  | **Core Ultra 400DX** | 16 + 32 + 4 | 52 | 288 MB | 175 W |  |
-|  | **Core Ultra 400DX** | 16 + 24 + 4 | 44 | 264 MB | 175 W |  |
-|  | **Core Ultra 9 400D** | 8 + 16 + 4 | 28 | 144 MB | 125 W |  |
-|  | **Core Ultra 9 400** | 8 + 16 + 4 | 28 | 36 MB | 125 W / 65 W |  |
-|  | **Core Ultra 9 400** | 6 + 12 + 4 | 22 | 108 MB | 65 W |  |
-|  | **Core Ultra 7 400D** | 8 + 12 + 4 | 24 | 132 MB | 125 W / 65 W |  |
-|  | **Core Ultra 7 400** | 8 + 12 + 4 | 24 | 33 MB | 125 W / 65 W |  |
-|  | **Core Ultra 7 400** | 4 + 8 + 4 | 16 | 18 MB | 65 W / 35 W |  |
-|  | **Core Ultra 5 400** | 6 + 12 + 4 | 22 | 27 MB | 125 W / 65 W |  |
-|  | **Core Ultra 5 400** | 4 + 4 + 4 | 12 | 15 MB | 65 W / 35 W |  |
-|  | **Core Ultra 5 400** | 4 + 0 + 4 | 8 | 12 MB | 65 W / 35 W |  |
-|  | **Core Ultra 3 400** | 2 + 0 + 4 | 6 | 6 MB | 65 W / 35 W |  |
+| Warianty | P + E + LP-E | Razem rdzeni | Cache (wg przecieku) | TDP |
+| --- | --- | --- | --- | --- |
+| **Core Ultra 400DX** | 16 + 32 + 4 | 52 | 288 MB | 175 W |
+| **Core Ultra 400DX** | 16 + 24 + 4 | 44 | 264 MB | 175 W |
+| **Core Ultra 9 400D** | 8 + 16 + 4 | 28 | 144 MB | 125 W |
+| **Core Ultra 9 400** | 8 + 16 + 4 | 28 | 36 MB | 125 W / 65 W |
+| **Core Ultra 9 400** | 6 + 12 + 4 | 22 | 108 MB | 65 W |
+| **Core Ultra 7 400D** | 8 + 12 + 4 | 24 | 132 MB | 125 W / 65 W |
+| **Core Ultra 7 400** | 8 + 12 + 4 | 24 | 33 MB | 125 W / 65 W |
+| **Core Ultra 7 400** | 4 + 8 + 4 | 16 | 18 MB | 65 W / 35 W |
+| **Core Ultra 5 400** | 6 + 12 + 4 | 22 | 27 MB | 125 W / 65 W |
+| **Core Ultra 5 400** | 4 + 4 + 4 | 12 | 15 MB | 65 W / 35 W |
+| **Core Ultra 5 400** | 4 + 0 + 4 | 8 | 12 MB | 65 W / 35 W |
+| **Core Ultra 3 400** | 2 + 0 + 4 | 6 | 6 MB | 65 W / 35 W |
 
 Najwyższe warianty 44 i 52 rdzenie mają być układami dwukafelkowymi i według plotek celować w profesjonalistów (rendering, projektowanie, AI). Zwykłe desktopy mają kończyć na 28 rdzeniach w jednym kafelku.
 
 Osobny przeciek zawiera nazwy handlowe. Poniżej tabela, w której przeliczyłem rdzenie sam, ponieważ w źródłowych zestawieniach kolumna „pełna liczba rdzeni" jest niespójna:
 
-|  | Model (przeciek) | P | E | LP-E | Suma P + E | bLLC | TDP | iGPU |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-|  | **Core Ultra 9 4970K BFC** | 8 | 16 | 4 | 28 | tak | 125 W | 32 EU |  |
-|  | **Core Ultra 9 4950K** | 8 | 16 | 4 | 28 | nie | 125 W | 32 EU |  |
-|  | **Core Ultra 9 4900 BFC** | 6 | 12 | 4 | 22 | tak | 65 W | 32 EU |  |
-|  | **Core Ultra 7 4870K BFC** | 8 | 12 | 4 | 24 | tak | 125 W | 32 EU |  |
-|  | **Core Ultra 7 4850K** | 8 | 12 | 4 | 24 | nie | 125 W | 32 EU |  |
-|  | **Core Ultra 5 4650KF** | 6 | 12 | 4 | 22 | nie | 125 W | brak |  |
-|  | **Core Ultra 5 4650K** | 6 | 12 | 4 | 22 | nie | 125 W | 32 EU |  |
+| Model (przeciek) | P | E | LP-E | Suma P + E | bLLC | TDP | iGPU |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| **Core Ultra 9 4970K BFC** | 8 | 16 | 4 | 28 | tak | 125 W | 32 EU |
+| **Core Ultra 9 4950K** | 8 | 16 | 4 | 28 | nie | 125 W | 32 EU |
+| **Core Ultra 9 4900 BFC** | 6 | 12 | 4 | 22 | tak | 65 W | 32 EU |
+| **Core Ultra 7 4870K BFC** | 8 | 12 | 4 | 24 | tak | 125 W | 32 EU |
+| **Core Ultra 7 4850K** | 8 | 12 | 4 | 24 | nie | 125 W | 32 EU |
+| **Core Ultra 5 4650KF** | 6 | 12 | 4 | 22 | nie | 125 W | brak |
+| **Core Ultra 5 4650K** | 6 | 12 | 4 | 22 | nie | 125 W | 32 EU |
 
 Sufiks F oznacza wersję bez zintegrowanej grafiki, K to odblokowany mnożnik. Oznaczenie „BFC" pojawia się w przecieku przy modelach z dużą pamięcią cache. Warto zauważyć trend dotyczący podkręcania – przedstawiciel Intela w wywiadzie dla PC Games Hardware zasugerował, że firma planuje więcej tańszych modeli z odblokowanym mnożnikiem.
 
@@ -162,13 +162,13 @@ Sufiks F oznacza wersję bez zintegrowanej grafiki, K to odblokowany mnożnik. O
 
 Największą nowością konstrukcyjną ma być bLLC (big Last Level Cache), czyli duża pamięć cache ostatniego poziomu. To bezpośrednia odpowiedź na procesory AMD z technologią 3D V-Cache (modele X3D), które od lat dominują w testach gier.
 
-|  | Cecha | AMD 3D V-Cache | Intel bLLC (wg przecieków) |  |
-| --- | --- | --- | --- | --- |
-|  | **Budowa** | Dodatkowy stos krzemu na wierzchu układu | Część kafelka obliczeniowego, przy klastrach rdzeni |  |
-|  | **Wpływ na opóźnienia** | Zależny od implementacji | Mają być niższe dzięki bliskości rdzeni |  |
-|  | **Wpływ na temperatury** | Utrudnione odprowadzanie ciepła przez dodatkową warstwę | Ma być łatwiejsze, bo cache jest w jednym kafelku |  |
-|  | **Dostępność** | Wybrane modele (X3D) | Wybrane modele (oznaczenia D / DX / BFC) |  |
-|  | **Wersje bez dużej pamięci** | Tak, standardowe procesory | Tak, tańsze modele bez bLLC |  |
+| Cecha | AMD 3D V-Cache | Intel bLLC (wg przecieków) |
+| --- | --- | --- |
+| **Budowa** | Dodatkowy stos krzemu na wierzchu układu | Część kafelka obliczeniowego, przy klastrach rdzeni |
+| **Wpływ na opóźnienia** | Zależny od implementacji | Mają być niższe dzięki bliskości rdzeni |
+| **Wpływ na temperatury** | Utrudnione odprowadzanie ciepła przez dodatkową warstwę | Ma być łatwiejsze, bo cache jest w jednym kafelku |
+| **Dostępność** | Wybrane modele (X3D) | Wybrane modele (oznaczenia D / DX / BFC) |
+| **Wersje bez dużej pamięci** | Tak, standardowe procesory | Tak, tańsze modele bez bLLC |
 
 Według przecieków minimum pięć układów dostanie bLLC: dwa dwukafelkowe (44 i 52 rdzenie) oraz trzy jednokafelkowe (dwa warianty Core Ultra 9 i jeden Core Ultra 7). Maksymalna pojemność w typowych konsumenckich modelach ma wynosić około 144 MB, a pełne 288 MB trafi tylko do najwyższego wariantu. Nie wiadomo jeszcze, czy bLLC trafi w przyszłości do serii Core Ultra 5.
 
@@ -176,15 +176,15 @@ Według przecieków minimum pięć układów dostanie bLLC: dwa dwukafelkowe (44
 
 Podsystem pamięci i interfejsów prezentuje się następująco:
 
-|  | Obszar | Przecieki |  |
-| --- | --- | --- | --- |
-|  | **Pamięć RAM** | Natywne DDR5-8000, 2 kanały |  |
-|  | **PCIe z procesora** | 24 linie PCIe 5.0 (x16 dla GPU, możliwy podział 4x4 dla dysków) |  |
-|  | **PCIe z chipsetu (Z990)** | Dodatkowe 12 linii Gen5, razem do 36 linii Gen5 w systemie |  |
-|  | **Thunderbolt** | 2 porty Thunderbolt 5, obsługiwane przez zewnętrzny kontroler |  |
-|  | **Sieć** | Wi-Fi 7 w platformie, Bluetooth LE Audio |  |
-|  | **Dyski** | Do ośmiu dysków SSD w standardzie PCIe 5.0 (zależnie od płyty) |  |
-|  | **Moduły pamięci** | Wsparcie dla CUDIMM na nowych płytach 800/900 w 2026 r. |  |
+| Obszar | Przecieki |
+| --- | --- |
+| **Pamięć RAM** | Natywne DDR5-8000, 2 kanały |
+| **PCIe z procesora** | 24 linie PCIe 5.0 (x16 dla GPU, możliwy podział 4x4 dla dysków) |
+| **PCIe z chipsetu (Z990)** | Dodatkowe 12 linii Gen5, razem do 36 linii Gen5 w systemie |
+| **Thunderbolt** | 2 porty Thunderbolt 5, obsługiwane przez zewnętrzny kontroler |
+| **Sieć** | Wi-Fi 7 w platformie, Bluetooth LE Audio |
+| **Dyski** | Do ośmiu dysków SSD w standardzie PCIe 5.0 (zależnie od płyty) |
+| **Moduły pamięci** | Wsparcie dla CUDIMM na nowych płytach 800/900 w 2026 r. |
 
 Łączna liczba 36 linii Gen5 zgadza się z wcześniejszymi doniesieniami i wynika z dodania 24 linii z procesora do 12 linii z chipsetu Z990. Na innych chipsetach będzie ich mniej.
 
@@ -194,27 +194,27 @@ Jeśli chodzi o grafikę i sztuczną inteligencję, według przecieków prawie w
 
 Nova Lake nie startuje od zera. W marcu 2026 Intel odświeżył Arrow Lake modelami Core Ultra 200S Plus, pokazując punkt odniesienia dla nowej generacji.
 
-|  | Cecha | Core Ultra 7 265K (Arrow Lake) | Core Ultra 7 270K Plus (Refresh) | Nova Lake-S (przecieki, szczyt konsumencki) |  |
-| --- | --- | --- | --- | --- | --- |
-|  | **Gniazdo** | LGA 1851 | LGA 1851 | LGA 1954 |  |
-|  | **Rdzenie (P + E)** | 8 + 12 | 8 + 16 | do 8 + 16 (+ 4 LP-E) |  |
-|  | **Pamięć** | DDR5-6400 | DDR5-7200 | DDR5-8000 |  |
-|  | **Dodatkowa pamięć cache** | brak | brak | bLLC w wybranych modelach |  |
-|  | **Sugerowana cena premierowa** | brak danych | 299 USD | brak danych |  |
-|  | **Premiera** | 2024 | 26 marca 2026 | Q1 2027 (przeciek) |  |
+| Cecha | Core Ultra 7 265K (Arrow Lake) | Core Ultra 7 270K Plus (Refresh) | Nova Lake-S (przecieki, szczyt konsumencki) |
+| --- | --- | --- | --- |
+| **Gniazdo** | LGA 1851 | LGA 1851 | LGA 1954 |
+| **Rdzenie (P + E)** | 8 + 12 | 8 + 16 | do 8 + 16 (+ 4 LP-E) |
+| **Pamięć** | DDR5-6400 | DDR5-7200 | DDR5-8000 |
+| **Dodatkowa pamięć cache** | brak | brak | bLLC w wybranych modelach |
+| **Sugerowana cena premierowa** | brak danych | 299 USD | brak danych |
+| **Premiera** | 2024 | 26 marca 2026 | Q1 2027 (przeciek) |
 
 Modele 200S Plus dodały po cztery rdzenie E, podniosły częstotliwość połączenia między kafelkami o nawet 900 MHz i dostały narzędzie Binary Optimization Tool. Intel deklaruje do 15% wyższej średniej wydajności w grach względem zwykłej serii 200S. Ceny w Polsce dla bieżącej generacji wynosiły w momencie pisania ok. 949 zł za Ultra 5 250KF Plus, ok. 1049 zł za Ultra 5 250K Plus oraz ok. 1449–1499 zł za Ultra 7 270K Plus.
 
 Nova Lake ma konkurować z kolejną generacją Ryzenów na architekturze Zen 6 (kodowo *Olympic Ridge*). AMD zostaje przy socketcie AM5, co oznacza, że posiadacze płyt AM5 nie muszą zmieniać platformy, podczas gdy kupujący Intela będą musieli wymienić całą płytę główną.
 
-|  | Cecha | Co wiadomo | Status |  |
-| --- | --- | --- | --- | --- |
-|  | **Nazwa kodowa desktopu** | Olympic Ridge | Potwierdzona przez AMD |  |
-|  | **Socket** | AM5 | Potwierdzony w dokumentacji AMD |  |
-|  | **Nazwa handlowa** | Prawdopodobnie Ryzen 10000 | Niepotwierdzona |  |
-|  | **Liczba rdzeni** | Do 24 (układy 12-rdzeniowe w dwóch chipletach) | Plotka |  |
-|  | **Termin** | Zapowiedź w okolicach CES 2027, dostępność w pierwszej połowie 2027 | Oczekiwania, nie oficjalna data |  |
-|  | **TDP** | 65–170 W | Niepotwierdzone |  |
+| Cecha | Co wiadomo | Status |
+| --- | --- | --- |
+| **Nazwa kodowa desktopu** | Olympic Ridge | Potwierdzona przez AMD |
+| **Socket** | AM5 | Potwierdzony w dokumentacji AMD |
+| **Nazwa handlowa** | Prawdopodobnie Ryzen 10000 | Niepotwierdzona |
+| **Liczba rdzeni** | Do 24 (układy 12-rdzeniowe w dwóch chipletach) | Plotka |
+| **Termin** | Zapowiedź w okolicach CES 2027, dostępność w pierwszej połowie 2027 | Oczekiwania, nie oficjalna data |
+| **TDP** | 65–170 W | Niepotwierdzone |
 
 ## 9. Ceny i perspektywy: Czy warto czekać?
 
@@ -222,14 +222,14 @@ Oficjalnych cen nie ma, a na ostateczny koszt złożą się takie czynniki jak n
 
 Rekomendacje zakupowe w zależności od sytuacji wyglądają następująco:
 
-|  | Twoja sytuacja | Co z tego wynika |  |
-| --- | --- | --- | --- |
-|  | **Masz sprawny komputer na LGA 1700 lub starszy** | Warto poczekać na pierwsze testy Core Ultra 400 i Zen 6, bo wybór będzie szerszy, a obecne generacje mogą stanieć |  |
-|  | **Masz LGA 1851 (Arrow Lake)** | Procesory 200S Plus to tańsza modernizacja bez zmiany płyty. Nova Lake wymusi nową płytę |  |
-|  | **Masz AM5** | Nic nie musisz robić: platforma pozostaje aktualna, a Zen 6 ma działać na obecnych płytach |  |
-|  | **Budujesz komputer teraz i potrzebujesz go natychmiast** | Kupuj to, co jest dostępne. New platformy w pierwszych miesiącach zwykle są drogie i mają wczesne wersje BIOS-ów |  |
-|  | **Pracujesz na bardzo wielu wątkach (rendering, kompilacja)** | Warto obserwować warianty 28- i 52-rdzeniowe, ale bez HT liczba wątków nie rośnie tak, jak mogłoby się wydawać |  |
-|  | **Grasz i patrzysz na procesory z dużym cache** | Poczekaj na niezależne testy bLLC i porównanie z X3D. To najważniejsze pytanie tej generacji |  |
+| Twoja sytuacja | Co z tego wynika |
+| --- | --- |
+| **Masz sprawny komputer na LGA 1700 lub starszy** | Warto poczekać na pierwsze testy Core Ultra 400 i Zen 6, bo wybór będzie szerszy, a obecne generacje mogą stanieć |
+| **Masz LGA 1851 (Arrow Lake)** | Procesory 200S Plus to tańsza modernizacja bez zmiany płyty. Nova Lake wymusi nową płytę |
+| **Masz AM5** | Nic nie musisz robić: platforma pozostaje aktualna, a Zen 6 ma działać na obecnych płytach |
+| **Budujesz komputer teraz i potrzebujesz go natychmiast** | Kupuj to, co jest dostępne. New platformy w pierwszych miesiącach zwykle są drogie i mają wczesne wersje BIOS-ów |
+| **Pracujesz na bardzo wielu wątkach (rendering, kompilacja)** | Warto obserwować warianty 28- i 52-rdzeniowe, ale bez HT liczba wątków nie rośnie tak, jak mogłoby się wydawać |
+| **Grasz i patrzysz na procesory z dużym cache** | Poczekaj na niezależne testy bLLC i porównanie z X3D. To najważniejsze pytanie tej generacji |
 
 Ogólna zasada przy przeciekach brzmi: czekanie ma sens tylko wtedy, gdy twój obecny sprzęt dobrze radzi sobie z codziennymi zadaniami.
 
