@@ -106,8 +106,13 @@ Oficjalny debiut technologii nastąpił 4 września 2026 roku wraz z premierą *
 
 ---
 
-## Podsumowanie FAQ
+## FAQ i Źródła
 
-* **Czy DLSS 5 działa na RTX 4000?** Nie, technologia wymaga rdzeni Tensor 5. generacji z architekturą Blackwell.
-* **Czy funkcję można wyłączyć?** Tak, DLSS 5 jest w pełni opcjonalne i aktywowane z poziomu menu gry.
-* **Czy DLSS 5 zastępuje Frame Generation?** Nie, DLSS 5 odpowiada za jakość i wierność wizualną (rekonstrukcję neuronową), podczas gdy generowanie klatek (Multi Frame Generation) odpowiada za płynność animacji.
+1. **Czy DLSS 5 działa na RTX 4000?**  
+   Nie, technologia wymaga rdzeni Tensor 5. generacji z architekturą Blackwell.
+
+2. **Czy funkcję można wyłączyć?**  
+   Tak, DLSS 5 jest w pełni opcjonalne i aktywowane z poziomu menu gry.
+
+3. **Czy DLSS 5 zastępuje Frame Generation?**  
+   Nie, DLSS 5 odpowiada za jakość i wierność wizualną (rekonstrukcję neuronową), podczas gdy generowanie klatek (Multi Frame Generation) odpowiada za płynność animacji.
