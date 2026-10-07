@@ -63,53 +63,71 @@
             display: flex; 
             align-items: center; 
             gap: 10px; 
+            font-family: 'JetBrains Mono', monospace;
         }
         .nav-brand svg { width: 22px; height: 22px; stroke: var(--accent-contrast); }
         
+        /* EFEKT MIGAJĄCEGO KURSORA TERMINALA */
+        .terminal-cursor {
+            display: inline-block;
+            width: 9px;
+            height: 18px;
+            background-color: var(--accent-contrast);
+            margin-left: 2px;
+            vertical-align: -2px;
+            animation: terminalBlink 1s infinite steps(1);
+        }
+        @keyframes terminalBlink {
+            0%, 50% { opacity: 1; }
+            50.1%, 100% { opacity: 0; }
+        }
+        
+        /* PŁYWAJĄCY CONTAINER NAWIGACJI */
         .nav-center { 
             display: flex; 
             justify-content: flex-end; 
             align-items: center; 
-            gap: 35px; 
+            gap: 10px; 
+            position: relative;
         }
-        .nav-center a { 
+
+        .nav-center a, .nav-center .dropbtn { 
             text-decoration: none; 
             color: var(--text-muted); 
             font-weight: 600; 
             font-size: 0.9rem; 
-            transition: 0.3s; 
-            position: relative; 
-        }
-        .nav-center a:hover, .nav-center a.active { color: var(--accent-blue); }
-        
-        .nav-center a.active::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--accent-blue);
-            border-radius: 2px;
-        }
-
-        /* DROPDOWN APPS */
-        .dropdown { position: relative; display: inline-block; }
-        .dropbtn { 
-            background: none; 
-            border: none; 
-            color: var(--text-muted); 
+            transition: color 0.3s; 
+            padding: 8px 16px;
+            border-radius: 6px;
+            z-index: 2;
+            background: transparent;
+            border: none;
+            cursor: pointer;
             font-family: 'Inter', sans-serif;
-            font-weight: 600; 
-            font-size: 0.9rem; 
-            cursor: pointer; 
-            padding: 0;
-            transition: 0.3s;
             display: flex;
             align-items: center;
             gap: 5px;
         }
-        .dropbtn:hover, .dropdown:hover .dropbtn { color: var(--accent-blue); }
+
+        .nav-center a:hover, .nav-center .dropbtn:hover, .nav-center .dropdown:hover .dropbtn { 
+            color: var(--accent-blue); 
+        }
+
+        /* DYNAMICZNY PŁYWAJĄCY SLIDER (PILL) */
+        .nav-indicator {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: var(--accent-blue);
+            border-radius: 3px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1;
+            box-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+        }
+
+        /* DROPDOWN APPS */
+        .dropdown { position: relative; display: inline-block; }
         
         .dropdown-content { position: absolute; right: 0; top: 100%; padding-top: 12px; min-width: 220px; opacity: 0; visibility: hidden; transition: 0.25s ease; z-index: 1001; }
         .dropdown-links-wrapper { background: rgba(10, 15, 25, 0.98); border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); overflow: hidden; backdrop-filter: blur(10px); }
@@ -161,8 +179,8 @@
         }
         .section-tag::before { content: '///'; color: var(--accent-blue); }
 
-        /* STOPKA W STYLU NASA (PEŁNA SKALA I DETALE) */
-        footer { 
+        /* STOPKA W STYLU NASA */
+        <footer> 
             background: #010204;
             border-top: 1px solid var(--border); 
             padding: 70px 60px 40px 60px; 
@@ -186,7 +204,6 @@
         .footer-col ul a, .footer-col ul .disabled-footer-link { color: var(--text-muted); font-size: 0.82rem; transition: 0.2s; font-family: 'Inter', sans-serif; text-decoration: none; }
         .footer-col ul a:hover { color: var(--accent-blue); }
         
-        /* STOPKA - GARMIN HOVER */
         .disabled-footer-link {
             cursor: default;
             position: relative;
@@ -206,7 +223,6 @@
         .disabled-footer-link:hover .footer-link-text { opacity: 0; }
         .disabled-footer-link:hover .footer-beta-text { opacity: 1; }
 
-        /* IKONKI SPOŁECZNOŚCIOWE (Siatka dostosowana do większej liczby ikonek) */
         .social-icons-grid {
             display: flex;
             flex-wrap: wrap;
@@ -242,7 +258,6 @@
             border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        /* GŁÓWNY PAS Z PRZEKIEROWANIAMI W STYLU NASA */
         .footer-sublinks-bar {
             width: 100%;
             max-width: 1550px;
@@ -262,7 +277,6 @@
             color: var(--accent-blue);
         }
 
-        /* DOLNY PAS SYSTEMOWY Z METADANYMI */
         .footer-meta-bar {
             width: 100%;
             max-width: 1550px;
@@ -283,7 +297,7 @@
 
         @media (max-width: 1024px) { 
             .navbar { grid-template-columns: 1fr; gap: 15px; padding: 20px; text-align: center; }
-            .nav-center { justify-content: center; flex-wrap: wrap; gap: 15px; }
+            .nav-center { justify-content: center; flex-wrap: wrap; gap: 10px; }
             .dashboard { padding: 30px 20px; }
             .footer-grid { grid-template-columns: 1fr; gap: 30px; }
             .footer-meta-bar { flex-direction: column; text-align: center; gap: 10px; }
@@ -300,17 +314,18 @@
                     <polyline points="4 17 10 11 4 5"></polyline>
                     <line x1="12" y1="19" x2="20" y2="19"></line>
                 </svg>
-                DEVLABSTUDY
+                DEVLABSTUDY<span class="terminal-cursor"></span>
             </a>
         </div>
-        <div class="nav-center">
-            <a href="/" {% if page.url == "/" %}class="active"{% endif %}>Hub</a>
-            <a href="/newsy" {% if page.url contains "newsy" %}class="active"{% endif %}>Newsy</a>
-            <a href="/blog" {% if page.url contains "blog" %}class="active"{% endif %}>Blog</a>
-            <a href="/homelab" {% if page.url contains "homelab" %}class="active"{% endif %}>HomeLab</a>
-            <a href="/sponsors" {% if page.url contains "sponsors" %}class="active"{% endif %}>Sponsors</a>
+        <div class="nav-center" id="navCenter">
+            <div class="nav-indicator" id="navIndicator"></div>
+            <a href="/" class="nav-link {% if page.url == '/' %}active-page{% endif %}">Hub</a>
+            <a href="/newsy" class="nav-link {% if page.url contains 'newsy' %}active-page{% endif %}">Newsy</a>
+            <a href="/blog" class="nav-link {% if page.url contains 'blog' %}active-page{% endif %}">Blog</a>
+            <a href="/homelab" class="nav-link {% if page.url contains 'homelab' %}active-page{% endif %}">HomeLab</a>
+            <a href="/sponsors" class="nav-link {% if page.url contains 'sponsors' %}active-page{% endif %}">Sponsors</a>
             
-            <div class="dropdown">
+            <div class="dropdown nav-link">
                 <button class="dropbtn">Apps ▾</button>
                 <div class="dropdown-content">
                     <div class="dropdown-links-wrapper">
@@ -325,7 +340,7 @@
                 </div>
             </div>
 
-            <a href="/kontakt" {% if page.url contains "kontakt" %}class="active"{% endif %}>Kontakt</a>
+            <a href="/kontakt" class="nav-link {% if page.url contains 'kontakt' %}active-page{% endif %}">Kontakt</a>
         </div>
     </nav>
 
@@ -403,7 +418,6 @@
         
         <div class="footer-divider"></div>
 
-        <!-- DODATKOWY PAS PRZEKIEROWAŃ W STYLU NASA -->
         <div class="footer-sublinks-bar">
             <a href="/">Sitemap</a>
             <a href="/newsy">For Media & Press</a>
@@ -414,7 +428,6 @@
             <a href="https://github.com/DevLabStudy" target="_blank">Source Code (GitHub)</a>
         </div>
 
-        <!-- DOLNY PAS METADANYCH -->
         <div class="footer-meta-bar">
             <div>Page Last Updated: <span>October 06, 2026</span></div>
             <div>Page Editor: <span>Tobiasz Kajzer</span></div>
@@ -422,5 +435,30 @@
         </div>
     </footer>
 
+    <!-- SKRYPT OBSŁUGUJĄCY PŁYWAJĄCY WSKAŹNIK W NAVBARZE -->
+    <script>
+        const navCenter = document.getElementById('navCenter');
+        const indicator = document.getElementById('navIndicator');
+        const navLinks = navCenter.querySelectorAll('.nav-link');
+        const activeLink = navCenter.querySelector('.active-page') || navLinks[0];
+
+        function moveIndicator(el) {
+            indicator.style.width = el.offsetWidth + 'px';
+            indicator.style.left = el.offsetLeft + 'px';
+        }
+
+        // Ustawienie początkowe na aktywną stronę
+        moveIndicator(activeLink);
+
+        navLinks.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                moveIndicator(link);
+            });
+        });
+
+        navCenter.addEventListener('mouseleave', () => {
+            moveIndicator(activeLink);
+        });
+    </script>
 </body>
 </html>
