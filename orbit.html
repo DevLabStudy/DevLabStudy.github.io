@@ -2,67 +2,114 @@
 layout: default
 title: Orbit™ Project
 ---
+
 <style>
-    .orbit-header { border-bottom: 1px solid var(--border-color); padding-bottom: 20px; margin-bottom: 30px; }
-    .orbit-title { font-size: 2.2rem; font-weight: 900; color: var(--accent-blue); margin: 0; letter-spacing: -1px; }
+    .orbit-header { 
+        border-bottom: 1px solid var(--border); 
+        padding-bottom: 20px; 
+        margin-bottom: 30px; 
+    }
+    .orbit-title { 
+        font-size: 2.2rem; 
+        font-weight: 900; 
+        color: var(--accent-blue); 
+        margin: 0; 
+        letter-spacing: -1px; 
+        font-family: 'JetBrains Mono', monospace;
+    }
     
-    .repo-card { 
-        background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(0,0,0,0) 100%);
-        border: 1px solid var(--accent-blue);
-        padding: 30px;
-        border-radius: 12px;
-        margin-bottom: 30px;
+    .orbit-card { 
+        background: var(--card-bg); 
+        border: 1px solid var(--border); 
+        padding: 30px; 
+        border-radius: 12px; 
+        margin-bottom: 30px; 
         display: flex;
         justify-content: space-between;
         align-items: center;
         gap: 20px;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
+    .orbit-card:hover {
+        border-color: var(--accent-blue);
+        box-shadow: 0 10px 30px rgba(0, 210, 255, 0.1);
+        background: rgba(10, 15, 25, 0.8);
+    }
+
+    .orbit-content-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-left: 4px solid var(--accent-blue);
+        padding: 30px;
+        border-radius: 12px;
+        margin-bottom: 25px;
+        backdrop-filter: blur(10px);
+    }
+
     .tech-pill {
         display: inline-block;
-        background: rgba(255,255,255,0.05);
-        border: 1px solid rgba(255,255,255,0.1);
+        background: rgba(0, 210, 255, 0.08);
+        border: 1px solid rgba(0, 210, 255, 0.25);
         padding: 4px 12px;
-        border-radius: 4px;
+        border-radius: 6px;
         font-family: 'JetBrains Mono', monospace;
         font-size: 0.75rem;
-        color: var(--text-muted);
+        color: var(--accent-blue);
         margin-right: 8px;
         margin-bottom: 8px;
+        font-weight: 700;
     }
 
     .github-btn {
-        background: #24292e;
-        color: #fff;
+        background: rgba(0, 210, 255, 0.08);
+        color: var(--accent-blue);
         padding: 12px 24px;
         border-radius: 8px;
         text-decoration: none;
         font-weight: 800;
-        font-size: 0.9rem;
-        transition: 0.3s;
-        border: 1px solid rgba(255,255,255,0.1);
+        font-size: 0.85rem;
+        font-family: 'JetBrains Mono', monospace;
+        transition: all 0.2s ease;
+        border: 1px solid rgba(0, 210, 255, 0.3);
         white-space: nowrap;
+        text-align: center;
     }
-    .github-btn:hover { background: #444; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+    .github-btn:hover { 
+        background: var(--accent-blue); 
+        color: #0a0f19; 
+        box-shadow: 0 4px 12px rgba(0, 210, 255, 0.2);
+        transform: translateY(-2px); 
+    }
+
+    .orbit-note-card {
+        margin-top: 25px;
+        border: 1px dashed var(--border);
+        text-align: center;
+        background: transparent;
+        padding: 20px;
+        border-radius: 12px;
+    }
 
     @media (max-width: 768px) {
-        .repo-card { flex-direction: column; text-align: center; padding: 20px; }
+        .orbit-card { flex-direction: column; align-items: stretch; text-align: left; padding: 20px; }
         .github-btn { width: 100%; box-sizing: border-box; }
     }
 </style>
 
 <div class="orbit-header">
-    <h2 class="orbit-title">Orbit™ <span style="color: #fff;">Environment</span></h2>
-    <p style="color: var(--text-muted); margin-top: 10px; font-family: 'JetBrains Mono', monospace;">> System_Status: In_Development</p>
+    <h2 class="orbit-title">Orbit™ <span style="color: var(--text-main);">Environment</span></h2>
+    <p style="color: var(--accent-contrast); margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-weight: 700;">> System_Status: In_Development</p>
 </div>
 
-<div class="repo-card">
+<div class="orbit-card">
     <div>
-        <h3 style="margin: 0 0 10px 0; font-size: 1.3rem; color: #fff;">Core Infrastructure Repository</h3>
-        <p style="margin: 0 0 15px 0; font-size: 0.95rem; color: var(--text-muted); line-height: 1.5;">
+        <h3 style="margin: 0 0 10px 0; font-size: 1.2rem; color: var(--text-main); font-family: 'JetBrains Mono', monospace;">Core Infrastructure Repository</h3>
+        <p style="margin: 0 0 15px 0; font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; font-family: 'JetBrains Mono', monospace;">
             Główny kod źródłowy systemu Orbit™. Architektura oparta na mikroserwisach, konteneryzacji i bezpiecznej komunikacji między węzłami klastra.
         </p>
-        <div style="margin-top: 10px;">
+        <div>
             <span class="tech-pill">Docker</span>
             <span class="tech-pill">Android Studio</span>
             <span class="tech-pill">Twingate API</span>
@@ -72,14 +119,14 @@ title: Orbit™ Project
     <a href="https://github.com/DevLabStudy/orbit" target="_blank" class="github-btn">VIEW ON GITHUB ↗</a>
 </div>
 
-<div class="card" style="border-left: 4px solid var(--accent-blue);">
+<div class="orbit-content-card">
     <h3 style="font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: var(--accent-blue); margin-bottom: 15px;">[ PROJECT_DESCRIPTION ]</h3>
-    <p style="font-size: 1rem; line-height: 1.7; color: #e2e8f0; margin-bottom: 20px;">
+    <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text-main); margin-bottom: 20px; font-family: 'JetBrains Mono', monospace;">
         Orbit™ to autorski ekosystem zaprojektowany do pełnej kontroli nad rozproszoną infrastrukturą HomeLab. Celem projektu jest stworzenie bezpiecznego mostu pomiędzy fizycznymi serwerami Proxmox a użytkownikiem mobilnym.
     </p>
     
-    <h4 style="color: #fff; margin-bottom: 10px;">Główne założenia:</h4>
-    <ul style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; padding-left: 20px;">
+    <h4 style="color: var(--text-main); margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; font-size: 0.95rem;">Główne założenia:</h4>
+    <ul style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.8; padding-left: 20px; font-family: 'JetBrains Mono', monospace;">
         <li>Zdalne zarządzanie węzłami klastra poprzez dedykowaną aplikację Android.</li>
         <li>Integracja powiadomień o stanie usług (Proxmox / Docker / NoMachine).</li>
         <li>Wykorzystanie technologii Zero-Trust (Twingate) do bezpiecznego dostępu z dowolnej lokalizacji.</li>
@@ -87,7 +134,7 @@ title: Orbit™ Project
     </ul>
 </div>
 
-<div class="card" style="margin-top: 25px; border-style: dashed; text-align: center; background: transparent;">
+<div class="orbit-note-card">
     <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text-muted); margin: 0;">
         // Więcej modułów i dokumentacji technicznej pojawi się w miarę postępów w kodowaniu.
     </p>
