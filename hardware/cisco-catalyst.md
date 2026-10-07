@@ -5,7 +5,7 @@ category: "MANAGED SWITCH / LAB"
 role: "Compact Access & Cisco IOS Training Switch"
 model: "WS-C2960C-8TC-L (Fanless / LAN Base)"
 ports: "8x 1GbE PoE, 2x 1GbE Combo, 2x SFP"
-image: "/assets/img/hardware/cisco1.jpeg"
+image: "/assets/images/hardware/cisco1.jpeg"
 permalink: /hardware/cisco-catalyst/
 ---
 
@@ -19,7 +19,7 @@ Cisco Catalyst 2960C-8TC-L to kompaktowy przełącznik warstwy drugiej (Layer 2)
 
 ### Galeria / Stanowisko:
 * Widok urządzenia od frontu (wraz z panelem portów gigabitowych oraz uplinkami SFP):
-  `![](/assets/img/hardware/cisco1.jpeg)`
+  `![](/assets/images/hardware/cisco1.jpeg)`
 
 * Widok dodatkowy i detali montażowych:
-  `![](/assets/img/hardware/cisco2.jpeg)`
+  `![](/assets/images/hardware/cisco2.jpeg)`
