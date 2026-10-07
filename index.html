@@ -395,7 +395,8 @@ title: Home
 <!-- SEKCJA NAJNOWSZE NEWSY -->
 <span class="section-tag">NAJNOWSZE RAPORTY TECHNOLOGICZNE (NEWSY)</span>
 <div class="newsy-home-grid">
-    {% for post in site.newsy limit:3 %}
+    {% assign sorted_newsy = site.newsy | sort: 'date' | reverse %}
+    {% for post in sorted_newsy limit:3 %}
     <a href="{{ post.url | relative_url }}" class="home-news-card">
         {% assign t = post %}
         {% assign thumb = t.icon | default: t.image %}
@@ -503,7 +504,8 @@ title: Home
 <!-- DYNAMICZNY DZIENNIK SYSTEMOWY (BLOG) -->
 <span class="section-tag">OSTATNIE WPISY / DZIENNIK SYSTEMOWY</span>
 <div class="archive-list">
-    {% for post in site.posts limit:5 %}
+    {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
+    {% for post in sorted_posts limit:5 %}
     <a href="{{ post.url | relative_url }}" class="archive-item">
         <div class="archive-category">[{{ post.category | default: "SYSTEM" | upcase }}]</div>
         <div class="archive-title">{{ post.title | upcase }}</div>
