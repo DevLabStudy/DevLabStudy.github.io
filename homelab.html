@@ -54,6 +54,8 @@ title: HomeLab Inventory
         position: relative; 
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
         backdrop-filter: blur(10px); 
+        display: flex;
+        flex-direction: column;
     }
     
     .node-card:hover { 
@@ -63,7 +65,7 @@ title: HomeLab Inventory
         background: rgba(10, 15, 25, 0.8);
     }
     
-    /* Status Badge z nową paletą kolorów */
+    /* Status Badge */
     .status-badge { 
         position: absolute; 
         top: 25px; 
@@ -113,6 +115,29 @@ title: HomeLab Inventory
         font-size: 0.78rem; 
         flex-shrink: 0; 
     }
+
+    .card-btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 8px 16px;
+        background: rgba(0, 210, 255, 0.08);
+        color: var(--accent-blue);
+        border: 1px solid rgba(0, 210, 255, 0.3);
+        border-radius: 6px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-decoration: none;
+        text-align: center;
+        transition: all 0.2s ease;
+        align-self: flex-start;
+    }
+
+    .card-btn:hover {
+        background: var(--accent-blue);
+        color: #0a0f19;
+        box-shadow: 0 4px 12px rgba(0, 210, 255, 0.2);
+    }
 </style>
 
 <section class="hero-homelab">
@@ -160,6 +185,7 @@ title: HomeLab Inventory
         <div class="spec-line"><span class="spec-label">CPU:</span><span>AMD GX-212ZC</span></div>
         <div class="spec-line"><span class="spec-label">RAM:</span><span>4GB DDR3L</span></div>
         <div class="spec-line"><span class="spec-label">Location:</span><span>10" Wall Cabinet Node</span></div>
+        <a href="/hardware/fujitsu-futro-s520-1/" class="card-btn">Szczegóły urządzenia →</a>
     </div>
     <div class="node-card">
         <span class="status-badge">Small</span>
@@ -167,6 +193,7 @@ title: HomeLab Inventory
         <div class="spec-line"><span class="spec-label">CPU:</span><span>AMD GX-212ZC</span></div>
         <div class="spec-line"><span class="spec-label">RAM:</span><span>4GB DDR3L</span></div>
         <div class="spec-line"><span class="spec-label">Location:</span><span>10" Wall Cabinet Node</span></div>
+        <a href="/hardware/fujitsu-futro-s520-2/" class="card-btn">Szczegóły urządzenia →</a>
     </div>
     <div class="node-card">
         <span class="status-badge mobile">Secondary AP</span>
@@ -174,6 +201,7 @@ title: HomeLab Inventory
         <div class="spec-line"><span class="spec-label">OS:</span><span>OpenWrt Firmware</span></div>
         <div class="spec-line"><span class="spec-label">Uplink:</span><span>Lanberg 8-Port Switch (10")</span></div>
         <div class="spec-line"><span class="spec-label">Standard:</span><span>AC1200 Dual-Band</span></div>
+        <a href="/hardware/tp-link-archer-c6-alt/" class="card-btn">Szczegóły urządzenia →</a>
     </div>
 </div>
 
@@ -184,12 +212,14 @@ title: HomeLab Inventory
         <span class="node-name">Lanberg 8-Port Switch (Open #1)</span>
         <div class="spec-line"><span class="spec-label">Role:</span><span>Auxiliary Switch (Open-Rack 10" #1)</span></div>
         <div class="spec-line"><span class="spec-label">Ports:</span><span>8x 1GbE</span></div>
+        <a href="/hardware/lanberg-8port-open1/" class="card-btn">Szczegóły urządzenia →</a>
     </div>
     <div class="node-card">
         <span class="status-badge mobile">Unmanaged</span>
         <span class="node-name">Lanberg 8-Port Switch (Open #2)</span>
         <div class="spec-line"><span class="spec-label">Role:</span><span>Auxiliary Switch (Open-Rack 10" #2)</span></div>
         <div class="spec-line"><span class="spec-label">Ports:</span><span>8x 1GbE</span></div>
+        <a href="/hardware/lanberg-8port-open2/" class="card-btn">Szczegóły urządzenia →</a>
     </div>
     <div class="node-card">
         <span class="status-badge mobile">Proxmox #1</span>
@@ -215,12 +245,14 @@ title: HomeLab Inventory
         <span class="node-name">TP-Link WR1043ND v2.1</span>
         <div class="spec-line"><span class="spec-label">OS:</span><span>Factory / OpenWrt</span></div>
         <div class="spec-line"><span class="spec-label">Role:</span><span>Secondary / Mobile Lab Wi-Fi</span></div>
+        <a href="/hardware/tp-link-wr1043nd/" class="card-btn">Szczegóły urządzenia →</a>
     </div>
     <div class="node-card">
         <span class="status-badge mobile">Printer</span>
         <span class="node-name">Canon Pixma TS705a</span>
         <div class="spec-line"><span class="spec-label">Role:</span><span>Network Inkjet Printer</span></div>
         <div class="spec-line"><span class="spec-label">Conn:</span><span>LAN / Wi-Fi</span></div>
+        <a href="/hardware/canon-ts705a/" class="card-btn">Szczegóły urządzenia →</a>
     </div>
 </div>
 
@@ -233,6 +265,7 @@ title: HomeLab Inventory
         <div class="spec-line"><span class="spec-label">RAM:</span><span>8GB DDR4</span></div>
         <div class="spec-line"><span class="spec-label">Storage:</span><span>ADATA SU900 SSD (MLC)</span></div>
         <div class="spec-line"><span class="spec-label">Role:</span><span>Proxmox VE Node #2 (24/7)</span></div>
+        <a href="/hardware/dell-vostro-sff/" class="card-btn">Szczegóły urządzenia →</a>
     </div>
     <div class="node-card">
         <span class="status-badge mobile">Proxmox #3</span>
@@ -241,6 +274,7 @@ title: HomeLab Inventory
         <div class="spec-line"><span class="spec-label">RAM:</span><span>8GB DDR3</span></div>
         <div class="spec-line"><span class="spec-label">Storage:</span><span>256GB SSD + 1TB HDD</span></div>
         <div class="spec-line"><span class="spec-label">Role:</span><span>Proxmox VE Node #3</span></div>
+        <a href="/hardware/hp-8200-usdt/" class="card-btn">Szczegóły urządzenia →</a>
     </div>
     <div class="node-card">
         <span class="status-badge migration">Test Bench</span>
@@ -249,6 +283,7 @@ title: HomeLab Inventory
         <div class="spec-line"><span class="spec-label">RAM:</span><span>16GB DDR3</span></div>
         <div class="spec-line"><span class="spec-label">Storage:</span><span>320GB HDD</span></div>
         <div class="spec-line"><span class="spec-label">Role:</span><span>Test Bench / Service Workstation</span></div>
+        <a href="/hardware/hp-6300-diagnostyka/" class="card-btn">Szczegóły urządzenia →</a>
     </div>
     <div class="node-card">
         <span class="status-badge mobile">Desk Node</span>
@@ -280,33 +315,39 @@ title: HomeLab Inventory
         <div class="spec-line"><span class="spec-label">Role:</span><span>FRP Client / Tunneling Node</span></div>
         <div class="spec-line"><span class="spec-label">Services:</span><span>FRP, Uptime Kuma</span></div>
         <div class="spec-line"><span class="spec-label">Type:</span><span>ARM64 Architecture</span></div>
+        <a href="/hardware/nokia-8-sirocco/" class="card-btn">Szczegóły urządzenia →</a>
     </div>
     <div class="node-card">
         <span class="status-badge phone">Samsung</span>
         <span class="node-name">Samsung Galaxy S5 Neo</span>
         <div class="spec-line"><span class="spec-label">Storage:</span><span>32GB MicroSD</span></div>
         <div class="spec-line"><span class="spec-label">Role:</span><span>Test Bench / Legacy Lab</span></div>
+        <a href="/hardware/samsung-galaxy-s5-neo/" class="card-btn">Szczegóły urządzenia →</a>
     </div>
     <div class="node-card">
         <span class="status-badge phone">Samsung</span>
         <span class="node-name">Samsung Galaxy S5</span>
         <div class="spec-line"><span class="spec-label">Storage:</span><span>32GB MicroSD</span></div>
         <div class="spec-line"><span class="spec-label">Role:</span><span>Test Bench / Legacy Lab</span></div>
+        <a href="/hardware/samsung-galaxy-s5/" class="card-btn">Szczegóły urządzenia →</a>
     </div>
     <div class="node-card">
         <span class="status-badge phone">Samsung</span>
         <span class="node-name">Samsung Galaxy S4</span>
         <div class="spec-line"><span class="spec-label">Role:</span><span>Test Bench / Legacy Lab</span></div>
+        <a href="/hardware/samsung-galaxy-s4/" class="card-btn">Szczegóły urządzenia →</a>
     </div>
     <div class="node-card">
         <span class="status-badge phone">HTC</span>
         <span class="node-name">HTC Desire 510</span>
         <div class="spec-line"><span class="spec-label">Role:</span><span>Test Bench / Legacy Lab</span></div>
+        <a href="/hardware/htc-desire-510/" class="card-btn">Szczegóły urządzenia →</a>
     </div>
     <div class="node-card">
         <span class="status-badge phone">HTC</span>
         <span class="node-name">HTC One M9e</span>
         <div class="spec-line"><span class="spec-label">Role:</span><span>Test Bench / Legacy Lab</span></div>
+        <a href="/hardware/htc-one-m9e/" class="card-btn">Szczegóły urządzenia →</a>
     </div>
 </div>
 
