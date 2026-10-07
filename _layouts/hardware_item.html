@@ -1,0 +1,161 @@
+---
+layout: default
+---
+
+<style>
+    .hw-detail-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding-bottom: 80px;
+    }
+    .hw-back-link {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85rem;
+        color: var(--accent-blue);
+        text-decoration: none;
+        display: inline-block;
+        margin-bottom: 25px;
+        transition: 0.2s;
+    }
+    .hw-back-link:hover {
+        transform: translateX(-4px);
+    }
+    .hw-header-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 40px;
+        backdrop-filter: blur(10px);
+        margin-bottom: 30px;
+        position: relative;
+        overflow: hidden;
+    }
+    .hw-header-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 4px; height: 100%;
+        background: var(--accent-contrast);
+    }
+    .hw-title {
+        font-size: 2.2rem;
+        font-weight: 900;
+        color: #fff;
+        margin: 0 0 10px 0;
+        letter-spacing: -0.5px;
+    }
+    .hw-role {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.9rem;
+        color: var(--accent-blue);
+        text-transform: uppercase;
+        font-weight: 700;
+        margin-bottom: 25px;
+    }
+    .hw-specs-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        border-top: 1px dashed rgba(255, 255, 255, 0.1);
+        padding-top: 20px;
+        margin-top: 20px;
+    }
+    .hw-spec-item label {
+        display: block;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        margin-bottom: 4px;
+    }
+    .hw-spec-item span {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.95rem;
+        color: #fff;
+        font-weight: 700;
+    }
+    .hw-content {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 40px;
+        backdrop-filter: blur(10px);
+        color: var(--text-main);
+        font-family: 'Inter', sans-serif;
+        line-height: 1.8;
+    }
+    .hw-content h3 {
+        font-family: 'JetBrains Mono', monospace;
+        color: var(--accent-contrast);
+        font-size: 1.2rem;
+        margin-top: 30px;
+        margin-bottom: 15px;
+    }
+    .hw-content h3:first-child {
+        margin-top: 0;
+    }
+    .hw-image-box {
+        width: 100%;
+        max-height: 400px;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 30px;
+        border: 1px solid var(--border);
+        background: rgba(0,0,0,0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .hw-image-box img {
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+        object-fit: contain;
+    }
+</style>
+
+<div class="hw-detail-container">
+    <a href="/hardware/" class="hw-back-link">&larr; // POWRÓT DO SPISU SPRZĘTU</a>
+
+    <div class="hw-header-card">
+        <span class="section-tag">{{ page.category | default: "HARDWARE_NODE" }}</span>
+        <h1 class="hw-title">{{ page.title }}</h1>
+        <div class="hw-role">// Rola w Homelab: {{ page.role }}</div>
+
+        <div class="hw-specs-grid">
+            {% if page.model %}
+            <div class="hw-spec-item">
+                <label>Model / Spec</label>
+                <span>{{ page.model }}</span>
+            </div>
+            {% endif %}
+            {% if page.cpu %}
+            <div class="hw-spec-item">
+                <label>CPU</label>
+                <span>{{ page.cpu }}</span>
+            </div>
+            {% endif %}
+            {% if page.ram %}
+            <div class="hw-spec-item">
+                <label>RAM / Storage</label>
+                <span>{{ page.ram }}</span>
+            </div>
+            {% endif %}
+            {% if page.ports %}
+            <div class="hw-spec-item">
+                <label>Porty / Interfejsy</label>
+                <span>{{ page.ports }}</span>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if page.image %}
+    <div class="hw-image-box">
+        <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+    </div>
+    {% endif %}
+
+    <div class="hw-content">
+        {{ content }}
+    </div>
+</div>
