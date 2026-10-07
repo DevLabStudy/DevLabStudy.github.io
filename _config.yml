@@ -10,3 +10,6 @@ collections:
   newsy:
     output: true
     permalink: /newsy/:year/:month/:day/:title/
+  hardware:
+    output: true
+    permalink: /hardware/:path/
