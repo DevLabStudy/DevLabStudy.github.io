@@ -68,6 +68,8 @@ title: "Tech Briefs & News"
         position: relative;
         width: 100%;
         max-width: 400px;
+        display: flex;
+        gap: 10px;
     }
 
     .search-input {
@@ -98,6 +100,26 @@ title: "Tech Briefs & News"
         font-family: 'JetBrains Mono', monospace;
         font-size: 0.9rem;
         pointer-events: none;
+    }
+
+    .sort-btn {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border);
+        color: var(--text-muted);
+        padding: 0 16px;
+        border-radius: 8px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.8rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.2s;
+        white-space: nowrap;
+    }
+
+    .sort-btn:hover {
+        border-color: var(--accent-blue);
+        color: #fff;
+        background: rgba(0, 210, 255, 0.05);
     }
 
     .newsy-grid {
@@ -255,8 +277,11 @@ title: "Tech Briefs & News"
         </div>
 
         <div class="search-container">
-            <span class="search-icon">&gt;</span>
-            <input type="text" id="newsSearch" class="search-input" placeholder="Szukaj po tytule newsa...">
+            <div style="position: relative; flex-grow: 1;">
+                <span class="search-icon">&gt;</span>
+                <input type="text" id="newsSearch" class="search-input" placeholder="Szukaj po tytule newsa...">
+            </div>
+            <button id="sortToggleBtn" class="sort-btn" onclick="toggleSortOrder()" title="Zmień kolejność sortowania">Sort: Najnowsze</button>
         </div>
     </div>
 </div>
@@ -279,10 +304,11 @@ title: "Tech Briefs & News"
 </div>
 
 <div class="newsy-grid" id="newsGrid">
-    {% for post in site.newsy %}
+    {% assign sorted_newsy = site.newsy | sort: 'date' | reverse %}
+    {% for post in sorted_newsy %}
         {% assign post_cat = post.category | default: "brief" | downcase %}
 
-    <a href="{{ post.url | relative_url }}" class="news-card" data-title="{{ post.title | downcase }}" data-category="{{ post_cat }}">
+    <a href="{{ post.url | relative_url }}" class="news-card" data-title="{{ post.title | downcase }}" data-category="{{ post_cat }}" data-date="{{ post.date | date: '%s' }}">
         <div style="display: flex; flex-direction: column; height: 100%;">
             {% assign t = post %}
             {% assign thumb = t.icon | default: t.image %}
@@ -354,16 +380,32 @@ title: "Tech Briefs & News"
     const searchInput = document.getElementById('newsSearch');
     const filterButtons = document.querySelectorAll('.filter-btn');
     const newsGrid = document.getElementById('newsGrid');
-    const cards = newsGrid.querySelectorAll('.news-card');
+    const sortToggleBtn = document.getElementById('sortToggleBtn');
     const noResults = document.getElementById('noResults');
 
     let currentCategory = 'all';
     let currentQuery = '';
+    let isAscending = false; // false = najnowsze pierwsze, true = najstarsze pierwsze
 
-    function filterCards() {
+    function getActiveCards() {
+        return Array.from(newsGrid.querySelectorAll('.news-card'));
+    }
+
+    function filterAndSortCards() {
+        let cards = getActiveCards();
         let visibleCount = 0;
 
+        // Sortowanie
+        cards.sort((a, b) => {
+            const dateA = parseInt(a.getAttribute('data-date'));
+            const dateB = parseInt(b.getAttribute('data-date'));
+            return isAscending ? dateA - dateB : dateB - dateA;
+        });
+
+        // Ponowne uporządkowanie DOM i filtrowanie
         cards.forEach(card => {
+            newsGrid.appendChild(card); // Przestawienie fizyczne w gridzie
+
             const title = card.getAttribute('data-title');
             const category = card.getAttribute('data-category');
 
@@ -381,9 +423,15 @@ title: "Tech Briefs & News"
         noResults.style.display = (visibleCount === 0) ? 'block' : 'none';
     }
 
+    function toggleSortOrder() {
+        isAscending = !isAscending;
+        sortToggleBtn.textContent = isAscending ? 'Sort: Najstarsze' : 'Sort: Najnowsze';
+        filterAndSortCards();
+    }
+
     searchInput.addEventListener('input', (e) => {
         currentQuery = e.target.value.toLowerCase().trim();
-        filterCards();
+        filterAndSortCards();
     });
 
     filterButtons.forEach(btn => {
@@ -391,7 +439,7 @@ title: "Tech Briefs & News"
             filterButtons.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             currentCategory = btn.getAttribute('data-filter');
-            filterCards();
+            filterAndSortCards();
         });
     });
 </script>
