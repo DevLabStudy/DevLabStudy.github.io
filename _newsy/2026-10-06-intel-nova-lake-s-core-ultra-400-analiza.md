@@ -15,6 +15,8 @@ W tym zestawieniu zbieram w jednym miejscu to, co dotąd wyciekło z map drogowy
 
 > **Ważne:** To nie jest materiał producenta. Prawie wszystkie liczby poniżej pochodzą z przecieków i mogą się zmienić do oficjalnej premiery. Tam, gdzie źródła się różnią, zaznaczam to wprost.
 
+---
+
 ## 1. Fakty i przecieki
 
 Zanim przejdziemy do szczegółów, warto rozdzielić fakty od plotek. Poniższa tabela pokazuje, jak mocno można ufać poszczególnym informacjom.
