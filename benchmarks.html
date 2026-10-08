@@ -4,128 +4,216 @@ title: Lab Benchmarks
 ---
 
 <style>
-    .bench-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
-    .test-header { border-bottom: 1px solid var(--border-color); padding-bottom: 15px; margin-bottom: 25px; }
-    
-    .data-table { width: 100%; border-collapse: collapse; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; }
-    .data-table th { text-align: left; color: var(--accent-blue); padding: 12px; border-bottom: 2px solid var(--border-color); text-transform: uppercase; }
-    .data-table td { padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color: #e2e8f0; }
-    
-    .highlight-val { color: #10b981; font-weight: 800; }
-    .node-tag { font-size: 0.7rem; background: rgba(255,255,255,0.05); padding: 2px 6px; border-radius: 4px; color: var(--text-muted); margin-left: 5px; }
-    .cmd-hint { color: var(--text-muted); font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; }
+    .bench-grid { 
+        display: grid; 
+        grid-template-columns: 1fr; 
+        gap: 30px; 
+    }
+
+    .test-header { 
+        border-bottom: 1px solid var(--border, rgba(0, 210, 255, 0.15)); 
+        padding-bottom: 20px; 
+        margin-bottom: 30px; 
+    }
+
+    /* KARTY DLA SEKCJI BENCHMARKÓW */
+    .card {
+        background: var(--card-bg, rgba(10, 15, 25, 0.6));
+        border: 1px solid var(--border, rgba(0, 210, 255, 0.15));
+        border-radius: 12px;
+        padding: 30px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .card h3 {
+        margin-top: 0;
+        margin-bottom: 8px;
+        color: #fff;
+        font-size: 1.1rem;
+        font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* STYLIOWANIE TABEL */
+    .table-wrapper {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .data-table { 
+        width: 100%; 
+        border-collapse: collapse; 
+        font-family: 'JetBrains Mono', monospace; 
+        font-size: 0.85rem; 
+        margin-top: 10px;
+    }
+
+    .data-table th { 
+        text-align: left; 
+        color: var(--accent-blue, #00d2ff); 
+        padding: 12px 16px; 
+        border-bottom: 2px solid var(--border, rgba(0, 210, 255, 0.15)); 
+        text-transform: uppercase; 
+        letter-spacing: 0.5px;
+    }
+
+    .data-table td { 
+        padding: 14px 16px; 
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
+        color: #e2e8f0; 
+    }
+
+    .data-table tbody tr:hover {
+        background: rgba(0, 210, 255, 0.03);
+    }
+
+    .highlight-val { 
+        color: #10b981; 
+        font-weight: 800; 
+    }
+
+    .node-tag { 
+        font-size: 0.7rem; 
+        background: rgba(255, 255, 255, 0.08); 
+        padding: 2px 6px; 
+        border-radius: 4px; 
+        color: var(--text-muted, #8b9bb4); 
+        margin-left: 6px; 
+        font-weight: normal;
+    }
+
+    .cmd-hint { 
+        color: var(--text-muted, #8b9bb4); 
+        font-size: 0.8rem; 
+        font-family: 'JetBrains Mono', monospace; 
+        background: rgba(0,0,0,0.3);
+        padding: 3px 6px;
+        border-radius: 4px;
+        border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .status-awaiting {
+        color: var(--text-muted, #8b9bb4);
+        font-style: italic;
+    }
 </style>
 
 <div class="test-header">
-    <h2 style="font-size: 2rem; font-weight: 900; margin: 0;">System <span style="color: var(--accent-blue);">Benchmarks</span></h2>
-    <p style="color: var(--text-muted); margin-top: 5px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;">&gt; Pomiary wydajności operacyjnej, podzespołów oraz przepustowości klastra DevLab.</p>
+    <h2 style="font-size: 2rem; font-weight: 900; margin: 0; color: #fff;">System <span style="color: var(--accent-blue, #00d2ff);">Benchmarks</span></h2>
+    <p style="color: var(--text-muted, #8b9bb4); margin-top: 8px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;">&gt; Pomiary wydajności operacyjnej, podzespołów oraz przepustowości klastra DevLab.</p>
 </div>
 
 <div class="bench-grid">
     
-    <!-- Sekcja 1: Sprzęt i Syntetyki (CPU, Storage, Sieć lokalna) -->
+    <!-- Sekcja 1: Sprzęt i Syntetyki -->
     <div class="card">
-        <h3 style="margin-top: 0; color: #fff; font-size: 1.1rem; font-family: 'JetBrains Mono', monospace;">[ #01: Hardware &amp; Storage Audit ]</h3>
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">Ostatni pełny skan wydajności podzespołów bazowych.</p>
+        <h3>[ #01: Hardware &amp; Storage Audit ]</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted, #8b9bb4); margin-top: 0; margin-bottom: 20px;">Ostatni pełny skan wydajności podzespołów bazowych.</p>
         
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th>Component</th>
-                    <th>Test Type</th>
-                    <th>Result</th>
-                    <th>Metric / Tool</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Ryzen 5 3600</strong> <span class="node-tag">12T</span></td>
-                    <td>Compressing Avr</td>
-                    <td class="highlight-val">46,287 MIPS</td>
-                    <td><code class="cmd-hint">7z benchmark</code></td>
-                </tr>
-                <tr>
-                    <td><strong>MSI NVMe Storage</strong></td>
-                    <td>Random Write (4k)</td>
-                    <td class="highlight-val">21,700 IOPS</td>
-                    <td><code class="cmd-hint">fio</code> (libaio, depth 64)</td>
-                </tr>
-                <tr>
-                    <td><strong>SATA III SSD</strong> <span class="node-tag">/dev/sda</span></td>
-                    <td>Buffered Read</td>
-                    <td class="highlight-val">445.8 MB/s</td>
-                    <td><code class="cmd-hint">hdparm -tT</code></td>
-                </tr>
-                <tr>
-                    <td><strong>Network (LAN)</strong></td>
-                    <td>TCP Throughput</td>
-                    <td class="highlight-val">941 Mbits/s</td>
-                    <td><code class="cmd-hint">iperf3</code> (D-Link Switch)</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-wrapper">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Test Type</th>
+                        <th>Result</th>
+                        <th>Metric / Tool</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Ryzen 5 3600</strong> <span class="node-tag">12T</span></td>
+                        <td>Compressing Avr</td>
+                        <td class="highlight-val">46,287 MIPS</td>
+                        <td><code class="cmd-hint">7z benchmark</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>MSI NVMe Storage</strong></td>
+                        <td>Random Write (4k)</td>
+                        <td class="highlight-val">21,700 IOPS</td>
+                        <td><code class="cmd-hint">fio (libaio, depth 64)</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>SATA III SSD</strong> <span class="node-tag">/dev/sda</span></td>
+                        <td>Buffered Read</td>
+                        <td class="highlight-val">445.8 MB/s</td>
+                        <td><code class="cmd-hint">hdparm -tT</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Network (LAN)</strong></td>
+                        <td>TCP Throughput</td>
+                        <td class="highlight-val">941 Mbits/s</td>
+                        <td><code class="cmd-hint">iperf3 (D-Link Switch)</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <!-- Sekcja 2: Zadania Wideo i Renderowanie -->
     <div class="card">
-        <h3 style="margin-top: 0; color: #fff; font-size: 1.1rem; font-family: 'JetBrains Mono', monospace;">[ #02: Video Processing &amp; Transcoding ]</h3>
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">Testy sprawności węzłów przy generowaniu proxy i obróbce materiałów wideo.</p>
+        <h3>[ #02: Video Processing &amp; Transcoding ]</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted, #8b9bb4); margin-top: 0; margin-bottom: 20px;">Testy sprawności węzłów przy generowaniu proxy i obróbce materiałów wideo.</p>
         
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th>Hardware Node</th>
-                    <th>Task Details</th>
-                    <th>Processing Time</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>HP 6300 Pro <span class="node-tag">i5-3470</span></td>
-                    <td>1080p | 42Mb/s | 65s (Proxy MOV)</td>
-                    <td class="highlight-val">187.2 s</td>
-                </tr>
-                <tr>
-                    <td>Main PC <span class="node-tag">RX 7600</span></td>
-                    <td>1080p | 42Mb/s | 65s (Proxy MOV)</td>
-                    <td style="color: var(--text-muted);">Awaiting test...</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-wrapper">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Hardware Node</th>
+                        <th>Task Details</th>
+                        <th>Processing Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>HP 6300 Pro</strong> <span class="node-tag">i5-3470</span></td>
+                        <td>1080p | 42Mb/s | 65s (Proxy MOV)</td>
+                        <td class="highlight-val">187.2 s</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Main PC</strong> <span class="node-tag">RX 7600</span></td>
+                        <td>1080p | 42Mb/s | 65s (Proxy MOV)</td>
+                        <td class="status-awaiting">Awaiting test...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <!-- Sekcja 3: Komunikacja w Klastrze -->
     <div class="card">
-        <h3 style="margin-top: 0; color: #fff; font-size: 1.1rem; font-family: 'JetBrains Mono', monospace;">[ #03: Network Interconnects ]</h3>
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">Rzeczywiste transfery między punktami końcowymi w architekturze labu.</p>
+        <h3>[ #03: Network Interconnects ]</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted, #8b9bb4); margin-top: 0; margin-bottom: 20px;">Rzeczywiste transfery między punktami końcowymi w architekturze labu.</p>
         
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th>Source &#10140; Target</th>
-                    <th>Interface</th>
-                    <th>Bandwidth (Avg)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>HP Pro &#10140; Main PC</td>
-                    <td>Ethernet 1Gbps</td>
-                    <td style="color: var(--accent-blue);">Awaiting test...</td>
-                </tr>
-                <tr>
-                    <td>Asus Vivo &#10140; HP Pro</td>
-                    <td>WiFi 5 / 2.4GHz</td>
-                    <td style="color: var(--accent-blue);">Awaiting test...</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-wrapper">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Source &#10140; Target</th>
+                        <th>Interface</th>
+                        <th>Bandwidth (Avg)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>HP Pro</strong> &#10140; <strong>Main PC</strong></td>
+                        <td>Ethernet 1Gbps</td>
+                        <td class="status-awaiting">Awaiting test...</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Asus Vivo</strong> &#10140; <strong>HP Pro</strong></td>
+                        <td>WiFi 5 / 2.4GHz</td>
+                        <td class="status-awaiting">Awaiting test...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
 </div>
 
-<div class="card" style="margin-top: 30px; border-style: dashed; text-align: center;">
-    <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted); margin: 0;">
+<div class="card" style="margin-top: 30px; border-style: dashed; text-align: center; padding: 20px;">
+    <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted, #8b9bb4); margin: 0;">
         // Wszystkie parametry są aktualizowane na bieżąco w ramach rutynowego audytu sprzętowego DevLab.
     </p>
 </div>
