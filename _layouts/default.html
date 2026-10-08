@@ -341,6 +341,7 @@
                 </div>
             </div>
 
+            <a href="/benchmarks" class="nav-link {% if page.url contains 'benchmarks' %}active-page{% endif %}">Benchmarks</a>
             <a href="/kontakt" class="nav-link {% if page.url contains 'kontakt' %}active-page{% endif %}">Kontakt</a>
         </div>
     </nav>
@@ -362,6 +363,7 @@
                     <li><a href="/newsy">Newsy</a></li>
                     <li><a href="/blog">Dziennik / Blog</a></li>
                     <li><a href="/homelab">Infrastruktura HomeLab</a></li>
+                    <li><a href="/benchmarks">Pomiary Benchmarks</a></li>
                     <li><a href="/sponsors">Partnerzy</a></li>
                 </ul>
             </div>
@@ -421,16 +423,16 @@
 
         <div class="footer-sublinks-bar">
             <a href="/">Sitemap</a>
-            <a href="/newsy">For Media & Press</a>
+            <a href="/newsy">For Media &amp; Press</a>
             <a href="/polityka-prywatnosci">Privacy Policy</a>
-            <a href="/homelab">Infrastructure & Specs</a>
-            <a href="/sponsors">Partners & Sponsors</a>
-            <a href="/kontakt">Contact & Support</a>
+            <a href="/homelab">Infrastructure &amp; Specs</a>
+            <a href="/sponsors">Partners &amp; Sponsors</a>
+            <a href="/kontakt">Contact &amp; Support</a>
             <a href="https://github.com/DevLabStudy" target="_blank">Source Code (GitHub)</a>
         </div>
 
         <div class="footer-meta-bar">
-            <div>Page Last Updated: <span>October 07, 2026</span></div>
+            <div>Page Last Updated: <span>October 08, 2026</span></div>
             <div>Page Editor: <span>Tobiasz Kajzer</span></div>
             <div>Responsible System Official: <span>DevLabStudy Administrator</span></div>
         </div>
@@ -444,33 +446,27 @@
         const activeLink = navCenter.querySelector('.active-page') || navLinks[0];
 
         function moveIndicator(el) {
+            if (!el) return;
             indicator.style.width = el.offsetWidth + 'px';
             indicator.style.left = el.offsetLeft + 'px';
         }
 
-        // Sprawdzamy czy w pamięci przeglądarki (sessionStorage) mamy zapisaną poprzednią pozycję wskaźnika,
-        // dzięki czemu po kliknięciu linku animacja rusza z miejsca, w którym użytkownik aktualnie znajdował się na stronie!
         const savedLeft = sessionStorage.getItem('nav_indicator_left');
         const savedWidth = sessionStorage.getItem('nav_indicator_width');
 
         if (savedLeft !== null && savedWidth !== null) {
-            // Tymczasowo ustawiamy wskaźnik dokładnie w miejscu sprzed przeładowania bez animacji
             indicator.style.transition = 'none';
             indicator.style.left = savedLeft;
             indicator.style.width = savedWidth;
             
-            // Wymuszenie odświeżenia layoutu (reflow)
             void indicator.offsetHeight;
             
-            // Przywracamy płynne przejście i płynnie animujemy do faktycznego aktywnego elementu nowej strony
             indicator.style.transition = '';
             moveIndicator(activeLink);
         } else {
-            // Jeśli brak historii sesji, ustawiamy standardowo na aktywny link
             moveIndicator(activeLink);
         }
 
-        // Zapisujemy pozycję po kliknięciu w jakikolwiek link nawigacji
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 sessionStorage.setItem('nav_indicator_left', link.offsetLeft + 'px');
