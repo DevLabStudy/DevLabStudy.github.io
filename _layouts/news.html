@@ -103,6 +103,7 @@ layout: default
         font-family: 'JetBrains Mono', monospace;
         margin-top: 40px;
         margin-bottom: 15px;
+        scroll-margin-top: 100px; /* Zapewnia poprawną pozycję scrolla przy kliknięciu w TOC */
     }
     .news-body h2 { font-size: 1.4rem; border-left: 3px solid var(--accent-blue); padding-left: 10px; }
     .news-body p { margin-bottom: 20px; }
@@ -231,10 +232,21 @@ layout: default
         color: var(--text-muted);
         text-decoration: none;
         display: block;
-        transition: 0.2s;
+        padding: 4px 8px;
+        border-radius: 4px;
+        transition: all 0.2s ease;
     }
     .toc-item a:hover {
         color: var(--accent-blue);
+        transform: translateX(4px);
+    }
+    
+    /* AKTYWNY ELEMENT W SPISIE TREŚCI (PODŚWIETLENIE) */
+    .toc-item.active a {
+        color: var(--accent-blue);
+        background: rgba(0, 210, 255, 0.12);
+        font-weight: 700;
+        border-left: 2px solid var(--accent-blue);
         transform: translateX(4px);
     }
 
@@ -397,7 +409,7 @@ layout: default
         </section>
     </article>
 
-    <!-- BOCZny PANEL: SPIS TREŚCI (TOC) -->
+    <!-- BOCZNY PANEL: SPIS TREŚCI (TOC) -->
     <aside class="sidebar-toc">
         <h4 class="toc-title">// Spis Treści</h4>
         <ul class="toc-list" id="tocList"></ul>
@@ -411,10 +423,6 @@ layout: default
 </a>
 
 <script>
-    // FAQ markdown structure expected in the post body:
-    // - `## FAQ` / `## Najczęściej zadawane pytania` (or heading containing these phrases) starts FAQ section
-    // - each `###` in this section is treated as one question
-    // - all elements under that `###` until next `###` or next `##` are treated as answer content
     function normalizeHeadingText(text) {
         return (text || '')
             .toLowerCase()
@@ -486,7 +494,7 @@ layout: default
         faqHeading.insertAdjacentElement('afterend', faqWrapper);
     }
 
-    // AUTOMATYCZNY SPIS TREŚCI ZE STRUKTURY NAGŁÓWKÓW
+    // AUTOMATYCZNY SPIS TREŚCI ZE STRUKTURY NAGŁÓWKÓW I INTERSECTION OBSERVER DLA PODŚWIETLANIA
     const articleBody = document.getElementById('articleBody');
     const tocList = document.getElementById('tocList');
     transformFaqToAccordion(articleBody);
@@ -502,10 +510,35 @@ layout: default
             if(!heading.id) { heading.id = 'heading-' + index; }
             const li = document.createElement('li');
             li.className = 'toc-item';
+            li.setAttribute('data-target', heading.id);
             li.style.paddingLeft = heading.tagName === 'H3' ? '12px' : '0';
             li.innerHTML = `<a href="#${heading.id}">&rarr; ${heading.textContent}</a>`;
             tocList.appendChild(li);
         });
+
+        // SHADOW SENSOR / INTERSECTION OBSERVER DLA DYNAMICZNEGO PODŚWIETLANIA SPISU TREŚCI
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -65% 0px', // Aktywuje sekcję po przewinięciu do ~35% wysokości ekranu
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    document.querySelectorAll('.toc-item').forEach((item) => {
+                        if (item.getAttribute('data-target') === id) {
+                            item.classList.add('active');
+                        } else {
+                            item.classList.remove('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        headings.forEach((heading) => observer.observe(heading));
     }
 
     // PRZYCISKI UDOSTĘPNIANIA (TWITTER & FACEBOOK)
