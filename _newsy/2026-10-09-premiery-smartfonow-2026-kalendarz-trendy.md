@@ -2,7 +2,7 @@
 layout: news
 title: "Premiery smartfonów 2026 – kalendarz premier, nowe modele i najważniejsze trendy"
 description: "Kompleksowy przegląd rynku mobilnego 2026: kalendarz premier, szczegółowe opisy flagowców (Huawei, vivo, Apple, Samsung, Xiaomi), specyfikacje, opinie oraz analiza kluczowych trendów z AI i bateriami krzemowo-węglowymi."
-date: 2026-10-06
+date: 2026-10-09
 category: HARDWARE
 image: /assets/images/premiery.jpg
 ---
