@@ -85,11 +85,11 @@
             display: flex; 
             justify-content: flex-end; 
             align-items: center; 
-            gap: 10px; 
+            gap: 6px; 
             position: relative;
         }
 
-        .nav-center a, .nav-center .dropbtn { 
+        .nav-center .nav-link { 
             text-decoration: none; 
             color: var(--text-muted); 
             font-weight: 600; 
@@ -102,12 +102,12 @@
             border: none;
             cursor: pointer;
             font-family: 'Inter', sans-serif;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 5px;
         }
 
-        .nav-center a:hover, .nav-center .dropbtn:hover, .nav-center .dropdown:hover .dropbtn { 
+        .nav-center .nav-link:hover, .nav-center .dropdown:hover > .nav-link { 
             color: var(--accent-blue); 
         }
 
@@ -122,6 +122,7 @@
             transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 1;
             box-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+            pointer-events: none;
         }
 
         /* DROPDOWN APPS */
@@ -340,14 +341,14 @@
         </div>
         <div class="nav-center" id="navCenter">
             <div class="nav-indicator" id="navIndicator"></div>
-            <a href="/" class="nav-item nav-link {% if page.url == '/' %}active-page{% endif %}">Hub</a>
-            <a href="/newsy" class="nav-item nav-link {% if page.url contains 'newsy' %}active-page{% endif %}">Newsy</a>
-            <a href="/blog" class="nav-item nav-link {% if page.url contains 'blog' %}active-page{% endif %}">Blog</a>
-            <a href="/homelab" class="nav-item nav-link {% if page.url contains 'homelab' %}active-page{% endif %}">HomeLab</a>
-            <a href="/sponsors" class="nav-item nav-link {% if page.url contains 'sponsors' %}active-page{% endif %}">Sponsors</a>
+            <a href="/" class="nav-link {% if page.url == '/' %}active-page{% endif %}">Hub</a>
+            <a href="/newsy" class="nav-link {% if page.url contains 'newsy' %}active-page{% endif %}">Newsy</a>
+            <a href="/blog" class="nav-link {% if page.url contains 'blog' %}active-page{% endif %}">Blog</a>
+            <a href="/homelab" class="nav-link {% if page.url contains 'homelab' %}active-page{% endif %}">HomeLab</a>
+            <a href="/sponsors" class="nav-link {% if page.url contains 'sponsors' %}active-page{% endif %}">Sponsors</a>
             
-            <div class="dropdown nav-item nav-link">
-                <button class="dropbtn">Apps ▾</button>
+            <div class="dropdown nav-link" style="padding: 0;">
+                <a href="#" class="nav-link dropbtn" onclick="return false;">Apps ▾</a>
                 <div class="dropdown-content">
                     <div class="dropdown-links-wrapper">
                         <a href="/orbit">Orbit <span>↗</span></a>
@@ -362,8 +363,8 @@
                 </div>
             </div>
 
-            <a href="/benchmarks" class="nav-item nav-link {% if page.url contains 'benchmarks' %}active-page{% endif %}">Benchmarks</a>
-            <a href="/kontakt" class="nav-item nav-link {% if page.url contains 'kontakt' %}active-page{% endif %}">Kontakt</a>
+            <a href="/benchmarks" class="nav-link {% if page.url contains 'benchmarks' %}active-page{% endif %}">Benchmarks</a>
+            <a href="/kontakt" class="nav-link {% if page.url contains 'kontakt' %}active-page{% endif %}">Kontakt</a>
         </div>
     </nav>
 
@@ -456,8 +457,8 @@
     <script>
         const navCenter = document.getElementById('navCenter');
         const indicator = document.getElementById('navIndicator');
-        const navItems = navCenter.querySelectorAll('.nav-item');
-        const activeItem = navCenter.querySelector('.active-page') || navItems[0];
+        const navLinks = navCenter.querySelectorAll(':scope > .nav-link');
+        const activeLink = navCenter.querySelector('.active-page') || navLinks[0];
 
         function moveIndicator(el) {
             if (!el) return;
@@ -465,21 +466,33 @@
             indicator.style.left = el.offsetLeft + 'px';
         }
 
-        moveIndicator(activeItem);
+        const savedLeft = sessionStorage.getItem('nav_indicator_left');
+        const savedWidth = sessionStorage.getItem('nav_indicator_width');
 
-        navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                sessionStorage.setItem('nav_indicator_left', item.offsetLeft + 'px');
-                sessionStorage.setItem('nav_indicator_width', item.offsetWidth + 'px');
+        if (savedLeft !== null && savedWidth !== null) {
+            indicator.style.transition = 'none';
+            indicator.style.left = savedLeft;
+            indicator.style.width = savedWidth;
+            void indicator.offsetHeight;
+            indicator.style.transition = '';
+            moveIndicator(activeLink);
+        } else {
+            moveIndicator(activeLink);
+        }
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                sessionStorage.setItem('nav_indicator_left', link.offsetLeft + 'px');
+                sessionStorage.setItem('nav_indicator_width', link.offsetWidth + 'px');
             });
 
-            item.addEventListener('mouseenter', () => {
-                moveIndicator(item);
+            link.addEventListener('mouseenter', () => {
+                moveIndicator(link);
             });
         });
 
         navCenter.addEventListener('mouseleave', () => {
-            moveIndicator(activeItem);
+            moveIndicator(activeLink);
         });
     </script>
 </body>
