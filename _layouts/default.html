@@ -121,7 +121,6 @@
             height: 3px;
             background: var(--accent-blue);
             border-radius: 3px;
-            /* Płynna, naturalna animacja */
             transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 1;
             box-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
@@ -130,12 +129,12 @@
         /* DROPDOWN APPS */
         .dropdown { position: relative; display: inline-block; }
         
-        .dropdown-content { position: absolute; right: 0; top: 100%; padding-top: 12px; min-width: 220px; opacity: 0; visibility: hidden; transition: 0.25s ease; z-index: 1001; }
+        .dropdown-content { position: absolute; right: 0; top: 100%; padding-top: 12px; min-width: 230px; opacity: 0; visibility: hidden; transition: 0.25s ease; z-index: 1001; }
         .dropdown-links-wrapper { background: rgba(10, 15, 25, 0.98); border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); overflow: hidden; backdrop-filter: blur(10px); }
         .dropdown-content a, .dropdown-content .disabled-link { display: flex; justify-content: space-between; align-items: center; color: var(--text-main); padding: 12px 18px; text-decoration: none; font-size: 0.85rem; font-weight: 600; border-bottom: 1px solid rgba(255, 255, 255, 0.03); }
         .dropdown-content a:hover { color: var(--accent-blue); background: rgba(0, 210, 255, 0.05); }
-        .dropdown:hover .dropdown-content { opacity: 1; visibility: visible; }
         .badge-work { font-size: 0.65rem; background: rgba(255, 94, 0, 0.15); color: var(--accent-contrast); padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(255, 94, 0, 0.3); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
+        .badge-new { font-size: 0.65rem; background: rgba(0, 210, 255, 0.15); color: var(--accent-blue); padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(0, 210, 255, 0.3); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
 
         /* NIEKLIKALNY ELEMENT GARMIN Z HOVEREM */
         .disabled-link {
@@ -181,7 +180,7 @@
         .section-tag::before { content: '///'; color: var(--accent-blue); }
 
         /* STOPKA W STYLU NASA */
-        footer { 
+        <footer> 
             background: #010204;
             border-top: 1px solid var(--border); 
             padding: 70px 60px 40px 60px; 
@@ -331,6 +330,7 @@
                 <div class="dropdown-content">
                     <div class="dropdown-links-wrapper">
                         <a href="/orbit">Orbit <span>↗</span></a>
+                        <a href="/homelab-cc">Homelab CC <span class="badge-new">New</span></a>
                         <div class="disabled-link">
                             <span class="link-text">Garmin</span>
                             <span class="beta-hover-text">[ In Beta Tests ]</span>
@@ -371,6 +371,7 @@
                 <h4>Projekty (Apps)</h4>
                 <ul>
                     <li><a href="/orbit">Orbit Dashboard</a></li>
+                    <li><a href="/homelab-cc">Homelab Control Center</a></li>
                     <li>
                         <div class="disabled-footer-link">
                             <span class="footer-link-text">Garmin Connect Apps</span>
@@ -432,7 +433,7 @@
         </div>
 
         <div class="footer-meta-bar">
-            <div>Page Last Updated: <span>October 08, 2026</span></div>
+            <div>Page Last Updated: <span>October 09, 2026</span></div>
             <div>Page Editor: <span>Tobiasz Kajzer</span></div>
             <div>Responsible System Official: <span>DevLabStudy Administrator</span></div>
         </div>
