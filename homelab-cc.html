@@ -7,69 +7,96 @@ permalink: /homelab-cc/
 <div class="container py-5">
   <div class="row justify-content-center">
     <div class="col-lg-8 text-center">
-      <h1 class="display-4 fw-bold mb-3">DevLab Homelab Control Center</h1>
+      <h1 class="display-4 fw-bold mb-3" style="color: #fff; font-family: 'JetBrains Mono', monospace;">DevLab Homelab Control Center</h1>
       <p class="lead text-muted mb-4">
         Zaawansowane narzędzie administracyjne dla pasjonatów homelabów. Zarządzaj sesjami SSH, monitoruj sprzęt przez WMI (styl AIDA64) i korzystaj z zaawansowanych narzędzi sieciowych z poziomu nowoczesnej aplikacji WPF.
       </p>
 
       <!-- Informacja o wersji testowej -->
-      <div class="alert alert-warning border-0 shadow-sm mb-4" role="alert">
+      <div class="alert border-0 shadow-sm mb-4" style="background: rgba(255, 94, 0, 0.1); color: #ff5e00; border: 1px solid rgba(255, 94, 0, 0.3) !important;" role="alert">
         <h4 class="alert-heading fw-bold">⚠️ Wersja Testowa (Alpha / v1.0.0)</h4>
         <p class="mb-0">
-          To jest pierwsza publiczna wersja testowa aplikacji. Może zawierać drobne błędy. Zachęcamy do testowania i zgłaszania uwag na adres <a href="mailto:bledy@devlabstudy.ovh" class="alert-link">bledy@devlabstudy.ovh</a>.
+          To jest pierwsza publiczna wersja testowa aplikacji. Może zawierać drobne błędy. Zachęcamy do testowania i zgłaszania uwag na adres <a href="mailto:bledy@devlabstudy.ovh" style="color: #00d2ff; text-decoration: underline;">bledy@devlabstudy.ovh</a>.
         </p>
       </div>
 
       <!-- Sekcja przycisków pobierania -->
       <div class="d-grid gap-3 d-sm-flex justify-content-sm-center mb-5 align-items-center">
-        <!-- Windows - Aktywny przycisk -->
-        <a href="https://www.devlabstudy.ovh/assets/downloads/HomelabControlCentersetup.exe" class="btn btn-primary btn-lg px-4 shadow" download>
-          <i class="bi bi-windows"></i> Pobierz dla Windows (.exe)
+        <!-- Windows - Główny, mocno wyróżniony przycisk pobierania -->
+        <a href="https://www.devlabstudy.ovh/assets/downloads/HomelabControlCentersetup.exe" class="btn btn-lg px-4 shadow-lg download-btn-windows" download>
+          <i class="bi bi-windows me-2"></i> Pobierz dla Windows (.exe)
+          <span class="d-block small opacity-75" style="font-size: 0.75rem;">Wersja stabilna v1.0.0 (64-bit)</span>
         </a>
 
         <!-- macOS - Coming Soon -->
         <div class="dropdown-container position-relative d-inline-block">
-          <button class="btn btn-outline-secondary btn-lg px-4 disabled" style="cursor: not-allowed;" title="Coming Soon">
-            <i class="bi bi-apple"></i> macOS
+          <button class="btn btn-lg px-4 platform-btn-disabled" disabled title="Coming Soon">
+            <i class="bi bi-apple me-2"></i> macOS
+            <span class="d-block small opacity-50" style="font-size: 0.75rem;">W przygotowaniu</span>
           </button>
         </div>
 
         <!-- Linux - Coming Soon -->
         <div class="dropdown-container position-relative d-inline-block">
-          <button class="btn btn-outline-secondary btn-lg px-4 disabled" style="cursor: not-allowed;" title="Coming Soon">
-            <i class="bi bi-ubuntu"></i> Linux
+          <button class="btn btn-lg px-4 platform-btn-disabled" disabled title="Coming Soon">
+            <i class="bi bi-ubuntu me-2"></i> Linux
+            <span class="d-block small opacity-50" style="font-size: 0.75rem;">W przygotowaniu</span>
           </button>
         </div>
       </div>
 
-      <!-- Styl CSS dla efektu Coming Soon po najechaniu -->
+      <!-- Styl CSS dla przycisków i efektów -->
       <style>
-        .btn.disabled, .btn:disabled {
-          opacity: 0.65;
-          position: relative;
+        .download-btn-windows {
+          background: linear-gradient(135deg, #00d2ff 0%, #007bff 100%);
+          color: #030305;
+          font-weight: 700;
+          border: none;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        .btn.disabled:hover::after, .btn:disabled:hover::after {
+        .download-btn-windows:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 0 20px rgba(0, 210, 255, 0.6) !important;
+          color: #030305;
+        }
+
+        .platform-btn-disabled {
+          background: rgba(255, 255, 255, 0.05);
+          color: #8b9bb4;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          cursor: not-allowed;
+          transition: all 0.2s ease;
+        }
+        .platform-btn-disabled:hover {
+          background: rgba(255, 94, 0, 0.08);
+          color: #ff5e00;
+          border-color: rgba(255, 94, 0, 0.3);
+        }
+
+        .platform-btn-disabled:hover::after {
           content: "Coming Soon!";
           position: absolute;
-          bottom: -35px;
+          bottom: -40px;
           left: 50%;
           transform: translateX(-50%);
-          background: #212529;
-          color: #fff;
-          padding: 4px 8px;
+          background: #0a0f19;
+          color: #ff5e00;
+          border: 1px solid rgba(255, 94, 0, 0.3);
+          padding: 5px 10px;
           font-size: 12px;
-          border-radius: 4px;
+          font-family: 'JetBrains Mono', monospace;
+          border-radius: 6px;
           white-space: nowrap;
           z-index: 10;
-          box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+          box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
       </style>
 
-      <hr class="my-4">
+      <hr class="my-4" style="border-color: rgba(255,255,255,0.1);">
 
-      <div class="text-start mt-4">
-        <h3 class="h5 fw-bold">Wymagania systemowe (Windows):</h3>
-        <ul class="text-muted">
+      <div class="text-start mt-4 p-4 rounded" style="background: rgba(10, 15, 25, 0.6); border: 1px solid rgba(0, 210, 255, 0.15);">
+        <h3 class="h5 fw-bold" style="color: #00d2ff; font-family: 'JetBrains Mono', monospace;">Wymagania systemowe (Windows):</h3>
+        <ul class="text-muted mb-0">
           <li>System operacyjny: Windows 10 / 11 (64-bit)</li>
           <li>Typ pakietu: Samowystarczalny instalator (.exe)</li>
         </ul>
