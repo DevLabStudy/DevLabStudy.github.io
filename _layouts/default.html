@@ -107,7 +107,9 @@
             gap: 5px;
         }
 
-        .nav-center .nav-link:hover, .nav-center .dropdown:hover > .nav-link { 
+        .nav-center .nav-link:hover, 
+        .nav-center .nav-link.active-page,
+        .nav-center .dropdown:hover > .nav-link { 
             color: var(--accent-blue); 
         }
 
@@ -347,7 +349,7 @@
             <a href="/homelab" class="nav-link {% if page.url contains 'homelab' %}active-page{% endif %}">HomeLab</a>
             <a href="/sponsors" class="nav-link {% if page.url contains 'sponsors' %}active-page{% endif %}">Sponsors</a>
             
-            <div class="dropdown nav-link" style="padding: 0;">
+            <div class="dropdown nav-link {% if page.url contains 'orbit' or page.url contains 'homelab-cc' or page.url contains 'phone' or page.url contains 'apps' %}active-page{% endif %}" style="padding: 0;">
                 <a href="#" class="nav-link dropbtn" onclick="return false;">Apps ▾</a>
                 <div class="dropdown-content">
                     <div class="dropdown-links-wrapper">
@@ -457,13 +459,16 @@
     <script>
         const navCenter = document.getElementById('navCenter');
         const indicator = document.getElementById('navIndicator');
-        const navLinks = navCenter.querySelectorAll(':scope > .nav-link');
-        const activeLink = navCenter.querySelector('.active-page') || navLinks[0];
+        // Pobieramy wyłącznie bezpośrednie elementy nawigacyjne poziomu pierwszego
+        const topNavItems = Array.from(navCenter.querySelectorAll(':scope > .nav-link, :scope > .dropdown'));
+        const activeItem = navCenter.querySelector('.active-page') || topNavItems[0];
 
         function moveIndicator(el) {
             if (!el) return;
-            indicator.style.width = el.offsetWidth + 'px';
-            indicator.style.left = el.offsetLeft + 'px';
+            // Pobieramy element przycisku wewnątrz .dropdown lub sam el
+            const targetEl = el.classList.contains('dropdown') ? el.querySelector('.dropbtn') || el : el;
+            indicator.style.width = targetEl.offsetWidth + 'px';
+            indicator.style.left = targetEl.offsetLeft + 'px';
         }
 
         const savedLeft = sessionStorage.getItem('nav_indicator_left');
@@ -475,24 +480,32 @@
             indicator.style.width = savedWidth;
             void indicator.offsetHeight;
             indicator.style.transition = '';
-            moveIndicator(activeLink);
+            moveIndicator(activeItem);
         } else {
-            moveIndicator(activeLink);
+            moveIndicator(activeItem);
         }
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                sessionStorage.setItem('nav_indicator_left', link.offsetLeft + 'px');
-                sessionStorage.setItem('nav_indicator_width', link.offsetWidth + 'px');
+        topNavItems.forEach(item => {
+            // Reagujemy na najechanie na element górnego menu (w tym całe rozwijane menu .dropdown)
+            item.addEventListener('mouseenter', () => {
+                moveIndicator(item);
             });
 
-            link.addEventListener('mouseenter', () => {
-                moveIndicator(link);
+            // Rejestrujemy kliknięcie na wszystkie linki (zarówno z głównego paska jak i rozwijanego menu)
+            const linksInItem = item.querySelectorAll('a');
+            linksInItem.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    if (link.getAttribute('href') === '#') return;
+                    const targetToSave = item.classList.contains('dropdown') ? (item.querySelector('.dropbtn') || item) : item;
+                    sessionStorage.setItem('nav_indicator_left', targetToSave.offsetLeft + 'px');
+                    sessionStorage.setItem('nav_indicator_width', targetToSave.offsetWidth + 'px');
+                });
             });
         });
 
+        // Wskaźnik wraca do aktywnej zakładki dopiero gdy kursor opuści cały navCenter
         navCenter.addEventListener('mouseleave', () => {
-            moveIndicator(activeLink);
+            moveIndicator(activeItem);
         });
     </script>
 </body>
