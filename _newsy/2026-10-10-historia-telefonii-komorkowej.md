@@ -2,7 +2,7 @@
 layout: news
 title: "30 lat sieci Plus: Od prostej rozmowy do cyfrowej codzienności"
 description: "Szczegółowa historia 30 lat ewolucji telefonii komórkowej w Polsce na przykładzie sieci Plus – od cyfrowej rewolucji GSM, SMS-ów i kart prepaid, przez mobilny internet WAP i LTE, aż po gigabitowe sieci 5G Ultra."
-category: technologia
+category: hardware
 date: 2026-10-10
 image: /assets/images/tło.jpg
 ---
