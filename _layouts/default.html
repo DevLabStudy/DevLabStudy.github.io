@@ -122,11 +122,16 @@
             height: 3px;
             background: var(--accent-blue);
             border-radius: 3px;
-            transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 1;
             box-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
             pointer-events: none;
             opacity: 0;
+            /* Animacja wyłączona domyślnie, włączana dynamicznie po załadowaniu */
+            transition: none;
+        }
+
+        .nav-indicator.animated {
+            transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         /* DROPDOWN APPS */
@@ -348,10 +353,11 @@
             <a href="/" class="nav-link-btn {% if page.url == '/' %}active-page{% endif %}">Hub</a>
             <a href="/newsy" class="nav-link-btn {% if page.url contains 'newsy' %}active-page{% endif %}">Newsy</a>
             <a href="/blog" class="nav-link-btn {% if page.url contains 'blog' %}active-page{% endif %}">Blog</a>
-            <a href="/homelab" class="nav-link-btn {% if page.url contains 'homelab' %}active-page{% endif %}">HomeLab</a>
+            <a href="/homelab" class="nav-link-btn {% if page.url == '/homelab' or page.url == '/homelab/' %}active-page{% endif %}">HomeLab</a>
             <a href="/sponsors" class="nav-link-btn {% if page.url contains 'sponsors' %}active-page{% endif %}">Sponsors</a>
             
             <div class="dropdown" id="dropdownApps">
+                <!-- Wyraźny warunek dla całej grupy aplikacji w sekcji Apps -->
                 <a href="#" class="nav-link-btn dropbtn {% if page.url contains 'orbit' or page.url contains 'homelab-cc' or page.url contains 'phone' or page.url contains 'apps' %}active-page{% endif %}" onclick="return false;">Apps ▾</a>
                 <div class="dropdown-content">
                     <div class="dropdown-links-wrapper">
@@ -464,42 +470,46 @@
             const indicator = document.getElementById('navIndicator');
             const activeLink = navCenter.querySelector('.nav-link-btn.active-page') || navCenter.querySelector('.nav-link-btn');
 
-            function positionIndicator(targetEl) {
+            function positionIndicator(targetEl, enableAnimation = true) {
                 if (!targetEl) return;
+                
                 const parentRect = navCenter.getBoundingClientRect();
                 const targetRect = targetEl.getBoundingClientRect();
-
                 const leftOffset = targetRect.left - parentRect.left;
                 const targetWidth = targetRect.width;
+
+                if (enableAnimation) {
+                    indicator.classList.add('animated');
+                } else {
+                    indicator.classList.remove('animated');
+                }
 
                 indicator.style.width = `${targetWidth}px`;
                 indicator.style.transform = `translateX(${leftOffset}px)`;
                 indicator.style.opacity = '1';
             }
 
-            // Ustaw pozycję po pełnym wyrenderowaniu i załadowaniu fontów
+            // Ustaw pozycję natychmiastowo bez animacji startowej po wyrenderowaniu
             document.fonts.ready.then(() => {
-                positionIndicator(activeLink);
+                positionIndicator(activeLink, false);
             });
 
-            // Obsługa najechania na każdy przycisk na pasku
+            // Reagowanie na ruch myszki
             const mainNavBtns = navCenter.querySelectorAll(':scope > .nav-link-btn, :scope > .dropdown');
             mainNavBtns.forEach(item => {
                 const buttonToHighlight = item.classList.contains('dropdown') ? item.querySelector('.dropbtn') : item;
 
                 item.addEventListener('mouseenter', () => {
-                    positionIndicator(buttonToHighlight);
+                    positionIndicator(buttonToHighlight, true);
                 });
             });
 
-            // Opuszczenie paska nawigacji -> powrót na aktywny przycisk
             navCenter.addEventListener('mouseleave', () => {
-                positionIndicator(activeLink);
+                positionIndicator(activeLink, true);
             });
 
-            // Odświeżenie pozycji przy zmianie rozmiaru okna
             window.addEventListener('resize', () => {
-                positionIndicator(activeLink);
+                positionIndicator(activeLink, false);
             });
         });
     </script>
