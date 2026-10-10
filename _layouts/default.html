@@ -89,7 +89,7 @@
             position: relative;
         }
 
-        .nav-center .nav-link { 
+        .nav-center .nav-link-item { 
             text-decoration: none; 
             color: var(--text-muted); 
             font-weight: 600; 
@@ -105,11 +105,12 @@
             display: inline-flex;
             align-items: center;
             gap: 5px;
+            position: relative;
         }
 
-        .nav-center .nav-link:hover, 
-        .nav-center .nav-link.active-page,
-        .nav-center .dropdown:hover > .nav-link { 
+        .nav-center .nav-link-item:hover, 
+        .nav-center .nav-link-item.active-page,
+        .nav-center .dropdown:hover > .nav-link-item { 
             color: var(--accent-blue); 
         }
 
@@ -343,14 +344,14 @@
         </div>
         <div class="nav-center" id="navCenter">
             <div class="nav-indicator" id="navIndicator"></div>
-            <a href="/" class="nav-link {% if page.url == '/' %}active-page{% endif %}">Hub</a>
-            <a href="/newsy" class="nav-link {% if page.url contains 'newsy' %}active-page{% endif %}">Newsy</a>
-            <a href="/blog" class="nav-link {% if page.url contains 'blog' %}active-page{% endif %}">Blog</a>
-            <a href="/homelab" class="nav-link {% if page.url contains 'homelab' %}active-page{% endif %}">HomeLab</a>
-            <a href="/sponsors" class="nav-link {% if page.url contains 'sponsors' %}active-page{% endif %}">Sponsors</a>
+            <a href="/" class="nav-link-item {% if page.url == '/' %}active-page{% endif %}">Hub</a>
+            <a href="/newsy" class="nav-link-item {% if page.url contains 'newsy' %}active-page{% endif %}">Newsy</a>
+            <a href="/blog" class="nav-link-item {% if page.url contains 'blog' %}active-page{% endif %}">Blog</a>
+            <a href="/homelab" class="nav-link-item {% if page.url contains 'homelab' %}active-page{% endif %}">HomeLab</a>
+            <a href="/sponsors" class="nav-link-item {% if page.url contains 'sponsors' %}active-page{% endif %}">Sponsors</a>
             
-            <div class="dropdown nav-link {% if page.url contains 'orbit' or page.url contains 'homelab-cc' or page.url contains 'phone' or page.url contains 'apps' %}active-page{% endif %}" style="padding: 0;">
-                <a href="#" class="nav-link dropbtn" onclick="return false;">Apps ▾</a>
+            <div class="dropdown">
+                <a href="#" class="nav-link-item dropbtn {% if page.url contains 'orbit' or page.url contains 'homelab-cc' or page.url contains 'phone' or page.url contains 'apps' %}active-page{% endif %}" onclick="return false;">Apps ▾</a>
                 <div class="dropdown-content">
                     <div class="dropdown-links-wrapper">
                         <a href="/orbit">Orbit <span>↗</span></a>
@@ -365,8 +366,8 @@
                 </div>
             </div>
 
-            <a href="/benchmarks" class="nav-link {% if page.url contains 'benchmarks' %}active-page{% endif %}">Benchmarks</a>
-            <a href="/kontakt" class="nav-link {% if page.url contains 'kontakt' %}active-page{% endif %}">Kontakt</a>
+            <a href="/benchmarks" class="nav-link-item {% if page.url contains 'benchmarks' %}active-page{% endif %}">Benchmarks</a>
+            <a href="/kontakt" class="nav-link-item {% if page.url contains 'kontakt' %}active-page{% endif %}">Kontakt</a>
         </div>
     </nav>
 
@@ -457,55 +458,59 @@
 
     <!-- SKRYPT WSKAŹNIKA NAWIGACJI -->
     <script>
-        const navCenter = document.getElementById('navCenter');
-        const indicator = document.getElementById('navIndicator');
-        // Pobieramy wyłącznie bezpośrednie elementy nawigacyjne poziomu pierwszego
-        const topNavItems = Array.from(navCenter.querySelectorAll(':scope > .nav-link, :scope > .dropdown'));
-        const activeItem = navCenter.querySelector('.active-page') || topNavItems[0];
+        document.addEventListener('DOMContentLoaded', () => {
+            const navCenter = document.getElementById('navCenter');
+            const indicator = document.getElementById('navIndicator');
+            
+            // Pobieramy aktywne linki widoczne na pasku
+            const activeLink = navCenter.querySelector('.nav-link-item.active-page') || navCenter.querySelector('.nav-link-item');
 
-        function moveIndicator(el) {
-            if (!el) return;
-            // Pobieramy element przycisku wewnątrz .dropdown lub sam el
-            const targetEl = el.classList.contains('dropdown') ? el.querySelector('.dropbtn') || el : el;
-            indicator.style.width = targetEl.offsetWidth + 'px';
-            indicator.style.left = targetEl.offsetLeft + 'px';
-        }
+            function moveIndicatorToEl(targetEl) {
+                if (!targetEl) return;
+                indicator.style.width = targetEl.offsetWidth + 'px';
+                indicator.style.left = targetEl.offsetLeft + 'px';
+            }
 
-        const savedLeft = sessionStorage.getItem('nav_indicator_left');
-        const savedWidth = sessionStorage.getItem('nav_indicator_width');
+            // Prawidłowe załadowanie pozycji po wyrenderowaniu strony
+            const savedLeft = sessionStorage.getItem('nav_indicator_left');
+            const savedWidth = sessionStorage.getItem('nav_indicator_width');
 
-        if (savedLeft !== null && savedWidth !== null) {
-            indicator.style.transition = 'none';
-            indicator.style.left = savedLeft;
-            indicator.style.width = savedWidth;
-            void indicator.offsetHeight;
-            indicator.style.transition = '';
-            moveIndicator(activeItem);
-        } else {
-            moveIndicator(activeItem);
-        }
+            if (savedLeft !== null && savedWidth !== null) {
+                indicator.style.transition = 'none';
+                indicator.style.left = savedLeft + 'px';
+                indicator.style.width = savedWidth + 'px';
+                
+                // Wymuszenie przeliczenia przez przeglądarkę
+                void indicator.offsetHeight;
+                indicator.style.transition = 'width 0.3s cubic-bezier(0.4, 0, 0.2, 1), left 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+            } else {
+                moveIndicatorToEl(activeLink);
+            }
 
-        topNavItems.forEach(item => {
-            // Reagujemy na najechanie na element górnego menu (w tym całe rozwijane menu .dropdown)
-            item.addEventListener('mouseenter', () => {
-                moveIndicator(item);
-            });
+            // Każdy widoczny element w pasku głównym
+            const navItems = navCenter.querySelectorAll('.nav-link-item, .dropdown');
+            navItems.forEach(item => {
+                const targetHeaderEl = item.classList.contains('dropdown') ? item.querySelector('.dropbtn') : item;
 
-            // Rejestrujemy kliknięcie na wszystkie linki (zarówno z głównego paska jak i rozwijanego menu)
-            const linksInItem = item.querySelectorAll('a');
-            linksInItem.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    if (link.getAttribute('href') === '#') return;
-                    const targetToSave = item.classList.contains('dropdown') ? (item.querySelector('.dropbtn') || item) : item;
-                    sessionStorage.setItem('nav_indicator_left', targetToSave.offsetLeft + 'px');
-                    sessionStorage.setItem('nav_indicator_width', targetToSave.offsetWidth + 'px');
+                item.addEventListener('mouseenter', () => {
+                    moveIndicatorToEl(targetHeaderEl);
+                });
+
+                // Rejestrujemy kliknięcie w link i zapisujemy pozycję docelową
+                const allAnchors = item.querySelectorAll('a');
+                allAnchors.forEach(anchor => {
+                    anchor.addEventListener('click', () => {
+                        if (anchor.getAttribute('href') === '#') return;
+                        sessionStorage.setItem('nav_indicator_left', targetHeaderEl.offsetLeft);
+                        sessionStorage.setItem('nav_indicator_width', targetHeaderEl.offsetWidth);
+                    });
                 });
             });
-        });
 
-        // Wskaźnik wraca do aktywnej zakładki dopiero gdy kursor opuści cały navCenter
-        navCenter.addEventListener('mouseleave', () => {
-            moveIndicator(activeItem);
+            // Po opuszczeniu paska nawigacji powróć do aktywnej strony
+            navCenter.addEventListener('mouseleave', () => {
+                moveIndicatorToEl(activeLink);
+            });
         });
     </script>
 </body>
