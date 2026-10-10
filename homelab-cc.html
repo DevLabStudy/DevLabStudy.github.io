@@ -7,23 +7,28 @@ permalink: /homelab-cc/
 <div class="container py-5">
   <div class="row justify-content-center">
     <div class="col-lg-9 text-center">
+      
+      <!-- Nagłówek główny -->
       <h1 class="display-4 fw-bold mb-3" style="color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 2.5rem;">DevLab Homelab Control Center</h1>
-      <p class="lead text-muted mb-4" style="font-size: 1.05rem; line-height: 1.6;">
+      <p class="lead text-muted mb-4" style="font-size: 1.05rem; line-height: 1.7; max-width: 780px; margin-left: auto; margin-right: auto;">
         Zaawansowane narzędzie administracyjne dla pasjonatów homelabów. Zarządzaj sesjami SSH, monitoruj sprzęt przez WMI (styl AIDA64) i korzystaj z zaawansowanych narzędzi sieciowych z poziomu nowoczesnej aplikacji WPF.
       </p>
 
       <!-- Informacja o wersji testowej -->
-      <div class="alert border-0 shadow-sm mb-5 p-4 rounded-4" style="background: rgba(255, 94, 0, 0.08); color: #ff5e00; border: 1px solid rgba(255, 94, 0, 0.25) !important;" role="alert">
-        <h4 class="alert-heading fw-bold fs-5 mb-2">⚠️ Wersja Testowa (Alpha / v1.0.0)</h4>
-        <p class="mb-0 fs-6">
-          To jest pierwsza publiczna wersja testowa aplikacji. Może zawierać drobne błędy. Zachęcamy do testowania i zgłaszania uwag na adres <a href="mailto:bledy@devlabstudy.ovh" style="color: #00d2ff; text-decoration: underline;">bledy@devlabstudy.ovh</a>.
+      <div class="test-version-alert text-start mb-5" style="background: rgba(255, 94, 0, 0.06); color: #ff8c42; border: 1px solid rgba(255, 94, 0, 0.22); padding: 24px 28px; border-radius: 18px; backdrop-filter: blur(8px);">
+        <h4 class="fw-bold fs-5 mb-2 d-flex align-items-center gap-2" style="color: #ff5e00; font-family: 'JetBrains Mono', monospace;">
+          <span>⚠️</span> Wersja Testowa (Alpha / v1.0.0)
+        </h4>
+        <p class="mb-0 fs-6" style="line-height: 1.6; color: rgba(255, 255, 255, 0.85);">
+          To jest pierwsza publiczna wersja testowa aplikacji. Może zawierać drobne błędy. Zachęcamy do testowania i zgłaszania uwag na adres 
+          <a href="mailto:bledy@devlabstudy.ovh" style="color: #00d2ff; text-decoration: underline; font-weight: 600;">bledy@devlabstudy.ovh</a>.
         </p>
       </div>
 
-      <!-- Sekcja przycisków pobierania - poprawione odstępy i kształty -->
-      <div class="download-buttons-wrapper d-flex flex-wrap justify-content-center align-center gap-4 mb-5">
+      <!-- Sekcja przycisków pobierania -->
+      <div class="download-buttons-wrapper d-flex flex-wrap justify-content-center align-items-center gap-4 my-5">
         
-        <!-- Windows - Aktywny, mocno wyróżniony przycisk -->
+        <!-- Windows - Aktywny przycisk -->
         <a href="https://www.devlabstudy.ovh/assets/downloads/HomelabControlCentersetup.exe" class="download-card windows-active" download>
           <div class="platform-icon">
             <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4h-13.051M0 13.05h9.75v9.45L0 21.15m10.949-.15H24V24l-13.051-1.8"/></svg>
@@ -58,95 +63,97 @@ permalink: /homelab-cc/
 
       </div>
 
-      <!-- Nowoczesne style CSS dla przycisków i kart -->
-      <style>
-        .download-buttons-wrapper {
-          display: flex;
-          gap: 20px;
-          justify-content: center;
-        }
-        
-        .download-card {
-          display: flex;
-          align-items: center;
-          gap: 16px;
-          padding: 16px 24px;
-          border-radius: 16px;
-          text-decoration: none;
-          min-width: 220px;
-          transition: all 0.25s ease;
-          box-sizing: border-box;
-        }
-
-        /* Styl dla aktywnego Windowsa */
-        .windows-active {
-          background: linear-gradient(135deg, rgba(0, 210, 255, 0.15) 0%, rgba(0, 123, 255, 0.2) 100%);
-          border: 1px solid rgba(0, 210, 255, 0.4);
-          color: #fff;
-          box-shadow: 0 4px 20px rgba(0, 210, 255, 0.15);
-        }
-        .windows-active:hover {
-          background: linear-gradient(135deg, rgba(0, 210, 255, 0.25) 0%, rgba(0, 123, 255, 0.35) 100%);
-          border-color: var(--accent-blue);
-          transform: translateY(-3px);
-          box-shadow: 0 6px 25px rgba(0, 210, 255, 0.35);
-          color: #fff;
-        }
-
-        /* Styl dla nieaktywnych platform (macOS / Linux) */
-        .platform-disabled {
-          background: rgba(10, 15, 25, 0.6);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          color: var(--text-muted);
-          cursor: not-allowed;
-          opacity: 0.75;
-        }
-        .platform-disabled:hover {
-          border-color: rgba(255, 94, 0, 0.3);
-          background: rgba(255, 94, 0, 0.04);
-          color: #fff;
-        }
-
-        .platform-icon {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 44px;
-          height: 44px;
-          border-radius: 12px;
-          background: rgba(255, 255, 255, 0.05);
-        }
-        .windows-active .platform-icon {
-          background: rgba(0, 210, 255, 0.2);
-          color: var(--accent-blue);
-        }
-
-        .platform-name {
-          display: block;
-          font-weight: 700;
-          font-size: 1rem;
-          font-family: 'JetBrains Mono', monospace;
-        }
-        .platform-desc {
-          display: block;
-          font-size: 0.78rem;
-          color: var(--text-muted);
-        }
-        .badge-status {
-          color: var(--accent-contrast);
-          font-weight: 600;
-        }
-      </style>
-
-      <hr class="my-5" style="border-color: rgba(255,255,255,0.1);">
-
-      <div class="text-start mt-4 p-4 rounded-4" style="background: rgba(10, 15, 25, 0.6); border: 1px solid rgba(0, 210, 255, 0.15);">
-        <h3 class="h5 fw-bold mb-3" style="color: #00d2ff; font-family: 'JetBrains Mono', monospace;">Wymagania systemowe (Windows):</h3>
-        <ul class="text-muted mb-0" style="line-height: 1.8;">
-          <li>System operacyjny: Windows 10 / 11 (64-bit)</li>
-          <li>Typ pakietu: Samowystarczalny instalator (.exe)</li>
+      <!-- Wymagania systemowe -->
+      <div class="system-requirements text-start mt-5 p-4 rounded-4" style="background: rgba(10, 15, 25, 0.7); border: 1px solid rgba(0, 210, 255, 0.18); border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);">
+        <h3 class="h5 fw-bold mb-3 d-flex align-items-center gap-2" style="color: #00d2ff; font-family: 'JetBrains Mono', monospace;">
+          🖥️ Wymagania systemowe (Windows):
+        </h3>
+        <ul class="text-muted mb-0" style="line-height: 2; font-size: 0.95rem; padding-left: 1.2rem;">
+          <li><strong style="color: #e2e8f0;">System operacyjny:</strong> Windows 10 / 11 (64-bit)</li>
+          <li><strong style="color: #e2e8f0;">Typ pakietu:</strong> Samowystarczalny instalator (.exe)</li>
         </ul>
       </div>
+
     </div>
   </div>
 </div>
+
+<!-- Stylizacja CSS -->
+<style>
+  .download-buttons-wrapper {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .download-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 24px;
+    border-radius: 16px;
+    text-decoration: none;
+    min-width: 220px;
+    transition: all 0.25s ease;
+    box-sizing: border-box;
+  }
+
+  /* Styl dla aktywnego Windowsa */
+  .windows-active {
+    background: linear-gradient(135deg, rgba(0, 210, 255, 0.15) 0%, rgba(0, 123, 255, 0.2) 100%);
+    border: 1px solid rgba(0, 210, 255, 0.4);
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(0, 210, 255, 0.15);
+  }
+  .windows-active:hover {
+    background: linear-gradient(135deg, rgba(0, 210, 255, 0.25) 0%, rgba(0, 123, 255, 0.35) 100%);
+    border-color: var(--accent-blue, #00d2ff);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(0, 210, 255, 0.35);
+    color: #fff;
+  }
+
+  /* Styl dla nieaktywnych platform */
+  .platform-disabled {
+    background: rgba(10, 15, 25, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-muted, #8a99ad);
+    cursor: not-allowed;
+    opacity: 0.75;
+  }
+  .platform-disabled:hover {
+    border-color: rgba(255, 94, 0, 0.3);
+    background: rgba(255, 94, 0, 0.04);
+    color: #fff;
+  }
+
+  .platform-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .windows-active .platform-icon {
+    background: rgba(0, 210, 255, 0.2);
+    color: var(--accent-blue, #00d2ff);
+  }
+
+  .platform-name {
+    display: block;
+    font-weight: 700;
+    font-size: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .platform-desc {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--text-muted, #8a99ad);
+  }
+  .badge-status {
+    color: var(--accent-contrast, #ff5e00);
+    font-weight: 600;
+  }
+</style>
