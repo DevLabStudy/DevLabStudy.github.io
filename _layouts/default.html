@@ -89,7 +89,7 @@
             position: relative;
         }
 
-        .nav-center .nav-link-item { 
+        .nav-link-btn { 
             text-decoration: none; 
             color: var(--text-muted); 
             font-weight: 600; 
@@ -108,9 +108,9 @@
             position: relative;
         }
 
-        .nav-center .nav-link-item:hover, 
-        .nav-center .nav-link-item.active-page,
-        .nav-center .dropdown:hover > .nav-link-item { 
+        .nav-link-btn:hover, 
+        .nav-link-btn.active-page,
+        .dropdown:hover > .nav-link-btn { 
             color: var(--accent-blue); 
         }
 
@@ -122,10 +122,11 @@
             height: 3px;
             background: var(--accent-blue);
             border-radius: 3px;
-            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 1;
             box-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
             pointer-events: none;
+            opacity: 0;
         }
 
         /* DROPDOWN APPS */
@@ -344,14 +345,14 @@
         </div>
         <div class="nav-center" id="navCenter">
             <div class="nav-indicator" id="navIndicator"></div>
-            <a href="/" class="nav-link-item {% if page.url == '/' %}active-page{% endif %}">Hub</a>
-            <a href="/newsy" class="nav-link-item {% if page.url contains 'newsy' %}active-page{% endif %}">Newsy</a>
-            <a href="/blog" class="nav-link-item {% if page.url contains 'blog' %}active-page{% endif %}">Blog</a>
-            <a href="/homelab" class="nav-link-item {% if page.url contains 'homelab' %}active-page{% endif %}">HomeLab</a>
-            <a href="/sponsors" class="nav-link-item {% if page.url contains 'sponsors' %}active-page{% endif %}">Sponsors</a>
+            <a href="/" class="nav-link-btn {% if page.url == '/' %}active-page{% endif %}">Hub</a>
+            <a href="/newsy" class="nav-link-btn {% if page.url contains 'newsy' %}active-page{% endif %}">Newsy</a>
+            <a href="/blog" class="nav-link-btn {% if page.url contains 'blog' %}active-page{% endif %}">Blog</a>
+            <a href="/homelab" class="nav-link-btn {% if page.url contains 'homelab' %}active-page{% endif %}">HomeLab</a>
+            <a href="/sponsors" class="nav-link-btn {% if page.url contains 'sponsors' %}active-page{% endif %}">Sponsors</a>
             
-            <div class="dropdown">
-                <a href="#" class="nav-link-item dropbtn {% if page.url contains 'orbit' or page.url contains 'homelab-cc' or page.url contains 'phone' or page.url contains 'apps' %}active-page{% endif %}" onclick="return false;">Apps ▾</a>
+            <div class="dropdown" id="dropdownApps">
+                <a href="#" class="nav-link-btn dropbtn {% if page.url contains 'orbit' or page.url contains 'homelab-cc' or page.url contains 'phone' or page.url contains 'apps' %}active-page{% endif %}" onclick="return false;">Apps ▾</a>
                 <div class="dropdown-content">
                     <div class="dropdown-links-wrapper">
                         <a href="/orbit">Orbit <span>↗</span></a>
@@ -366,8 +367,8 @@
                 </div>
             </div>
 
-            <a href="/benchmarks" class="nav-link-item {% if page.url contains 'benchmarks' %}active-page{% endif %}">Benchmarks</a>
-            <a href="/kontakt" class="nav-link-item {% if page.url contains 'kontakt' %}active-page{% endif %}">Kontakt</a>
+            <a href="/benchmarks" class="nav-link-btn {% if page.url contains 'benchmarks' %}active-page{% endif %}">Benchmarks</a>
+            <a href="/kontakt" class="nav-link-btn {% if page.url contains 'kontakt' %}active-page{% endif %}">Kontakt</a>
         </div>
     </nav>
 
@@ -456,60 +457,49 @@
         </div>
     </footer>
 
-    <!-- SKRYPT WSKAŹNIKA NAWIGACJI -->
+    <!-- SKRYPT NAWIGACJI -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        window.addEventListener('DOMContentLoaded', () => {
             const navCenter = document.getElementById('navCenter');
             const indicator = document.getElementById('navIndicator');
-            
-            // Pobieramy aktywne linki widoczne na pasku
-            const activeLink = navCenter.querySelector('.nav-link-item.active-page') || navCenter.querySelector('.nav-link-item');
+            const activeLink = navCenter.querySelector('.nav-link-btn.active-page') || navCenter.querySelector('.nav-link-btn');
 
-            function moveIndicatorToEl(targetEl) {
+            function positionIndicator(targetEl) {
                 if (!targetEl) return;
-                indicator.style.width = targetEl.offsetWidth + 'px';
-                indicator.style.left = targetEl.offsetLeft + 'px';
+                const parentRect = navCenter.getBoundingClientRect();
+                const targetRect = targetEl.getBoundingClientRect();
+
+                const leftOffset = targetRect.left - parentRect.left;
+                const targetWidth = targetRect.width;
+
+                indicator.style.width = `${targetWidth}px`;
+                indicator.style.transform = `translateX(${leftOffset}px)`;
+                indicator.style.opacity = '1';
             }
 
-            // Prawidłowe załadowanie pozycji po wyrenderowaniu strony
-            const savedLeft = sessionStorage.getItem('nav_indicator_left');
-            const savedWidth = sessionStorage.getItem('nav_indicator_width');
+            // Ustaw pozycję po pełnym wyrenderowaniu i załadowaniu fontów
+            document.fonts.ready.then(() => {
+                positionIndicator(activeLink);
+            });
 
-            if (savedLeft !== null && savedWidth !== null) {
-                indicator.style.transition = 'none';
-                indicator.style.left = savedLeft + 'px';
-                indicator.style.width = savedWidth + 'px';
-                
-                // Wymuszenie przeliczenia przez przeglądarkę
-                void indicator.offsetHeight;
-                indicator.style.transition = 'width 0.3s cubic-bezier(0.4, 0, 0.2, 1), left 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-            } else {
-                moveIndicatorToEl(activeLink);
-            }
-
-            // Każdy widoczny element w pasku głównym
-            const navItems = navCenter.querySelectorAll('.nav-link-item, .dropdown');
-            navItems.forEach(item => {
-                const targetHeaderEl = item.classList.contains('dropdown') ? item.querySelector('.dropbtn') : item;
+            // Obsługa najechania na każdy przycisk na pasku
+            const mainNavBtns = navCenter.querySelectorAll(':scope > .nav-link-btn, :scope > .dropdown');
+            mainNavBtns.forEach(item => {
+                const buttonToHighlight = item.classList.contains('dropdown') ? item.querySelector('.dropbtn') : item;
 
                 item.addEventListener('mouseenter', () => {
-                    moveIndicatorToEl(targetHeaderEl);
-                });
-
-                // Rejestrujemy kliknięcie w link i zapisujemy pozycję docelową
-                const allAnchors = item.querySelectorAll('a');
-                allAnchors.forEach(anchor => {
-                    anchor.addEventListener('click', () => {
-                        if (anchor.getAttribute('href') === '#') return;
-                        sessionStorage.setItem('nav_indicator_left', targetHeaderEl.offsetLeft);
-                        sessionStorage.setItem('nav_indicator_width', targetHeaderEl.offsetWidth);
-                    });
+                    positionIndicator(buttonToHighlight);
                 });
             });
 
-            // Po opuszczeniu paska nawigacji powróć do aktywnej strony
+            // Opuszczenie paska nawigacji -> powrót na aktywny przycisk
             navCenter.addEventListener('mouseleave', () => {
-                moveIndicatorToEl(activeLink);
+                positionIndicator(activeLink);
+            });
+
+            // Odświeżenie pozycji przy zmianie rozmiaru okna
+            window.addEventListener('resize', () => {
+                positionIndicator(activeLink);
             });
         });
     </script>
