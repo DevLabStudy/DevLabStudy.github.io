@@ -35,7 +35,7 @@ Przełom w komunikacji wizualnej nastąpił w 2002 roku wraz z debiutem wiadomo�
 
 ---
 
-## 3. Telefon zastępuje kolejne urządzenia: Od MP3 i gier do er ery LTE oraz smartfonów
+## 3. Telefon zastępuje kolejne urządzenia: Od MP3 i gier do ery LTE oraz smartfonów
 
 W pierwszej dekadzie XXI wieku dynamika zmian technologicznych znacząco przyspieszyła. Telefony komórkowe zyskały kolorowe wyświetlacze, sloty na karty pamięci, wbudowane odtwarzacze MP3, radio FM oraz wsparcie dla gier Java. Z prostego narzędzia do dzwonienia telefon przeobraził się w uniwersalne urządzenie multimedialne. W 2004 roku Plus zaoferował nowatorski format Mix, łączący zalety kontrolowanych wydatków w prepaidzie z możliwością zakupu nowoczesnego telefonu w obniżonej cenie.
 
