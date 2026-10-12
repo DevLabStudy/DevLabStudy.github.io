@@ -15,7 +15,7 @@ Sztuczna inteligencja staje się nieodłącznym elementem współczesnych system
 
 Rozwiązanie o nazwie **„Fix an issue”** ma na celu wyeliminowanie konieczności ręcznego przeszukiwania forów internetowych i instrukcji w przypadku wystąpienia awarii programu. Gdy przeglądarka zacznie działać niepoprawnie, użytkownik będzie mógł opisać usterkę własnymi słowami lub skorzystać z czterech sugerowanych opcji w interfejsie.
 
-!["Microsoft Edge AI"](/assets/images/edgy.jpg)
+!["Microsoft Edge AI"](/assets/images/edgy.webp)
 
 AI przeanalizuje zgłoszenie, spróbuje zidentyfikować przyczynę usterki i zaproponuje konkretne kroki naprawcze. Jest to kolejny krok po wcześniejszych eksperymentach z lokalnymi modelami AI w Edge, które potrafiły zajmować na dysku nawet kilkadziesiąt gigabajtów przestrzeni.
 
