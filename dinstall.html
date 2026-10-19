@@ -4,65 +4,101 @@ title: DevLabStudy Installer (dinstall)
 permalink: /dinstall/
 ---
 
-<div class="dinstall-container" style="max-width: 800px; margin: 0 auto; padding: 20px; font-family: system-ui, -apple-system, sans-serif;">
+<div class="dinstall-container" style="max-width: 850px; margin: 0 auto; padding: 20px 0; font-family: 'Inter', sans-serif;">
   
   <!-- Header -->
-  <header style="border-bottom: 2px solid #333; padding-bottom: 15px; margin-bottom: 30px;">
-    <h1 style="font-size: 2.2rem; margin: 0 0 10px 0;">DevLabStudy Installer <span style="font-size: 1.1rem; color: #007acc; background: rgba(0,122,204,0.1); padding: 4px 10px; border-radius: 12px; vertical-align: middle;">v0.1-beta</span></h1>
-    <p style="font-size: 1.1rem; color: #666; margin: 0;">An interactive, terminal-based package installer (TUI) designed for Debian/Ubuntu Linux systems.</p>
+  <header style="border-bottom: 1px solid rgba(0, 210, 255, 0.2); padding-bottom: 20px; margin-bottom: 30px;">
+    <h1 style="font-size: 2.2rem; font-family: 'JetBrains Mono', monospace; font-weight: 800; color: #fff; margin: 0 0 10px 0;">
+      DevLabStudy Installer 
+      <span style="font-size: 0.95rem; color: #00d2ff; background: rgba(0,210,255,0.1); border: 1px solid rgba(0,210,255,0.3); padding: 4px 12px; border-radius: 12px; vertical-align: middle;">v0.1-beta</span>
+    </h1>
+    <p style="font-size: 1.05rem; color: #8b9bb4; line-height: 1.6; margin: 0;">
+      An interactive, terminal-based package installer (TUI) designed for Debian and Ubuntu Linux systems.
+    </p>
   </header>
 
   <!-- Overview -->
-  <section style="margin-bottom: 30px;">
-    <h2>About the Project</h2>
-    <p><strong>dinstall</strong> (package name: <code>devlab-installer</code>) is an open-source CLI utility built to streamline software provisioning on newly installed Linux machines, homelab nodes, and test benches. It provides a clean Text User Interface (TUI) powered by <code>whiptail</code>, allowing users to rapidly select, search, and install software packages without typing lengthy terminal commands.</p>
+  <section style="margin-bottom: 35px;">
+    <h2 style="font-family: 'JetBrains Mono', monospace; color: #00d2ff; font-size: 1.3rem; margin-bottom: 12px;">About the Project</h2>
+    <p style="color: #f1f5f9; line-height: 1.7; margin: 0;">
+      <strong>dinstall</strong> (package name: <code>devlab-installer</code>) is a lightweight CLI utility built to streamline software provisioning on fresh Linux installations, Proxmox LXC containers, and homelab test benches. Powered by <code>whiptail</code>, it provides a clean Text User Interface (TUI) to select, search, and install essential software packages without re-typing lengthy <code>apt</code> commands.
+    </p>
   </section>
 
   <!-- Key Features -->
-  <section style="margin-bottom: 30px;">
-    <h2>Key Features</h2>
-    <ul style="line-height: 1.8;">
-      <li><strong>Categorized Selection:</strong> Organized software presets including System Utilities, Server Services, and Homelab & Networking tools.</li>
-      <li><strong>APT Search Integration:</strong> Search for any package available in Debian/Ubuntu repositories directly within the TUI.</li>
-      <li><strong>Stateful Selection:</strong> Select packages across multiple categories or search queries before executing a single combined installation batch.</li>
-      <li><strong>Dynamic Scaling & Root Safety:</strong> Auto-scales to terminal window dimensions and seamlessly handles both root and non-root (sudo) environments.</li>
+  <section style="margin-bottom: 35px;">
+    <h2 style="font-family: 'JetBrains Mono', monospace; color: #00d2ff; font-size: 1.3rem; margin-bottom: 12px;">Key Features</h2>
+    <ul style="color: #8b9bb4; line-height: 1.8; margin: 0; padding-left: 20px;">
+      <li><strong style="color: #f1f5f9;">Categorized Presets:</strong> Pre-configured lists for System Utilities, Services & Servers, and Networking/Homelab tools.</li>
+      <li><strong style="color: #f1f5f9;">APT Repository Search:</strong> Live search directly against Debian/Ubuntu package archives via <code>apt-cache</code>.</li>
+      <li><strong style="color: #f1f5f9;">Batch Installation:</strong> Accumulate software selections across multiple categories before executing a single combined installation.</li>
+      <li><strong style="color: #f1f5f9;">Privilege Aware:</strong> Automatically handles execution under both <code>root</code> and <code>sudo</code> environments.</li>
     </ul>
   </section>
 
-  <!-- Quick Installation -->
-  <section style="margin-bottom: 30px; background: #f6f8fa; border: 1px solid #e1e4e8; border-radius: 8px; padding: 20px;">
-    <h2 style="margin-top: 0;">Quick Installation</h2>
-    <p>Run the following one-liner command in your terminal to automatically download, install dependencies, and configure <code>dinstall</code>:</p>
+  <!-- Installation Methods -->
+  <section style="margin-bottom: 40px; background: rgba(10, 15, 25, 0.6); border: 1px solid rgba(0, 210, 255, 0.2); border-radius: 16px; padding: 25px; backdrop-filter: blur(10px);">
+    <h2 style="font-family: 'JetBrains Mono', monospace; color: #fff; font-size: 1.3rem; margin-top: 0; margin-bottom: 15px;">
+      🚀 Installation Commands
+    </h2>
     
-    <pre style="background: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 6px; overflow-x: auto; font-size: 0.95rem;"><code>curl -sSL https://devlabstudy.ovh/assets/downloads/install.sh | bash</code></pre>
-    
-    <p style="margin-bottom: 0;">Once the setup is complete, launch the installer by typing:</p>
-    <pre style="background: #1e1e1e; color: #d4d4d4; padding: 10px 15px; border-radius: 6px; font-size: 0.95rem; margin-top: 10px;"><code>dinstall</code></pre>
+    <!-- Option 1: curl -->
+    <div style="margin-bottom: 20px;">
+      <p style="color: #00d2ff; font-weight: 600; font-size: 0.92rem; margin: 0 0 6px 0; font-family: 'JetBrains Mono', monospace;">
+        Option 1: Quick Install via cURL (Recommended)
+      </p>
+      <pre style="background: #010204; color: #f1f5f9; border: 1px solid rgba(255,255,255,0.1); padding: 14px 18px; border-radius: 8px; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; margin: 0;"><code>curl -sSL https://www.devlabstudy.ovh/assets/downloads/install.sh | bash</code></pre>
+    </div>
+
+    <!-- Option 2: wget -->
+    <div style="margin-bottom: 20px;">
+      <p style="color: #00d2ff; font-weight: 600; font-size: 0.92rem; margin: 0 0 6px 0; font-family: 'JetBrains Mono', monospace;">
+        Option 2: Quick Install via Wget
+      </p>
+      <pre style="background: #010204; color: #f1f5f9; border: 1px solid rgba(255,255,255,0.1); padding: 14px 18px; border-radius: 8px; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; margin: 0;"><code>wget -qO- https://www.devlabstudy.ovh/assets/downloads/install.sh | bash</code></pre>
+    </div>
+
+    <!-- Option 3: Manual DEB Package -->
+    <div>
+      <p style="color: #ff5e00; font-weight: 600; font-size: 0.92rem; margin: 0 0 6px 0; font-family: 'JetBrains Mono', monospace;">
+        Option 3: Manual .DEB Package Download & Installation
+      </p>
+      <pre style="background: #010204; color: #f1f5f9; border: 1px solid rgba(255,255,255,0.1); padding: 14px 18px; border-radius: 8px; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.88rem; margin: 0;"><code>wget https://www.devlabstudy.ovh/assets/downloads/devlab-installer.deb
+sudo apt update && sudo apt install -y whiptail python3
+sudo dpkg -i devlab-installer.deb || sudo apt-get install -f -y
+rm -f devlab-installer.deb</code></pre>
+    </div>
+
+    <!-- How to Run -->
+    <div style="margin-top: 25px; padding-top: 15px; border-top: 1px dashed rgba(255,255,255,0.1);">
+      <p style="color: #8b9bb4; font-size: 0.9rem; margin: 0 0 8px 0;">After successful installation, launch the TUI application by executing:</p>
+      <pre style="background: #010204; color: #00d2ff; border: 1px solid rgba(0,210,255,0.3); padding: 10px 16px; border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; margin: 0; display: inline-block;"><code>dinstall</code></pre>
+    </div>
   </section>
 
-  <!-- Release Info -->
+  <!-- Release Info Table -->
   <section style="margin-bottom: 30px;">
-    <h2>Release Notes & Metadata</h2>
-    <table style="width: 100%; border-collapse: collapse; text-align: left;">
-      <tr style="border-bottom: 1px solid #ddd;">
-        <td style="padding: 10px 0; font-weight: bold;">Version:</td>
-        <td style="padding: 10px 0;">0.1-beta</td>
+    <h2 style="font-family: 'JetBrains Mono', monospace; color: #00d2ff; font-size: 1.3rem; margin-bottom: 15px;">Package Metadata</h2>
+    <table style="width: 100%; border-collapse: collapse; text-align: left; color: #8b9bb4; font-size: 0.92rem;">
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+        <td style="padding: 12px 0; font-weight: bold; color: #f1f5f9; width: 35%;">Release Version:</td>
+        <td style="padding: 12px 0;">0.1-beta</td>
       </tr>
-      <tr style="border-bottom: 1px solid #ddd;">
-        <td style="padding: 10px 0; font-weight: bold;">Package Name:</td>
-        <td style="padding: 10px 0;"><code>devlab-installer</code></td>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+        <td style="padding: 12px 0; font-weight: bold; color: #f1f5f9;">Debian Package Name:</td>
+        <td style="padding: 12px 0;"><code style="color: #00d2ff;">devlab-installer</code></td>
       </tr>
-      <tr style="border-bottom: 1px solid #ddd;">
-        <td style="padding: 10px 0; font-weight: bold;">Command Executable:</td>
-        <td style="padding: 10px 0;"><code>dinstall</code></td>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+        <td style="padding: 12px 0; font-weight: bold; color: #f1f5f9;">Terminal Executable:</td>
+        <td style="padding: 12px 0;"><code style="color: #00d2ff;">dinstall</code></td>
       </tr>
-      <tr style="border-bottom: 1px solid #ddd;">
-        <td style="padding: 10px 0; font-weight: bold;">Direct DEB Package:</td>
-        <td style="padding: 10px 0;"><a href="/assets/downloads/devlab-installer.deb" style="color: #007acc; text-decoration: none;">Download devlab-installer.deb</a></td>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+        <td style="padding: 12px 0; font-weight: bold; color: #f1f5f9;">Direct Package Link:</td>
+        <td style="padding: 12px 0;"><a href="https://www.devlabstudy.ovh/assets/downloads/devlab-installer.deb" style="color: #00d2ff; text-decoration: underline;">devlab-installer.deb</a></td>
       </tr>
       <tr>
-        <td style="padding: 10px 0; font-weight: bold;">Direct Install Script:</td>
-        <td style="padding: 10px 0;"><a href="/assets/downloads/install.sh" style="color: #007acc; text-decoration: none;">View install.sh</a></td>
+        <td style="padding: 12px 0; font-weight: bold; color: #f1f5f9;">Bootstrap Script:</td>
+        <td style="padding: 12px 0;"><a href="https://www.devlabstudy.ovh/assets/downloads/install.sh" style="color: #00d2ff; text-decoration: underline;">install.sh</a></td>
       </tr>
     </table>
   </section>
