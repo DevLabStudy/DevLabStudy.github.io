@@ -1,0 +1,70 @@
+---
+layout: default
+title: DevLabStudy Installer (dinstall)
+permalink: /dinstall/
+---
+
+<div class="dinstall-container" style="max-width: 800px; margin: 0 auto; padding: 20px; font-family: system-ui, -apple-system, sans-serif;">
+  
+  <!-- Header -->
+  <header style="border-bottom: 2px solid #333; padding-bottom: 15px; margin-bottom: 30px;">
+    <h1 style="font-size: 2.2rem; margin: 0 0 10px 0;">DevLabStudy Installer <span style="font-size: 1.1rem; color: #007acc; background: rgba(0,122,204,0.1); padding: 4px 10px; border-radius: 12px; vertical-align: middle;">v0.1-beta</span></h1>
+    <p style="font-size: 1.1rem; color: #666; margin: 0;">An interactive, terminal-based package installer (TUI) designed for Debian/Ubuntu Linux systems.</p>
+  </header>
+
+  <!-- Overview -->
+  <section style="margin-bottom: 30px;">
+    <h2>About the Project</h2>
+    <p><strong>dinstall</strong> (package name: <code>devlab-installer</code>) is an open-source CLI utility built to streamline software provisioning on newly installed Linux machines, homelab nodes, and test benches. It provides a clean Text User Interface (TUI) powered by <code>whiptail</code>, allowing users to rapidly select, search, and install software packages without typing lengthy terminal commands.</p>
+  </section>
+
+  <!-- Key Features -->
+  <section style="margin-bottom: 30px;">
+    <h2>Key Features</h2>
+    <ul style="line-height: 1.8;">
+      <li><strong>Categorized Selection:</strong> Organized software presets including System Utilities, Server Services, and Homelab & Networking tools.</li>
+      <li><strong>APT Search Integration:</strong> Search for any package available in Debian/Ubuntu repositories directly within the TUI.</li>
+      <li><strong>Stateful Selection:</strong> Select packages across multiple categories or search queries before executing a single combined installation batch.</li>
+      <li><strong>Dynamic Scaling & Root Safety:</strong> Auto-scales to terminal window dimensions and seamlessly handles both root and non-root (sudo) environments.</li>
+    </ul>
+  </section>
+
+  <!-- Quick Installation -->
+  <section style="margin-bottom: 30px; background: #f6f8fa; border: 1px solid #e1e4e8; border-radius: 8px; padding: 20px;">
+    <h2 style="margin-top: 0;">Quick Installation</h2>
+    <p>Run the following one-liner command in your terminal to automatically download, install dependencies, and configure <code>dinstall</code>:</p>
+    
+    <pre style="background: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 6px; overflow-x: auto; font-size: 0.95rem;"><code>curl -sSL https://devlabstudy.ovh/assets/downloads/install.sh | bash</code></pre>
+    
+    <p style="margin-bottom: 0;">Once the setup is complete, launch the installer by typing:</p>
+    <pre style="background: #1e1e1e; color: #d4d4d4; padding: 10px 15px; border-radius: 6px; font-size: 0.95rem; margin-top: 10px;"><code>dinstall</code></pre>
+  </section>
+
+  <!-- Release Info -->
+  <section style="margin-bottom: 30px;">
+    <h2>Release Notes & Metadata</h2>
+    <table style="width: 100%; border-collapse: collapse; text-align: left;">
+      <tr style="border-bottom: 1px solid #ddd;">
+        <td style="padding: 10px 0; font-weight: bold;">Version:</td>
+        <td style="padding: 10px 0;">0.1-beta</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #ddd;">
+        <td style="padding: 10px 0; font-weight: bold;">Package Name:</td>
+        <td style="padding: 10px 0;"><code>devlab-installer</code></td>
+      </tr>
+      <tr style="border-bottom: 1px solid #ddd;">
+        <td style="padding: 10px 0; font-weight: bold;">Command Executable:</td>
+        <td style="padding: 10px 0;"><code>dinstall</code></td>
+      </tr>
+      <tr style="border-bottom: 1px solid #ddd;">
+        <td style="padding: 10px 0; font-weight: bold;">Direct DEB Package:</td>
+        <td style="padding: 10px 0;"><a href="/assets/downloads/devlab-installer.deb" style="color: #007acc; text-decoration: none;">Download devlab-installer.deb</a></td>
+      </tr>
+      <tr>
+        <td style="padding: 10px 0; font-weight: bold;">Direct Install Script:</td>
+        <td style="padding: 10px 0;"><a href="/assets/downloads/install.sh" style="color: #007acc; text-decoration: none;">View install.sh</a></td>
+      </tr>
+    </table>
+  </section>
+
+</div>
