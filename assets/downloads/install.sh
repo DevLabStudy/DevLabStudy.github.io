@@ -5,7 +5,7 @@ echo "=================================================="
 echo "  Installing DevLabStudy Installer (dinstall)    "
 echo "=================================================="
 
-DEB_URL="https://devlabstudy.ovh/devlab-installer.deb"
+DEB_URL="https://www.devlabstudy.ovh/assets/downloads/devlab-installer.deb"
 TMP_DEB="/tmp/devlab-installer.deb"
 
 echo "[1/3] Downloading devlab-installer package..."
