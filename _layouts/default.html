@@ -126,7 +126,6 @@
             box-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
             pointer-events: none;
             opacity: 0;
-            /* Animacja wyłączona domyślnie, włączana dynamicznie po załadowaniu */
             transition: none;
         }
 
@@ -358,11 +357,12 @@
             
             <div class="dropdown" id="dropdownApps">
                 <!-- Wyraźny warunek dla całej grupy aplikacji w sekcji Apps -->
-                <a href="#" class="nav-link-btn dropbtn {% if page.url contains 'orbit' or page.url contains 'homelab-cc' or page.url contains 'phone' or page.url contains 'apps' %}active-page{% endif %}" onclick="return false;">Apps ▾</a>
+                <a href="#" class="nav-link-btn dropbtn {% if page.url contains 'orbit' or page.url contains 'homelab-cc' or page.url contains 'phone' or page.url contains 'dinstall' or page.url contains 'apps' %}active-page{% endif %}" onclick="return false;">Apps ▾</a>
                 <div class="dropdown-content">
                     <div class="dropdown-links-wrapper">
                         <a href="/orbit">Orbit <span>↗</span></a>
                         <a href="/homelab-cc">Homelab CC <span class="badge-new">New</span></a>
+                        <a href="/dinstall">dinstall CLI <span class="badge-new">DEB</span></a>
                         <div class="disabled-link">
                             <span class="link-text">Garmin</span>
                             <span class="beta-hover-text">[ In Beta Tests ]</span>
@@ -404,6 +404,7 @@
                 <ul>
                     <li><a href="/orbit">Orbit Dashboard</a></li>
                     <li><a href="/homelab-cc">Homelab Control Center</a></li>
+                    <li><a href="/dinstall">dinstall (Debian Installer)</a></li>
                     <li>
                         <div class="disabled-footer-link">
                             <span class="footer-link-text">Garmin Connect Apps</span>
@@ -457,7 +458,7 @@
         </div>
 
         <div class="footer-meta-bar">
-            <div>Page Last Updated: <span>October 09, 2026</span></div>
+            <div>Page Last Updated: <span>October 19, 2026</span></div>
             <div>Page Editor: <span>Tobiasz Kajzer</span></div>
             <div>Responsible System Official: <span>DevLabStudy Administrator</span></div>
         </div>
