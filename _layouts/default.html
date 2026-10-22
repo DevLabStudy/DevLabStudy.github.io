@@ -133,7 +133,7 @@
             transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* DROPDOWN APPS */
+        /* DROPDOWN */
         .dropdown { 
             position: relative; 
             display: inline-block; 
@@ -144,7 +144,7 @@
             right: 0; 
             top: 100%; 
             padding-top: 12px; 
-            min-width: 230px; 
+            min-width: 240px; 
             opacity: 0; 
             visibility: hidden; 
             transform: translateY(-8px);
@@ -180,6 +180,7 @@
         .dropdown-content a:hover { color: var(--accent-blue); background: rgba(0, 210, 255, 0.05); }
         .badge-work { font-size: 0.65rem; background: rgba(255, 94, 0, 0.15); color: var(--accent-contrast); padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(255, 94, 0, 0.3); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
         .badge-new { font-size: 0.65rem; background: rgba(0, 210, 255, 0.15); color: var(--accent-blue); padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(0, 210, 255, 0.3); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
+        .badge-pro { font-size: 0.65rem; background: rgba(255, 94, 0, 0.15); color: var(--accent-contrast); padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(255, 94, 0, 0.3); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
 
         .disabled-link {
             color: var(--text-muted);
@@ -353,16 +354,28 @@
             <a href="/newsy" class="nav-link-btn {% if page.url contains 'newsy' %}active-page{% endif %}">Newsy</a>
             <a href="/blog" class="nav-link-btn {% if page.url contains 'blog' %}active-page{% endif %}">Blog</a>
             <a href="/homelab" class="nav-link-btn {% if page.url == '/homelab' or page.url == '/homelab/' %}active-page{% endif %}">HomeLab</a>
+            
+            <!-- NOWA ROZWIJANA SEKCJA USŁUGI -->
+            <div class="dropdown" id="dropdownServices">
+                <a href="#" class="nav-link-btn dropbtn {% if page.url contains 'uslugi' %}active-page{% endif %}" onclick="return false;">Usługi ▾</a>
+                <div class="dropdown-content">
+                    <div class="dropdown-links-wrapper">
+                        <a href="/uslugi/tworzenie-stron">Tworzenie Stron WWW <span class="badge-pro">Pro</span></a>
+                    </div>
+                </div>
+            </div>
+
             <a href="/sponsors" class="nav-link-btn {% if page.url contains 'sponsors' %}active-page{% endif %}">Sponsors</a>
             
+            <!-- DROPDOWN APPS (z dodanym językiem Pulse) -->
             <div class="dropdown" id="dropdownApps">
-                <!-- Wyraźny warunek dla całej grupy aplikacji w sekcji Apps -->
-                <a href="#" class="nav-link-btn dropbtn {% if page.url contains 'orbit' or page.url contains 'homelab-cc' or page.url contains 'phone' or page.url contains 'dinstall' or page.url contains 'apps' %}active-page{% endif %}" onclick="return false;">Apps ▾</a>
+                <a href="#" class="nav-link-btn dropbtn {% if page.url contains 'orbit' or page.url contains 'homelab-cc' or page.url contains 'phone' or page.url contains 'dinstall' or page.url contains 'pulse' or page.url contains 'apps' %}active-page{% endif %}" onclick="return false;">Apps ▾</a>
                 <div class="dropdown-content">
                     <div class="dropdown-links-wrapper">
                         <a href="/orbit">Orbit <span>↗</span></a>
                         <a href="/homelab-cc">Homelab CC <span class="badge-new">New</span></a>
                         <a href="/dinstall">dinstall CLI <span class="badge-new">DEB</span></a>
+                        <a href="/pulse">Pulse Lang (DSL) <span class="badge-new">Rust</span></a>
                         <div class="disabled-link">
                             <span class="link-text">Garmin</span>
                             <span class="beta-hover-text">[ In Beta Tests ]</span>
@@ -386,12 +399,13 @@
         <div class="footer-grid">
             <div class="footer-col">
                 <h4 style="color: var(--accent-contrast);">DevLabStudy_</h4>
-                <p>Dokumentacja infrastruktury homelab, konfiguracji sieci fizycznych i wirtualnych oraz autorskie projekty narzędziowe.</p>
+                <p>Dokumentacja infrastruktury homelab, konfiguracji sieci fizycznych i wirtualnych, systemów automatyzacji oraz autorskie języki programowania i narzędzia.</p>
             </div>
             <div class="footer-col">
-                <h4>Nawigacja</h4>
+                <h4>Nawigacja & Usługi</h4>
                 <ul>
                     <li><a href="/">Strona Główna (Hub)</a></li>
+                    <li><a href="/uslugi/tworzenie-stron">Usługa: Tworzenie Stron WWW</a></li>
                     <li><a href="/newsy">Newsy</a></li>
                     <li><a href="/blog">Dziennik / Blog</a></li>
                     <li><a href="/homelab">Infrastruktura HomeLab</a></li>
@@ -400,11 +414,12 @@
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>Projekty (Apps)</h4>
+                <h4>Projekty & Języki (Apps)</h4>
                 <ul>
                     <li><a href="/orbit">Orbit Dashboard</a></li>
                     <li><a href="/homelab-cc">Homelab Control Center</a></li>
                     <li><a href="/dinstall">dinstall (Debian Installer)</a></li>
+                    <li><a href="/pulse">Pulse Lang (DSL w Rust)</a></li>
                     <li>
                         <div class="disabled-footer-link">
                             <span class="footer-link-text">Garmin Connect Apps</span>
@@ -450,6 +465,8 @@
         <div class="footer-sublinks-bar">
             <a href="/">Sitemap</a>
             <a href="/newsy">For Media &amp; Press</a>
+            <a href="/uslugi/tworzenie-stron">Web Development Services</a>
+            <a href="/pulse">Pulse Language Docs</a>
             <a href="/polityka-prywatnosci">Privacy Policy</a>
             <a href="/homelab">Infrastructure &amp; Specs</a>
             <a href="/sponsors">Partners &amp; Sponsors</a>
@@ -458,7 +475,7 @@
         </div>
 
         <div class="footer-meta-bar">
-            <div>Page Last Updated: <span>October 19, 2026</span></div>
+            <div>Page Last Updated: <span>October 22, 2026</span></div>
             <div>Page Editor: <span>Tobiasz Kajzer</span></div>
             <div>Responsible System Official: <span>DevLabStudy Administrator</span></div>
         </div>
@@ -490,12 +507,10 @@
                 indicator.style.opacity = '1';
             }
 
-            // Ustaw pozycję natychmiastowo bez animacji startowej po wyrenderowaniu
             document.fonts.ready.then(() => {
                 positionIndicator(activeLink, false);
             });
 
-            // Reagowanie na ruch myszki
             const mainNavBtns = navCenter.querySelectorAll(':scope > .nav-link-btn, :scope > .dropdown');
             mainNavBtns.forEach(item => {
                 const buttonToHighlight = item.classList.contains('dropdown') ? item.querySelector('.dropbtn') : item;
