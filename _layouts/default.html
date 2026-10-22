@@ -32,6 +32,7 @@
             display: flex;
             flex-direction: column;
             background-attachment: fixed;
+            overflow-x: hidden;
         }
 
         a { color: inherit; text-decoration: none; }
@@ -52,7 +53,7 @@
             box-sizing: border-box;
         }
 
-        .nav-left { display: flex; align-items: center; }
+        .nav-left { display: flex; align-items: center; justify-content: space-between; width: 100%; }
         .nav-brand { 
             font-size: 1.3rem; 
             font-weight: 900; 
@@ -88,6 +89,20 @@
             gap: 6px; 
             position: relative;
         }
+
+        /* PRZYCISK HAMBURGERA DLA MOBILNYCH */
+        .mobile-menu-toggle {
+            display: none;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: #fff;
+            padding: 8px 10px;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+        }
+        .mobile-menu-toggle svg { width: 22px; height: 22px; stroke: var(--accent-blue); }
 
         .nav-link-btn { 
             text-decoration: none; 
@@ -152,7 +167,8 @@
             z-index: 1001; 
         }
 
-        .dropdown:hover .dropdown-content {
+        .dropdown:hover .dropdown-content,
+        .dropdown.mobile-open .dropdown-content {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
@@ -211,7 +227,7 @@
         .dashboard { width: 100%; max-width: 1550px; padding: 50px 60px; margin: 0 auto; box-sizing: border-box; flex: 1; }
 
         /* STOPKA – POZIOMA (GRID) */
-        footer { 
+        .dashboard-footer { 
             background: #010204;
             border-top: 1px solid var(--border); 
             padding: 70px 60px 40px 60px; 
@@ -326,10 +342,51 @@
             font-weight: 700;
         }
 
+        /* RESPONSYWNOŚĆ DLA URZĄDZEŃ MOBILNYCH */
         @media (max-width: 1024px) { 
-            .navbar { grid-template-columns: 1fr; gap: 15px; padding: 20px; text-align: center; }
-            .nav-center { justify-content: center; flex-wrap: wrap; gap: 10px; }
+            .navbar { 
+                grid-template-columns: 1fr; 
+                gap: 15px; 
+                padding: 15px 20px; 
+            }
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            .nav-center { 
+                display: none; 
+                flex-direction: column; 
+                width: 100%; 
+                align-items: stretch;
+                gap: 8px; 
+                padding-top: 15px;
+                border-top: 1px solid var(--border);
+            }
+            .nav-center.mobile-active {
+                display: flex;
+            }
+            .nav-indicator {
+                display: none !important; /* Wyłączenie wskaźnika na mobile */
+            }
+            .nav-link-btn {
+                justify-content: flex-start;
+                padding: 10px 14px;
+                width: 100%;
+            }
+            .dropdown-content {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                padding-top: 5px;
+                padding-left: 15px;
+                min-width: 100%;
+                box-shadow: none;
+            }
+            .dropdown-links-wrapper {
+                background: rgba(5, 10, 18, 0.95);
+            }
             .dashboard { padding: 30px 20px; }
+            .dashboard-footer { padding: 40px 20px 30px 20px; }
             .footer-grid { grid-template-columns: 1fr; gap: 30px; }
             .footer-meta-bar { flex-direction: column; text-align: center; gap: 10px; }
             .social-icons-grid { max-width: 100%; justify-content: center; }
@@ -347,6 +404,10 @@
                 </svg>
                 DEVLABSTUDY<span class="terminal-cursor"></span>
             </a>
+            <!-- PRZYCISK MENU MOBILNEGO -->
+            <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Menu nawigacyjne">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
         </div>
         <div class="nav-center" id="navCenter">
             <div class="nav-indicator" id="navIndicator"></div>
@@ -355,7 +416,7 @@
             <a href="/blog" class="nav-link-btn {% if page.url contains 'blog' %}active-page{% endif %}">Blog</a>
             <a href="/homelab" class="nav-link-btn {% if page.url == '/homelab' or page.url == '/homelab/' %}active-page{% endif %}">HomeLab</a>
             
-            <!-- NOWA ROZWIJANA SEKCJA USŁUGI (Kieruje do webcraft.html) -->
+            <!-- ROZWIJANA SEKCJA USŁUGI -->
             <div class="dropdown" id="dropdownServices">
                 <a href="/webcraft" class="nav-link-btn dropbtn {% if page.url contains 'webcraft' %}active-page{% endif %}" onclick="return false;">Usługi ▾</a>
                 <div class="dropdown-content">
@@ -367,7 +428,7 @@
 
             <a href="/sponsors" class="nav-link-btn {% if page.url contains 'sponsors' %}active-page{% endif %}">Sponsors</a>
             
-            <!-- DROPDOWN APPS (Kieruje do pulse.html) -->
+            <!-- DROPDOWN APPS -->
             <div class="dropdown" id="dropdownApps">
                 <a href="#" class="nav-link-btn dropbtn {% if page.url contains 'orbit' or page.url contains 'homelab-cc' or page.url contains 'phone' or page.url contains 'dinstall' or page.url contains 'pulse' or page.url contains 'apps' %}active-page{% endif %}" onclick="return false;">Apps ▾</a>
                 <div class="dropdown-content">
@@ -395,7 +456,7 @@
         {{ content }}
     </main>
 
-    <footer>
+    <footer class="dashboard-footer">
         <div class="footer-grid">
             <div class="footer-col">
                 <h4 style="color: var(--accent-contrast);">DevLabStudy_</h4>
@@ -481,15 +542,23 @@
         </div>
     </footer>
 
-    <!-- SKRYPT NAWIGACJI -->
+    <!-- SKRYPT NAWIGACJI ORAZ OBSŁUGI MOBILE -->
     <script>
         window.addEventListener('DOMContentLoaded', () => {
             const navCenter = document.getElementById('navCenter');
             const indicator = document.getElementById('navIndicator');
             const activeLink = navCenter.querySelector('.nav-link-btn.active-page') || navCenter.querySelector('.nav-link-btn');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+
+            // Obsługa rozwijanego menu mobilnego (Hamburger)
+            if (mobileMenuBtn && navCenter) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    navCenter.classList.toggle('mobile-active');
+                });
+            }
 
             function positionIndicator(targetEl, enableAnimation = true) {
-                if (!targetEl) return;
+                if (!targetEl || window.innerWidth <= 1024) return;
                 
                 const parentRect = navCenter.getBoundingClientRect();
                 const targetRect = targetEl.getBoundingClientRect();
@@ -516,16 +585,20 @@
                 const buttonToHighlight = item.classList.contains('dropdown') ? item.querySelector('.dropbtn') : item;
 
                 item.addEventListener('mouseenter', () => {
-                    positionIndicator(buttonToHighlight, true);
+                    if (window.innerWidth > 1024) positionIndicator(buttonToHighlight, true);
                 });
             });
 
             navCenter.addEventListener('mouseleave', () => {
-                positionIndicator(activeLink, true);
+                if (window.innerWidth > 1024) positionIndicator(activeLink, true);
             });
 
             window.addEventListener('resize', () => {
-                positionIndicator(activeLink, false);
+                if (window.innerWidth > 1024) {
+                    positionIndicator(activeLink, false);
+                } else {
+                    indicator.style.opacity = '0';
+                }
             });
         });
     </script>
