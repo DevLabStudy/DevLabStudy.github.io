@@ -1,0 +1,70 @@
+---
+layout: default
+title: Pulse Language (DSL) - Dokumentacja
+---
+
+<div style="max-width: 1000px; margin: 0 auto;">
+    <h1 style="font-size: 2.5rem; font-family: 'JetBrains Mono', monospace; margin-bottom: 10px; color: #fff;">
+        Pulse Language <span style="color: var(--accent-contrast);">// Pro DSL</span>
+    </h1>
+    <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 40px; line-height: 1.8;">
+        <strong>Pulse</strong> to autorski, wysokowydajny język dziedzinowy (DSL) napisany w języku Rust, wyposażony we własny lekser, parser AST oraz zaawansowany silnik automatyzacji i inteligentnego sortowania plików.
+    </p>
+
+    <!-- Sekcja Architektury -->
+    <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 35px; margin-bottom: 30px;">
+        <h3 style="color: #fff; margin-bottom: 15px; font-family: 'JetBrains Mono', monospace; font-size: 1.2rem;">⚙️ Architektura i Kompilacja</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; margin-bottom: 15px;">
+            Projekt łączy w sobie nowoczesne podejście do kompilatorów. Kod źródłowy w języku Pulse przechodzi przez dwa główne etapy przed wykonaniem operacji systemowych:
+        </p>
+        <ul style="color: var(--text-muted); font-size: 0.9rem; padding-left: 20px; display: flex; flex-direction: column; gap: 8px;">
+            <li><strong>Lekser (`lexer.rs`):</strong> Analizuje surowy strumień tekstowy i tokenizuje słowa kluczowe (np. <code>rule</code>, <code>match</code>, <code>extension</code>, <code>fallback</code>).</li>
+            <li><strong>Parser AST (`parser.rs`):</strong> Buduje w pamięci strukturalne drzewo składniowe, które precyzyjnie definiuje reguły oraz powiązane z nimi akcje.</li>
+            <li><strong>Silnik Wykonawczy (`main.rs`):</strong> Przetwarza pliki w katalogu źródłowym, dynamicznie tworząc strukturę podfolderów wg typów rozszerzeń.</li>
+        </ul>
+    </div>
+
+    <!-- Przykładowy Skrypt -->
+    <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 35px; margin-bottom: 30px;">
+        <h3 style="color: #fff; margin-bottom: 15px; font-family: 'JetBrains Mono', monospace; font-size: 1.2rem;">📝 Składnia Przykładowego Skryptu</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">
+            Plik konfiguracyjny języka Pulse pozwala na elastyczne definiowanie reguł i zachowań domyślnych:
+        </p>
+        <pre style="background: #010204; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 20px; overflow-x: auto; color: var(--accent-blue); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; line-height: 1.6;"><code>source "./pobrane_pliki"
+
+rule "Zakupy i Faktury" {
+    match name_contains ["Allegro", "zakup", "faktura", "paragon"]
+    move to "./Dokumenty/Zakupy"
+}
+
+rule "Inteligentne Dokumenty" {
+    match extension ["pdf", "txt", "docx", "md", "pptx"]
+    move to "./Dokumenty"
+}
+
+rule "Inteligentne Grafiki" {
+    match extension ["png", "jpg", "jpeg", "webp", "svg"]
+    move to "./Grafiki"
+}
+
+fallback {
+    move to "./Inne_Formaty"
+}</code></pre>
+    </div>
+
+    <!-- Instrukcja Uruchomienia -->
+    <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 35px;">
+        <h3 style="color: #fff; margin-bottom: 15px; font-family: 'JetBrains Mono', monospace; font-size: 1.2rem;">🚀 Instrukcja Uruchomienia (Quickstart)</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">
+            Upewnij się, że masz zainstalowany system Rust oraz menedżer pakietów Cargo (pobierz ze strony <a href="https://rustup.rs" target="_blank" style="color: var(--accent-blue);">rustup.rs</a>). Następnie wykonaj w terminalu:
+        </p>
+        <pre style="background: #010204; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 20px; overflow-x: auto; color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; line-height: 1.6;"><code># 1. Sklonuj oficjalne repozytorium projektu
+git clone https://github.com/DevLabStudy/pulse-lang.git
+
+# 2. Przejdź do katalogu projektu
+cd pulse-lang
+
+# 3. Uruchom kompilator i silnik sortujący
+cargo run</code></pre>
+    </div>
+</div>
