@@ -355,25 +355,25 @@
             <a href="/blog" class="nav-link-btn {% if page.url contains 'blog' %}active-page{% endif %}">Blog</a>
             <a href="/homelab" class="nav-link-btn {% if page.url == '/homelab' or page.url == '/homelab/' %}active-page{% endif %}">HomeLab</a>
             
-            <!-- NOWA ROZWIJANA SEKCJA USŁUGI -->
+            <!-- NOWA ROZWIJANA SEKCJA USŁUGI (Kieruje do webcraft.html) -->
             <div class="dropdown" id="dropdownServices">
-                <a href="#" class="nav-link-btn dropbtn {% if page.url contains 'uslugi' %}active-page{% endif %}" onclick="return false;">Usługi ▾</a>
+                <a href="/webcraft" class="nav-link-btn dropbtn {% if page.url contains 'webcraft' %}active-page{% endif %}" onclick="return false;">Usługi ▾</a>
                 <div class="dropdown-content">
                     <div class="dropdown-links-wrapper">
-                        <a href="/uslugi/tworzenie-stron">Tworzenie Stron WWW <span class="badge-pro">Pro</span></a>
+                        <a href="/webcraft">Tworzenie Stron WWW <span class="badge-pro">Pro</span></a>
                     </div>
                 </div>
             </div>
 
             <a href="/sponsors" class="nav-link-btn {% if page.url contains 'sponsors' %}active-page{% endif %}">Sponsors</a>
             
-            <!-- DROPDOWN APPS (z dodanym językiem Pulse) -->
+            <!-- DROPDOWN APPS (Kieruje do pulse.html) -->
             <div class="dropdown" id="dropdownApps">
                 <a href="#" class="nav-link-btn dropbtn {% if page.url contains 'orbit' or page.url contains 'homelab-cc' or page.url contains 'phone' or page.url contains 'dinstall' or page.url contains 'pulse' or page.url contains 'apps' %}active-page{% endif %}" onclick="return false;">Apps ▾</a>
                 <div class="dropdown-content">
                     <div class="dropdown-links-wrapper">
                         <a href="/orbit">Orbit <span>↗</span></a>
-                        <a href="/homelab-cc">Homelab CC <span class="badge-new">New</span></a>
+                        <a href="/homelab-cc">Homelab Control Center <span class="badge-new">New</span></a>
                         <a href="/dinstall">dinstall CLI <span class="badge-new">DEB</span></a>
                         <a href="/pulse">Pulse Lang (DSL) <span class="badge-new">Rust</span></a>
                         <div class="disabled-link">
@@ -405,7 +405,7 @@
                 <h4>Nawigacja & Usługi</h4>
                 <ul>
                     <li><a href="/">Strona Główna (Hub)</a></li>
-                    <li><a href="/webcraft">Usługa: Tworzenie Stron WWW</a></li>
+                    <li><a href="/webcraft">Usługa: Tworzenie Stron WWW (WebCraft)</a></li>
                     <li><a href="/newsy">Newsy</a></li>
                     <li><a href="/blog">Dziennik / Blog</a></li>
                     <li><a href="/homelab">Infrastruktura HomeLab</a></li>
@@ -465,7 +465,7 @@
         <div class="footer-sublinks-bar">
             <a href="/">Sitemap</a>
             <a href="/newsy">For Media &amp; Press</a>
-            <a href="/uslugi/tworzenie-stron">Web Development Services</a>
+            <a href="/webcraft">Web Development Services (WebCraft)</a>
             <a href="/pulse">Pulse Language Docs</a>
             <a href="/polityka-prywatnosci">Privacy Policy</a>
             <a href="/homelab">Infrastructure &amp; Specs</a>
