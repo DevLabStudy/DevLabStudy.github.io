@@ -21,6 +21,7 @@ layout: default
         backdrop-filter: blur(10px);
         position: relative;
         overflow: hidden;
+        min-width: 0; /* Zapobiega wylewaniu się elementów flex/grid */
     }
     .news-article::before {
         content: '';
@@ -54,6 +55,7 @@ layout: default
         letter-spacing: -1px;
         line-height: 1.2;
         color: #fff;
+        word-break: break-word;
     }
 
     .news-meta-bar {
@@ -97,20 +99,20 @@ layout: default
         font-size: 1.05rem;
         color: #cbd5e1;
         line-height: 1.8;
+        word-break: break-word;
     }
     .news-body h2, .news-body h3 {
         color: #fff;
         font-family: 'JetBrains Mono', monospace;
         margin-top: 40px;
         margin-bottom: 15px;
-        scroll-margin-top: 100px; /* Zapewnia poprawną pozycję scrolla przy kliknięciu w TOC */
+        scroll-margin-top: 100px;
     }
     .news-body h2 { font-size: 1.4rem; border-left: 3px solid var(--accent-blue); padding-left: 10px; }
     .news-body p { margin-bottom: 20px; }
     .news-body a { color: var(--accent-blue); text-decoration: none; font-weight: 600; }
     .news-body a:hover { text-decoration: underline; }
     
-    /* PROFESJONALNE FORMATOWANIE GRAFIK W TREŚCI */
     .news-body img {
         max-width: 100%;
         height: auto;
@@ -179,10 +181,6 @@ layout: default
         background: rgba(0, 210, 255, 0.08);
         color: var(--accent-blue);
     }
-    .faq-question:focus-visible {
-        box-shadow: inset 0 0 0 2px var(--accent-blue);
-        border-radius: 4px;
-    }
     .faq-answer {
         max-height: 0;
         overflow: hidden;
@@ -194,9 +192,6 @@ layout: default
         max-height: 1200px;
         opacity: 1;
         padding: 0 20px 18px 20px;
-    }
-    .faq-answer > *:last-child {
-        margin-bottom: 0;
     }
 
     /* SPIS TREŚCI (TOC) W BOCZNYM PANELU */
@@ -241,7 +236,6 @@ layout: default
         transform: translateX(4px);
     }
     
-    /* AKTYWNY ELEMENT W SPISIE TREŚCI (PODŚWIETLENIE) */
     .toc-item.active a {
         color: var(--accent-blue);
         background: rgba(0, 210, 255, 0.12);
@@ -278,6 +272,8 @@ layout: default
         font-family: 'JetBrains Mono', monospace;
         font-size: 0.85rem;
         outline: none;
+        width: 100%;
+        box-sizing: border-box;
     }
     .comment-input:focus, .comment-textarea:focus { border-color: var(--accent-blue); }
     .comment-textarea { resize: vertical; min-height: 90px; }
@@ -307,6 +303,8 @@ layout: default
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
+        gap: 10px;
+        word-break: break-word;
     }
     .user-comment-meta {
         font-family: 'JetBrains Mono', monospace;
@@ -319,6 +317,7 @@ layout: default
         gap: 8px;
         font-family: 'JetBrains Mono', monospace;
         font-size: 0.75rem;
+        flex-shrink: 0;
     }
     .comment-action-btn {
         background: none;
@@ -332,7 +331,7 @@ layout: default
     .comment-action-btn:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
     .comment-action-btn.delete:hover { color: #ef4444; }
 
-    /* STAŁY PŁYWAJĄCY PRZYCISK POWROTU DO NEWSÓW (ZAWSZE WIDOCZNY) */
+    /* STAŁY PŁYWAJĄCY PRZYCISK POWROTU DO NEWSÓW */
     .back-to-news-floating {
         position: fixed;
         bottom: 30px;
@@ -355,7 +354,6 @@ layout: default
         transition: 0.3s ease;
         text-decoration: none;
     }
-
     .back-to-news-floating:hover {
         background: var(--accent-blue);
         color: #0f172a;
@@ -363,13 +361,33 @@ layout: default
         box-shadow: 0 15px 30px rgba(0, 210, 255, 0.3);
     }
 
+    /* NAPRAWA RESPONSYWNOŚCI DLA TELEFONÓW */
     @media (max-width: 1024px) {
-        .post-container { grid-template-columns: 1fr; padding: 0 20px; }
-        .sidebar-toc { position: static; }
-        .back-to-news-floating { bottom: 20px; right: 20px; padding: 10px 14px; font-size: 0.75rem; }
+        .post-container { 
+            grid-template-columns: 1fr; 
+            padding: 0 10px; /* Wykorzystanie pełnej szerokości ekranu telefonu */
+            margin: 20px auto 40px auto;
+            gap: 20px;
+        }
+        .news-article {
+            padding: 20px 15px; /* Mniejsze marginesy wewnętrzne na mobile */
+            border-radius: 8px;
+        }
+        .sidebar-toc { 
+            position: static; 
+            order: -1; /* Przenosi spis treści NA SAMĄ GÓRĘ telefonu przed artykuł */
+            padding: 18px 15px;
+        }
+        .news-title {
+            font-size: 1.7rem;
+        }
+        .back-to-news-floating { 
+            bottom: 15px; 
+            right: 15px; 
+            padding: 10px 14px; 
+            font-size: 0.75rem; 
+        }
         .faq-question { padding: 14px 16px; font-size: 0.9rem; }
-        .faq-item[open] .faq-answer { padding: 0 16px 16px 16px; }
-        .faq-answer { padding: 0 16px; }
     }
 </style>
 
@@ -390,7 +408,7 @@ layout: default
             </div>
         </header>
 
-        <!-- TREŚĆ WPISU Z MARKDOWN (W TYM ZDJĘCIA) -->
+        <!-- TREŚĆ WPISU Z MARKDOWN -->
         <div class="news-body" id="articleBody">
             {{ content }}
         </div>
@@ -494,7 +512,6 @@ layout: default
         faqHeading.insertAdjacentElement('afterend', faqWrapper);
     }
 
-    // AUTOMATYCZNY SPIS TREŚCI ZE STRUKTURY NAGŁÓWKÓW I INTERSECTION OBSERVER DLA PODŚWIETLANIA
     const articleBody = document.getElementById('articleBody');
     const tocList = document.getElementById('tocList');
     transformFaqToAccordion(articleBody);
@@ -516,10 +533,9 @@ layout: default
             tocList.appendChild(li);
         });
 
-        // SHADOW SENSOR / INTERSECTION OBSERVER DLA DYNAMICZNEGO PODŚWIETLANIA SPISU TREŚCI
         const observerOptions = {
             root: null,
-            rootMargin: '0px 0px -65% 0px', // Aktywuje sekcję po przewinięciu do ~35% wysokości ekranu
+            rootMargin: '0px 0px -65% 0px',
             threshold: 0
         };
 
@@ -541,13 +557,11 @@ layout: default
         headings.forEach((heading) => observer.observe(heading));
     }
 
-    // PRZYCISKI UDOSTĘPNIANIA (TWITTER & FACEBOOK)
     const currentUrl = encodeURIComponent(window.location.href);
     const currentTitle = encodeURIComponent(document.title);
     document.getElementById('shareX').href = `https://twitter.com/intent/tweet?url=${currentUrl}&text=${currentTitle}`;
     document.getElementById('shareFB').href = `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`;
 
-    // SYSTEM KOMENTARZY (LOCALSTORAGE)
     const postId = window.location.pathname;
     const commentAuthor = document.getElementById('commentAuthor');
     const commentText = document.getElementById('commentText');
