@@ -1,5 +1,5 @@
 ---
-layout: updates
+layout: update
 title: "Redesign Layoutu, Nowy Footer i Reorganizacja Bazy Benchmarks"
 date: 2026-10-24
 version: "v1.3.0"
