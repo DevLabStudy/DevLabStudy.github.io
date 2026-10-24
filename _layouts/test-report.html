@@ -32,7 +32,7 @@ layout: default
 
     .report-title {
         font-family: 'JetBrains Mono', monospace;
-        font-size: 2.4rem;
+        font-size: 2.2rem;
         font-weight: 900;
         color: #fff;
         margin: 0 0 10px 0;
@@ -51,7 +51,6 @@ layout: default
     }
     .report-meta span { color: #fff; font-weight: 700; }
 
-    /* CONTENT INTERFEJSU TESTÓW */
     .report-body {
         color: #f1f5f9;
         line-height: 1.7;
@@ -63,15 +62,15 @@ layout: default
 
     <div class="report-header">
         <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #ff9900; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800; margin-bottom: 8px;">
-            // RAPORT WYDAJNOŚCIOWY BENCHMARK
+            // RAPORT WYDAJNOŚCIOWY DEVLABSTUDY
         </div>
         <h1 class="report-title">{{ page.device_name }}</h1>
         <p style="color: #94a3b8; margin: 0; font-size: 0.95rem;">{{ page.description }}</p>
 
         <div class="report-meta">
-            <div>Platforma: <span>{{ page.category }}</span></div>
-            <div>Data testu: <span>{{ page.test_date }}</span></div>
-            <div>Tester: <span>{{ page.author | default: 'Tobiasz Kajzer' }}</span></div>
+            <div>Kategoria: <span>{{ page.category }}</span></div>
+            <div>Data: <span>{{ page.test_date }}</span></div>
+            <div>Autor: <span>{{ page.author | default: 'Tobiasz Kajzer' }}</span></div>
         </div>
     </div>
 
