@@ -1,6 +1,6 @@
 ---
 layout: test-report
-title: Test Raport: PC #1 Ryzen 1600AF + RX 570 | DevLabStudy
+title: "Test Raport: PC #1 Ryzen 1600AF + RX 570 | DevLabStudy"
 device_name: "PROJEKT #1: BUDGET 1080P RIG"
 category: "Komputery PC"
 test_date: "2026-10-24"
@@ -8,98 +8,323 @@ description: "Kompleksowa analiza wydajności budżetowej jednostki w benchmarka
 ---
 
 <style>
-    .section-head {
+    /* STYLIZACJA SEKCJI I KONTRASTU */
+    .report-section-title {
         font-family: 'JetBrains Mono', monospace;
         font-size: 0.9rem;
         color: #ff9900;
         text-transform: uppercase;
-        margin: 35px 0 15px 0;
+        margin: 40px 0 20px 0;
         font-weight: 800;
-        letter-spacing: 1px;
+        letter-spacing: 1.5px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    .report-section-title::after {
+        content: ''; flex: 1; height: 1px; background: rgba(255, 153, 0, 0.2);
     }
 
-    .bench-table {
+    /* GALERIA ZDJĘĆ PROJEKTU */
+    .pc-gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 20px;
+        margin-bottom: 35px;
+    }
+
+    .gallery-item {
+        background: rgba(15, 23, 42, 0.8);
+        border: 1px solid rgba(255, 153, 0, 0.25);
+        border-radius: 12px;
+        overflow: hidden;
+        position: relative;
+        aspect-ratio: 4 / 3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+        transform: scale(1.05);
+    }
+
+    .gallery-placeholder {
+        color: #64748b;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.8rem;
+        text-align: center;
+        padding: 20px;
+    }
+
+    /* KARTY KLUCZOWYCH METRYK */
+    .metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 18px;
+        margin-bottom: 35px;
+    }
+
+    .metric-card {
+        background: rgba(15, 23, 42, 0.9);
+        border: 1px solid rgba(255, 153, 0, 0.2);
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    .metric-label {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.72rem;
+        color: #8b9bb4;
+        text-transform: uppercase;
+        margin-bottom: 6px;
+    }
+
+    .metric-value {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 1.4rem;
+        font-weight: 900;
+        color: #ffffff;
+    }
+
+    .metric-value span {
+        color: #ff9900;
+        font-size: 0.85rem;
+    }
+
+    /* TABELE WYSOKI KONTRAST */
+    .custom-table-wrapper {
+        background: rgba(10, 15, 25, 0.95) !important;
+        border: 1px solid rgba(255, 153, 0, 0.3) !important;
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .custom-table {
         width: 100%;
         border-collapse: collapse;
         font-family: 'JetBrains Mono', monospace;
         font-size: 0.88rem;
-        background: rgba(15, 23, 42, 0.6);
-        border: 1px solid rgba(255, 153, 0, 0.2);
-        border-radius: 12px;
-        overflow: hidden;
-        margin-bottom: 25px;
+        text-align: left;
     }
-    .bench-table th { background: rgba(255, 153, 0, 0.1); color: #ff9900; padding: 12px 16px; text-align: left; }
-    .bench-table td { padding: 12px 16px; border-bottom: 1px dashed rgba(255, 255, 255, 0.06); }
 
-    .val-highlight { color: #ff9900; font-weight: 800; }
-    .val-warn { color: #ef4444; font-weight: 800; }
+    .custom-table th {
+        background: rgba(255, 153, 0, 0.12) !important;
+        color: #ff9900 !important;
+        padding: 14px 18px;
+        border-bottom: 1px solid rgba(255, 153, 0, 0.3);
+        text-transform: uppercase;
+        font-size: 0.78rem;
+        letter-spacing: 0.5px;
+    }
 
-    .sheet-box {
-        background: rgba(0,0,0,0.4);
-        border: 1px solid rgba(255, 153, 0, 0.25);
-        padding: 20px;
-        border-radius: 12px;
+    .custom-table td {
+        padding: 14px 18px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        color: #f1f5f9 !important;
+    }
+
+    .custom-table tr:hover td {
+        background: rgba(255, 153, 0, 0.04);
+    }
+
+    .val-accent { color: #ff9900 !important; font-weight: 800; }
+    .val-alert { color: #ef4444 !important; font-weight: 800; }
+
+    /* BANNER GOOGLE SHEETS */
+    .sheet-integration-box {
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.8) 100%);
+        border: 1px solid rgba(255, 153, 0, 0.3);
+        border-radius: 14px;
+        padding: 25px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin: 30px 0;
+        margin-top: 40px;
         flex-wrap: wrap;
-        gap: 15px;
+        gap: 20px;
     }
-    .btn-sheet {
+
+    .sheet-btn {
         background: #ff9900;
         color: #030305;
-        padding: 10px 20px;
+        padding: 12px 24px;
         border-radius: 8px;
         font-family: 'JetBrains Mono', monospace;
         font-weight: 900;
-        font-size: 0.82rem;
+        font-size: 0.85rem;
         text-transform: uppercase;
         text-decoration: none;
+        transition: all 0.2s ease;
+    }
+    .sheet-btn:hover {
+        background: #ffb703;
+        box-shadow: 0 0 15px rgba(255, 153, 0, 0.4);
     }
 </style>
 
-<!-- SPECYFIKACJA -->
-<div class="section-head">// SPECYFIKACJA SPRZĘTOWA</div>
-<table class="bench-table">
-    <tr><td>Procesor (CPU)</td><td><strong>AMD Ryzen 5 1600AF</strong></td></tr>
-    <tr><td>Karta Graficzna (GPU)</td><td><strong>AMD Radeon RX 570 4GB GDDR5</strong></td></tr>
-    <tr><td>Pamięć RAM</td><td><strong>16GB DDR4 2400MHz</strong></td></tr>
-    <tr><td>Dysk Systemowy</td><td><strong>Crucial MX200 250GB SSD</strong></td></tr>
-</table>
-
-<!-- WYNIKI W GRACH -->
-<div class="section-head">// POMIARY W GRACH (1080P)</div>
-<table class="bench-table">
-    <thead>
-        <tr><th>Gra</th><th>API</th><th>Ustawienia</th><th>Avg FPS</th><th>Max / Min FPS</th></tr>
-    </thead>
-    <tbody>
-        <tr><td>Batman: Arkham Knight</td><td>UE3</td><td>Najwyższe</td><td><span class="val-highlight">92.0</span></td><td>134.0 / 61.0</td></tr>
-        <tr><td>Rocket League</td><td>UE3</td><td>Najwyższe</td><td><span class="val-highlight">92.0</span></td><td>134.0 / 61.0</td></tr>
-        <tr><td>Zombie Army 4</td><td>DX12</td><td>Medium</td><td><span class="val-highlight">84.3</span></td><td>214.7 / -</td></tr>
-        <tr><td>Borderlands 3</td><td>DX12</td><td>Medium</td><td><span class="val-highlight">68.6</span></td><td>-</td></tr>
-        <tr><td>Mortal Kombat 11</td><td>DX12</td><td>High</td><td><span class="val-highlight">59.0</span></td><td>60.0 / 7.6</td></tr>
-        <tr><td>Minecraft (Fabric 1.21.11)</td><td>OpenGL</td><td>Czysty (Render 12)</td><td><span class="val-highlight">300+</span></td><td>750.0 / 300.0</td></tr>
-        <tr><td>Minecraft (Shadery + Tekstury 64x)</td><td>Iris</td><td>Fancy / Render 12</td><td><span class="val-highlight">~91.0</span></td><td>91.0 / 50.0</td></tr>
-    </tbody>
-</table>
-
-<!-- TEMPERATURY -->
-<div class="section-head">// DANE TERMICZNE & OBCIĄŻENIOWE</div>
-<table class="bench-table">
-    <tr><td>Temp. GPU Max (FurMark 10 min)</td><td><span class="val-highlight">80.0 °C</span> (~2,700 RPM)</td></tr>
-    <tr><td>Temp. CPU Max (OCCT 10 min)</td><td><span class="val-warn">92.8 °C</span> (Chłodzenie Stock)</td></tr>
-</table>
-
-<!-- LINK DO SPREADSHEET Z KOMENTOWANIEM -->
-<div class="sheet-box">
-    <div>
-        <div style="font-family: 'JetBrains Mono', monospace; color: #fff; font-weight: 800;">Google Spreadsheet z Komentowaniem</div>
-        <div style="color: #8b9bb4; font-size: 0.8rem;">Pełne logi z testów oraz możliwość zostawienia uwagi.</div>
+<!-- 1. GALERIA ZDJĘĆ ZESTAWU -->
+<div class="report-section-title">// GALERIA & MONTAŻ PC</div>
+<div class="pc-gallery-grid">
+    <div class="gallery-item">
+        <img src="/assets/images/komp3.jpg" alt="Projekt #1 Zdjęcie 1" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'gallery-placeholder\'>[ BRAK ZDJĘCIA: komp3.jpg ]</div>';">
     </div>
-    <a href="https://docs.google.com/spreadsheets/d/1Wny-gnph9XUM6UDHCXiKpfCjZQZQ8_XH/edit?usp=sharing&ouid=108635526649332261442&rtpof=true&sd=true" target="_blank" class="btn-sheet">
+    <div class="gallery-item">
+        <img src="/assets/images/komp4.jpg" alt="Projekt #1 Zdjęcie 2" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'gallery-placeholder\'>[ BRAK ZDJĘCIA: komp4.jpg ]</div>';">
+    </div>
+    <div class="gallery-item">
+        <img src="/assets/images/komp5.jpg" alt="Projekt #1 Zdjęcie 3" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'gallery-placeholder\'>[ BRAK ZDJĘCIA: komp5.jpg ]</div>';">
+    </div>
+</div>
+
+<!-- 2. KLUCZOWE METRYKI -->
+<div class="report-section-title">// SZYBKIE PODSUMOWANIE BENCHMARKÓW</div>
+<div class="metrics-grid">
+    <div class="metric-card">
+        <div class="metric-label">Cinebench R23 Multi</div>
+        <div class="metric-value">6,335 <span>pkt</span></div>
+    </div>
+    <div class="metric-card">
+        <div class="metric-label">3DMark TimeSpy</div>
+        <div class="metric-value">4,095 <span>pkt</span></div>
+    </div>
+    <div class="metric-card">
+        <div class="metric-label">3DMark Fire Strike</div>
+        <div class="metric-value">4,491 <span>pkt</span></div>
+    </div>
+    <div class="metric-card">
+        <div class="metric-label">Temp. Max GPU / CPU</div>
+        <div class="metric-value">80°C / <span class="val-alert">92.8°C</span></div>
+    </div>
+</div>
+
+<!-- 3. SPECYFIKACJA SPRZĘTOWA -->
+<div class="report-section-title">// SPECYFIKACJA TECHNICZNA</div>
+<div class="custom-table-wrapper">
+    <table class="custom-table">
+        <thead>
+            <tr>
+                <th>Podzespół</th>
+                <th>Model / Parametry</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Procesor (CPU)</td>
+                <td><strong>AMD Ryzen 5 1600AF (6 rdzeni / 12 wątków)</strong></td>
+            </tr>
+            <tr>
+                <td>Karta Graficzna (GPU)</td>
+                <td><strong>AMD Radeon RX 570 4GB GDDR5 (~1250 MHz Core / 1750 MHz Memory)</strong></td>
+            </tr>
+            <tr>
+                <td>Pamięć RAM</td>
+                <td><strong>16GB DDR4 2400MHz Dual-Channel</strong></td>
+            </tr>
+            <tr>
+                <td>Dysk Twardy (SSD)</td>
+                <td><strong>Crucial MX200 250GB SATA III</strong></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- 4. WYDAJNOŚĆ W GRACH -->
+<div class="report-section-title">// WYNIKI W GRACH (1080P BENCHMARKS)</div>
+<div class="custom-table-wrapper">
+    <table class="custom-table">
+        <thead>
+            <tr>
+                <th>Tytuł Gry</th>
+                <th>Silnik / API</th>
+                <th>Ustawienia</th>
+                <th>Średni FPS</th>
+                <th>Maks / Min FPS</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Batman: Arkham Knight</td>
+                <td>UE3</td>
+                <td>Najwyższe</td>
+                <td><span class="val-accent">92.0 FPS</span></td>
+                <td>134.0 / 61.0 FPS</td>
+            </tr>
+            <tr>
+                <td>Batman: Arkham Knight</td>
+                <td>UE3</td>
+                <td>Średnie</td>
+                <td><span class="val-accent">105.0 FPS</span></td>
+                <td>147.0 / 68.0 FPS</td>
+            </tr>
+            <tr>
+                <td>Rocket League</td>
+                <td>UE3</td>
+                <td>Najwyższe</td>
+                <td><span class="val-accent">92.0 FPS</span></td>
+                <td>134.0 / 61.0 FPS</td>
+            </tr>
+            <tr>
+                <td>Zombie Army 4</td>
+                <td>DX12</td>
+                <td>Medium</td>
+                <td><span class="val-accent">84.3 FPS</span></td>
+                <td>214.7 / - FPS</td>
+            </tr>
+            <tr>
+                <td>Borderlands 3</td>
+                <td>DX12</td>
+                <td>Medium</td>
+                <td><span class="val-accent">68.6 FPS</span></td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>Mortal Kombat 11</td>
+                <td>DX12</td>
+                <td>High</td>
+                <td><span class="val-accent">59.0 FPS</span></td>
+                <td>60.0 / 7.6 FPS</td>
+            </tr>
+            <tr>
+                <td>Minecraft (Fabric 1.21.11)</td>
+                <td>OpenGL</td>
+                <td>Pure Fabric (Render 12)</td>
+                <td><span class="val-accent">300+ FPS</span></td>
+                <td>750.0 / 300.0 FPS</td>
+            </tr>
+            <tr>
+                <td>Minecraft (Shadery + Iris)</td>
+                <td>OpenGL</td>
+                <td>Fancy + Tekstury 64x</td>
+                <td><span class="val-accent">~91.0 FPS</span></td>
+                <td>91.0 / 50.0 FPS</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- 5. GOOGLE SHEETS -->
+<div class="sheet-integration-box">
+    <div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; color: #fff; font-weight: 800; margin-bottom: 4px;">
+            Surowe Dane & Logi w Google Spreadsheet
+        </div>
+        <div style="color: #8b9bb4; font-size: 0.82rem;">
+            Dostępny pełny arkusz z otwartą możliwością dodawania komentarzy oraz szczegółami testów dysku i czasów ramek.
+        </div>
+    </div>
+    <a href="https://docs.google.com/spreadsheets/d/1Wny-gnph9XUM6UDHCXiKpfCjZQZQ8_XH/edit?usp=sharing&ouid=108635526649332261442&rtpof=true&sd=true" target="_blank" class="sheet-btn">
         Otwórz Arkusz Google →
     </a>
 </div>
