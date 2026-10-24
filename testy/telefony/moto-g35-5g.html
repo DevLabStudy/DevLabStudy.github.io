@@ -1,0 +1,209 @@
+---
+layout: test-report
+title: DevLabStudy | Test Motorola Moto G35 5G
+---
+
+<style>
+    :root {
+        --mobile-purple: #a855f7;
+        --mobile-card-bg: #1b1b1b;
+        --mobile-border: #2a2a2a;
+    }
+
+    .device-hero {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 30px;
+        background: var(--mobile-card-bg);
+        border: 1px solid var(--mobile-border);
+        border-radius: 12px;
+        padding: 30px;
+        margin-bottom: 40px;
+        align-items: center;
+    }
+
+    .device-image-box img {
+        width: 100%;
+        max-height: 380px;
+        object-fit: contain;
+        border-radius: 8px;
+        background: #121212;
+        padding: 10px;
+        border: 1px solid var(--mobile-border);
+    }
+
+    .device-title {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 2rem;
+        font-weight: 900;
+        color: #fff;
+        margin-bottom: 10px;
+    }
+
+    .device-badge {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.75rem;
+        background: rgba(168, 85, 247, 0.15);
+        color: var(--mobile-purple);
+        border: 1px solid rgba(168, 85, 247, 0.3);
+        padding: 4px 12px;
+        border-radius: 6px;
+        display: inline-block;
+        margin-bottom: 15px;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
+
+    .device-desc {
+        color: #aaa;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+
+    /* SPECYFIKACJA TECHNICZNA GRID */
+    .specs-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 15px;
+        background: #121212;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid var(--mobile-border);
+        margin-bottom: 20px;
+    }
+
+    .spec-item { display: flex; flex-direction: column; gap: 4px; }
+    .spec-label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #777; text-transform: uppercase; }
+    .spec-value { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: #fff; font-weight: 700; }
+
+    /* BENCHMARK SCORES */
+    .section-header {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.9rem;
+        color: var(--mobile-purple);
+        text-transform: uppercase;
+        margin: 40px 0 20px 0;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    .section-header::after { content: ''; flex: 1; height: 1px; background: var(--mobile-border); }
+
+    .scores-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    .score-card {
+        background: var(--mobile-card-bg);
+        border: 1px solid var(--mobile-border);
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .score-number {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 2.2rem;
+        font-weight: 900;
+        color: var(--mobile-purple);
+    }
+
+    .score-label {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.75rem;
+        color: #aaa;
+        text-transform: uppercase;
+        margin-top: 5px;
+    }
+
+    /* BUTTON ARKUASZA */
+    .btn-sheet {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #10b981;
+        color: #000;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 900;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+    .btn-sheet:hover {
+        background: #34d399;
+        box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+    }
+
+    @media (max-width: 768px) {
+        .device-hero { grid-template-columns: 1fr; }
+    }
+</style>
+
+<!-- KARTA URZĄDZENIA -->
+<div class="device-hero">
+    <div class="device-image-box">
+        <img src="/assets/images/g35.jpeg" alt="Motorola Moto G35 5G">
+    </div>
+    <div>
+        <div class="device-badge">// TESTY MOBILNE &amp; BENCHMARKI</div>
+        <h1 class="device-title">Motorola Moto G35 5G</h1>
+        <p class="device-desc">
+            Podsumowanie diagnostyki wydajnościowej oraz syntetycznych pomiarów Geekbench 7 przeprowadzonego w laboratorium DevLabStudy.
+        </p>
+
+        <!-- PODSTAWOWA SPECYFIKACJA -->
+        <div class="specs-grid">
+            <div class="spec-item">
+                <span class="spec-label">Procesor (CPU)</span>
+                <span class="spec-value">Unisoc T760</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-label">Układ Graficzny</span>
+                <span class="spec-value">Mali-G57</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-label">Pamięć RAM</span>
+                <span class="spec-value">8 GB</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-label">System</span>
+                <span class="spec-value">Android 16</span>
+            </div>
+        </div>
+
+        <a href="https://docs.google.com/spreadsheets/d/11_isCw0VvpwMhllGIUaYJWV50qh84RVSG-dMnH-Bywc/edit?usp=sharing" target="_blank" class="btn-sheet">
+            📊 Otwórz Surowy Arkusz Pomiary Google Sheets →
+        </a>
+    </div>
+</div>
+
+<!-- PODSUMOWANIE WYNIKÓW GEEKBENCH 7 -->
+<div class="section-header">// WYNIKI BENCHMARKÓW (GEEKBENCH 7.1.0)</div>
+
+<div class="scores-grid">
+    <div class="score-card">
+        <div class="score-number">666</div>
+        <div class="score-label">CPU Single-Core Score</div>
+    </div>
+    <div class="score-card">
+        <div class="score-number">2403</div>
+        <div class="score-label">CPU Multi-Core Score</div>
+    </div>
+    <div class="score-card">
+        <div class="score-number">1758</div>
+        <div class="score-label">GPU OpenCL Score</div>
+    </div>
+    <div class="score-card">
+        <div class="score-number">1712</div>
+        <div class="score-label">GPU Vulkan Score</div>
+    </div>
+</div>
