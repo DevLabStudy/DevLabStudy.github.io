@@ -1,318 +1,125 @@
 ---
 layout: default
-title: Benchmarks & Wyniki Wydajności | DevLabStudy
+title: Benchmarks & Baza Testów | DevLabStudy
 url: /benchmarks
 ---
 
 <style>
-    .benchmarks-header {
+    .hub-header {
         text-align: center;
-        max-width: 850px;
+        max-width: 800px;
         margin: 20px auto 40px auto;
     }
 
-    .benchmarks-title {
-        font-size: 3rem;
-        font-weight: 900;
-        font-family: 'JetBrains Mono', monospace;
-        color: #fff;
-        margin: 0 0 10px 0;
+    .category-section {
+        margin-bottom: 50px;
     }
-    .benchmarks-title span { color: #ff9900; }
 
-    .section-label {
+    .category-title {
         font-family: 'JetBrains Mono', monospace;
-        font-size: 0.88rem;
+        font-size: 0.9rem;
         color: #ff9900;
         text-transform: uppercase;
-        margin: 35px 0 15px 0;
+        margin-bottom: 20px;
         font-weight: 800;
         letter-spacing: 1.5px;
         display: flex;
         align-items: center;
         gap: 12px;
     }
-    .section-label::after {
+    .category-title::after {
         content: ''; flex: 1; height: 1px; background: rgba(255, 255, 255, 0.08);
     }
 
-    .table-container {
+    .devices-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 25px;
+    }
+
+    .device-card {
         background: rgba(15, 23, 42, 0.75);
         border: 1px solid rgba(255, 153, 0, 0.25);
         border-radius: 14px;
         padding: 25px;
         backdrop-filter: blur(10px);
-        overflow-x: auto;
-        margin-bottom: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: all 0.3s ease;
+    }
+    .device-card:hover {
+        border-color: #ff9900;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(255, 153, 0, 0.15);
     }
 
-    .bench-table {
-        width: 100%;
-        border-collapse: collapse;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.88rem;
-        text-align: left;
-    }
-
-    .bench-table th {
-        background: rgba(255, 153, 0, 0.1);
-        color: #ff9900;
-        padding: 12px 16px;
-        border-bottom: 1px solid rgba(255, 153, 0, 0.3);
-        text-transform: uppercase;
-        font-size: 0.78rem;
-    }
-
-    .bench-table td {
-        padding: 12px 16px;
-        border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
-        color: #f1f5f9;
-    }
-
-    .bench-table tr:hover {
-        background: rgba(255, 153, 0, 0.03);
-    }
-
-    .val-highlight {
-        color: #ff9900;
-        font-weight: 800;
-    }
-
-    .btn-sheet {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
+    .btn-open-test {
+        display: inline-block;
         background: #ff9900;
         color: #030305;
-        padding: 14px 26px;
+        padding: 10px 18px;
         border-radius: 8px;
         font-family: 'JetBrains Mono', monospace;
         font-weight: 900;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         text-transform: uppercase;
         text-decoration: none;
-        transition: 0.2s;
-        box-shadow: 0 4px 15px rgba(255, 153, 0, 0.2);
+        margin-top: 15px;
+        text-align: center;
     }
-    .btn-sheet:hover {
-        background: #ffb703;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(255, 153, 0, 0.35);
-    }
-
-    .grid-stats {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 15px;
-        margin-bottom: 30px;
-    }
-    .stat-card {
-        background: rgba(15, 23, 42, 0.6);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 10px;
-        padding: 18px;
-    }
-    .stat-label { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: #8b9bb4; text-transform: uppercase; }
-    .stat-val { font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; color: #fff; font-weight: 800; margin-top: 4px; }
 </style>
 
-<div class="benchmarks-header">
-    <h1 class="benchmarks-title">DEVLABSTUDY <span>BENCHMARKS</span></h1>
-    <p style="color: #94a3b8; font-size: 1.05rem;">
-        Raport wydajnościowy: <strong>Ryzen 5 1600AF | RX 570 4GB | 16GB DDR4 2400</strong>
+<div class="hub-header">
+    <h1 style="font-family: 'JetBrains Mono', monospace; font-size: 3rem; color: #fff; margin: 0 0 10px 0;">
+        BENCHMARK <span>HUB</span>
+    </h1>
+    <p style="color: #94a3b8; font-size: 1rem;">
+        Wybierz kategrię urządzeń, aby przejść do szczegółowych raportów z testów.
     </p>
+</div>
 
-    <div style="margin-top: 25px;">
-        <a href="https://docs.google.com/spreadsheets/d/1Wny-gnph9XUM6UDHCXiKpfCjZQZQ8_XH/edit?usp=sharing&ouid=108635526649332261442&rtpof=true&sd=true" target="_blank" class="btn-sheet">
-            Otwórz Arkusz Danych z Komentowaniem (Google Sheets) →
-        </a>
+<!-- KATEGORIA 1: KOMPUTERY PC -->
+<div class="category-section">
+    <div class="category-title">// 1. KOMPUTERY PC & ZESTAWY CUSTOM</div>
+    <div class="devices-grid">
+        
+        <!-- KARTA PROJEKT #1 -->
+        <div class="device-card">
+            <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                    <span style="font-family: 'JetBrains Mono', monospace; font-weight: 900; color: #fff; font-size: 1.2rem;">PC #1: BUDGET 1080P</span>
+                    <span style="color: #10b981; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 800;">[ZAKOŃCZONY]</span>
+                </div>
+                <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 15px;">
+                    Ryzen 5 1600AF | RX 570 4GB | 16GB DDR4
+                </p>
+            </div>
+            <a href="/testy/komputery/pc-1-ryzen-rx570" class="btn-open-test">
+                Otwórz Raport Z Testów PC #1 →
+            </a>
+        </div>
+
     </div>
 </div>
 
-<!-- PODSUMOWANIE SYNTETYKÓW -->
-<div class="section-label">// BENCHMARKI SYNTETYCZNE & TESTY SYNCHRONICZNE</div>
-<div class="grid-stats">
-    <div class="stat-card">
-        <div class="stat-label">Cinebench R23 Multi</div>
-        <div class="stat-val">6,335 pkt</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-label">Cinebench R23 Single</div>
-        <div class="stat-val">927 pkt</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-label">3DMark TimeSpy (DX12)</div>
-        <div class="stat-val">4,095 pkt</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-label">3DMark Fire Strike (DX11)</div>
-        <div class="stat-val">4,491 pkt</div>
-    </div>
-</div>
+<!-- KATEGORIA 2: TELEFONY & MOBILE -->
+<div class="category-section">
+    <div class="category-title">// 2. TELEFONY & URZĄDZENIA MOBILNE</div>
+    <div class="devices-grid">
+        
+        <!-- PLACEHOLDER POD TELEFON -->
+        <div class="device-card" style="opacity: 0.5; border-color: rgba(255,255,255,0.1);">
+            <div>
+                <span style="font-family: 'JetBrains Mono', monospace; font-weight: 900; color: #fff;">MOTO G35 5G</span>
+                <p style="color: #94a3b8; font-size: 0.85rem; margin-top: 8px;">
+                    Testy wydajności procesora i baterii w przygotowaniu...
+                </p>
+            </div>
+            <span class="btn-open-test" style="background: rgba(255,255,255,0.05); color: #8b9bb4; cursor: not-allowed;">
+                Wkrótce...
+            </span>
+        </div>
 
-<!-- TESTY W GRACH -->
-<div class="section-label">// POMIARY W GRACH (1080P)</div>
-<div class="table-container">
-    <table class="bench-table">
-        <thead>
-            <tr>
-                <th>Gra</th>
-                <th>API</th>
-                <th>Ustawienia</th>
-                <th>Średni FPS</th>
-                <th>Maks FPS</th>
-                <th>Min FPS</th>
-                <th>Avg Frametime</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Batman: Arkham Knight</td>
-                <td>UE3</td>
-                <td>Niskie</td>
-                <td><span class="val-highlight">112.0 FPS</span></td>
-                <td>157.0 FPS</td>
-                <td>72.0 FPS</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td>Batman: Arkham Knight</td>
-                <td>UE3</td>
-                <td>Średnie</td>
-                <td><span class="val-highlight">105.0 FPS</span></td>
-                <td>147.0 FPS</td>
-                <td>68.0 FPS</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td>Batman: Arkham Knight</td>
-                <td>UE3</td>
-                <td>Najwyższe</td>
-                <td><span class="val-highlight">92.0 FPS</span></td>
-                <td>134.0 FPS</td>
-                <td>61.0 FPS</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td>Rocket League</td>
-                <td>UE3</td>
-                <td>Niskie</td>
-                <td><span class="val-highlight">112.0 FPS</span></td>
-                <td>157.0 FPS</td>
-                <td>72.0 FPS</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td>Rocket League</td>
-                <td>UE3</td>
-                <td>Średnie</td>
-                <td><span class="val-highlight">105.0 FPS</span></td>
-                <td>147.0 FPS</td>
-                <td>68.0 FPS</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td>Rocket League</td>
-                <td>UE3</td>
-                <td>Najwyższe</td>
-                <td><span class="val-highlight">92.0 FPS</span></td>
-                <td>134.0 FPS</td>
-                <td>61.0 FPS</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td>Zombie Army 4</td>
-                <td>DX12</td>
-                <td>Low</td>
-                <td><span class="val-highlight">103.0 FPS</span></td>
-                <td>151.0 FPS</td>
-                <td>-</td>
-                <td>9.7 ms</td>
-            </tr>
-            <tr>
-                <td>Zombie Army 4</td>
-                <td>DX12</td>
-                <td>Medium</td>
-                <td><span class="val-highlight">84.3 FPS</span></td>
-                <td>214.7 FPS</td>
-                <td>-</td>
-                <td>11.8 ms</td>
-            </tr>
-            <tr>
-                <td>Zombie Army 4</td>
-                <td>DX12</td>
-                <td>Ultra</td>
-                <td><span class="val-highlight">62.7 FPS</span></td>
-                <td>96.9 FPS</td>
-                <td>-</td>
-                <td>15.9 ms</td>
-            </tr>
-            <tr>
-                <td>Zombie Army 4</td>
-                <td>Vulkan</td>
-                <td>Medium</td>
-                <td><span>77.5 FPS</span></td>
-                <td>120.2 FPS</td>
-                <td>-</td>
-                <td>12.8 ms</td>
-            </tr>
-            <tr>
-                <td>Borderlands 3</td>
-                <td>DX12 / DX11</td>
-                <td>Medium</td>
-                <td><span class="val-highlight">68.6 FPS</span></td>
-                <td>-</td>
-                <td>-</td>
-                <td>14.6 ms</td>
-            </tr>
-            <tr>
-                <td>Mortal Kombat 11</td>
-                <td>DX12</td>
-                <td>High</td>
-                <td><span class="val-highlight">59.0 FPS</span></td>
-                <td>60.0 FPS</td>
-                <td>7.6 FPS</td>
-                <td>10.3 ms</td>
-            </tr>
-            <tr>
-                <td>Minecraft (Fabric 1.21.11)</td>
-                <td>OpenGL</td>
-                <td>Czysty (Render 12)</td>
-                <td><span class="val-highlight">300+ FPS</span></td>
-                <td>750.0 FPS</td>
-                <td>300.0 FPS</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td>Minecraft (Fabric 1.21.11)</td>
-                <td>Iris</td>
-                <td>Shadery + Tekstury 64x</td>
-                <td><span class="val-highlight">~91.0 FPS</span></td>
-                <td>91.0 FPS</td>
-                <td>50.0 FPS</td>
-                <td>-</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-<!-- DYSK I TEMPERATURY -->
-<div class="section-label">// DYSK, OBSŁUGA SIECI & STABILNOŚĆ TERMICZNA</div>
-<div class="grid-stats">
-    <div class="stat-card">
-        <div class="stat-label">Crucial MX200 (Odczyt/Zapis)</div>
-        <div class="stat-val">552.2 / 508.0 MB/s</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-label">Speedtest Multi (Down/Up)</div>
-        <div class="stat-val">825.7 / 103.9 Mb/s</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-label">Temp. GPU Max (FurMark)</div>
-        <div class="stat-val">80.0 °C</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-label">Temp. CPU Max (OCCT)</div>
-        <div class="stat-val" style="color: #ef4444;">92.8 °C</div>
     </div>
 </div>
