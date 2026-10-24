@@ -226,7 +226,7 @@
         /* DASHBOARD */
         .dashboard { width: 100%; max-width: 1550px; padding: 50px 60px; margin: 0 auto; box-sizing: border-box; flex: 1; }
 
-        /* STOPKA – POZIOMA (GRID) */
+        /* STOPKA – 5 KOLUMN */
         .dashboard-footer { 
             background: #010204;
             border-top: 1px solid var(--border); 
@@ -241,8 +241,8 @@
             max-width: 1550px;
             margin: 0 auto 50px auto;
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1.5fr;
-            gap: 40px;
+            grid-template-columns: 2fr 1fr 1fr 1.2fr 1fr;
+            gap: 35px;
             box-sizing: border-box;
         }
         .footer-col h4 { color: #fff; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 1.5px; }
@@ -363,7 +363,7 @@
             flex-wrap: wrap;
         }
 
-        /* RESPONSYWNOŚĆ DLA URZĄDZEŃ MOBILNYCH */
+        /* RESPONSYWNOŚĆ MOBILNA */
         @media (max-width: 1024px) { 
             .navbar { 
                 grid-template-columns: 1fr; 
@@ -492,41 +492,61 @@
 
     <footer class="dashboard-footer">
         <div class="footer-grid">
+            <!-- KOLUMNA 1: O MARCE -->
             <div class="footer-col">
                 <h4 style="color: var(--accent-contrast);">DevLabStudy_</h4>
-                <p>Dokumentacja infrastruktury homelab, konfiguracji sieci fizycznych i wirtualnych, systemów automatyzacji oraz autorskie języki programowania i narzędzia.</p>
+                <p style="margin-bottom: 12px;">
+                    Prywatny ekosystem technologiczny i marka badawcza. Zajmujemy się dokumentacją infrastruktury homelab, klastrów Proxmox, konfiguracją sieci enterprise oraz tworzeniem dedykowanego oprogramowania.
+                </p>
+                <p>
+                    Rozwijamy autorskie narzędzia, skrypty instalacyjne CLI, rozwiązania IoT/Wearables oraz dedykowane strony WWW dla klientów komercyjnych.
+                </p>
             </div>
+
+            <!-- KOLUMNA 2: MAIN NAV -->
             <div class="footer-col">
-                <h4>Nawigacja & Usługi</h4>
+                <h4>Nawigacja &amp; Baza</h4>
                 <ul>
                     <li><a href="/">Strona Główna (Hub)</a></li>
-                    <li><a href="/webcraft">Usługa: Tworzenie Stron WWW (WebCraft)</a></li>
-                    <li><a href="/newsy">Newsy</a></li>
-                    <li><a href="/blog">Dziennik / Blog</a></li>
-                    <li><a href="/updates">Aktualności & Dziennik Zmian (_updates)</a></li>
                     <li><a href="/homelab">Infrastruktura HomeLab</a></li>
-                    <li><a href="/benchmarks">Pomiary Benchmarks</a></li>
-                    <li><a href="/sponsors">Partnerzy</a></li>
+                    <li><a href="/benchmarks">Baza Benchmarks &amp; Testy</a></li>
+                    <li><a href="/blog">Dziennik / Blog Techniczny</a></li>
+                    <li><a href="/updates">Changelog &amp; Dziennik Zmian</a></li>
                 </ul>
             </div>
+
+            <!-- KOLUMNA 3: USŁUGI & MEDIA -->
             <div class="footer-col">
-                <h4>Projekty & Języki (Apps)</h4>
+                <h4>Usługi &amp; Media</h4>
+                <ul>
+                    <li><a href="/webcraft">WebCraft (Tworzenie WWW)</a></li>
+                    <li><a href="/newsy">Centrum Newsów &amp; Media</a></li>
+                    <li><a href="/sponsors">Partnerzy &amp; Hardware Sponsors</a></li>
+                    <li><a href="/kontakt">Kontakt &amp; Zapytania</a></li>
+                </ul>
+            </div>
+
+            <!-- KOLUMNA 4: APPS & PROJECTS -->
+            <div class="footer-col">
+                <h4>Projekty (Apps)</h4>
                 <ul>
                     <li><a href="/orbit">Orbit Dashboard</a></li>
                     <li><a href="/homelab-cc">Homelab Control Center</a></li>
-                    <li><a href="/dinstall">dinstall (Debian Installer)</a></li>
-                    <li><a href="/pulse">Pulse Lang (DSL w Rust)</a></li>
+                    <li><a href="/dinstall">dinstall CLI (Debian)</a></li>
+                    <li><a href="/pulse">Pulse Lang (DSL Rust)</a></li>
                     <li>
                         <div class="disabled-footer-link">
-                            <span class="footer-link-text">Garmin Connect Apps</span>
+                            <span class="footer-link-text">Garmin Connect IQ Apps</span>
                             <span class="footer-beta-text">[ In Beta Tests ]</span>
                         </div>
                     </li>
-                    <li><a href="/phone">Mobile Toolkits</a></li>
+                    <li><a href="/phone">Mobile Toolkits &amp; Android</a></li>
                 </ul>
             </div>
+
+            <!-- KOLUMNA 5: SOCIAL MEDIA -->
             <div class="footer-col">
-                <h4>Follow DevLabStudy</h4>
+                <h4>Społeczność</h4>
                 <div class="social-icons-grid">
                     <a href="https://www.youtube.com/channel/UCisFPSU_Y8hznpqrcewcJAg" target="_blank" class="social-icon-btn" title="YouTube">
                         <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
