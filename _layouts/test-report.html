@@ -1,0 +1,81 @@
+---
+layout: default
+---
+
+<style>
+    .report-container {
+        max-width: 1000px;
+        margin: 10px auto 50px auto;
+    }
+
+    .back-link {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.8rem;
+        color: #ff9900;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 20px;
+        font-weight: 700;
+    }
+    .back-link:hover { text-decoration: underline; }
+
+    .report-header {
+        background: rgba(15, 23, 42, 0.8);
+        border: 1px solid rgba(255, 153, 0, 0.3);
+        border-radius: 16px;
+        padding: 30px;
+        margin-bottom: 35px;
+        backdrop-filter: blur(10px);
+    }
+
+    .report-title {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 2.4rem;
+        font-weight: 900;
+        color: #fff;
+        margin: 0 0 10px 0;
+    }
+
+    .report-meta {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.8rem;
+        color: #8b9bb4;
+        border-top: 1px dashed rgba(255, 255, 255, 0.08);
+        padding-top: 15px;
+        margin-top: 15px;
+    }
+    .report-meta span { color: #fff; font-weight: 700; }
+
+    /* CONTENT INTERFEJSU TESTÓW */
+    .report-body {
+        color: #f1f5f9;
+        line-height: 1.7;
+    }
+</style>
+
+<div class="report-container">
+    <a href="/benchmarks" class="back-link">← Powrót do Bazy Benchmarks</a>
+
+    <div class="report-header">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #ff9900; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800; margin-bottom: 8px;">
+            // RAPORT WYDAJNOŚCIOWY BENCHMARK
+        </div>
+        <h1 class="report-title">{{ page.device_name }}</h1>
+        <p style="color: #94a3b8; margin: 0; font-size: 0.95rem;">{{ page.description }}</p>
+
+        <div class="report-meta">
+            <div>Platforma: <span>{{ page.category }}</span></div>
+            <div>Data testu: <span>{{ page.test_date }}</span></div>
+            <div>Tester: <span>{{ page.author | default: 'Tobiasz Kajzer' }}</span></div>
+        </div>
+    </div>
+
+    <div class="report-body">
+        {{ content }}
+    </div>
+</div>
