@@ -4,11 +4,10 @@ title: "Test Raport: PC #1 Ryzen 1600AF + RX 570 | DevLabStudy"
 device_name: "PROJEKT #1: BUDGET 1080P RIG"
 category: "Komputery PC"
 test_date: "2026-10-24"
-description: "Kompleksowa analiza wydajności budżetowej jednostki w benchmarkach syntetycznych, grach 1080p oraz testach termicznych."
+description: "Kompleksowa analiza budżetowej jednostki. Pełne logi i szczegółowe pomiary wydajnościowe dostępne w połączonym arkuszu Google."
 ---
 
 <style>
-    /* STYLIZACJA SEKCJI I KONTRASTU */
     .report-section-title {
         font-family: 'JetBrains Mono', monospace;
         font-size: 0.9rem;
@@ -25,7 +24,7 @@ description: "Kompleksowa analiza wydajności budżetowej jednostki w benchmarka
         content: ''; flex: 1; height: 1px; background: rgba(255, 153, 0, 0.2);
     }
 
-    /* GALERIA ZDJĘĆ PROJEKTU */
+    /* GALERIA ZDJĘĆ */
     .pc-gallery-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -65,43 +64,7 @@ description: "Kompleksowa analiza wydajności budżetowej jednostki w benchmarka
         padding: 20px;
     }
 
-    /* KARTY KLUCZOWYCH METRYK */
-    .metrics-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 18px;
-        margin-bottom: 35px;
-    }
-
-    .metric-card {
-        background: rgba(15, 23, 42, 0.9);
-        border: 1px solid rgba(255, 153, 0, 0.2);
-        border-radius: 12px;
-        padding: 20px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-    }
-
-    .metric-label {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.72rem;
-        color: #8b9bb4;
-        text-transform: uppercase;
-        margin-bottom: 6px;
-    }
-
-    .metric-value {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 1.4rem;
-        font-weight: 900;
-        color: #ffffff;
-    }
-
-    .metric-value span {
-        color: #ff9900;
-        font-size: 0.85rem;
-    }
-
-    /* TABELE WYSOKI KONTRAST */
+    /* TABELA SPECYFIKACJI */
     .custom-table-wrapper {
         background: rgba(10, 15, 25, 0.95) !important;
         border: 1px solid rgba(255, 153, 0, 0.3) !important;
@@ -139,19 +102,16 @@ description: "Kompleksowa analiza wydajności budżetowej jednostki w benchmarka
         background: rgba(255, 153, 0, 0.04);
     }
 
-    .val-accent { color: #ff9900 !important; font-weight: 800; }
-    .val-alert { color: #ef4444 !important; font-weight: 800; }
-
     /* BANNER GOOGLE SHEETS */
     .sheet-integration-box {
         background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.8) 100%);
         border: 1px solid rgba(255, 153, 0, 0.3);
         border-radius: 14px;
-        padding: 25px;
+        padding: 30px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-top: 40px;
+        margin-top: 30px;
         flex-wrap: wrap;
         gap: 20px;
     }
@@ -159,7 +119,7 @@ description: "Kompleksowa analiza wydajności budżetowej jednostki w benchmarka
     .sheet-btn {
         background: #ff9900;
         color: #030305;
-        padding: 12px 24px;
+        padding: 14px 28px;
         border-radius: 8px;
         font-family: 'JetBrains Mono', monospace;
         font-weight: 900;
@@ -170,7 +130,7 @@ description: "Kompleksowa analiza wydajności budżetowej jednostki w benchmarka
     }
     .sheet-btn:hover {
         background: #ffb703;
-        box-shadow: 0 0 15px rgba(255, 153, 0, 0.4);
+        box-shadow: 0 0 20px rgba(255, 153, 0, 0.4);
     }
 </style>
 
@@ -188,140 +148,57 @@ description: "Kompleksowa analiza wydajności budżetowej jednostki w benchmarka
     </div>
 </div>
 
-<!-- 2. KLUCZOWE METRYKI -->
-<div class="report-section-title">// SZYBKIE PODSUMOWANIE BENCHMARKÓW</div>
-<div class="metrics-grid">
-    <div class="metric-card">
-        <div class="metric-label">Cinebench R23 Multi</div>
-        <div class="metric-value">6,335 <span>pkt</span></div>
-    </div>
-    <div class="metric-card">
-        <div class="metric-label">3DMark TimeSpy</div>
-        <div class="metric-value">4,095 <span>pkt</span></div>
-    </div>
-    <div class="metric-card">
-        <div class="metric-label">3DMark Fire Strike</div>
-        <div class="metric-value">4,491 <span>pkt</span></div>
-    </div>
-    <div class="metric-card">
-        <div class="metric-label">Temp. Max GPU / CPU</div>
-        <div class="metric-value">80°C / <span class="val-alert">92.8°C</span></div>
-    </div>
-</div>
-
-<!-- 3. SPECYFIKACJA SPRZĘTOWA -->
-<div class="report-section-title">// SPECYFIKACJA TECHNICZNA</div>
+<!-- 2. PEŁNA SPECYFIKACJA SPRZĘTOWA -->
+<div class="report-section-title">// SPECYFIKACJA TECHNICZNA ZESTAWU</div>
 <div class="custom-table-wrapper">
     <table class="custom-table">
         <thead>
             <tr>
                 <th>Podzespół</th>
-                <th>Model / Parametry</th>
+                <th>Dokładny Model i Konfiguracja</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>Procesor (CPU)</td>
-                <td><strong>AMD Ryzen 5 1600AF (6 rdzeni / 12 wątków)</strong></td>
+                <td><strong>AMD Ryzen 5 1600AF (6 rdzeni / 12 wątków, 12nm)</strong></td>
+            </tr>
+            <tr>
+                <td>Chłodzenie CPU</td>
+                <td><strong>AMD Wraith Stealth (Stock Cooler)</strong></td>
             </tr>
             <tr>
                 <td>Karta Graficzna (GPU)</td>
-                <td><strong>AMD Radeon RX 570 4GB GDDR5 (~1250 MHz Core / 1750 MHz Memory)</strong></td>
+                <td><strong>AMD Radeon RX 570 4GB GDDR5</strong></td>
             </tr>
             <tr>
                 <td>Pamięć RAM</td>
-                <td><strong>16GB DDR4 2400MHz Dual-Channel</strong></td>
+                <td><strong>16GB (2x8GB) DDR4 2400MHz Dual-Channel</strong></td>
             </tr>
             <tr>
-                <td>Dysk Twardy (SSD)</td>
-                <td><strong>Crucial MX200 250GB SATA III</strong></td>
+                <td>Płyta Główna</td>
+                <td><strong>Chipset AMD Socket AM4</strong></td>
+            </tr>
+            <tr>
+                <td>Dysk Systemowy (SSD)</td>
+                <td><strong>Crucial MX200 250GB SATA III 2.5"</strong></td>
+            </tr>
+            <tr>
+                <td>Obudowa</td>
+                <td><strong>Custom ATX / Micro-ATX</strong></td>
             </tr>
         </tbody>
     </table>
 </div>
 
-<!-- 4. WYDAJNOŚĆ W GRACH -->
-<div class="report-section-title">// WYNIKI W GRACH (1080P BENCHMARKS)</div>
-<div class="custom-table-wrapper">
-    <table class="custom-table">
-        <thead>
-            <tr>
-                <th>Tytuł Gry</th>
-                <th>Silnik / API</th>
-                <th>Ustawienia</th>
-                <th>Średni FPS</th>
-                <th>Maks / Min FPS</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Batman: Arkham Knight</td>
-                <td>UE3</td>
-                <td>Najwyższe</td>
-                <td><span class="val-accent">92.0 FPS</span></td>
-                <td>134.0 / 61.0 FPS</td>
-            </tr>
-            <tr>
-                <td>Batman: Arkham Knight</td>
-                <td>UE3</td>
-                <td>Średnie</td>
-                <td><span class="val-accent">105.0 FPS</span></td>
-                <td>147.0 / 68.0 FPS</td>
-            </tr>
-            <tr>
-                <td>Rocket League</td>
-                <td>UE3</td>
-                <td>Najwyższe</td>
-                <td><span class="val-accent">92.0 FPS</span></td>
-                <td>134.0 / 61.0 FPS</td>
-            </tr>
-            <tr>
-                <td>Zombie Army 4</td>
-                <td>DX12</td>
-                <td>Medium</td>
-                <td><span class="val-accent">84.3 FPS</span></td>
-                <td>214.7 / - FPS</td>
-            </tr>
-            <tr>
-                <td>Borderlands 3</td>
-                <td>DX12</td>
-                <td>Medium</td>
-                <td><span class="val-accent">68.6 FPS</span></td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td>Mortal Kombat 11</td>
-                <td>DX12</td>
-                <td>High</td>
-                <td><span class="val-accent">59.0 FPS</span></td>
-                <td>60.0 / 7.6 FPS</td>
-            </tr>
-            <tr>
-                <td>Minecraft (Fabric 1.21.11)</td>
-                <td>OpenGL</td>
-                <td>Pure Fabric (Render 12)</td>
-                <td><span class="val-accent">300+ FPS</span></td>
-                <td>750.0 / 300.0 FPS</td>
-            </tr>
-            <tr>
-                <td>Minecraft (Shadery + Iris)</td>
-                <td>OpenGL</td>
-                <td>Fancy + Tekstury 64x</td>
-                <td><span class="val-accent">~91.0 FPS</span></td>
-                <td>91.0 / 50.0 FPS</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-<!-- 5. GOOGLE SHEETS -->
+<!-- 3. BEZPOŚREDNI ODNOŚNIK DO ARKUSZA GOOGLE -->
 <div class="sheet-integration-box">
     <div>
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; color: #fff; font-weight: 800; margin-bottom: 4px;">
-            Surowe Dane & Logi w Google Spreadsheet
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; color: #fff; font-weight: 800; margin-bottom: 6px;">
+            📊 Pełne Wyniki Testów & Logi Pomiary
         </div>
-        <div style="color: #8b9bb4; font-size: 0.82rem;">
-            Dostępny pełny arkusz z otwartą możliwością dodawania komentarzy oraz szczegółami testów dysku i czasów ramek.
+        <div style="color: #94a3b8; font-size: 0.88rem; max-width: 600px; line-height: 1.6;">
+            Wszystkie klatki na sekundę (FPS), temperatury pod obciążeniem OCCT/FurMark, benchmarki syntetyczne oraz opcja dodawania własnych uwag znajdują się w arkuszu.
         </div>
     </div>
     <a href="https://docs.google.com/spreadsheets/d/1Wny-gnph9XUM6UDHCXiKpfCjZQZQ8_XH/edit?usp=sharing&ouid=108635526649332261442&rtpof=true&sd=true" target="_blank" class="sheet-btn">
