@@ -1,17 +1,155 @@
 ---
 layout: default
-title: Updates
+title: Updates & System Logs
 ---
-<div class="card">
-    <h3 style="font-size: 0.85rem; color: var(--text-muted); margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 1px; font-family: 'JetBrains Mono', monospace;">[ RECENT_SYSTEM_UPDATES ]</h3>
-    
-    <div style="display: flex; flex-direction: column;">
+
+<style>
+    .updates-container {
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid rgba(255, 153, 0, 0.25);
+        border-radius: 12px;
+        padding: 30px;
+        backdrop-filter: blur(12px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .updates-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: #ff9900;
+    }
+
+    .updates-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .updates-title {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.9rem;
+        color: #ff9900;
+        text-transform: uppercase;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .updates-count {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.72rem;
+        background: rgba(255, 153, 0, 0.12);
+        color: #ff9900;
+        border: 1px solid rgba(255, 153, 0, 0.3);
+        padding: 3px 10px;
+        border-radius: 4px;
+        font-weight: 700;
+    }
+
+    .log-list {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .log-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-decoration: none;
+        padding: 14px 16px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid transparent;
+        transition: all 0.2s ease;
+    }
+
+    .log-item:hover {
+        background: rgba(255, 153, 0, 0.08);
+        border-color: rgba(255, 153, 0, 0.3);
+        transform: translateX(4px);
+    }
+
+    .log-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .log-tag {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.68rem;
+        color: #10b981;
+        background: rgba(16, 185, 129, 0.12);
+        border: 1px solid rgba(16, 185, 129, 0.25);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-weight: 800;
+    }
+
+    .log-title {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #f1f5f9;
+        transition: color 0.2s;
+    }
+
+    .log-item:hover .log-title {
+        color: #ff9900;
+    }
+
+    .log-date {
+        color: #64748b;
+        font-size: 0.8rem;
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 700;
+        white-space: nowrap;
+        margin-left: 15px;
+    }
+
+    @media (max-width: 600px) {
+        .log-item {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        .log-date {
+            margin-left: 0;
+            font-size: 0.72rem;
+        }
+    }
+</style>
+
+<div class="updates-container">
+    <div class="updates-header">
+        <div class="updates-title">
+            <span>// SYSTEM_CHANGELOG</span>
+        </div>
+        <div class="updates-count">ENTRIES: {{ site.updates.size }}</div>
+    </div>
+
+    <div class="log-list">
         {% for item in site.updates reversed %}
-        <a href="{{ item.url }}" class="log-link" style="display: flex; justify-content: space-between; align-items: center; text-decoration: none; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--text-main); transition: 0.2s;">
+        <a href="{{ item.url }}" class="log-item">
+            <div class="log-left">
+                <span class="log-tag">LOG</span>
+                <span class="log-title">{{ item.title }}</span>
+            </div>
             
-            <span class="log-title" style="font-size: 0.95rem; font-weight: 600;">{{ item.title }}</span>
-            
-            <span style="color: var(--text-muted); font-size: 0.8rem; font-family: 'JetBrains Mono', monospace;">
+            <span class="log-date">
                 [{{ item.date | date: "%Y.%m.%d" }}]
             </span>
         </a>
