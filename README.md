@@ -78,7 +78,7 @@ Własna platforma blogowa oparta na Jekyll, GitHub Pages oraz zoptymalizowanym s
 ## 🎯 AKTUALNE CELE STRATEGICZNE (ROADMAP)
 
 - [ ] Rozbudowa klastra Proxmox oraz optymalizacja zasobów węzłów w szafie RACK.
-- [ ] Wdrożenie zaawansowanych polityk bezpieczeństwa sieciowego i segmentacji VLAN.
+- [x] Wdrożenie zaawansowanych polityk bezpieczeństwa sieciowego i segmentacji VLAN.
 - [ ] Automatyzacja procesów wdrażania usług za pomocą skryptów Bash i kontenerów.
 - [ ] Dalszy rozwój ekosystemu treści technicznych na [devlabstudy.ovh/blog](https://www.devlabstudy.ovh/blog).
 - [ ] Eksperymenty z zaawansowanym monitorowaniem infrastruktury (Grafana/Prometheus).
