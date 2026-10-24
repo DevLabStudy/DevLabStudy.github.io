@@ -5,6 +5,10 @@ category: hardware
 date: 2026-10-06 19:30:00 +0200
 ---
 
+Kultowe dyski SSD marki OCZ to prawdziwe relikwii epoki pionierów szybkiej pamięci masowej. Zamiast wyrzucać leciwy nośnik, bierzemy go na warsztat: rozkręcamy obudowę, zaglądamy w głąb laminatu i sprawdzamy, jak kilkanaście lat temu inżynierowie projektowali elektronikę SSD, zanim na dobre zapanował standard NVMe.
+
+---
+
 [![Widok z lewej strony - dysk OCZ](/assets/images/lewo.jpeg)](/assets/images/lewo.jpeg)
 
 Kiedy w ręce wpada starszy dysk SSD marki OCZ, człowiek od razu zastanawia się, czy to jeszcze sprawny magazyn danych, czy już eksponat do muzealnej gabloty. Marka OCZ ma kultowy status w świecie entuzjastów hardware'u – to pionierzy, którzy eksperymentowali z wydajnością, zanim NVMe stało się standardem. 
