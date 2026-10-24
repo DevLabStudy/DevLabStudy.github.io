@@ -1,0 +1,105 @@
+---
+layout: test-report
+title: Test Raport: PC #1 Ryzen 1600AF + RX 570 | DevLabStudy
+device_name: "PROJEKT #1: BUDGET 1080P RIG"
+category: "Komputery PC"
+test_date: "2026-10-24"
+description: "Kompleksowa analiza wydajności budżetowej jednostki w benchmarkach syntetycznych, grach 1080p oraz testach termicznych."
+---
+
+<style>
+    .section-head {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.9rem;
+        color: #ff9900;
+        text-transform: uppercase;
+        margin: 35px 0 15px 0;
+        font-weight: 800;
+        letter-spacing: 1px;
+    }
+
+    .bench-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.88rem;
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid rgba(255, 153, 0, 0.2);
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 25px;
+    }
+    .bench-table th { background: rgba(255, 153, 0, 0.1); color: #ff9900; padding: 12px 16px; text-align: left; }
+    .bench-table td { padding: 12px 16px; border-bottom: 1px dashed rgba(255, 255, 255, 0.06); }
+
+    .val-highlight { color: #ff9900; font-weight: 800; }
+    .val-warn { color: #ef4444; font-weight: 800; }
+
+    .sheet-box {
+        background: rgba(0,0,0,0.4);
+        border: 1px solid rgba(255, 153, 0, 0.25);
+        padding: 20px;
+        border-radius: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 30px 0;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    .btn-sheet {
+        background: #ff9900;
+        color: #030305;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 900;
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        text-decoration: none;
+    }
+</style>
+
+<!-- SPECYFIKACJA -->
+<div class="section-head">// SPECYFIKACJA SPRZĘTOWA</div>
+<table class="bench-table">
+    <tr><td>Procesor (CPU)</td><td><strong>AMD Ryzen 5 1600AF</strong></td></tr>
+    <tr><td>Karta Graficzna (GPU)</td><td><strong>AMD Radeon RX 570 4GB GDDR5</strong></td></tr>
+    <tr><td>Pamięć RAM</td><td><strong>16GB DDR4 2400MHz</strong></td></tr>
+    <tr><td>Dysk Systemowy</td><td><strong>Crucial MX200 250GB SSD</strong></td></tr>
+</table>
+
+<!-- WYNIKI W GRACH -->
+<div class="section-head">// POMIARY W GRACH (1080P)</div>
+<table class="bench-table">
+    <thead>
+        <tr><th>Gra</th><th>API</th><th>Ustawienia</th><th>Avg FPS</th><th>Max / Min FPS</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Batman: Arkham Knight</td><td>UE3</td><td>Najwyższe</td><td><span class="val-highlight">92.0</span></td><td>134.0 / 61.0</td></tr>
+        <tr><td>Rocket League</td><td>UE3</td><td>Najwyższe</td><td><span class="val-highlight">92.0</span></td><td>134.0 / 61.0</td></tr>
+        <tr><td>Zombie Army 4</td><td>DX12</td><td>Medium</td><td><span class="val-highlight">84.3</span></td><td>214.7 / -</td></tr>
+        <tr><td>Borderlands 3</td><td>DX12</td><td>Medium</td><td><span class="val-highlight">68.6</span></td><td>-</td></tr>
+        <tr><td>Mortal Kombat 11</td><td>DX12</td><td>High</td><td><span class="val-highlight">59.0</span></td><td>60.0 / 7.6</td></tr>
+        <tr><td>Minecraft (Fabric 1.21.11)</td><td>OpenGL</td><td>Czysty (Render 12)</td><td><span class="val-highlight">300+</span></td><td>750.0 / 300.0</td></tr>
+        <tr><td>Minecraft (Shadery + Tekstury 64x)</td><td>Iris</td><td>Fancy / Render 12</td><td><span class="val-highlight">~91.0</span></td><td>91.0 / 50.0</td></tr>
+    </tbody>
+</table>
+
+<!-- TEMPERATURY -->
+<div class="section-head">// DANE TERMICZNE & OBCIĄŻENIOWE</div>
+<table class="bench-table">
+    <tr><td>Temp. GPU Max (FurMark 10 min)</td><td><span class="val-highlight">80.0 °C</span> (~2,700 RPM)</td></tr>
+    <tr><td>Temp. CPU Max (OCCT 10 min)</td><td><span class="val-warn">92.8 °C</span> (Chłodzenie Stock)</td></tr>
+</table>
+
+<!-- LINK DO SPREADSHEET Z KOMENTOWANIEM -->
+<div class="sheet-box">
+    <div>
+        <div style="font-family: 'JetBrains Mono', monospace; color: #fff; font-weight: 800;">Google Spreadsheet z Komentowaniem</div>
+        <div style="color: #8b9bb4; font-size: 0.8rem;">Pełne logi z testów oraz możliwość zostawienia uwagi.</div>
+    </div>
+    <a href="https://docs.google.com/spreadsheets/d/1Wny-gnph9XUM6UDHCXiKpfCjZQZQ8_XH/edit?usp=sharing&ouid=108635526649332261442&rtpof=true&sd=true" target="_blank" class="btn-sheet">
+        Otwórz Arkusz Google →
+    </a>
+</div>
