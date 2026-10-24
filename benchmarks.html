@@ -75,7 +75,7 @@ url: /benchmarks
         BENCHMARKS
     </h1>
     <p style="color: #94a3b8; font-size: 1rem;">
-        Wybierz kategrię urządzeń, aby przejść do szczegółowych raportów z testów.
+        Wybierz kategorię urządzeń, aby przejść do szczegółowych raportów z testów.
     </p>
 </div>
 
@@ -84,21 +84,40 @@ url: /benchmarks
     <div class="category-title">// 1. KOMPUTERY PC & ZESTAWY CUSTOM</div>
     <div class="devices-grid">
         
-        <!-- KARTA PROJEKT #1 -->
-        <div class="device-card">
-            <div>
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                    <span style="font-family: 'JetBrains Mono', monospace; font-weight: 900; color: #fff; font-size: 1.2rem;">PC #1: BUDGET 1080P</span>
-                    <span style="color: #10b981; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 800;">[ZAKOŃCZONY]</span>
+        {% if site.data.komputery %}
+            {% for pc in site.data.komputery %}
+            <div class="device-card">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <span style="font-family: 'JetBrains Mono', monospace; font-weight: 900; color: #fff; font-size: 1.2rem;">{{ pc.title }}</span>
+                        <span style="color: #10b981; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 800;">[ZAKOŃCZONY]</span>
+                    </div>
+                    <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 15px;">
+                        Koszt całkowity: {{ pc.totalCost }} PLN
+                    </p>
                 </div>
-                <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 15px;">
-                    Ryzen 5 1600AF | RX 570 4GB | 16GB DDR4
-                </p>
+                <a href="{{ pc.url }}" class="btn-open-test">
+                    Otwórz Raport Z Testów PC →
+                </a>
             </div>
-            <a href="/testy/komputery/pc-1-ryzen-rx570" class="btn-open-test">
-                Otwórz Raport Z Testów PC #1 →
-            </a>
-        </div>
+            {% endfor %}
+        {% else %}
+            <!-- FALLBACK HARDCODED -->
+            <div class="device-card">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <span style="font-family: 'JetBrains Mono', monospace; font-weight: 900; color: #fff; font-size: 1.2rem;">PC #1: BUDGET 1080P</span>
+                        <span style="color: #10b981; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 800;">[ZAKOŃCZONY]</span>
+                    </div>
+                    <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 15px;">
+                        Ryzen 5 1600AF | RX 570 4GB | 16GB DDR4
+                    </p>
+                </div>
+                <a href="/testy/komputery/pc-1-ryzen-rx570/" class="btn-open-test">
+                    Otwórz Raport Z Testów PC #1 →
+                </a>
+            </div>
+        {% endif %}
 
     </div>
 </div>
@@ -108,18 +127,40 @@ url: /benchmarks
     <div class="category-title">// 2. TELEFONY & URZĄDZENIA MOBILNE</div>
     <div class="devices-grid">
         
-        <!-- PLACEHOLDER POD TELEFON -->
-        <div class="device-card" style="opacity: 0.5; border-color: rgba(255,255,255,0.1);">
-            <div>
-                <span style="font-family: 'JetBrains Mono', monospace; font-weight: 900; color: #fff;">MOTO G35 5G</span>
-                <p style="color: #94a3b8; font-size: 0.85rem; margin-top: 8px;">
-                    Testy wydajności procesora i baterii w przygotowaniu...
-                </p>
+        {% if site.data.telefony %}
+            {% for phone in site.data.telefony %}
+            <div class="device-card">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <span style="font-family: 'JetBrains Mono', monospace; font-weight: 900; color: #fff; font-size: 1.2rem;">{{ phone.title }}</span>
+                        <span style="color: #a855f7; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 800;">[PRZETESTOWANY]</span>
+                    </div>
+                    <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 15px;">
+                        {{ phone.cpu }} | {{ phone.ram }} RAM | {{ phone.os }}
+                    </p>
+                </div>
+                <a href="/testy/telefony/{{ phone.id }}/" class="btn-open-test">
+                    Otwórz Raport Z Testów Telefonu →
+                </a>
             </div>
-            <span class="btn-open-test" style="background: rgba(255,255,255,0.05); color: #8b9bb4; cursor: not-allowed;">
-                Wkrótce...
-            </span>
-        </div>
+            {% endfor %}
+        {% else %}
+            <!-- KARTA DLA MOTOROLA MOTO G35 5G SERWOWANA Z /testy/telefony/ -->
+            <div class="device-card">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <span style="font-family: 'JetBrains Mono', monospace; font-weight: 900; color: #fff; font-size: 1.2rem;">MOTO G35 5G</span>
+                        <span style="color: #a855f7; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 800;">[PRZETESTOWANY]</span>
+                    </div>
+                    <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 15px;">
+                        Unisoc T760 | Mali-G57 | 8 GB RAM | Android 16
+                    </p>
+                </div>
+                <a href="/testy/telefony/moto-g35-5g/" class="btn-open-test">
+                    Otwórz Raport Z Testów Telefonu →
+                </a>
+            </div>
+        {% endif %}
 
     </div>
 </div>
