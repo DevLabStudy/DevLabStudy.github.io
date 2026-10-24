@@ -3,7 +3,7 @@ layout: default
 ---
 
 <style>
-    /* Dedykowane style dla wpisów blogowych */
+    /* Stylizacja nagłówka artykułu */
     .article-header { 
         border-bottom: 1px dashed var(--border, rgba(255, 255, 255, 0.12)); 
         padding-bottom: 25px; 
@@ -40,6 +40,7 @@ layout: default
         color: #ffffff;
     }
 
+    /* Główna treść wpisu z Markdown */
     .article-content { 
         font-size: 1.05rem; 
         color: #cbd5e1; 
@@ -78,6 +79,18 @@ layout: default
         border-bottom: 1px dashed rgba(0, 210, 255, 0.4);
         transition: 0.2s;
     }
+    .article-content a:hover { border-bottom-style: solid; opacity: 0.9; }
+
+    /* GLOBALNE DOPASOWANIE ZDJĘĆ - NIGDY WIĘCEJ OGROMNYCH GRAFIK */
+    .article-content img { 
+        max-width: 100% !important; 
+        height: auto !important; 
+        display: block; 
+        margin: 30px auto; 
+        border-radius: 8px; 
+        border: 1px solid var(--border, rgba(255, 255, 255, 0.12)); 
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
 
     .article-content pre { 
         max-width: 100%; 
@@ -90,6 +103,18 @@ layout: default
         font-size: 0.9rem;
     }
 
+    .article-content code {
+        background: rgba(255, 255, 255, 0.08);
+        padding: 3px 7px;
+        border-radius: 4px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.88em;
+        color: var(--accent-blue, #00d2ff);
+    }
+
+    .article-content pre code { background: none; padding: 0; color: #f8fafc; }
+
+    /* Sekcja interaktywna (Kudos i Komentarze) */
     .post-interactions {
         margin-top: 50px;
         padding-top: 30px;
@@ -109,6 +134,12 @@ layout: default
         border-radius: 10px;
     }
 
+    .kudos-info {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85rem;
+        color: var(--text-muted, #94a3b8);
+    }
+
     .kudos-btn {
         background: rgba(255, 94, 0, 0.1);
         border: 1px solid rgba(255, 94, 0, 0.3);
@@ -118,13 +149,35 @@ layout: default
         font-family: 'JetBrains Mono', monospace;
         font-weight: 800;
         cursor: pointer;
+        transition: 0.2s;
     }
+    .kudos-btn:hover { background: var(--accent-contrast, #ff5e00); transform: translateY(-2px); }
+    .kudos-btn.liked { background: rgba(255, 94, 0, 0.3); border-color: var(--accent-contrast, #ff5e00); }
 
     .comments-section {
         background: rgba(3, 3, 5, 0.6);
         border: 1px solid var(--border, rgba(255, 255, 255, 0.12));
         border-radius: 10px;
         padding: 25px;
+    }
+
+    .comments-title {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.95rem;
+        color: #fff;
+        margin: 0 0 15px 0;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .comments-title::before { content: '//'; color: var(--accent-blue, #00d2ff); }
+
+    .comments-placeholder {
+        color: var(--text-muted, #94a3b8);
+        font-size: 0.85rem;
+        font-family: 'JetBrains Mono', monospace;
+        margin: 0 0 15px 0;
     }
 
     .comment-input-group { display: flex; gap: 10px; }
@@ -136,7 +189,11 @@ layout: default
         padding: 12px 15px;
         border-radius: 6px;
         font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85rem;
+        outline: none;
     }
+    .comment-input:focus { border-color: var(--accent-blue, #00d2ff); }
+
     .comment-submit {
         background: rgba(0, 210, 255, 0.1);
         border: 1px solid rgba(0, 210, 255, 0.3);
@@ -144,7 +201,34 @@ layout: default
         padding: 0 20px;
         border-radius: 6px;
         font-family: 'JetBrains Mono', monospace;
+        font-weight: 700;
         cursor: pointer;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        transition: 0.2s;
+    }
+    .comment-submit:hover { background: var(--accent-blue, #00d2ff); color: #030305; }
+
+    .submitted-comments {
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .user-comment {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 15px;
+        border-radius: 6px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    
+    @media (max-width: 768px) {
+        .comment-input-group { flex-direction: column; }
+        .kudos-box { flex-direction: column; gap: 15px; text-align: center; }
     }
 </style>
 
@@ -189,7 +273,7 @@ layout: default
 <script>
     const postId = window.location.pathname;
     
-    // Kudos
+    // Kudos logic
     const kudosBtn = document.getElementById('kudosBtn');
     const kudosCountSpan = document.getElementById('kudosCount');
     let kudosKey = 'devlab_kudos_' + postId;
@@ -216,7 +300,7 @@ layout: default
         kudosCountSpan.textContent = currentKudos;
     });
 
-    // Komentarze
+    // Comments logic
     const commentInput = document.getElementById('commentInput');
     const commentSubmit = document.getElementById('commentSubmit');
     const commentsList = document.getElementById('commentsList');
@@ -227,16 +311,15 @@ layout: default
     function renderComments() {
         commentsList.innerHTML = '';
         if(savedComments.length === 0) {
-            commentsList.innerHTML = '<div style="color: var(--text-muted, #94a3b8); font-size: 0.85rem; font-family: \'JetBrains Mono\', monospace; margin-top: 10px;">// Brak wpisów w buforze. Bądź pierwszy!</div>';
+            commentsList.innerHTML = '<div style="color: var(--text-muted, #94a3b8); font-size: 0.85rem; font-family: \'JetBrains Mono\', monospace;">// Brak wpisów w buforze. Bądź pierwszy!</div>';
             return;
         }
 
         savedComments.forEach((c, index) => {
             const div = document.createElement('div');
             div.className = 'user-comment';
-            div.style.cssText = 'background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 15px; border-radius: 6px; margin-top: 10px; display: flex; justify-content: space-between;';
             div.innerHTML = `
-                <div>
+                <div style="flex: 1;">
                     <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent-blue, #00d2ff); margin-bottom: 4px;">// ${c.author} — ${c.date}</div>
                     <div>${escapeHtml(c.text)}</div>
                 </div>
@@ -259,7 +342,7 @@ layout: default
     });
 
     function escapeHtml(str) {
-        return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace/>/g, "&gt;");
+        return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     }
 
     renderComments();
