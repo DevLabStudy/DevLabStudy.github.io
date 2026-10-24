@@ -1,462 +1,266 @@
 ---
 layout: default
 ---
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }} | DevLabStudy</title>
-    <link rel="icon" type="image/jpeg" href="/profileIcon_g3ffyg7edeeg1.jpeg">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            --bg-nav: rgba(5, 5, 5, 0.9);
-            --card-bg: rgba(10, 15, 25, 0.85);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border: rgba(255, 255, 255, 0.12);
-            --accent-blue: #00d2ff;
-            --accent-contrast: #ff5e00;
-            --code-bg: rgba(0, 0, 0, 0.65);
-        }
+<style>
+    /* Dedykowane style dla wpisów blogowych */
+    .article-header { 
+        border-bottom: 1px dashed var(--border, rgba(255, 255, 255, 0.12)); 
+        padding-bottom: 25px; 
+        margin-bottom: 35px; 
+    }
 
-        body { 
-            font-family: 'Inter', -apple-system, sans-serif; 
-            margin: 0; 
-            min-height: 100vh;
-            background: #000 url('/background.png') no-repeat center center fixed; 
-            background-size: cover; 
-            color: var(--text-main); 
-            line-height: 1.8;
-        }
+    .article-meta-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.8rem;
+    }
 
-        .navbar { 
-            position: sticky; 
-            top: 0; 
-            z-index: 100; 
-            background: var(--bg-nav); 
-            backdrop-filter: blur(15px); 
-            border-bottom: 1px solid var(--border); 
-            padding: 15px 40px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between; 
-        }
-        .nav-brand { 
-            font-size: 1.3rem; 
-            font-weight: 900; 
-            text-decoration: none; 
-            color: var(--text-main); 
-            font-family: 'JetBrains Mono', monospace;
-            letter-spacing: -0.5px;
-        }
-        .nav-brand span { color: var(--accent-contrast); }
-        .back-link { 
-            color: var(--accent-blue); 
-            text-decoration: none; 
-            font-weight: 700; 
-            font-size: 0.85rem; 
-            font-family: 'JetBrains Mono', monospace;
-            text-transform: uppercase;
-            transition: 0.2s;
-        }
-        .back-link:hover { opacity: 0.8; transform: translateX(-3px); }
-        
-        .container { 
-            max-width: 920px; 
-            margin: 40px auto; 
-            padding: 45px 50px; 
-            background: var(--card-bg); 
-            backdrop-filter: blur(16px); 
-            border-radius: 14px; 
-            border: 1px solid var(--border); 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-            position: relative;
-            overflow: hidden;
-        }
-        .container::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 4px; height: 100%;
-            background: var(--accent-blue);
-        }
-        
-        /* HEADER POSTU */
-        .article-header { 
-            border-bottom: 1px dashed var(--border); 
-            padding-bottom: 25px; 
-            margin-bottom: 35px; 
-        }
+    .article-category {
+        color: var(--accent-contrast, #ff5e00);
+        font-weight: 800;
+        text-transform: uppercase;
+        background: rgba(255, 94, 0, 0.1);
+        padding: 4px 10px;
+        border-radius: 4px;
+        border: 1px solid rgba(255, 94, 0, 0.25);
+    }
 
-        .article-meta-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-        }
+    .article-date { color: var(--text-muted, #94a3b8); }
 
-        .article-category {
-            color: var(--accent-contrast);
-            font-weight: 800;
-            text-transform: uppercase;
-            background: rgba(255, 94, 0, 0.1);
-            padding: 4px 10px;
-            border-radius: 4px;
-            border: 1px solid rgba(255, 94, 0, 0.25);
-        }
+    .article-title { 
+        font-size: 2.3rem; 
+        margin: 0; 
+        font-weight: 900; 
+        letter-spacing: -0.8px;
+        line-height: 1.25;
+        color: #ffffff;
+    }
 
-        .article-date { color: var(--text-muted); }
-        
-        .article-title { 
-            font-size: 2.3rem; 
-            margin: 0; 
-            font-weight: 900; 
-            letter-spacing: -0.8px;
-            line-height: 1.25;
-            color: #ffffff;
-        }
-        
-        /* FORMATOWANIE TREŚCI POSTU (MARKDOWN) */
-        .article-content { 
-            font-size: 1.05rem; 
-            color: #cbd5e1; 
-            overflow-wrap: break-word; 
-        }
+    .article-content { 
+        font-size: 1.05rem; 
+        color: #cbd5e1; 
+        overflow-wrap: break-word; 
+    }
 
-        .article-content p {
-            margin-bottom: 1.6em;
-        }
+    .article-content p { margin-bottom: 1.6em; }
 
-        .article-content h1, 
-        .article-content h2, 
-        .article-content h3, 
-        .article-content h4 { 
-            color: #ffffff; 
-            font-family: 'JetBrains Mono', monospace;
-            letter-spacing: -0.5px;
-            margin-top: 2.2em;
-            margin-bottom: 0.8em;
-            line-height: 1.3;
-        }
+    .article-content h1, 
+    .article-content h2, 
+    .article-content h3, 
+    .article-content h4 { 
+        color: #ffffff; 
+        font-family: 'JetBrains Mono', monospace;
+        letter-spacing: -0.5px;
+        margin-top: 2.2em;
+        margin-bottom: 0.8em;
+        line-height: 1.3;
+    }
 
-        .article-content h2 { 
-            font-size: 1.5rem; 
-            border-left: 3px solid var(--accent-blue); 
-            padding-left: 14px; 
-        }
+    .article-content h2 { 
+        font-size: 1.5rem; 
+        border-left: 3px solid var(--accent-blue, #00d2ff); 
+        padding-left: 14px; 
+    }
 
-        .article-content h3 { 
-            font-size: 1.25rem; 
-            color: var(--accent-blue); 
-        }
+    .article-content h3 { 
+        font-size: 1.25rem; 
+        color: var(--accent-blue, #00d2ff); 
+    }
 
-        .article-content h4 { 
-            font-size: 1.05rem; 
-            color: var(--accent-contrast); 
-        }
+    .article-content a { 
+        color: var(--accent-blue, #00d2ff); 
+        text-decoration: none; 
+        font-weight: 600; 
+        border-bottom: 1px dashed rgba(0, 210, 255, 0.4);
+        transition: 0.2s;
+    }
 
-        .article-content a { 
-            color: var(--accent-blue); 
-            text-decoration: none; 
-            font-weight: 600; 
-            border-bottom: 1px dashed rgba(0, 210, 255, 0.4);
-            transition: 0.2s;
-        }
-        .article-content a:hover { 
-            border-bottom-style: solid; 
-            opacity: 0.9; 
-        }
+    .article-content pre { 
+        max-width: 100%; 
+        overflow-x: auto; 
+        background: rgba(0, 0, 0, 0.65); 
+        border: 1px solid var(--border, rgba(255, 255, 255, 0.12));
+        padding: 20px; 
+        border-radius: 8px; 
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.9rem;
+    }
 
-        /* Listy */
-        .article-content ul, 
-        .article-content ol {
-            padding-left: 25px;
-            margin-bottom: 1.6em;
-        }
+    .post-interactions {
+        margin-top: 50px;
+        padding-top: 30px;
+        border-top: 1px dashed var(--border, rgba(255, 255, 255, 0.12));
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
 
-        .article-content li {
-            margin-bottom: 0.5em;
-        }
+    .kudos-box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgba(0, 210, 255, 0.03);
+        border: 1px solid var(--border, rgba(255, 255, 255, 0.12));
+        padding: 20px 25px;
+        border-radius: 10px;
+    }
 
-        .article-content ul li::marker {
-            color: var(--accent-blue);
-        }
+    .kudos-btn {
+        background: rgba(255, 94, 0, 0.1);
+        border: 1px solid rgba(255, 94, 0, 0.3);
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 800;
+        cursor: pointer;
+    }
 
-        /* Blockquote */
-        .article-content blockquote {
-            margin: 25px 0;
-            padding: 15px 20px;
-            background: rgba(0, 210, 255, 0.04);
-            border-left: 4px solid var(--accent-blue);
-            border-radius: 0 8px 8px 0;
-            color: #94a3b8;
-            font-style: italic;
-        }
+    .comments-section {
+        background: rgba(3, 3, 5, 0.6);
+        border: 1px solid var(--border, rgba(255, 255, 255, 0.12));
+        border-radius: 10px;
+        padding: 25px;
+    }
 
-        .article-content blockquote p {
-            margin: 0;
-        }
-        
-        /* Tabele */
-        .table-wrapper {
-            width: 100%;
-            overflow-x: auto;
-            margin: 30px 0;
-        }
+    .comment-input-group { display: flex; gap: 10px; }
+    .comment-input {
+        flex: 1;
+        background: rgba(0, 0, 0, 0.5);
+        border: 1px solid var(--border, rgba(255, 255, 255, 0.12));
+        color: #fff;
+        padding: 12px 15px;
+        border-radius: 6px;
+        font-family: 'JetBrains Mono', monospace;
+    }
+    .comment-submit {
+        background: rgba(0, 210, 255, 0.1);
+        border: 1px solid rgba(0, 210, 255, 0.3);
+        color: var(--accent-blue, #00d2ff);
+        padding: 0 20px;
+        border-radius: 6px;
+        font-family: 'JetBrains Mono', monospace;
+        cursor: pointer;
+    }
+</style>
 
-        .article-content table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.9rem;
-            font-family: 'JetBrains Mono', monospace;
-        }
+<main class="container">
+    <header class="article-header">
+        <div class="article-meta-bar">
+            <span class="article-category">[{{ page.category | default: "SYSTEM" | upcase }}]</span>
+            <span class="article-date">// {{ page.date | date: "%Y.%m.%d" }}</span>
+        </div>
+        <h1 class="article-title">{{ page.title }}</h1>
+    </header>
 
-        .article-content th, 
-        .article-content td {
-            border: 1px solid var(--border);
-            padding: 12px 16px;
-            text-align: left;
-        }
+    <article class="article-content">
+        {{ content }}
+    </article>
 
-        .article-content th {
-            background: rgba(0, 210, 255, 0.1);
-            color: var(--accent-blue);
-            font-weight: 700;
-        }
+    <!-- SEKCJA INTERAKTYWNA -->
+    <div class="post-interactions">
+        <div class="kudos-box">
+            <div class="kudos-info">
+                // DOCENIASZ MATERIAŁ? ZOSTAW SYGNAŁ KUDOS.
+            </div>
+            <button class="kudos-btn" id="kudosBtn">
+                ❤️ <span id="kudosCount">0</span> Kudos
+            </button>
+        </div>
 
-        .article-content tr:nth-child(even) { 
-            background: rgba(255, 255, 255, 0.02); 
-        }
+        <div class="comments-section">
+            <h3 class="comments-title">Rejestr Komentarzy & Feedback</h3>
+            <p class="comments-placeholder">// Masz pytanie lub uwagi do konfiguracji? Zostaw wpis w lokalnym buforze:</p>
+            
+            <div class="comment-input-group">
+                <input type="text" id="commentInput" class="comment-input" placeholder="Wpisz swój komentarz...">
+                <button class="comment-submit" id="commentSubmit">Wyślij</button>
+            </div>
 
-        .article-content tr:hover {
-            background: rgba(255, 255, 255, 0.04);
+            <div class="submitted-comments" id="commentsList"></div>
+        </div>
+    </div>
+</main>
+
+<script>
+    const postId = window.location.pathname;
+    
+    // Kudos
+    const kudosBtn = document.getElementById('kudosBtn');
+    const kudosCountSpan = document.getElementById('kudosCount');
+    let kudosKey = 'devlab_kudos_' + postId;
+    let likedKey = 'devlab_liked_' + postId;
+
+    let currentKudos = parseInt(localStorage.getItem(kudosKey)) || 0;
+    let hasLiked = localStorage.getItem(likedKey) === 'true';
+
+    kudosCountSpan.textContent = currentKudos;
+    if(hasLiked) kudosBtn.classList.add('liked');
+
+    kudosBtn.addEventListener('click', () => {
+        if(!hasLiked) {
+            currentKudos++;
+            hasLiked = true;
+            kudosBtn.classList.add('liked');
+        } else {
+            currentKudos = Math.max(0, currentKudos - 1);
+            hasLiked = false;
+            kudosBtn.classList.remove('liked');
+        }
+        localStorage.setItem(kudosKey, currentKudos);
+        localStorage.setItem(likedKey, hasLiked);
+        kudosCountSpan.textContent = currentKudos;
+    });
+
+    // Komentarze
+    const commentInput = document.getElementById('commentInput');
+    const commentSubmit = document.getElementById('commentSubmit');
+    const commentsList = document.getElementById('commentsList');
+
+    let commentsKey = 'devlab_comments_' + postId;
+    let savedComments = JSON.parse(localStorage.getItem(commentsKey)) || [];
+
+    function renderComments() {
+        commentsList.innerHTML = '';
+        if(savedComments.length === 0) {
+            commentsList.innerHTML = '<div style="color: var(--text-muted, #94a3b8); font-size: 0.85rem; font-family: \'JetBrains Mono\', monospace; margin-top: 10px;">// Brak wpisów w buforze. Bądź pierwszy!</div>';
+            return;
         }
 
-        /* Multimedia & Kod */
-        .article-content img { 
-            max-width: 100%; 
-            height: auto; 
-            display: block; 
-            margin: 30px auto; 
-            border-radius: 8px; 
-            border: 1px solid var(--border); 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
+        savedComments.forEach((c, index) => {
+            const div = document.createElement('div');
+            div.className = 'user-comment';
+            div.style.cssText = 'background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 15px; border-radius: 6px; margin-top: 10px; display: flex; justify-content: space-between;';
+            div.innerHTML = `
+                <div>
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent-blue, #00d2ff); margin-bottom: 4px;">// ${c.author} — ${c.date}</div>
+                    <div>${escapeHtml(c.text)}</div>
+                </div>
+            `;
+            commentsList.appendChild(div);
+        });
+    }
 
-        .article-content figure {
-            margin: 30px 0;
-            text-align: center;
-        }
+    commentSubmit.addEventListener('click', () => {
+        const text = commentInput.value.trim();
+        if(text.length < 2) return;
 
-        .article-content figcaption {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            font-family: 'JetBrains Mono', monospace;
-            margin-top: 8px;
-        }
+        const now = new Date();
+        const dateStr = now.getFullYear() + '.' + String(now.getMonth()+1).padStart(2, '0') + '.' + String(now.getDate()).padStart(2, '0');
 
-        .article-content pre { 
-            max-width: 100%; 
-            overflow-x: auto; 
-            background: var(--code-bg); 
-            border: 1px solid var(--border);
-            padding: 20px; 
-            border-radius: 8px; 
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
+        savedComments.push({ author: "Operator", text: text, date: dateStr });
+        localStorage.setItem(commentsKey, JSON.stringify(savedComments));
+        commentInput.value = '';
+        renderComments();
+    });
 
-        .article-content code { 
-            background: rgba(255,255,255,0.08); 
-            padding: 3px 7px; 
-            border-radius: 4px; 
-            font-family: 'JetBrains Mono', monospace; 
-            font-size: 0.88em;
-            color: var(--accent-blue);
-        }
+    function escapeHtml(str) {
+        return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace/>/g, "&gt;");
+    }
 
-        .article-content pre code { 
-            background: none; 
-            padding: 0; 
-            color: #f8fafc; 
-        }
-
-        /* SEKCJA INTERAKTYWNA */
-        .post-interactions {
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 1px dashed var(--border);
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .kudos-box {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: rgba(0, 210, 255, 0.03);
-            border: 1px solid var(--border);
-            padding: 20px 25px;
-            border-radius: 10px;
-        }
-
-        .kudos-info {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        .kudos-btn {
-            background: rgba(255, 94, 0, 0.1);
-            border: 1px solid rgba(255, 94, 0, 0.3);
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 800;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: 0.2s;
-        }
-
-        .kudos-btn:hover {
-            background: var(--accent-contrast);
-            transform: translateY(-2px);
-        }
-
-        .kudos-btn.liked {
-            background: rgba(255, 94, 0, 0.3);
-            border-color: var(--accent-contrast);
-        }
-
-        .comments-section {
-            background: rgba(3, 3, 5, 0.6);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 25px;
-        }
-
-        .comments-title {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.95rem;
-            color: #fff;
-            margin: 0 0 15px 0;
-            text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .comments-title::before { content: '//'; color: var(--accent-blue); }
-
-        .comments-placeholder {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            font-family: 'JetBrains Mono', monospace;
-            margin: 0 0 15px 0;
-        }
-
-        .comment-input-group {
-            display: flex;
-            gap: 10px;
-        }
-
-        .comment-input {
-            flex: 1;
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid var(--border);
-            color: #fff;
-            padding: 12px 15px;
-            border-radius: 6px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            outline: none;
-        }
-        .comment-input:focus { border-color: var(--accent-blue); }
-
-        .comment-submit {
-            background: rgba(0, 210, 255, 0.1);
-            border: 1px solid rgba(0, 210, 255, 0.3);
-            color: var(--accent-blue);
-            padding: 0 20px;
-            border-radius: 6px;
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.2s;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-        }
-        .comment-submit:hover {
-            background: var(--accent-blue);
-            color: #030305;
-        }
-
-        .submitted-comments {
-            margin-top: 15px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .user-comment {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 15px;
-            border-radius: 6px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .user-comment-content { flex: 1; }
-
-        .user-meta {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--accent-blue);
-            margin-bottom: 4px;
-        }
-
-        .comment-actions {
-            display: flex;
-            gap: 8px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-        }
-
-        .comment-action-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: var(--text-muted);
-            padding: 2px 6px;
-            border-radius: 4px;
-            transition: 0.2s;
-        }
-        .comment-action-btn:hover {
-            background: rgba(255, 255, 255, 0.08);
-            color: #fff;
-        }
-        .comment-action-btn.delete:hover { color: #ef4444; }
-
-        footer { 
-            text-align: center; 
-            color: var(--text-muted); 
-            font-size: 0.8rem; 
-            font-family: 'JetBrains Mono', monospace;
-            margin-top: 60px; 
-            margin-bottom: 40px; 
-        }
-
-        @media (max-width: 768px) {
-            .container { margin: 20px 12px; padding: 25px 20px; }
-            .article-title { font-size: 1.75rem; }
-            .navbar { padding:
+    renderComments();
+</script>
