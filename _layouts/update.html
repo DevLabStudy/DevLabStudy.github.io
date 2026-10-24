@@ -3,12 +3,12 @@ layout: default
 ---
 
 <style>
-    .post-container {
-        max-width: 850px;
+    .updates-container {
+        max-width: 900px;
         margin: 10px auto 50px auto;
     }
 
-    .back-link {
+    .back-btn {
         font-family: 'JetBrains Mono', monospace;
         font-size: 0.8rem;
         color: #ff9900;
@@ -19,52 +19,132 @@ layout: default
         margin-bottom: 20px;
         font-weight: 700;
     }
-    .back-link:hover { text-decoration: underline; }
+    .back-btn:hover { text-decoration: underline; }
 
-    .post-header {
-        background: rgba(15, 23, 42, 0.75);
-        border: 1px solid rgba(255, 153, 0, 0.25);
+    /* STYL POD POJEDYNCZY WPIS */
+    .update-header {
+        background: rgba(15, 23, 42, 0.8);
+        border: 1px solid rgba(255, 153, 0, 0.3);
         border-radius: 14px;
         padding: 30px;
-        margin-bottom: 30px;
+        margin-bottom: 25px;
         backdrop-filter: blur(10px);
     }
 
-    .post-title {
+    .update-title {
         font-family: 'JetBrains Mono', monospace;
-        font-size: 2rem;
+        font-size: 2.2rem;
         font-weight: 900;
         color: #fff;
-        margin: 0 0 10px 0;
+        margin: 10px 0;
     }
 
-    .post-date {
+    .update-meta {
         font-family: 'JetBrains Mono', monospace;
         font-size: 0.78rem;
-        color: #ff9900;
-        text-transform: uppercase;
+        color: #8b9bb4;
+        border-top: 1px dashed rgba(255, 255, 255, 0.08);
+        padding-top: 12px;
+        margin-top: 12px;
     }
+    .update-meta span { color: #fff; font-weight: 700; }
 
-    .post-content {
-        color: #e2e8f0;
-        font-size: 1rem;
-        line-height: 1.8;
+    .update-content {
         background: rgba(15, 23, 42, 0.4);
         border: 1px solid rgba(255, 255, 255, 0.05);
         border-radius: 14px;
         padding: 30px;
+        color: #e2e8f0;
+        line-height: 1.8;
+        font-size: 0.98rem;
+    }
+    .update-content h2, .update-content h3 {
+        font-family: 'JetBrains Mono', monospace;
+        color: #ff9900;
+        margin-top: 25px;
+    }
+
+    /* STYL LISTY WSZYSTKICH WPISÓW */
+    .updates-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .update-card {
+        background: rgba(15, 23, 42, 0.75);
+        border: 1px solid rgba(255, 153, 0, 0.2);
+        border-radius: 12px;
+        padding: 25px;
+        backdrop-filter: blur(10px);
+        transition: 0.3s;
+    }
+    .update-card:hover {
+        border-color: #ff9900;
+        transform: translateY(-2px);
     }
 </style>
 
-<div class="post-container">
-    <a href="/newsy" class="back-link">← Powrót do Aktualności</a>
+<div class="updates-container">
 
-    <div class="post-header">
-        <div class="post-date">// DATUM: {{ page.date | date: "%Y-%m-%d" }}</div>
-        <h1 class="post-title">{{ page.title }}</h1>
+    {% if page.title and page.url contains '/updates/' %}
+    <!-- 1. WIDOK POJEDYNCZEGO WPISU AKTUALIZACJI -->
+    <a href="/newsy" class="back-btn">← Powrót do Dziennika Zmian</a>
+
+    <div class="update-header">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #ff9900; text-transform: uppercase; font-weight: 800;">
+            // DEVLABSTUDY SITE UPDATE
+        </div>
+        <h1 class="update-title">{{ page.title }}</h1>
+        <div class="update-meta">
+            Data: <span>{{ page.date | date: "%Y-%m-%d" }}</span> {% if page.version %} | Wersja: <span>{{ page.version }}</span>{% endif %}
+        </div>
     </div>
 
-    <div class="post-content">
+    <div class="update-content">
         {{ content }}
     </div>
+
+    {% else %}
+    <!-- 2. WIDOK BAZY (LISTA ODZYTUJĄCA WSZYSTKIE PLIKI Z /_updates) -->
+    <div style="text-align: center; margin-bottom: 40px;">
+        <h1 style="font-family: 'JetBrains Mono', monospace; font-size: 3rem; color: #fff; margin: 0 0 10px 0;">
+            DEVLABSTUDY <span style="color: #ff9900;">UPDATES</span>
+        </h1>
+        <p style="color: #94a3b8; font-size: 1rem;">
+            Dziennik zmian, aktualizacje układu oraz wpisy o nowościach na devlabstudy.ovh.
+        </p>
+    </div>
+
+    <div class="updates-list">
+        {% for item in site.updates reversed %}
+        <div class="update-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #ff9900; font-weight: 700;">
+                    // {{ item.date | date: "%Y-%m-%d" }}
+                </span>
+                {% if item.version %}
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; background: rgba(255,255,255,0.05); color: #8b9bb4; padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.08);">
+                    {{ item.version }}
+                </span>
+                {% endif %}
+            </div>
+            <h2 style="font-family: 'JetBrains Mono', monospace; font-size: 1.3rem; font-weight: 800; color: #fff; margin: 0 0 10px 0;">
+                {{ item.title }}
+            </h2>
+            <p style="color: #94a3b8; font-size: 0.9rem; line-height: 1.6; margin: 0 0 15px 0;">
+                {{ item.description }}
+            </p>
+            <a href="{{ item.url }}" style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #ff9900; font-weight: 800; text-decoration: none;">
+                Przeczytaj Wpis →
+            </a>
+        </div>
+        {% else %}
+        <div style="text-align: center; color: #64748b; font-family: 'JetBrains Mono', monospace; padding: 40px;">
+            Brak plików aktualizacji w folderze /_updates/
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
 </div>
