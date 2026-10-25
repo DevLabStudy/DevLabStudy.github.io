@@ -16,7 +16,3 @@ Fujitsu Futro S720 to kompaktowy i niezwykle energooszczędny terminal (Thin Cli
 - **Desk Node (24/7 Passive/Active):** Urządzenie łączy cichą pracę z możliwością wspomagania chłodzenia zewnętrzną podkładką z wentylatorem 5V USB, co zapewnia optymalne temperatury podczas dłuższego obciążenia[cite: 2].
 - **Lekkie Usługi i Monitoring:** Wykorzystywany do uruchamiania kontenerów oraz narzędzi diagnostycznych w domowej infrastrukturze.
 - **Optymalizacja Energii:** Ze względu na niskie zapotrzebowanie na moc, terminal jest ekonomicznym rozwiązaniem do ciągłego utrzymywania mniejszych serwisów.
-
-### Galeria / Stanowisko:
-* Widok panelu informacyjnego / specyfikacji węzła biurkowego:
-  `![](/assets/images/s720.jpeg)`
