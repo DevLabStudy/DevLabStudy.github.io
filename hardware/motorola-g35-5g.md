@@ -16,7 +16,3 @@ Motorola Moto G35 5G w konfiguracji 8/256 GB z obsługą dwóch kart SIM to mój
 - **Codzienna komunikacja (Dual-SIM):** Obsługuje fizyczną kartę SIM sieci T-Mobile oraz eSIM sieci Play, gwarantując niezawodne połączenie z internetem mobilnym i usługami w terenie.
 - **Zarządzanie homelabem i monitoring:** Służy jako mobilna konsola do sprawdzania powiadomień, obsługi narzędzi administracyjnych oraz monitorowania stanu usług (np. przez aplikacje klienckie i panele VPN).
 - **Wydajna przestrzeń i pamięć:** Konfiguracja 8 GB RAM i 256 GB pamięci masowej pozwala na płynne działanie wielu aplikacji jednocześnie oraz przechowywanie niezbędnych plików diagnostycznych.
-
-### Galeria / Stanowisko:
-* Widok urządzenia w konfiguracji codzienne roboczej:
-  `![](/assets/images/g35.jpeg)`
