@@ -17,7 +17,3 @@ Intel NUC z procesorem Intel Core i5-5250U to kluczowy, energooszczędny węzeł
 - **Proxmox VE Node #1:** Pełni rolę głównego hiperwizora w architekturze klastrowej / stanowiskowej[cite: 1], zarządzając zasobami obliczeniowymi i wirtualnymi dyskami.
 - **Open-Rack 10\" #2 Node:** Fizycznie zintegrowany w kompaktowej obudowie 10-calowego racka, co pozwala zachować porządek i miniaturyzację sprzętową[cite: 1].
 - **Wydajność i Efektywność:** Wyposażony w 16 GB pamięci DDR3L[cite: 1], bez problemu obsługuje równolegle wiele lekkich maszyn i kontenerów podnoszących funkcjonalność domowej infrastruktury.
-
-### Galeria / Stanowisko:
-* Widok panelu informacyjnego / specyfikacji węzła w środowisku roboczym:
-  `![](/assets/images/nuc.png)`
