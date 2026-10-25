@@ -17,7 +17,3 @@ Dell Vostro w obudowie Small Form Factor (SFF) to drugi węzeł wirtualizacji w 
 - **Proxmox VE Node #2:** Współpracuje z głównym NUC-em, rozszerzając moc obliczeniową klastra oraz pozwalając na bezpieczne migracje i testowanie wysokiej dostępności maszyn wirtualnych[cite: 5].
 - **Wydajne i Trwałe Podzespoły:** Wyposażony w procesor Intel Core i5-7400, 8 GB pamięci DDR4 oraz niezawodny dysk ADATA SU900 SSD (MLC), co gwarantuje długą żywotność zapisu i stabilność[cite: 5].
 - **Praca Ciągła (24/7):** Zaprojektowany z myślą o bezawaryjnym utrzymywaniu kluczowych usług sieciowych i automatyzacji domowych bez przerw w dostępie[cite: 5].
-
-### Galeria / Stanowisko:
-* Widok panelu informacyjnego i specyfikacji węzła w środowisku roboczym:
-  `![](/assets/images/vostro.jpeg)`
