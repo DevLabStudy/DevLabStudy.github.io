@@ -15,7 +15,3 @@ HTC Desire 510 to starszy smartfon budżetowy wyposażony w procesor Snapdragon 
 ### Konfiguracja i Kluczowe Zadania:
 - **Test Bench & Legacy Lab:** Wykorzystywany jako poligon do testowania podstawowej łączności, kompatybilności prostych narzędzi sieciowych oraz diagnostyki urządzeń mobilnych starszej generacji[cite: 10].
 - **Archiwum i Kolekcja:** Ciekawy eksponat z czasów popularyzacji tańszych smartfonów z modemami LTE, stanowiący część zbioru dawnej elektroniki użytkowej.
-
-### Galeria / Stanowisko:
-* Widok panelu informacyjnego i specyfikacji stanowiska:
-  `![](/assets/images/desire.jpeg)`
