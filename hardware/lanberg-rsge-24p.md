@@ -18,5 +18,6 @@ Lanberg RSGE-24P-2GE-2S-250 to potężny, 24-portowy przełącznik gigabitowy z 
 - **Uplinki SFP i Combo:** Wykorzystanie portów SFP oraz gigabitowych portów combo do szybkiego i bezstratnego połączenia trunkowego z resztą topologii sieciowej.
 
 ### Galeria / Stanowisko:
-* Widok przełącznika zamontowanego w szafie rack 19":
-  `![](/assets/images/lanberg.jpeg)`
+Widok przełącznika zamontowanego w szafie rack 19":
+
+![Lanberg RSGE-24P](/assets/images/lanberg.jpeg)
