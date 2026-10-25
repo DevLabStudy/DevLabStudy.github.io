@@ -16,7 +16,3 @@ Samsung Galaxy S4 to jeden z najbardziej kultowych smartfonów tamtej epoki, kt�
 - **Archiwum i Kolekcja:** Cenne uzupełnienie zbioru dawnych flagowców Samsunga, pozwalające śledzić rozwój technologiczny ekranów Super AMOLED i rozwiązań systemowych z tamtych lat.
 - **Testy oprogramowania i ROM-ów:** Poligon doświadczalny do eksperymentów z custom ROM-ami, rootowaniem oraz sprawdzaniem działania archiwalnych aplikacji i narzędzi diagnostycznych.
 - **Retro Mobile Bench:** Platforma do testowania łączności i zachowania starszych wersji systemu Android w kontrolowanych warunkach laboratoryjnych.
-
-### Galeria / Stanowisko:
-* Widok urządzenia w konfiguracji kolekcjonerskiej:
-  `![](/assets/images/s4.jpeg)`
