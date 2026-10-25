@@ -16,7 +16,3 @@ Samsung Galaxy S5 to klasyczny, doskonale znany smartfon z okresu rozkwitu flago
 - **Custom ROM-y i Modyfikacje:** Poligon doświadczalny do instalowania alternatywnych systemów (np. LineageOS), testowania rootowania oraz sprawdzania zachowania starszych aplikacji.
 - **Archiwum i Kolekcja:** Cenne uzupełnienie zbioru dawnych smartfonów, które pozwala przeanalizować rozwiązania konstrukcyjne stosowane przez Samsunga w tamtym okresie (wodoodporność z uszczelnioną klapką, ekran Super AMOLED).
 - **Testy kompatybilności:** Weryfikacja działania prostych protokołów sieciowych i aplikacji narzędziowych na starszych wersjach systemu Android.
-
-### Galeria / Stanowisko:
-* Widok urządzenia w konfiguracji kolekcjonerskiej:
-  `![](/assets/images/s5.jpeg)`
