@@ -16,7 +16,3 @@ HTC One M9e to stylowy smartfon o charakterystycznej, aluminiowej obudowie unibo
 - **Archiwum i Kolekcja Smartfonów:** Urządzenie służy jako eksponat kolekcjonerski, pozwalający zachować i przetestować unikalny design oraz dawne nakładki systemowe (HTC Sense).
 - **Testy kompatybilności i retro aplikacje:** Sprawdzanie działania starszych wersji systemów operacyjnych oraz testowanie prostych aplikacji narzędziowych na procesorze MediaTek.
 - **Eksperymenty sprzętowe:** Analiza budowy fizycznej oraz konstrukcji aluminiowej obudowy klasycznych flagowców i modeli pochodnych marki HTC.
-
-### Galeria / Stanowisko:
-* Widok urządzenia w jego gablocie / stanowisku kolekcjonerskim:
-  `![](/assets/images/m9e.jpeg)`
