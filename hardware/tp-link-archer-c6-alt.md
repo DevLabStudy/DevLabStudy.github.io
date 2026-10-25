@@ -16,7 +16,3 @@ Ten egzemplarz TP-Link Archer C6 pełni analogiczną funkcję do pierwszego urz�
 - **Rozszerzenie zasięgu Wi-Fi:** Dostarcza stabilną sieć bezprzewodową w standardzie AC1200 w strefach, do których główny sygnał z szafy rackowej dociera z mniejszą siłą.
 - **Spójna konfiguracja:** Pracuje z zachowaniem odpowiedniej segmentacji i bezproblemowo integruje się z resztą topologii sieciowej zarządzanej przez głównego MikroTika.
 - **Elastyczność rozmieszczenia:** Umożliwia wygodne podłączenie urządzeń mobilnych oraz stacjonarnych w dodatkowym punkcie pomieszczenia.
-
-### Galeria / Stanowisko:
-* Widok urządzenia w jego docelowej lokalizacji roboczej:
-  `![](/assets/images/archer2.jpeg)`
