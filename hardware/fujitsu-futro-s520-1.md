@@ -15,7 +15,3 @@ Fujitsu Futro S520 w wersji z oznaczeniem `#1` to kompaktowy terminal (Thin Clie
 ### Konfiguracja i Kluczowe Zadania:
 - **10" Wall Cabinet Node:** Urządzenie idealnie pasuje gabarytowo do mniejszych szafek i obudów naściennych, służąc jako lekki węzeł obliczeniowy lub stacja monitorująca[cite: 9].
 - **Energooszczędność:** Dzięki znikomemu poborowi prądu doskonale nadaje się do ciągłej pracy przy obsłudze prostych zadań i skryptów w ekosystemie homelabu.
-
-### Galeria / Stanowisko:
-* Widok panelu informacyjnego i specyfikacji stanowiska:
-  `![](/assets/images/s520-1.jpeg)`
