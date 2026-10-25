@@ -6,7 +6,7 @@ role: "Compact Access & Cisco IOS Training Switch"
 model: "WS-C2960C-8TC-L (Fanless / LAN Base)"
 ports: "8x 1GbE PoE, 2x 1GbE Combo, 2x SFP"
 image: "/assets/images/hardware/cisco1.jpeg"
-permalink: /hardware/cisco-catalyst/
+permalink: /hardware/cisco-catalyst-2960c/
 ---
 
 ### Do czego używam tego urządzenia?
