@@ -17,7 +17,3 @@ Gamingowy Host to moja główna, wszechstronna stacja robocza i komputer do gier
 - **Gaming i Testy Wydajnościowe:** Główna platforma do uruchamiania wymagających gier, testowania mechanik oraz sprawdzania płynności w rozdzielczości 1080p na monitorze 165 Hz.
 - **Tworzenie Treści i Edycja Wideo:** Wykorzystywany do obróbki materiałów wideo (m.in. w DaVinci Resolve i CapCut) na potrzeby tworzenia treści pod marką DevLabStudy.
 - **Zarządzanie Infrastrukturą:** Stanowisko dowodzenia, z którego nadzoruję homelab, obsługuję maszyny wirtualne oraz konfiguruję usługi sieciowe.
-
-### Galeria / Stanowisko:
-* Widok panelu informacyjnego i specyfikacji głównego hosta:
-  `![](/assets/images/pc.jpeg)`
