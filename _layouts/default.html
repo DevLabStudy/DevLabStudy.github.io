@@ -436,7 +436,8 @@
             <a href="/" class="nav-link-btn {% if page.url == '/' %}active-page{% endif %}">Hub</a>
             <a href="/newsy" class="nav-link-btn {% if page.url contains 'newsy' %}active-page{% endif %}">Newsy</a>
             <a href="/blog" class="nav-link-btn {% if page.url contains 'blog' %}active-page{% endif %}">Blog</a>
-            <a href="/homelab" class="nav-link-btn {% if page.url == '/homelab' or page.url == '/homelab/' %}active-page{% endif %}">HomeLab</a>
+            <!-- Zaktualizowany warunek dla HomeLab (obsługuje też podstrony /hardware/) -->
+            <a href="/homelab" class="nav-link-btn {% if page.url == '/homelab' or page.url == '/homelab/' or page.url contains '/hardware/' %}active-page{% endif %}">HomeLab</a>
             
             <!-- ROZWIJANA SEKCJA USŁUGI -->
             <div class="dropdown" id="dropdownServices">
