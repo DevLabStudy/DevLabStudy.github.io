@@ -16,8 +16,3 @@ Lanberg RSGE-24P-2GE-2S-250 to potężny, 24-portowy przełącznik gigabitowy z 
 - **Zasilanie i Łączność PoE+:** Zapewnia stabilne zasilanie oraz transmisję danych dla punktów dostępowych (Access Pointów), kamer monitoringu oraz innych urządzeń PoE w całym otoczeniu roboczym, mieszcząc się w dużym budżecie mocowym 250W.
 - **Szkielet Szafy Rack 19":** Obsługuje gęste okablowanie strukturalne zakończone na panelach krosowniczych (patch panelach), integrując ruch z mniejszych podsieci i terminali.
 - **Uplinki SFP i Combo:** Wykorzystanie portów SFP oraz gigabitowych portów combo do szybkiego i bezstratnego połączenia trunkowego z resztą topologii sieciowej.
-
-### Galeria / Stanowisko:
-Widok przełącznika zamontowanego w szafie rack 19":
-
-![Lanberg RSGE-24P](/assets/images/lanberg.jpeg)
