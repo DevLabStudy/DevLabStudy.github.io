@@ -17,7 +17,3 @@ HP Compaq Pro 6300 w obudowie SFF to moje główne stanowisko diagnostyczno-serw
 - **Test Bench / Service Workstation:** Stabilna platforma robocza wyposażona w procesor Intel Core i5-3470 oraz 16 GB pamięci DDR3[cite: 7], co zapewnia odpowiedni zapas mocy do uruchamiania narzędzi diagnostycznych.
 - **Diagnoza i Serwis:** Wykorzystywane do awaryjnego testowania dysków, nagrywania nośników instalacyjnych, sprawdzania kompatybilności podzespołów oraz wstępnej konfiguracji sprzętu przed wdrożeniem do właściwego homelabu.
 - **Magazyn roboczy:** Dysk HDD 320 GB[cite: 7] służy jako przestrzeń na archiwa sterowników, obrazy ISO oraz narzędzia serwisowe.
-
-### Galeria / Stanowisko:
-* Widok panelu informacyjnego i specyfikacji stacji diagnostycznej:
-  `![](/assets/images/diagnostyka.png)`
