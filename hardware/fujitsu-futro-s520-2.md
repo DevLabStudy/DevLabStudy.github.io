@@ -15,7 +15,3 @@ Fujitsu Futro S520 w wersji `#2` to bliźniaczy terminal (Thin Client) wyposażo
 ### Konfiguracja i Kluczowe Zadania:
 - **10" Wall Cabinet Node #2:** Działa ramię w ramię z pierwszą sztuką, rozszerzając możliwości testowe i obsługę lekkich usług bezpośrednio w kompaktowej zabudowie naściennej.
 - **Niezależne środowisko:** Wykorzystywany do równoległych testów oprogramowania, skryptów automatyzacji oraz zadań wymagających dedykowanego, fizycznego węzła ominimalnym poborze energii.
-
-### Galeria / Stanowisko:
-* Widok panelu informacyjnego i specyfikacji drugiego węzła S520:
-  `![](/assets/images/s520-2.jpeg)`
