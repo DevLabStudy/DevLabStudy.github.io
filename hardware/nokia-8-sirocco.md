@@ -16,7 +16,3 @@ Nokia 8 Sirocco to wyjątkowy, kompaktowy smartfon o unikalnym designie z zakrzy
 - **Testy mobilne i aplikacje:** Wykorzystywany do sprawdzania narzędzi administracyjnych, klientów SSH/VPN (takich jak Twingate czy WireGuard) oraz monitorowania stanu usług z poziomu smartfona.
 - **Kolekcja i archiwum sprzętowe:** Ciekawy eksponat z czasów powrotu marki Nokia na rynek flagowców, ceniony za czysty system Android (Android One) oraz elegancką konstrukcję.
 - **Mobilny punkt dostępowy / diagnostyka:** Sprawne urządzenie zapasowe do szybkich testów łączności komórkowej i Wi-Fi.
-
-### Galeria / Stanowisko:
-* Widok urządzenia i jego stanowiska testowego:
-  `![](/assets/images/nokia.jpeg)`
