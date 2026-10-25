@@ -15,7 +15,3 @@ Ten kompaktowy, 8-portowy przełącznik gigabitowy marki Lanberg pełni rolę po
 - **Rozbudowa portów (Open-Rack 10" #2):** Umożliwia spięcie kilku urządzeń w locie w obrębie drugiego stojaka rackowego[cite: 4].
 - **Plug & Play:** Jako urządzenie niezarządzane (Unmanaged)[cite: 4] nie wymaga konfiguracji, oferując natychmiastową gotowość do pracy i stabilny transfer 1 GbE na każdym porcie.
 - **Optymalizacja przestrzeni:** Niewielkie gabaryty idealnie wpisują się w koncepcję mniejszych szaf i stojaków 10-calowych.
-
-### Galeria / Stanowisko:
-* Widok panelu informacyjnego i konfiguracji sprzętowej:
-  `![](/assets/images/open.jpeg)`
