@@ -16,7 +16,3 @@ Canon PIXMA TS705a to wydajna, kompaktowa drukarka atramentowa zintegrowana z si
 - **Wydruk Dokumentacji i Schematów:** Odpowiada za szybkie przygotowywanie fizycznych notatek, planów topologii sieci, dokumentacji projektowych oraz materiałów do nauki.
 - **Łączność Sieciowa (Ethernet / Wi-Fi):** Dzięki wbudowanemu portowi Ethernet oraz modułowi Wi-Fi jest w pełni zintegrowana z moją siecią domową, co umożliwia bezproblemowe wysyłanie zadań drukowania z każdego komputera w homelabie.
 - **Kompaktowa forma:** Niewielkie gabaryty pozwalają na wygodne ulokowanie sprzętu w pobliżu stoiska roboczego.
-
-### Galeria / Stanowisko:
-* Widok urządzenia w konfiguracji roboczej:
-  `![](/assets/images/canon.jpeg)`
