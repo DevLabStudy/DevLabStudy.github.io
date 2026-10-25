@@ -20,7 +20,3 @@ MikroTik hEX gr3 to serce całego mojego homelabu i domowej sieci internetowej. 
 - **Tunelowanie i Zdalny Dostęp:** Utrzymywanie bezpiecznych połączeń VPN (WireGuard / Twingate), co pozwala mi na zdalne zarządzanie całym homelabem z dowolnego miejsca.
 - **Rozszerzona pamięć i logowanie:** Urządzenie wyposażone jest w dołożoną kartę **MicroSD 32 GB**, która służy jako dodatkowa przestrzeń na logi systemowe, pakiety oraz kopie zapasowe konfiguracji.
 - **Monitoring i Statystyki:** Bieżąca kontrola obciążenia pasma, śledzenie ruchu na interfejsach oraz optymalizacja routingu.
-
-### Galeria / Stanowisko:
-- Widok urządzenia w konfiguracji roboczej:
-  `![](/assets/images/hex.jpeg)`
