@@ -16,7 +16,3 @@ TP-Link TL-WR1043ND w wersji 2.1 to starsze, sprawdzone urządzenie sieciowe o s
 - **Sieć IoT:** Odizolowane środowisko bezprzewodowe dla inteligentnych urządzeń domowych, czujników i mikrokontrolerów, które nie powinny mieć bezpośredniego dostępu do głównego segmentu labu.
 - **OpenWrt / Factory:** Elastyczność oprogramowania pozwala na eksperymenty z sieciami guest, filtrowaniem ruchu oraz tworzenie dedykowanych tuneli dla urządzeń o niskim priorytecie[cite: 3].
 - **Mobilne Laboratorium:** Poręczny węzeł do szybkiego testowania konfiguracji bezprzewodowych w różnych miejscach poza główną szafą rackową[cite: 3].
-
-### Galeria / Stanowisko:
-* Widok urządzenia i karta informacyjna stanowiska:
-  `![](/assets/images/1043nd.jpeg)`
