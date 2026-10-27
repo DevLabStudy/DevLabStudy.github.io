@@ -226,7 +226,7 @@ layout: default
         align-items: flex-start;
     }
 
-    /* PŁYWAJĄCY, ŚWIECĄCY PRZYCISK BLOG W PRAWYM DOLNYM ROGU */
+    /* PŁYWAJĄCY, ŚWIECĄCY PRZYCISK BLOG W LEWYM DOLNYM ROGU */
     .floating-blog-btn {
         position: fixed;
         bottom: 30px;
@@ -255,11 +255,11 @@ layout: default
         transform: translateY(-3px);
         color: var(--accent-blue, #00d2ff);
     }
-    
+
     @media (max-width: 768px) {
         .comment-input-group { flex-direction: column; }
         .kudos-box { flex-direction: column; gap: 15px; text-align: center; }
-        .floating-blog-btn { bottom: 20px; right: 20px; padding: 10px 16px; font-size: 0.8rem; }
+        .floating-blog-btn { bottom: 20px; left: 20px; padding: 10px 16px; font-size: 0.8rem; }
     }
 </style>
 
@@ -290,7 +290,7 @@ layout: default
         <div class="comments-section">
             <h3 class="comments-title">Rejestr Komentarzy & Feedback</h3>
             <p class="comments-placeholder">// Masz pytanie lub uwagi do konfiguracji? Zostaw wpis w lokalnym buforze:</p>
-            
+
             <div class="comment-input-group">
                 <input type="text" id="commentInput" class="comment-input" placeholder="Wpisz swój komentarz...">
                 <button class="comment-submit" id="commentSubmit">Wyślij</button>
@@ -301,14 +301,14 @@ layout: default
     </div>
 </main>
 
-<!-- PŁYWAJĄCY PRZYCISK BLOG -->
+<!-- PŁYWAJĄCY PRZYCISK BLOG (PO LEWEJ STRONIE) -->
 <a href="https://www.devlabstudy.ovh/blog" class="floating-blog-btn">
     <span>&larr;</span> // BLOG
 </a>
 
 <script>
     const postId = window.location.pathname;
-    
+
     // Kudos logic
     const kudosBtn = document.getElementById('kudosBtn');
     const kudosCountSpan = document.getElementById('kudosCount');
