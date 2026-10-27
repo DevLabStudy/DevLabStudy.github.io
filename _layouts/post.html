@@ -226,51 +226,9 @@ layout: default
         align-items: flex-start;
     }
 
-    /* PŁYWAJĄCY PRZYCISK BLOG W PRAWYM DOLNYM ROGU (KOMPUTER) */
-    .floating-blog-btn {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        z-index: 999;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        background: rgba(5, 10, 20, 0.85);
-        border: 1px solid var(--accent-blue, #00d2ff);
-        color: #fff;
-        padding: 12px 20px;
-        border-radius: 8px;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.85rem;
-        font-weight: 700;
-        text-decoration: none;
-        box-shadow: 0 0 15px rgba(0, 210, 255, 0.4), inset 0 0 10px rgba(0, 210, 255, 0.1);
-        backdrop-filter: blur(10px);
-        transition: all 0.3s ease;
-    }
-
-    .floating-blog-btn:hover {
-        background: rgba(0, 210, 255, 0.15);
-        box-shadow: 0 0 25px rgba(0, 210, 255, 0.7), inset 0 0 15px rgba(0, 210, 255, 0.2);
-        transform: translateY(-3px);
-        color: var(--accent-blue, #00d2ff);
-    }
-
     @media (max-width: 768px) {
         .comment-input-group { flex-direction: column; }
         .kudos-box { flex-direction: column; gap: 15px; text-align: center; }
-        
-        /* NA TELEFONIE PRZYCISK WĘDRUJE NA GÓRĘ Z PRAWEJ (BEZPIECZNIE OD WHATSAPPA) */
-        .floating-blog-btn {
-            position: absolute;
-            top: 20px;
-            right: 15px;
-            bottom: auto;
-            left: auto;
-            padding: 8px 14px;
-            font-size: 0.75rem;
-            z-index: 99;
-        }
     }
 </style>
 
@@ -312,14 +270,10 @@ layout: default
     </div>
 </main>
 
-<!-- PŁYWAJĄCY PRZYCISK BLOG -->
-<a href="https://www.devlabstudy.ovh/blog" class="floating-blog-btn">
-    <span>&larr;</span> // BLOG
-</a>
-
 <script>
     const postId = window.location.pathname;
 
+    // Kudos logic
     const kudosBtn = document.getElementById('kudosBtn');
     const kudosCountSpan = document.getElementById('kudosCount');
     let kudosKey = 'devlab_kudos_' + postId;
@@ -346,6 +300,7 @@ layout: default
         kudosCountSpan.textContent = currentKudos;
     });
 
+    // Comments logic
     const commentInput = document.getElementById('commentInput');
     const commentSubmit = document.getElementById('commentSubmit');
     const commentsList = document.getElementById('commentsList');
@@ -354,6 +309,7 @@ layout: default
     let savedComments = JSON.parse(localStorage.getItem(commentsKey)) || [];
 
     function renderComments() {
+        if(!commentsList) return;
         commentsList.innerHTML = '';
         if(savedComments.length === 0) {
             commentsList.innerHTML = '<div style="color: var(--text-muted, #94a3b8); font-size: 0.85rem; font-family: \'JetBrains Mono\', monospace;">// Brak wpisów w buforze. Bądź pierwszy!</div>';
@@ -373,18 +329,20 @@ layout: default
         });
     }
 
-    commentSubmit.addEventListener('click', () => {
-        const text = commentInput.value.trim();
-        if(text.length < 2) return;
+    if(commentSubmit) {
+        commentSubmit.addEventListener('click', () => {
+            const text = commentInput.value.trim();
+            if(text.length < 2) return;
 
-        const now = new Date();
-        const dateStr = now.getFullYear() + '.' + String(now.getMonth()+1).padStart(2, '0') + '.' + String(now.getDate()).padStart(2, '0');
+            const now = new Date();
+            const dateStr = now.getFullYear() + '.' + String(now.getMonth()+1).padStart(2, '0') + '.' + String(now.getDate()).padStart(2, '0');
 
-        savedComments.push({ author: "Operator", text: text, date: dateStr });
-        localStorage.setItem(commentsKey, JSON.stringify(savedComments));
-        commentInput.value = '';
-        renderComments();
-    });
+            savedComments.push({ author: "Operator", text: text, date: dateStr });
+            localStorage.setItem(commentsKey, JSON.stringify(savedComments));
+            commentInput.value = '';
+            renderComments();
+        });
+    }
 
     function escapeHtml(str) {
         return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
