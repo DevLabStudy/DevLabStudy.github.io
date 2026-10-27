@@ -33,9 +33,9 @@ Techniczna specyfikacja Wi-Fi 8 wprowadza zestaw zaawansowanych funkcji zarządz
 
 ### Coordinated Multi-AP (Co-MAP)
 Największa rewolucja w Wi-Fi 8. Pozwala sąsiadującym punktom dostępowym (routerom i wzmacniaczom) na bezpośrednią komunikację i koordynację pracy bez potrzeby korzystania z centralnego kontrolera:
-* **Coordinated Beamforming (CoBF):** Routery współpracują, aby precyzyjnie kierować wiązki sygnału do urządzeń, unikając wzajemnego zakłócania się.
-* **Coordinated OFDMA (Co-OFDMA):** Inteligentny podział podnośnych częstotliwości pomiędzy różne AP w tym samym czasie.
-* **Coordinated Spatial Reuse (CoSR):** Dynamiczne dostosowywanie mocy nadawania, umożliwiające jednoczesną transmisję na tym samym kanale bez kolizji.
+- **Coordinated Beamforming (CoBF):** Routery współpracują, aby precyzyjnie kierować wiązki sygnału do urządzeń, unikając wzajemnego zakłócania się.
+- **Coordinated OFDMA (Co-OFDMA):** Inteligentny podział podnośnych częstotliwości pomiędzy różne AP w tym samym czasie.
+- **Coordinated Spatial Reuse (CoSR):** Dynamiczne dostosowywanie mocy nadawania, umożliwiające jednoczesną transmisję na tym samym kanale bez kolizji.
 
 ![Nowoczesny router bezprzewodowy](/assets/images/router.webp)
 
@@ -57,7 +57,7 @@ Tabela przedstawia ewolucję kluczowych parametrów sieci bezprzewodowych na prz
 | **Max. przepustowość** | do 9.6 Gbps | do 46 Gbps | ~46 Gbps (podobnie do Wi-Fi 7) |
 | **Szerokość kanałów** | do 160 MHz | do 320 MHz | do 320 MHz |
 | **Modulacja** | 1024-QAM | 4096-QAM | 4096-QAM (z usprawnionym DSO) |
-| **Koordynacja AP** | Brak (niezależna praca) | Podstawowa | W pełni skoordynowana (Co-MAP) |
+| **Koordynacja AP** | Brak (niezależna praca) | Podstawowa | W fully skoordynowana (Co-MAP) |
 | **Obsługiwane pasma** | 2.4 / 5 / 6 GHz | 2.4 / 5 / 6 GHz | 2.4 / 5 / 6 GHz |
 
 ---
