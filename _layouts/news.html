@@ -1,8 +1,9 @@
 ---
 layout: default
 ---
+
 <style>
-    /* UKŁAD TRÓJKOLUMNOWY / PORTALOWY DLA KAŻDEGO NEWSA */
+    /* Główny kontener wpisu i spisu treści */
     .post-container {
         max-width: 1200px;
         margin: 40px auto 60px auto;
@@ -14,24 +15,24 @@ layout: default
     }
 
     .news-article {
-        background: var(--card-bg);
-        border: 1px solid var(--border);
+        background: var(--card-bg, rgba(8, 12, 20, 0.95));
+        border: 1px solid var(--border, rgba(255, 94, 0, 0.15));
         border-radius: 12px;
         padding: 40px;
         backdrop-filter: blur(10px);
         position: relative;
         overflow: hidden;
-        min-width: 0; /* Zapobiega wylewaniu się elementów flex/grid */
+        min-width: 0;
     }
     .news-article::before {
         content: '';
         position: absolute;
         top: 0; left: 0; width: 4px; height: 100%;
-        background: var(--accent-contrast);
+        background: var(--accent-contrast, #ff5e00);
     }
 
     .news-header {
-        border-bottom: 1px dashed var(--border);
+        border-bottom: 1px dashed var(--border, rgba(255, 255, 255, 0.12));
         padding-bottom: 25px;
         margin-bottom: 30px;
     }
@@ -39,7 +40,7 @@ layout: default
     .news-category-tag {
         font-family: 'JetBrains Mono', monospace;
         font-size: 0.75rem;
-        color: var(--accent-contrast);
+        color: var(--accent-contrast, #ff5e00);
         background: rgba(255, 94, 0, 0.1);
         padding: 4px 10px;
         border-radius: 4px;
@@ -64,20 +65,19 @@ layout: default
         align-items: center;
         font-family: 'JetBrains Mono', monospace;
         font-size: 0.8rem;
-        color: var(--text-muted);
+        color: var(--text-muted, #94a3b8);
         flex-wrap: wrap;
         gap: 15px;
     }
 
-    /* PRZYCISKI UDOSTĘPNIANIA (TWITTER / FACEBOOK) */
     .share-buttons {
         display: flex;
         gap: 10px;
     }
     .share-btn {
         background: rgba(255, 255, 255, 0.05);
-        border: 1px solid var(--border);
-        color: var(--text-main);
+        border: 1px solid var(--border, rgba(255, 255, 255, 0.12));
+        color: var(--text-main, #f1f5f9);
         padding: 6px 12px;
         border-radius: 4px;
         font-size: 0.75rem;
@@ -90,11 +90,10 @@ layout: default
     }
     .share-btn:hover {
         background: rgba(0, 210, 255, 0.15);
-        border-color: var(--accent-blue);
-        color: var(--accent-blue);
+        border-color: var(--accent-blue, #00d2ff);
+        color: var(--accent-blue, #00d2ff);
     }
 
-    /* TREŚĆ ARTYKUŁU I FORMATOWANIE ZDJĘĆ */
     .news-body {
         font-size: 1.05rem;
         color: #cbd5e1;
@@ -108,98 +107,27 @@ layout: default
         margin-bottom: 15px;
         scroll-margin-top: 100px;
     }
-    .news-body h2 { font-size: 1.4rem; border-left: 3px solid var(--accent-blue); padding-left: 10px; }
+    .news-body h2 { font-size: 1.4rem; border-left: 3px solid var(--accent-blue, #00d2ff); padding-left: 10px; }
     .news-body p { margin-bottom: 20px; }
-    .news-body a { color: var(--accent-blue); text-decoration: none; font-weight: 600; }
+    .news-body a { color: var(--accent-blue, #00d2ff); text-decoration: none; font-weight: 600; }
     .news-body a:hover { text-decoration: underline; }
-    
+
     .news-body img {
         max-width: 100%;
         height: auto;
         border-radius: 8px;
-        border: 1px solid var(--border);
+        border: 1px solid var(--border, rgba(255, 255, 255, 0.12));
         margin: 25px 0;
         display: block;
         box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
-    .news-body figure {
-        margin: 30px 0;
-        text-align: center;
-    }
-    .news-body figcaption {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.8rem;
-        color: var(--text-muted);
-        margin-top: 10px;
-    }
-
-    /* FAQ ACCORDION W TREŚCI NEWSA */
-    .faq-accordion {
-        margin: 20px 0 35px 0;
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        background: rgba(255, 255, 255, 0.02);
-        overflow: hidden;
-    }
-    .faq-accordion-intro {
-        padding: 18px 20px 4px 20px;
-    }
-    .faq-item {
-        border-top: 1px solid var(--border);
-    }
-    .faq-item:first-of-type {
-        border-top: 0;
-    }
-    .faq-question {
-        list-style: none;
-        cursor: pointer;
-        padding: 16px 20px;
-        font-family: 'JetBrains Mono', monospace;
-        font-weight: 700;
-        color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 15px;
-        transition: background 0.2s ease, color 0.2s ease;
-        outline: none;
-    }
-    .faq-question::-webkit-details-marker {
-        display: none;
-    }
-    .faq-question::after {
-        content: '⌄';
-        font-size: 1.05rem;
-        color: var(--accent-blue);
-        transition: transform 0.2s ease;
-        flex-shrink: 0;
-    }
-    .faq-item[open] .faq-question::after {
-        transform: rotate(180deg);
-    }
-    .faq-question:hover {
-        background: rgba(0, 210, 255, 0.08);
-        color: var(--accent-blue);
-    }
-    .faq-answer {
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
-        transition: max-height 0.28s ease, opacity 0.2s ease;
-        padding: 0 20px;
-    }
-    .faq-item[open] .faq-answer {
-        max-height: 1200px;
-        opacity: 1;
-        padding: 0 20px 18px 20px;
     }
 
     /* SPIS TREŚCI (TOC) W BOCZNYM PANELU */
     .sidebar-toc {
         position: sticky;
         top: 90px;
-        background: var(--card-bg);
-        border: 1px solid var(--border);
+        background: var(--card-bg, rgba(8, 12, 20, 0.95));
+        border: 1px solid var(--border, rgba(255, 94, 0, 0.15));
         border-radius: 12px;
         padding: 25px;
         backdrop-filter: blur(10px);
@@ -210,7 +138,7 @@ layout: default
         color: #fff;
         margin: 0 0 15px 0;
         text-transform: uppercase;
-        border-bottom: 1px solid var(--border);
+        border-bottom: 1px solid var(--border, rgba(255, 255, 255, 0.12));
         padding-bottom: 10px;
     }
     .toc-list {
@@ -224,7 +152,7 @@ layout: default
         font-size: 0.8rem;
     }
     .toc-item a {
-        color: var(--text-muted);
+        color: var(--text-muted, #94a3b8);
         text-decoration: none;
         display: block;
         padding: 4px 8px;
@@ -232,22 +160,21 @@ layout: default
         transition: all 0.2s ease;
     }
     .toc-item a:hover {
-        color: var(--accent-blue);
+        color: var(--accent-blue, #00d2ff);
         transform: translateX(4px);
     }
-    
     .toc-item.active a {
-        color: var(--accent-blue);
+        color: var(--accent-blue, #00d2ff);
         background: rgba(0, 210, 255, 0.12);
         font-weight: 700;
-        border-left: 2px solid var(--accent-blue);
+        border-left: 2px solid var(--accent-blue, #00d2ff);
         transform: translateX(4px);
     }
 
-    /* SEKCJA KOMENTARZY NA DOLE */
+    /* SEKCJA KOMENTARZY */
     .comments-section {
         margin-top: 50px;
-        border-top: 1px dashed var(--border);
+        border-top: 1px dashed var(--border, rgba(255, 255, 255, 0.12));
         padding-top: 35px;
     }
     .comments-title {
@@ -265,7 +192,7 @@ layout: default
     }
     .comment-input, .comment-textarea {
         background: rgba(0, 0, 0, 0.4);
-        border: 1px solid var(--border);
+        border: 1px solid var(--border, rgba(255, 255, 255, 0.12));
         color: #fff;
         padding: 12px 15px;
         border-radius: 6px;
@@ -275,13 +202,13 @@ layout: default
         width: 100%;
         box-sizing: border-box;
     }
-    .comment-input:focus, .comment-textarea:focus { border-color: var(--accent-blue); }
+    .comment-input:focus, .comment-textarea:focus { border-color: var(--accent-blue, #00d2ff); }
     .comment-textarea { resize: vertical; min-height: 90px; }
 
     .comment-submit {
         background: rgba(0, 210, 255, 0.1);
         border: 1px solid rgba(0, 210, 255, 0.3);
-        color: var(--accent-blue);
+        color: var(--accent-blue, #00d2ff);
         padding: 10px 20px;
         border-radius: 6px;
         font-family: 'JetBrains Mono', monospace;
@@ -292,7 +219,7 @@ layout: default
         font-size: 0.8rem;
         align-self: flex-start;
     }
-    .comment-submit:hover { background: var(--accent-blue); color: #000; }
+    .comment-submit:hover { background: var(--accent-blue, #00d2ff); color: #000; }
 
     .user-comment {
         background: rgba(255, 255, 255, 0.02);
@@ -309,7 +236,7 @@ layout: default
     .user-comment-meta {
         font-family: 'JetBrains Mono', monospace;
         font-size: 0.75rem;
-        color: var(--accent-blue);
+        color: var(--accent-blue, #00d2ff);
         margin-bottom: 4px;
     }
     .comment-actions {
@@ -323,7 +250,7 @@ layout: default
         background: none;
         border: none;
         cursor: pointer;
-        color: var(--text-muted);
+        color: var(--text-muted, #94a3b8);
         padding: 2px 6px;
         border-radius: 4px;
         transition: 0.2s;
@@ -331,13 +258,13 @@ layout: default
     .comment-action-btn:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
     .comment-action-btn.delete:hover { color: #ef4444; }
 
-    /* STAŁY PŁYWAJĄCY PRZYCISK POWROTU DO NEWSÓW */
+    /* STAŁY PŁYWAJĄCY PRZYCISK POWROTU DO NEWSÓW (PRAWA STRONA NA KOMPUTERZE) */
     .back-to-news-floating {
         position: fixed;
         bottom: 30px;
-        left: 30px;
+        right: 30px;
         background: rgba(15, 23, 42, 0.85);
-        border: 1px solid var(--accent-blue);
+        border: 1px solid var(--accent-blue, #00d2ff);
         color: #fff;
         padding: 12px 18px;
         border-radius: 8px;
@@ -355,50 +282,55 @@ layout: default
         text-decoration: none;
     }
     .back-to-news-floating:hover {
-        background: var(--accent-blue);
+        background: var(--accent-blue, #00d2ff);
         color: #0f172a;
         transform: translateY(-3px);
         box-shadow: 0 15px 30px rgba(0, 210, 255, 0.3);
     }
 
-    /* NAPRAWA RESPONSYWNOŚCI DLA TELEFONÓW */
+    /* RESPONSYWNOŚĆ DLA TELEFONÓW */
     @media (max-width: 1024px) {
         .post-container { 
             grid-template-columns: 1fr; 
-            padding: 0 10px; /* Wykorzystanie pełnej szerokości ekranu telefonu */
+            padding: 0 10px; 
             margin: 20px auto 40px auto;
             gap: 20px;
         }
         .news-article {
-            padding: 20px 15px; /* Mniejsze marginesy wewnętrzne na mobile */
+            padding: 20px 15px; 
             border-radius: 8px;
         }
         .sidebar-toc { 
             position: static; 
-            order: -1; /* Przenosi spis treści NA SAMĄ GÓRĘ telefonu przed artykuł */
+            order: -1; 
             padding: 18px 15px;
         }
         .news-title {
             font-size: 1.7rem;
         }
+        
+        /* NA TELEFONIE PRZYCISK WĘDRUJE NA GÓRĘ Z PRAWEJ (BEZPIECZNIE OD WHATSAPPA) */
         .back-to-news-floating { 
-            bottom: 15px; 
-            left: 15px; 
-            padding: 10px 14px; 
+            position: absolute;
+            top: 20px;
+            right: 15px;
+            bottom: auto;
+            left: auto;
+            padding: 8px 12px; 
             font-size: 0.75rem; 
+            z-index: 99;
         }
-        .faq-question { padding: 14px 16px; font-size: 0.9rem; }
     }
 </style>
 
 <div class="post-container">
-    
+
     <!-- GŁÓWNA KOLUMNA ARTYKUŁU -->
     <article class="news-article">
         <header class="news-header">
             <span class="news-category-tag">[{{ page.category | default: "NEWS" | upcase }}]</span>
             <h1 class="news-title">{{ page.title }}</h1>
-            
+
             <div class="news-meta-bar">
                 <span>// Opublikowano: {{ page.date | date: "%Y.%m.%d" }}</span>
                 <div class="share-buttons">
@@ -416,7 +348,7 @@ layout: default
         <!-- SEKCJA KOMENTARZY -->
         <section class="comments-section">
             <h3 class="comments-title">// Komentarze & Opinie</h3>
-            
+
             <div class="comment-form">
                 <input type="text" id="commentAuthor" class="comment-input" placeholder="Twoje imię / nick...">
                 <textarea id="commentText" class="comment-textarea" placeholder="Treść komentarza..."></textarea>
@@ -435,93 +367,17 @@ layout: default
 
 </div>
 
-<!-- STAŁY PŁYWAJĄCY PRZYCISK POWROTU DO LISTY NEWSÓW -->
+<!-- STAŁY PŁYWAJĄCY PRZYCISK POWROTU DO NEWSÓW -->
 <a href="/newsy" class="back-to-news-floating">
     <span>&larr;</span> // NEWSY
 </a>
 
 <script>
-    function normalizeHeadingText(text) {
-        return (text || '')
-            .toLowerCase()
-            .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '')
-            .trim();
-    }
-
-    function isFaqSectionHeading(text) {
-        const normalized = normalizeHeadingText(text);
-        return normalized.includes('faq') || normalized.includes('najczesciej zadawane pytania');
-    }
-
-    function transformFaqToAccordion(articleBody) {
-        const headings = Array.from(articleBody.querySelectorAll('h2'));
-        const faqHeading = headings.find((heading) => isFaqSectionHeading(heading.textContent));
-        if (!faqHeading) return;
-
-        const sectionNodes = [];
-        let cursor = faqHeading.nextElementSibling;
-        while (cursor) {
-            if (cursor.tagName === 'H1' || cursor.tagName === 'H2') break;
-            sectionNodes.push(cursor);
-            cursor = cursor.nextElementSibling;
-        }
-
-        if (sectionNodes.length === 0) return;
-        if (!sectionNodes.some((node) => node.tagName === 'H3')) return;
-
-        const faqWrapper = document.createElement('section');
-        faqWrapper.className = 'faq-accordion';
-        faqWrapper.setAttribute('aria-label', 'Najczęściej zadawane pytania');
-
-        const faqIntro = document.createElement('div');
-        faqIntro.className = 'faq-accordion-intro';
-
-        let currentAnswer = null;
-        let hasQuestions = false;
-
-        sectionNodes.forEach((node) => {
-            if (node.tagName === 'H3') {
-                const details = document.createElement('details');
-                details.className = 'faq-item';
-
-                const summary = document.createElement('summary');
-                summary.className = 'faq-question';
-                summary.textContent = node.textContent.trim();
-                details.appendChild(summary);
-
-                currentAnswer = document.createElement('div');
-                currentAnswer.className = 'faq-answer';
-                details.appendChild(currentAnswer);
-
-                faqWrapper.appendChild(details);
-                node.remove();
-                hasQuestions = true;
-                return;
-            }
-
-            if (currentAnswer) {
-                currentAnswer.appendChild(node);
-            } else {
-                faqIntro.appendChild(node);
-            }
-        });
-
-        if (!hasQuestions) return;
-        if (faqIntro.childNodes.length > 0) faqWrapper.prepend(faqIntro);
-        faqHeading.insertAdjacentElement('afterend', faqWrapper);
-    }
-
-    const articleBody = document.getElementById('articleBody');
+    const headings = Array.from(document.querySelectorAll('#articleBody h2, #articleBody h3'));
     const tocList = document.getElementById('tocList');
-    transformFaqToAccordion(articleBody);
-
-    const headings = Array.from(articleBody.querySelectorAll('h2, h3')).filter(
-        (heading) => !heading.closest('.faq-accordion')
-    );
 
     if(headings.length === 0) {
-        tocList.innerHTML = '<li style="color: var(--text-muted)">// Brak nagłówków</li>';
+        tocList.innerHTML = '<li style="color: var(--text-muted, #94a3b8)">// Brak nagłówków</li>';
     } else {
         headings.forEach((heading, index) => {
             if(!heading.id) { heading.id = 'heading-' + index; }
@@ -559,8 +415,10 @@ layout: default
 
     const currentUrl = encodeURIComponent(window.location.href);
     const currentTitle = encodeURIComponent(document.title);
-    document.getElementById('shareX').href = `https://twitter.com/intent/tweet?url=${currentUrl}&text=${currentTitle}`;
-    document.getElementById('shareFB').href = `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`;
+    const shareX = document.getElementById('shareX');
+    const shareFB = document.getElementById('shareFB');
+    if(shareX) shareX.href = `https://twitter.com/intent/tweet?url=${currentUrl}&text=${currentTitle}`;
+    if(shareFB) shareFB.href = `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`;
 
     const postId = window.location.pathname;
     const commentAuthor = document.getElementById('commentAuthor');
@@ -572,9 +430,10 @@ layout: default
     let savedComments = JSON.parse(localStorage.getItem(commentsKey)) || [];
 
     function renderComments() {
+        if(!commentsList) return;
         commentsList.innerHTML = '';
         if(savedComments.length === 0) {
-            commentsList.innerHTML = '<div style="color: var(--text-muted); font-size: 0.85rem; font-family: \'JetBrains Mono\', monospace;">// Brak komentarzy. Bądź pierwszy!</div>';
+            commentsList.innerHTML = '<div style="color: var(--text-muted, #94a3b8); font-size: 0.85rem; font-family: \'JetBrains Mono\', monospace;">// Brak komentarzy. Bądź pierwszy!</div>';
             return;
         }
 
@@ -595,20 +454,22 @@ layout: default
         });
     }
 
-    commentSubmit.addEventListener('click', () => {
-        const author = commentAuthor.value.trim() || "Anonim";
-        const text = commentText.value.trim();
-        if(text.length < 2) return;
+    if(commentSubmit) {
+        commentSubmit.addEventListener('click', () => {
+            const author = commentAuthor.value.trim() || "Anonim";
+            const text = commentText.value.trim();
+            if(text.length < 2) return;
 
-        const now = new Date();
-        const dateStr = now.getFullYear() + '.' + String(now.getMonth()+1).padStart(2, '0') + '.' + String(now.getDate()).padStart(2, '0');
+            const now = new Date();
+            const dateStr = now.getFullYear() + '.' + String(now.getMonth()+1).padStart(2, '0') + '.' + String(now.getDate()).padStart(2, '0');
 
-        savedComments.push({ author, text, date: dateStr });
-        localStorage.setItem(commentsKey, JSON.stringify(savedComments));
-        
-        commentText.value = '';
-        renderComments();
-    });
+            savedComments.push({ author, text, date: dateStr });
+            localStorage.setItem(commentsKey, JSON.stringify(savedComments));
+
+            commentText.value = '';
+            renderComments();
+        });
+    }
 
     window.deleteComment = function(index) {
         savedComments.splice(index, 1);
