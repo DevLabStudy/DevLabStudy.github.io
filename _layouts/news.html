@@ -258,36 +258,6 @@ layout: default
     .comment-action-btn:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
     .comment-action-btn.delete:hover { color: #ef4444; }
 
-    /* STAŁY PŁYWAJĄCY PRZYCISK POWROTU DO NEWSÓW (PRAWA STRONA NA KOMPUTERZE) */
-    .back-to-news-floating {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        background: rgba(15, 23, 42, 0.85);
-        border: 1px solid var(--accent-blue, #00d2ff);
-        color: #fff;
-        padding: 12px 18px;
-        border-radius: 8px;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.8rem;
-        font-weight: 700;
-        cursor: pointer;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        z-index: 999;
-        transition: 0.3s ease;
-        text-decoration: none;
-    }
-    .back-to-news-floating:hover {
-        background: var(--accent-blue, #00d2ff);
-        color: #0f172a;
-        transform: translateY(-3px);
-        box-shadow: 0 15px 30px rgba(0, 210, 255, 0.3);
-    }
-
     /* RESPONSYWNOŚĆ DLA TELEFONÓW */
     @media (max-width: 1024px) {
         .post-container { 
@@ -307,18 +277,6 @@ layout: default
         }
         .news-title {
             font-size: 1.7rem;
-        }
-        
-        /* NA TELEFONIE PRZYCISK WĘDRUJE NA GÓRĘ Z PRAWEJ (BEZPIECZNIE OD WHATSAPPA) */
-        .back-to-news-floating { 
-            position: absolute;
-            top: 20px;
-            right: 15px;
-            bottom: auto;
-            left: auto;
-            padding: 8px 12px; 
-            font-size: 0.75rem; 
-            z-index: 99;
         }
     }
 </style>
@@ -366,11 +324,6 @@ layout: default
     </aside>
 
 </div>
-
-<!-- STAŁY PŁYWAJĄCY PRZYCISK POWROTU DO NEWSÓW -->
-<a href="/newsy" class="back-to-news-floating">
-    <span>&larr;</span> // NEWSY
-</a>
 
 <script>
     const headings = Array.from(document.querySelectorAll('#articleBody h2, #articleBody h3'));
