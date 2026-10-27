@@ -1,7 +1,7 @@
 # Polityka Prywatności i Plików Cookie
 
 ### 1. Informacje ogólne
-Niniejsza Polityka Prywatności określa zasady przetwarzania i ochrony danych osobowych przekazywanych przez Użytkowników w związku z korzystaniem ze stron internetowych w domenie **devlabstudy.ovh** oraz jej subdomenach (w tym **pc-hub.devlabstudy.ovh**).
+Niniejsza Polityka Prywatności określa zasady przetwarzania i ochrony danych osobowych przekazywanych przez Użytkowników w związku z korzystaniem ze stron internetowych w domenie **devlabstudy.ovh** oraz jej subdomenach (w tym **pc-hub.devlabstudy.ovh** i **webcraft.devlabstudy.ovh**).
 
 Administratorem serwisów jest właściciel projektu **DevLabStudy**.
 Kontakt z administratorem jest możliwy poprzez formularz kontaktowy dostępny na stronie lub pod adresem e-mail: **kontakt@devlabstudy.ovh**.
@@ -16,24 +16,33 @@ Kontakt z administratorem jest możliwy poprzez formularz kontaktowy dostępny n
 
 ---
 
-### 3. Osadzone treści z innych serwisów (YouTube)
+### 3. Analityka i pliki cookies stron trzecich (Google Analytics 4)
+1. W ramach serwisów w domenie `devlabstudy.ovh` oraz jej subdomenach korzystamy z narzędzia **Google Analytics 4 (GA4)** dostarczanego przez firmę Google Ireland Limited.
+2. Google Analytics gromadzi anonimowe dane statystyczne dotyczące wizyt w serwisie (np. przeglądane podstrony, czas spędzony na stronie, przybliżona lokalizacja, typ urządzenia oraz przeglądarki).
+3. Gromadzone dane służą wyłącznie do analizy statystycznej ruchu oraz optymalizacji działania naszych serwisów i nie pozwalają na bezpośrednią identyfikację tożsamości Użytkownika.
+4. Użytkownik może zablokować zbieranie tych danych poprzez wyłączenie obsługi plików cookie w przeglądarce lub instalację oficjalnej wtyczki: [Google Analytics Opt-out Browser Add-on](https://tools.google.com/dlpage/gaoptout).
+
+---
+
+### 4. Osadzone treści z innych serwisów (YouTube)
 1. Artykuły i podstrony w naszych serwisach mogą zawierać osadzone treści (np. filmy wideo z serwisu YouTube).
 2. Osadzone treści z innych witryn zachowują się analogicznie do sytuacji, gdyby Użytkownik odwiedził bezpośrednio daną witrynę zewnętrzną.
 3. Witryny te (np. Google / YouTube) mogą zbierać informacje o Użytkowniku, używać plików cookie, wgrywać dodatkowe systemy śledzenia stron trzecich i monitorować interakcje z osadzoną treścią.
 
 ---
 
-### 4. Pliki Cookie (Ciasteczka)
+### 5. Pliki Cookie (Ciasteczka)
 1. Serwis wykorzystuje pliki cookie (niewielkie pliki tekstowe zapisywane na urządzeniu końcowym Użytkownika).
 2. Pliki cookie stosowane są w celu:
    - Zapewnienia prawidłowego działania i bezpieczeństwa strony (cookies techniczne).
-   - Zapamiętania preferencji Użytkownika.
+   - Zapamiętania preferencji Użytkownika (np. decyzji dotyczącej akceptacji polityki cookies).
+   - Zbierania anonimowych statystyk odwiedzin (Google Analytics).
    - Prawidłowego wyświetlania multimediów pochodzących z zewnętrznych serwisów (np. YouTube).
 3. Użytkownik może w każdej chwili zmienić ustawienia dotyczące plików cookie w swojej przeglądarce internetowej (w tym całkowicie je zablokować lub usunąć).
 
 ---
 
-### 5. Prawa Użytkownika
+### 6. Prawa Użytkownika
 Zgodnie z RODO, każdemu Użytkownikowi przysługuje prawo do:
 - Dostępu do swoich danych oraz otrzymania ich kopii.
 - Sprostowania (poprawiania) swoich danych.
