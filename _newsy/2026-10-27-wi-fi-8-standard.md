@@ -1,6 +1,6 @@
 ---
 layout: news
-title: Wi-Fi 8 (IEEE 802.11bn) – Ultra High Reliability, Co-MAP, DSO i nowa era sieci bezprzewodowych: co wiemy z przecieków i specyfikacji
+title: "Wi-Fi 8 (IEEE 802.11bn) – Ultra High Reliability, Co-MAP, DSO i nowa era sieci bezprzewodowych: co wiemy z przecieków i specyfikacji"
 description: Szczegółowe zestawienie wszystkiego, co oficjalne dokumenty i przecieki branżowe mówią o nadchodzącym standardzie Wi-Fi 8 (IEEE 802.11bn Ultra High Reliability). Przejście z wyścigu gigabitów na bezwzględną niezawodność, technologie Coordinated Multi-AP (Co-MAP), Dynamic Sub-channel Operation (DSO), porównanie z Wi-Fi 6E i Wi-Fi 7 oraz przewidywany harmonogram wdrożeń.
 date: 2026-10-27
 category: HARDWARE
