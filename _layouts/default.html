@@ -6,13 +6,18 @@
     <meta name="description" content="DevLabStudy - Homelab documentation, Proxmox clusters, and Project Orbit.">
     <title>DevLabStudy | {{ page.title }}</title>
     
-    <!-- Google tag (gtag.js) - Google Analytics -->
+    <!-- Google tag (gtag.js) - Google Analytics z Consent Mode v2 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4MKVDPE216"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
 
+      // Domyślne blokowanie śledzenia analitycznego przed wyborem użytkownika
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied'
+      });
+
+      gtag('js', new Date());
       gtag('config', 'G-4MKVDPE216');
     </script>
 
@@ -359,15 +364,15 @@
             bottom: 20px;
             left: 20px;
             right: 20px;
-            max-width: 600px;
+            max-width: 720px;
             margin: 0 auto;
-            background: rgba(8, 12, 20, 0.96);
+            background: rgba(8, 12, 20, 0.97);
             border: 1px solid var(--border);
             backdrop-filter: blur(16px);
-            padding: 20px 25px;
+            padding: 22px 26px;
             border-radius: 12px;
             z-index: 9999;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+            box-shadow: 0 15px 45px rgba(0,0,0,0.85);
             align-items: center;
             gap: 20px;
             flex-wrap: wrap;
@@ -421,7 +426,7 @@
             .footer-grid { grid-template-columns: 1fr; gap: 30px; }
             .footer-meta-bar { flex-direction: column; text-align: center; gap: 10px; }
             .social-icons-grid { max-width: 100%; justify-content: center; }
-            #cookieBanner { bottom: 10px; left: 10px; right: 10px; padding: 15px; }
+            #cookieBanner { bottom: 10px; left: 10px; right: 10px; padding: 16px; }
         }
     </style>
 </head>
@@ -446,7 +451,6 @@
             <a href="/" class="nav-link-btn {% if page.url == '/' %}active-page{% endif %}">Hub</a>
             <a href="/newsy" class="nav-link-btn {% if page.url contains 'newsy' %}active-page{% endif %}">Newsy</a>
             <a href="/blog" class="nav-link-btn {% if page.url contains 'blog' %}active-page{% endif %}">Blog</a>
-            <!-- Zaktualizowany warunek dla HomeLab (obsługuje też podstrony /hardware/) -->
             <a href="/homelab" class="nav-link-btn {% if page.url == '/homelab' or page.url == '/homelab/' or page.url contains '/hardware/' %}active-page{% endif %}">HomeLab</a>
             
             <!-- ROZWIJANA SEKCJA USŁUGI -->
@@ -491,13 +495,17 @@
 
     <!-- BANNER COOKIES / RODO -->
     <div id="cookieBanner">
-        <div style="flex: 1; min-width: 260px;">
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--accent-blue); text-transform: uppercase; margin-bottom: 6px; font-weight: 700;">// Polityka Prywatności & Cookies</div>
-            <p style="color: var(--text-muted); font-size: 0.82rem; line-height: 1.5; margin: 0;">Używamy plików cookies w celach statystycznych oraz optymalizacji serwisu. Korzystając ze strony, wyrażasz zgodę na ich użycie.</p>
+        <div style="flex: 1; min-width: 280px;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent-blue); text-transform: uppercase; margin-bottom: 6px; font-weight: 700; letter-spacing: 0.5px;">// Prywatność &amp; Pliki Cookies</div>
+            <p style="color: var(--text-muted); font-size: 0.82rem; line-height: 1.55; margin: 0; font-family: 'Inter', sans-serif;">
+                Używamy plików cookies w celu zapewnienia prawidłowego działania strony (wymagane) oraz do zbierania analityki ruchu przez Google Analytics (opcjonalne). Poznaj szczegóły w naszej <a href="/polityka-prywatnosci" style="color: var(--accent-blue); text-decoration: underline;">Polityce Prywatności</a>.
+            </p>
         </div>
-        <div style="display: flex; gap: 10px; align-items: center;">
-            <button id="acceptCookies" style="background: var(--accent-blue); color: #030305; border: none; padding: 10px 16px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 0.75rem; cursor: pointer; text-transform: uppercase; transition: 0.2s;">Akceptuj</button>
-            <button id="rejectCookies" style="background: rgba(255,255,255,0.05); color: #f1f5f9; border: 1px solid rgba(255,255,255,0.1); padding: 10px 14px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; cursor: pointer; transition: 0.2s;">Odrzuć</button>
+        
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center; justify-content: flex-end; width: 100%;">
+            <button id="btnAcceptNecessary" style="background: rgba(255,255,255,0.06); color: var(--text-main); border: 1px solid rgba(255,255,255,0.15); padding: 9px 14px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; cursor: pointer; transition: 0.2s;">Wymagane tylko</button>
+            <button id="btnRejectAll" style="background: rgba(255, 94, 0, 0.1); color: var(--accent-contrast); border: 1px solid rgba(255, 94, 0, 0.3); padding: 9px 14px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; cursor: pointer; transition: 0.2s;">Odrzuć opcjonalne</button>
+            <button id="btnAcceptAll" style="background: var(--accent-blue); color: #030305; border: none; padding: 10px 18px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 0.75rem; cursor: pointer; text-transform: uppercase; transition: 0.2s; box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);">Akceptuj wszystkie</button>
         </div>
     </div>
 
@@ -596,6 +604,10 @@
             <a href="/webcraft">Web Development Services (WebCraft)</a>
             <a href="/pulse">Pulse Language Docs</a>
             <a href="/polityka-prywatnosci">Privacy Policy</a>
+            <!-- PRZYCISK POBIERANIA PLIKU COOKIES (.MD) -->
+            <a href="/cookies.md" download="cookies.md" style="color: var(--accent-contrast); font-weight: 600;">Cookies Policy (Pobierz .md)</a>
+            <!-- ODNOŚNIK OTWIERAJĄCY USTAWIENIA COOKIES -->
+            <a href="#" id="openCookieSettings" style="color: var(--accent-blue); font-weight: 600;">// Ustawienia Cookies</a>
             <a href="/homelab">Infrastructure &amp; Specs</a>
             <a href="/sponsors">Partners &amp; Sponsors</a>
             <a href="/kontakt">Contact &amp; Support</a>
@@ -603,13 +615,13 @@
         </div>
 
         <div class="footer-meta-bar">
-            <div>Page Last Updated: <span>October 24, 2026</span></div>
+            <div>Page Last Updated: <span>October 27, 2026</span></div>
             <div>Page Editor: <span>Tobiasz Kajzer</span></div>
             <div>Responsible System Official: <span>DevLabStudy Administrator</span></div>
         </div>
     </footer>
 
-    <!-- SKRYPT NAWIGACJI ORAZ COOKIES -->
+    <!-- SKRYPT NAWIGACJI ORAZ OBSŁUGI COOKIES Z GA4 -->
     <script>
         window.addEventListener('DOMContentLoaded', () => {
             const navCenter = document.getElementById('navCenter');
@@ -668,33 +680,61 @@
                 }
             });
 
-            // Obsługa banneru Cookies (RODO)
+            // LOGIKA ZARZĄDZANIA COOKIES & GOOGLE CONSENT MODE
             const cookieBanner = document.getElementById('cookieBanner');
-            const acceptBtn = document.getElementById('acceptCookies');
-            const rejectBtn = document.getElementById('rejectCookies');
+            const btnAcceptAll = document.getElementById('btnAcceptAll');
+            const btnRejectAll = document.getElementById('btnRejectAll');
+            const btnAcceptNecessary = document.getElementById('btnAcceptNecessary');
+            const openSettingsLink = document.getElementById('openCookieSettings');
 
-            if (cookieBanner) {
-                const consent = localStorage.getItem('cookieConsent');
-                if (!consent) {
-                    setTimeout(() => {
-                        cookieBanner.style.display = 'flex';
-                    }, 150);
-                } else {
-                    cookieBanner.style.display = 'none';
+            function updateGtagConsent(analyticsGranted) {
+                if (typeof gtag === 'function') {
+                    gtag('consent', 'update', {
+                        'analytics_storage': analyticsGranted ? 'granted' : 'denied'
+                    });
                 }
             }
 
-            if (acceptBtn) {
-                acceptBtn.addEventListener('click', () => {
-                    localStorage.setItem('cookieConsent', 'accepted');
+            const currentConsent = localStorage.getItem('devlab_cookie_consent');
+
+            if (!currentConsent) {
+                setTimeout(() => {
+                    if (cookieBanner) cookieBanner.style.display = 'flex';
+                }, 200);
+            } else if (currentConsent === 'all') {
+                updateGtagConsent(true);
+            } else {
+                updateGtagConsent(false);
+            }
+
+            if (btnAcceptAll) {
+                btnAcceptAll.addEventListener('click', () => {
+                    localStorage.setItem('devlab_cookie_consent', 'all');
+                    updateGtagConsent(true);
                     if (cookieBanner) cookieBanner.style.display = 'none';
                 });
             }
 
-            if (rejectBtn) {
-                rejectBtn.addEventListener('click', () => {
-                    localStorage.setItem('cookieConsent', 'rejected');
+            if (btnRejectAll) {
+                btnRejectAll.addEventListener('click', () => {
+                    localStorage.setItem('devlab_cookie_consent', 'rejected');
+                    updateGtagConsent(false);
                     if (cookieBanner) cookieBanner.style.display = 'none';
+                });
+            }
+
+            if (btnAcceptNecessary) {
+                btnAcceptNecessary.addEventListener('click', () => {
+                    localStorage.setItem('devlab_cookie_consent', 'necessary');
+                    updateGtagConsent(false);
+                    if (cookieBanner) cookieBanner.style.display = 'none';
+                });
+            }
+
+            if (openSettingsLink) {
+                openSettingsLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (cookieBanner) cookieBanner.style.display = 'flex';
                 });
             }
         });
