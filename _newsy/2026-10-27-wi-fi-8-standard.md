@@ -57,7 +57,7 @@ Tabela przedstawia ewolucję kluczowych parametrów sieci bezprzewodowych na prz
 | **Max. przepustowość** | do 9.6 Gbps | do 46 Gbps | ~46 Gbps (podobnie do Wi-Fi 7) |
 | **Szerokość kanałów** | do 160 MHz | do 320 MHz | do 320 MHz |
 | **Modulacja** | 1024-QAM | 4096-QAM | 4096-QAM (z usprawnionym DSO) |
-| **Koordynacja AP** | Brak (niezależna praca) | Podstawowa | W fully skoordynowana (Co-MAP) |
+| **Koordynacja AP** | Brak (niezależna praca) | Podstawowa | W pełni skoordynowana (Co-MAP) |
 | **Obsługiwane pasma** | 2.4 / 5 / 6 GHz | 2.4 / 5 / 6 GHz | 2.4 / 5 / 6 GHz |
 
 ---
@@ -74,14 +74,14 @@ Prace nad standaryzacją IEEE 802.11bn są w toku. Opracowywanie norm i certyfik
 
 ## 5. Najczęściej Zadawane Pytania (FAQ)
 
-### FAQ 1: Czy Wi-Fi 8 będzie szybsze od Wi-Fi 7?
+### 1. Czy Wi-Fi 8 będzie szybsze od Wi-Fi 7?
 Maksymalna teoretyczna prędkość przesyłu danych w Wi-Fi 8 pozostanie na zbliżonym poziomie co w Wi-Fi 7 (ok. 46 Gbps). Różnica polega na tym, że Wi-Fi 8 pozwoli osiągnąć i utrzymać te wysokie prędkości w rzeczywistych, trudnych warunkach domowych i biurowych.
 
-### FAQ 2: Czy moje stare urządzenia będą działać z routerem Wi-Fi 8?
+### 2. Czy moje stare urządzenia będą działać z routerem Wi-Fi 8?
 Tak, standard Wi-Fi 8 zachowa pełną kompatybilność wsteczną. Urządzenia obsługujące Wi-Fi 4, 5, 6, 6E oraz 7 bez problemu połączą się z nowym routerem.
 
-### FAQ 3: Czy muszę wymieniać okablowanie w domu pod Wi-Fi 8?
+### 3. Czy muszę wymieniać okablowanie w domu pod Wi-Fi 8?
 Do pełnego wykorzystania potencjału Wi-Fi 8 w infrastrukturze domowej lub firmowej zalecane będzie posiadanie sieci przewodowej opartej na standardzie minimum 2.5 GbE lub 10 GbE (kable Cat 6 / Cat 6a).
 
-### FAQ 4: Jak Wi-Fi 8 wpłynie na granie przez sieć (gaming)?
+### 4. Jak Wi-Fi 8 wpłynie na granie przez sieć (gaming)?
 Wi-Fi 8 jest projektowane z myślą o miniaturyzacji opóźnień. Dzięki technologii Co-MAP i eliminowaniu kolizji pakietów, granie przez Wi-Fi ma pod względem stabilności pingu wreszcie dorównać tradycyjnemu połączeniu kablowemu Ethernet.
