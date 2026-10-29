@@ -8,17 +8,17 @@ permalink: /sponsors
     .sponsors-container {
         display: flex;
         flex-direction: column;
-        gap: 40px;
+        gap: 30px;
     }
 
     .sponsor-section-title {
         font-family: 'JetBrains Mono', monospace;
-        font-size: 1.1rem;
+        font-size: 1rem;
         font-weight: 800;
         text-transform: uppercase;
         color: var(--accent-blue);
         letter-spacing: -0.5px;
-        margin: 0 0 15px 0;
+        margin: 0 0 12px 0;
         display: flex;
         align-items: center;
         gap: 10px;
@@ -33,53 +33,53 @@ permalink: /sponsors
 
     .sponsor-section-desc {
         color: var(--text-muted);
-        font-size: 0.9rem;
-        line-height: 1.6;
-        margin-bottom: 20px;
+        font-size: 0.85rem;
+        line-height: 1.5;
+        margin-bottom: 15px;
     }
 
     .sponsor-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        gap: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 15px;
     }
 
     .sponsor-card {
         background: rgba(15, 15, 15, 0.8);
         border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 15px;
+        border-radius: 10px;
+        padding: 10px 15px;
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: all 0.3s ease;
+        transition: all 0.25s ease;
         text-decoration: none;
-        min-height: 90px;
+        min-height: 70px;
         cursor: pointer;
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(8px);
     }
 
-    /* Karta z jasnym tłem pod ciemne sygnatury / logotypy */
+    /* Karta z jasnym tłem dla ciemnych logotypów */
     .sponsor-card-light {
         background: #ffffff;
         border-color: #ffffff;
     }
 
-    /* Karta z ciemnym tłem dedykowana dla jasnych / przezroczystych logotypów */
+    /* Karta z ciemnym tłem pod jasne / przezroczyste logotypy */
     .sponsor-card-dark {
-        background: rgba(10, 15, 25, 0.9);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(10, 15, 25, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.12);
     }
 
     .sponsor-card:hover {
         border-color: var(--accent-blue);
-        transform: translateY(-3px);
-        box-shadow: 0 6px 24px rgba(0, 210, 255, 0.2);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(0, 210, 255, 0.2);
     }
 
     .sponsor-logo-img {
-        max-width: 90%;
-        max-height: 75px;
+        max-width: 85%;
+        max-height: 50px;
         width: auto;
         height: auto;
         object-fit: contain;
@@ -88,52 +88,53 @@ permalink: /sponsors
     .sponsor-card-placeholder {
         background: var(--card-bg);
         border: 1px dashed var(--border);
-        border-radius: 12px;
-        padding: 30px 20px;
+        border-radius: 10px;
+        padding: 15px 10px;
         text-align: center;
-        transition: all 0.3s ease;
+        transition: all 0.25s ease;
         display: flex;
         align-items: center;
         justify-content: center;
-        min-height: 90px;
-        backdrop-filter: blur(10px);
+        min-height: 70px;
+        backdrop-filter: blur(8px);
     }
 
     .sponsor-card-placeholder:hover {
         border-color: var(--accent-blue);
-        background: rgba(10, 15, 25, 0.8);
+        background: rgba(10, 15, 25, 0.6);
     }
 
     .placeholder-badge {
         font-family: 'JetBrains Mono', monospace;
-        font-size: 0.75rem;
+        font-size: 0.7rem;
         color: var(--text-muted);
         text-transform: uppercase;
+        letter-spacing: 0.5px;
     }
 
     .become-sponsor-card {
         background: radial-gradient(circle at top left, rgba(0, 210, 255, 0.08), rgba(10, 15, 25, 0.8));
         border: 1px solid var(--accent-blue);
-        border-radius: 12px;
-        padding: 35px;
-        margin-top: 20px;
+        border-radius: 10px;
+        padding: 25px 20px;
+        margin-top: 15px;
         text-align: center;
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(8px);
     }
 
     .become-sponsor-card h2 {
-        font-size: 1.4rem;
-        margin: 0 0 10px 0;
+        font-size: 1.2rem;
+        margin: 0 0 8px 0;
         color: #fff;
         font-family: 'JetBrains Mono', monospace;
     }
 
     .become-sponsor-card p {
         color: var(--text-muted);
-        font-size: 0.9rem;
-        max-width: 600px;
-        margin: 0 auto 20px auto;
-        line-height: 1.6;
+        font-size: 0.85rem;
+        max-width: 580px;
+        margin: 0 auto 15px auto;
+        line-height: 1.5;
     }
 
     .contact-btn {
@@ -141,20 +142,20 @@ permalink: /sponsors
         background: var(--accent-contrast);
         color: #000;
         font-weight: 800;
-        font-size: 0.9rem;
-        padding: 14px 28px;
-        border-radius: 8px;
+        font-size: 0.82rem;
+        padding: 10px 22px;
+        border-radius: 6px;
         text-decoration: none;
-        transition: all 0.3s ease;
+        transition: all 0.25s ease;
         font-family: 'JetBrains Mono', monospace;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 0.5px;
     }
 
     .contact-btn:hover {
         background: #ff7a2e;
         transform: translateY(-2px);
-        box-shadow: 0 4px 20px rgba(255, 94, 0, 0.4);
+        box-shadow: 0 4px 16px rgba(255, 94, 0, 0.35);
     }
 </style>
 
@@ -163,11 +164,11 @@ permalink: /sponsors
     <!-- SEKCJA 1: DOSTAWCY SPRZĘTU -->
     <div class="sponsor-category">
         <h2 class="sponsor-section-title">[ Dostawcy_Sprzętu ]</h2>
-        <p class="sponsor-section-desc">Partnerzy wspierający rozwój infrastruktury DevLab Study poprzez udostępnianie lub przekazywanie sprzętu sieciowego, serwerowego oraz podzespołów komputerowych.</p>
+        <p class="sponsor-section-desc">Partnerzy wspierający rozwój infrastruktury DevLab Study poprzez udostępnianie sprzętu sieciowego, serwerowego oraz podzespołów komputerowych.</p>
         
         <div class="sponsor-grid">
-            <a href="https://lanberg.eu" target="_blank" rel="noopener noreferrer" class="sponsor-card sponsor-card-light">
-                <img src="{{ '/assets/images/LOGO_LANBERG.jpg' | relative_url }}" alt="Lanberg" class="sponsor-logo-img">
+            <a href="https://lanberg.eu" target="_blank" rel="noopener noreferrer" class="sponsor-card sponsor-card-light" title="Lanberg - Sprzęt sieciowy i szafy RACK">
+                <img src="{{ '/assets/images/LOGO_LANBERG.jpg' | relative_url }}" alt="Lanberg Logo" class="sponsor-logo-img">
             </a>
             <div class="sponsor-card-placeholder">
                 <div class="placeholder-badge">[ MIEJSCE_NA_LOGO ]</div>
@@ -178,11 +179,11 @@ permalink: /sponsors
     <!-- SEKCJA 2: DOSTAWCY OPROGRAMOWANIA I USŁUG -->
     <div class="sponsor-category">
         <h2 class="sponsor-section-title">[ Dostawcy_Oprogramowania ]</h2>
-        <p class="sponsor-section-desc">Partnerzy technologiczni udostępniający oprogramowanie, licencje oraz rozwiązania systemowe z zakresu pamięci masowych, wirtualizacji i infrastruktury cloud.</p>
+        <p class="sponsor-section-desc">Partnerzy udostępniający systemy operacyjne, rozwiązania pamięci masowej (NAS/ZFS) oraz narzędzia do wirtualizacji i infrastruktury.</p>
         
         <div class="sponsor-grid">
-            <a href="https://fygonas.com/" target="_blank" rel="noopener noreferrer" class="sponsor-card sponsor-card-dark">
-                <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="FygoOS" class="sponsor-logo-img">
+            <a href="https://fygonas.com/" target="_blank" rel="noopener noreferrer" class="sponsor-card sponsor-card-dark" title="FygoOS - System zarządzania pamięcią masową i NAS">
+                <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="FygoOS Logo" class="sponsor-logo-img">
             </a>
             <div class="sponsor-card-placeholder">
                 <div class="placeholder-badge">[ MIEJSCE_NA_LOGO ]</div>
@@ -193,7 +194,7 @@ permalink: /sponsors
     <!-- SEKCJA 3: STALI SPONSORZY -->
     <div class="sponsor-category">
         <h2 class="sponsor-section-title">[ Stali_Sponsorzy ]</h2>
-        <p class="sponsor-section-desc">Firmy i organizacje wspierające projekt w trybie ciągłym, umożliwiające stałe prowadzenie badań, testów oraz tworzenie materiałów technicznych.</p>
+        <p class="sponsor-section-desc">Firmy i organizacje wspierające stałe prowadzenie badań, testów technicznych oraz rozwój kanału.</p>
         
         <div class="sponsor-grid">
             <div class="sponsor-card-placeholder">
@@ -208,7 +209,7 @@ permalink: /sponsors
     <!-- WEZWANIE DO DZIAŁANIA (CTA) -->
     <div class="become-sponsor-card">
         <h2>Chcesz zostać partnerem DevLab Study?</h2>
-        <p>Tworzymy przestrzeń dedykowaną architekturze sieciowej, wirtualizacji (Proxmox VE), homelabom oraz własnym projektom technologicznym. Zapraszamy do współpracy i wspólnego budowania środowiska.</p>
+        <p>Tworzymy przestrzeń dedykowaną sieciom, wirtualizacji (Proxmox VE), homelabom i projektom open-source. Zapraszamy do wspólnego budowania środowiska.</p>
         <a href="mailto:contact@devlabstudy.ovh" class="contact-btn">Nawiąż współpracę ➔</a>
     </div>
 
