@@ -8,17 +8,17 @@ permalink: /sponsors
     .sponsors-container {
         display: flex;
         flex-direction: column;
-        gap: 30px;
+        gap: 25px;
     }
 
     .sponsor-section-title {
         font-family: 'JetBrains Mono', monospace;
-        font-size: 1rem;
+        font-size: 0.95rem;
         font-weight: 800;
         text-transform: uppercase;
         color: var(--accent-blue);
         letter-spacing: -0.5px;
-        margin: 0 0 12px 0;
+        margin: 0 0 10px 0;
         display: flex;
         align-items: center;
         gap: 10px;
@@ -33,69 +33,67 @@ permalink: /sponsors
 
     .sponsor-section-desc {
         color: var(--text-muted);
-        font-size: 0.85rem;
-        line-height: 1.5;
-        margin-bottom: 15px;
+        font-size: 0.82rem;
+        line-height: 1.4;
+        margin-bottom: 12px;
     }
 
+    /* Pomniejszona siatka z większą liczbą kolumn */
     .sponsor-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-        gap: 15px;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 12px;
     }
 
+    /* Pomniejszone karty głównych partnerów */
     .sponsor-card {
         background: rgba(15, 15, 15, 0.8);
         border: 1px solid var(--border);
-        border-radius: 10px;
-        padding: 10px 15px;
+        border-radius: 8px;
+        padding: 8px 12px;
         display: flex;
         align-items: center;
         justify-content: center;
         transition: all 0.25s ease;
         text-decoration: none;
-        min-height: 70px;
+        min-height: 55px;
         cursor: pointer;
         backdrop-filter: blur(8px);
+        overflow: hidden;
     }
 
-    /* Karta z jasnym tłem dla ciemnych logotypów */
+    /* Dedykowana spójna biała karta pod logo z ciemną grafiką (jak Lanberg & Fygo) */
     .sponsor-card-light {
-        background: #ffffff;
-        border-color: #ffffff;
-    }
-
-    /* Karta z ciemnym tłem pod jasne / przezroczyste logotypy */
-    .sponsor-card-dark {
-        background: rgba(10, 15, 25, 0.95);
-        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: #ffffff !important;
+        border-color: #ffffff !important;
     }
 
     .sponsor-card:hover {
-        border-color: var(--accent-blue);
+        border-color: var(--accent-blue) !important;
         transform: translateY(-2px);
-        box-shadow: 0 4px 16px rgba(0, 210, 255, 0.2);
+        box-shadow: 0 4px 14px rgba(0, 210, 255, 0.25);
     }
 
     .sponsor-logo-img {
-        max-width: 85%;
-        max-height: 50px;
+        max-width: 90%;
+        max-height: 38px;
         width: auto;
         height: auto;
         object-fit: contain;
     }
 
+    /* Pomniejszone okienka zastępcze (placeholdery) */
     .sponsor-card-placeholder {
         background: var(--card-bg);
         border: 1px dashed var(--border);
-        border-radius: 10px;
-        padding: 15px 10px;
+        border-radius: 8px;
+        padding: 8px;
         text-align: center;
         transition: all 0.25s ease;
         display: flex;
         align-items: center;
         justify-content: center;
-        min-height: 70px;
+        min-height: 55px;
         backdrop-filter: blur(8px);
     }
 
@@ -106,7 +104,7 @@ permalink: /sponsors
 
     .placeholder-badge {
         font-family: 'JetBrains Mono', monospace;
-        font-size: 0.7rem;
+        font-size: 0.65rem;
         color: var(--text-muted);
         text-transform: uppercase;
         letter-spacing: 0.5px;
@@ -115,26 +113,26 @@ permalink: /sponsors
     .become-sponsor-card {
         background: radial-gradient(circle at top left, rgba(0, 210, 255, 0.08), rgba(10, 15, 25, 0.8));
         border: 1px solid var(--accent-blue);
-        border-radius: 10px;
-        padding: 25px 20px;
-        margin-top: 15px;
+        border-radius: 8px;
+        padding: 20px 15px;
+        margin-top: 10px;
         text-align: center;
         backdrop-filter: blur(8px);
     }
 
     .become-sponsor-card h2 {
-        font-size: 1.2rem;
-        margin: 0 0 8px 0;
+        font-size: 1.1rem;
+        margin: 0 0 6px 0;
         color: #fff;
         font-family: 'JetBrains Mono', monospace;
     }
 
     .become-sponsor-card p {
         color: var(--text-muted);
-        font-size: 0.85rem;
-        max-width: 580px;
-        margin: 0 auto 15px auto;
-        line-height: 1.5;
+        font-size: 0.8rem;
+        max-width: 550px;
+        margin: 0 auto 12px auto;
+        line-height: 1.4;
     }
 
     .contact-btn {
@@ -142,8 +140,8 @@ permalink: /sponsors
         background: var(--accent-contrast);
         color: #000;
         font-weight: 800;
-        font-size: 0.82rem;
-        padding: 10px 22px;
+        font-size: 0.78rem;
+        padding: 8px 18px;
         border-radius: 6px;
         text-decoration: none;
         transition: all 0.25s ease;
@@ -155,7 +153,7 @@ permalink: /sponsors
     .contact-btn:hover {
         background: #ff7a2e;
         transform: translateY(-2px);
-        box-shadow: 0 4px 16px rgba(255, 94, 0, 0.35);
+        box-shadow: 0 4px 14px rgba(255, 94, 0, 0.35);
     }
 </style>
 
@@ -173,6 +171,12 @@ permalink: /sponsors
             <div class="sponsor-card-placeholder">
                 <div class="placeholder-badge">[ MIEJSCE_NA_LOGO ]</div>
             </div>
+            <div class="sponsor-card-placeholder">
+                <div class="placeholder-badge">[ MIEJSCE_NA_LOGO ]</div>
+            </div>
+            <div class="sponsor-card-placeholder">
+                <div class="placeholder-badge">[ MIEJSCE_NA_LOGO ]</div>
+            </div>
         </div>
     </div>
 
@@ -182,9 +186,15 @@ permalink: /sponsors
         <p class="sponsor-section-desc">Partnerzy udostępniający systemy operacyjne, rozwiązania pamięci masowej (NAS/ZFS) oraz narzędzia do wirtualizacji i infrastruktury.</p>
         
         <div class="sponsor-grid">
-            <a href="https://fygonas.com/" target="_blank" rel="noopener noreferrer" class="sponsor-card sponsor-card-dark" title="FygoOS - System zarządzania pamięcią masową i NAS">
+            <a href="https://fygonas.com/" target="_blank" rel="noopener noreferrer" class="sponsor-card sponsor-card-light" title="FygoOS - System zarządzania pamięcią masową i NAS">
                 <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="FygoOS Logo" class="sponsor-logo-img">
             </a>
+            <div class="sponsor-card-placeholder">
+                <div class="placeholder-badge">[ MIEJSCE_NA_LOGO ]</div>
+            </div>
+            <div class="sponsor-card-placeholder">
+                <div class="placeholder-badge">[ MIEJSCE_NA_LOGO ]</div>
+            </div>
             <div class="sponsor-card-placeholder">
                 <div class="placeholder-badge">[ MIEJSCE_NA_LOGO ]</div>
             </div>
@@ -197,6 +207,12 @@ permalink: /sponsors
         <p class="sponsor-section-desc">Firmy i organizacje wspierające stałe prowadzenie badań, testów technicznych oraz rozwój kanału.</p>
         
         <div class="sponsor-grid">
+            <div class="sponsor-card-placeholder">
+                <div class="placeholder-badge">[ MIEJSCE_NA_LOGO ]</div>
+            </div>
+            <div class="sponsor-card-placeholder">
+                <div class="placeholder-badge">[ MIEJSCE_NA_LOGO ]</div>
+            </div>
             <div class="sponsor-card-placeholder">
                 <div class="placeholder-badge">[ MIEJSCE_NA_LOGO ]</div>
             </div>
