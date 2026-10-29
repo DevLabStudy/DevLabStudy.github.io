@@ -56,18 +56,25 @@ permalink: /sponsors
         text-decoration: none;
         min-height: 90px;
         cursor: pointer;
+        backdrop-filter: blur(10px);
     }
 
-    /* Karta z białym tłem dla logotypów o ciemnej kolorystyce */
+    /* Karta z jasnym tłem pod ciemne sygnatury / logotypy */
     .sponsor-card-light {
         background: #ffffff;
         border-color: #ffffff;
     }
 
+    /* Karta z ciemnym tłem dedykowana dla jasnych / przezroczystych logotypów */
+    .sponsor-card-dark {
+        background: rgba(10, 15, 25, 0.9);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
     .sponsor-card:hover {
         border-color: var(--accent-blue);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 20px rgba(0, 210, 255, 0.25);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 24px rgba(0, 210, 255, 0.2);
     }
 
     .sponsor-logo-img {
@@ -168,7 +175,22 @@ permalink: /sponsors
         </div>
     </div>
 
-    <!-- SEKCJA 2: STALI SPONSORZY -->
+    <!-- SEKCJA 2: DOSTAWCY OPROGRAMOWANIA I USŁUG -->
+    <div class="sponsor-category">
+        <h2 class="sponsor-section-title">[ Dostawcy_Oprogramowania ]</h2>
+        <p class="sponsor-section-desc">Partnerzy technologiczni udostępniający oprogramowanie, licencje oraz rozwiązania systemowe z zakresu pamięci masowych, wirtualizacji i infrastruktury cloud.</p>
+        
+        <div class="sponsor-grid">
+            <a href="https://fygonas.com/" target="_blank" rel="noopener noreferrer" class="sponsor-card sponsor-card-dark">
+                <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="FygoOS" class="sponsor-logo-img">
+            </a>
+            <div class="sponsor-card-placeholder">
+                <div class="placeholder-badge">[ MIEJSCE_NA_LOGO ]</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEKCJA 3: STALI SPONSORZY -->
     <div class="sponsor-category">
         <h2 class="sponsor-section-title">[ Stali_Sponsorzy ]</h2>
         <p class="sponsor-section-desc">Firmy i organizacje wspierające projekt w trybie ciągłym, umożliwiające stałe prowadzenie badań, testów oraz tworzenie materiałów technicznych.</p>
