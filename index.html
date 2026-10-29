@@ -2,90 +2,49 @@
 layout: default
 title: Home
 ---
-<!-- PODPIĘCIE LERKKIEGO SWIPER.JS (CDN) UNDER HEAD -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
 <style>
     .dashboard {
         max-width: 100% !important;
-        padding-left: 50px !important;
-        padding-right: 50px !important;
+        padding-left: 40px !important;
+        padding-right: 40px !important;
     }
 
-    /* NAGŁÓWKI SEKCJI */
-    .section-header-flex {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 45px;
-        margin-bottom: 20px;
-    }
-
+    /* ESTETYCZNE NAGŁÓWKI SEKCJI */
     .section-tag {
         display: inline-flex;
         align-items: center;
-        gap: 10px;
+        gap: 8px;
         font-family: 'JetBrains Mono', monospace;
-        font-size: 0.8rem;
+        font-size: 0.78rem;
         font-weight: 800;
         color: var(--accent-blue);
         background: rgba(0, 210, 255, 0.08);
         border: 1px solid rgba(0, 210, 255, 0.2);
-        padding: 6px 14px;
-        border-radius: 6px;
+        padding: 5px 12px;
+        border-radius: 5px;
         text-transform: uppercase;
-        letter-spacing: 1.5px;
-        margin: 0;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
     }
     .section-tag::before {
         content: '#';
         color: var(--accent-contrast);
     }
 
-    /* PRZYCISKI KARUZELI */
-    .carousel-controls {
-        display: flex;
-        gap: 10px;
-    }
-
-    .carousel-btn {
-        width: 36px;
-        height: 36px;
-        background: rgba(10, 15, 25, 0.8);
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        color: var(--text-main);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: 0.25s ease;
-        font-family: 'JetBrains Mono', monospace;
-        font-weight: bold;
-        user-select: none;
-    }
-
-    .carousel-btn:hover {
-        border-color: var(--accent-blue);
-        color: var(--accent-blue);
-        background: rgba(0, 210, 255, 0.1);
-    }
-
     /* HERO SECTION */
     .hero {
         margin-top: 10px;
-        margin-bottom: 40px;
+        margin-bottom: 35px;
         display: grid;
         grid-template-columns: 1.2fr 0.8fr;
-        gap: 35px;
+        gap: 30px;
         align-items: center;
     }
 
     .hero-title {
-        font-size: 4.2rem;
+        font-size: 4rem;
         font-weight: 900;
-        margin: 0 0 15px 0;
+        margin: 0 0 12px 0;
         line-height: 1.02;
         letter-spacing: -2px;
         background: linear-gradient(135deg, var(--text-main) 30%, var(--accent-blue) 100%);
@@ -100,27 +59,27 @@ title: Home
 
     .hero-desc {
         color: var(--text-muted);
-        font-size: 1.02rem;
-        line-height: 1.7;
-        margin-bottom: 25px;
+        font-size: 1rem;
+        line-height: 1.65;
+        margin-bottom: 22px;
     }
 
     .hero-buttons {
         display: flex;
-        gap: 15px;
+        gap: 12px;
         flex-wrap: wrap;
     }
 
     .btn {
-        padding: 12px 26px;
+        padding: 11px 24px;
         font-weight: 800;
-        font-size: 0.82rem;
+        font-size: 0.8rem;
         border-radius: 6px;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 0.25s ease;
         cursor: pointer;
         font-family: 'JetBrains Mono', monospace;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 0.5px;
         text-decoration: none;
         display: inline-block;
     }
@@ -129,12 +88,11 @@ title: Home
         background: var(--accent-contrast);
         color: #000;
         border: none;
-        box-shadow: 0 4px 20px rgba(255, 94, 0, 0.3);
+        box-shadow: 0 4px 18px rgba(255, 94, 0, 0.3);
     }
     .btn-primary:hover {
         background: #ff7a2e;
         transform: translateY(-2px);
-        box-shadow: 0 6px 25px rgba(255, 94, 0, 0.4);
     }
 
     .btn-secondary {
@@ -153,25 +111,25 @@ title: Home
         background: rgba(10, 15, 25, 0.9);
         border: 1px solid var(--border);
         border-radius: 10px;
-        padding: 20px;
+        padding: 18px;
         font-family: 'JetBrains Mono', monospace;
-        font-size: 0.8rem;
+        font-size: 0.78rem;
         box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         backdrop-filter: blur(10px);
     }
     .terminal-head {
         display: flex;
         gap: 6px;
-        margin-bottom: 15px;
-        padding-bottom: 10px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
         border-bottom: 1px solid rgba(255,255,255,0.08);
     }
-    .term-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .term-dot { width: 9px; height: 9px; border-radius: 50%; }
     .dot-red { background: #ff5f56; }
     .dot-yellow { background: #ffbd2e; }
     .dot-green { background: #27c93f; }
     
-    .term-line { margin-bottom: 8px; color: var(--text-muted); display: flex; justify-content: space-between; }
+    .term-line { margin-bottom: 7px; color: var(--text-muted); display: flex; justify-content: space-between; }
     .term-key { color: var(--accent-blue); }
     .term-val { color: #fff; font-weight: 700; }
     .status-online {
@@ -182,179 +140,136 @@ title: Home
     }
     .status-online::before {
         content: '';
-        width: 8px;
-        height: 8px;
+        width: 7px;
+        height: 7px;
         background: #27c93f;
         border-radius: 50%;
-        box-shadow: 0 0 8px #27c93f;
+        box-shadow: 0 0 6px #27c93f;
     }
 
-    /* SWIPER / SLIDER STYLING */
-    .swiper {
-        width: 100%;
-        padding-bottom: 30px !important;
+    /* GŁÓWNY UKŁAD 2-KOLUMNOWY (MAIN DASHBOARD) */
+    .main-grid {
+        display: grid;
+        grid-template-columns: 1fr 340px;
+        gap: 25px;
+        margin-bottom: 30px;
     }
 
-    /* KARTY W KARUZELI NEWSÓW */
-    .news-slide-card {
-        background: var(--card-bg);
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        overflow: hidden;
-        text-decoration: none;
+    /* WPISY / DZIENNIK - STRUKTURA LISTY TERMINALA */
+    .timeline-list {
         display: flex;
         flex-direction: column;
-        height: 100%;
-        transition: 0.25s ease;
+        gap: 10px;
+    }
+
+    .timeline-card {
+        background: rgba(12, 16, 26, 0.85);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 14px 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+        text-decoration: none;
+        transition: 0.2s ease;
         backdrop-filter: blur(8px);
     }
 
-    .news-slide-card:hover {
+    .timeline-card:hover {
         border-color: var(--accent-blue);
-        transform: translateY(-3px);
-        box-shadow: 0 8px 24px rgba(0, 210, 255, 0.15);
+        background: rgba(0, 210, 255, 0.04);
+        transform: translateX(4px);
     }
 
-    .news-slide-thumb {
-        width: 100%;
-        height: 130px;
+    .timeline-left {
         display: flex;
         align-items: center;
-        justify-content: center;
-        background: radial-gradient(circle at 30% 20%, rgba(0, 210, 255, 0.12), rgba(0, 0, 0, 0.6));
-        border-bottom: 1px solid var(--border);
-        overflow: hidden;
+        gap: 12px;
     }
 
-    .news-slide-img { width: 100%; height: 100%; object-fit: cover; }
-
-    .news-slide-body {
-        padding: 14px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        flex-grow: 1;
+    .timeline-cat {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.7rem;
+        font-weight: 800;
+        color: var(--accent-blue);
+        background: rgba(0, 210, 255, 0.08);
+        padding: 4px 8px;
+        border-radius: 4px;
+        border: 1px solid rgba(0, 210, 255, 0.15);
+        white-space: nowrap;
     }
 
-    /* KARTY W KARUZELI BLOGA */
-    .blog-slide-card {
+    .timeline-title {
+        font-weight: 700;
+        font-size: 0.92rem;
+        color: #fff;
+        line-height: 1.3;
+    }
+
+    .timeline-date {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.72rem;
+        color: var(--text-muted);
+        white-space: nowrap;
+    }
+
+    /* SIDEBAR (PRAWA KOLUMNA) */
+    .sidebar-block {
         background: rgba(12, 16, 26, 0.85);
         border: 1px solid var(--border);
         border-radius: 10px;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 100%;
-        text-decoration: none;
-        transition: 0.25s ease;
-        backdrop-filter: blur(8px);
-    }
-
-    .blog-slide-card:hover {
-        border-color: var(--accent-blue);
-        transform: translateY(-3px);
-        box-shadow: 0 8px 24px rgba(0, 210, 255, 0.15);
-    }
-
-    /* SPONSORZY & MARKETPLACE */
-    .sponsors-grid, .extra-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 15px;
-        margin-bottom: 15px;
-    }
-
-    .sponsor-card, .extra-card {
-        background: var(--card-bg);
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        backdrop-filter: blur(8px);
-        transition: 0.25s;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .sponsor-card::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; width: 4px; height: 100%;
-        background: var(--accent-contrast);
-    }
-
-    .sponsor-card-blue::before { background: var(--accent-blue); }
-
-    .sponsor-card:hover, .extra-card:hover {
-        border-color: var(--accent-blue);
-        transform: translateY(-2px);
-    }
-
-    .sponsor-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
-    .sponsor-name { font-size: 1.05rem; font-weight: 900; color: #fff; font-family: 'JetBrains Mono', monospace; }
-    .sponsor-badge { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; background: rgba(255, 94, 0, 0.1); color: var(--accent-contrast); padding: 3px 8px; border-radius: 12px; border: 1px solid rgba(255, 94, 0, 0.2); font-weight: 700; text-transform: uppercase; }
-    .sponsor-badge-blue { background: rgba(0, 210, 255, 0.1); color: var(--accent-blue); border-color: rgba(0, 210, 255, 0.2); }
-    .sponsor-desc { color: var(--text-muted); font-size: 0.82rem; line-height: 1.4; margin-bottom: 15px; }
-    .sponsor-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed rgba(255, 255, 255, 0.08); padding-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--text-muted); }
-    .sponsor-link { color: var(--accent-blue); font-weight: 700; text-decoration: none; }
-
-    /* STATYSTYKI YOUTUBE */
-    .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-        margin-bottom: 15px;
-    }
-
-    .stat-card {
-        background: var(--card-bg);
-        border: 1px solid var(--border);
-        border-radius: 10px;
         padding: 18px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        text-decoration: none;
+        margin-bottom: 20px;
         backdrop-filter: blur(8px);
-        transition: 0.25s;
     }
 
-    .stat-card:hover {
-        border-color: var(--accent-blue);
-        transform: translateY(-2px);
+    .sidebar-title {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.8rem;
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 
-    .stat-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-    .stat-icon { width: 34px; height: 34px; background: rgba(0, 210, 255, 0.1); color: var(--accent-blue); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; border: 1px solid rgba(0, 210, 255, 0.2); }
-    .stat-name { font-weight: 800; font-size: 0.95rem; color: #fff; }
-    .stat-platform { color: var(--text-muted); font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; }
-    .stat-number { font-size: 2rem; font-weight: 900; color: var(--text-main); font-family: 'JetBrains Mono', monospace; line-height: 1; }
-    .stat-label { font-size: 0.72rem; color: var(--accent-contrast); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; font-weight: 700; }
+    .partner-mini-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px dashed rgba(255,255,255,0.06);
+    }
+    .partner-mini-card:last-child { border-bottom: none; }
 
+    .partner-name { font-weight: 800; font-size: 0.88rem; color: #fff; font-family: 'JetBrains Mono', monospace; }
+    .partner-role { font-size: 0.72rem; color: var(--text-muted); }
+    .partner-link { color: var(--accent-blue); text-decoration: none; font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; font-weight: bold; }
+
+    /* MARKETPLACE & SUPPORT BUTTONS */
     .mini-btn-group { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
     .mini-btn { padding: 7px 12px; border-radius: 5px; font-weight: 800; font-size: 0.7rem; text-decoration: none; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; transition: 0.2s; display: inline-block; }
+    .mini-btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
 
-    .swiper-pagination-bullet { background: var(--text-muted); opacity: 0.5; }
-    .swiper-pagination-bullet-active { background: var(--accent-blue) !important; opacity: 1; width: 18px; border-radius: 4px; }
-
-    @media (max-width: 1024px) {
+    @media (max-width: 900px) {
         .hero { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 600px) {
-        .stats-grid { grid-template-columns: 1fr; }
+        .main-grid { grid-template-columns: 1fr; }
+        .timeline-card { flex-direction: column; align-items: flex-start; gap: 6px; }
+        .timeline-date { align-self: flex-end; }
     }
 </style>
 
-<!-- SEKCJA HERO -->
+<!-- SEKCJA HERO (ZATRZYMANA SPRAWDZONA GÓRA) -->
 <section class="hero">
     <div>
-        <div class="section-tag" style="margin-top: 0;">Infrastruktura & Kod</div>
+        <div class="section-tag">Infrastruktura & Kod</div>
         <h1 class="hero-title">DEVLAB<br>STUDY<span>_</span></h1>
         <p class="hero-desc">
-            Dokumentuję rozbudowę mojego środowiska homelab (Cisco, MikroTik, Proxmox VE), konfigurację sieci LAN/VLAN oraz zarządzanie pamięcią masową (FygoOS, ZFS). Tworzę autorskie oprogramowanie oraz testuję rozwiązania partnerów.
+            Dokumentuję rozbudowę środowiska homelab (Cisco, MikroTik, Proxmox VE), konfigurację sieci LAN/VLAN oraz zarządzanie pamięcią masową (FygoOS, ZFS). Tworzę autorskie oprogramowanie oraz testuję rozwiązania partnerów.
         </p>
         <div class="hero-buttons">
             <a href="/homelab" class="btn btn-primary">Zobacz Homelab ➔</a>
@@ -368,7 +283,7 @@ title: Home
             <span class="term-dot dot-red"></span>
             <span class="term-dot dot-yellow"></span>
             <span class="term-dot dot-green"></span>
-            <span style="color: var(--text-muted); font-size: 0.7rem; margin-left: auto;">node01@devlabstudy</span>
+            <span style="color: var(--text-muted); font-size: 0.68rem; margin-left: auto;">node01@devlabstudy</span>
         </div>
         <div class="term-line">
             <span class="term-key">STATUS:</span>
@@ -393,238 +308,94 @@ title: Home
     </div>
 </section>
 
-<!-- SEKCJA KARUZELA NEWSY I RAPORTY -->
-<div class="section-header-flex">
-    <div class="section-tag">Najnowsze Raporty & Newsy</div>
-    <div class="carousel-controls">
-        <div class="carousel-btn news-prev">←</div>
-        <div class="carousel-btn news-next">→</div>
-    </div>
-</div>
-
-<div class="swiper newsSwiper">
-    <div class="swiper-wrapper">
-        {% assign sorted_newsy = site.newsy | sort: 'date' | reverse %}
-        {% for post in sorted_newsy limit:8 %}
-        <div class="swiper-slide">
-            <a href="{{ post.url | relative_url }}" class="news-slide-card">
-                {% assign t = post %}
-                {% assign thumb = t.icon | default: t.image %}
-                {% assign cat = t.category | default: "brief" | downcase %}
-                {% case cat %}
-                  {% when "hardware" %}{% assign emoji = "💻" %}
-                  {% when "homelab" %}{% assign emoji = "🗄️" %}
-                  {% when "mikrotik", "sieć", "siec", "network" %}{% assign emoji = "🌐" %}
-                  {% when "proxmox" %}{% assign emoji = "🖥️" %}
-                  {% when "fygoos", "nas" %}{% assign emoji = "💾" %}
-                  {% else %}{% assign emoji = "⚡" %}
-                {% endcase %}
-
-                <div class="news-slide-thumb">
-                  {% if thumb != blank %}
-                    {% assign thumb_src = thumb %}
-                    {% unless thumb contains '://' %}
-                      {% assign thumb_src = thumb | relative_url %}
-                    {% endunless %}
-                    <img src="{{ thumb_src }}" alt="" loading="lazy" class="news-slide-img" onerror="this.style.display='none';">
-                  {% else %}
-                    <span style="font-size: 2rem;">{{ emoji }}</span>
-                  {% endif %}
+<!-- MAIN DASHBOARD (NOWY UKŁAD 2-KOLUMNOWY) -->
+<div class="main-grid">
+    
+    <!-- LEWA KOLUMNA: DZIENNIK & BLOG (JEDNA SPÓJNA LISTA) -->
+    <div>
+        <div class="section-tag">Dziennik Systemowy & Ostatnie Raporty</div>
+        <div class="timeline-list">
+            {% assign all_posts = site.posts | concat: site.newsy | sort: 'date' | reverse %}
+            {% for post in all_posts limit:7 %}
+            <a href="{{ post.url | relative_url }}" class="timeline-card">
+                <div class="timeline-left">
+                    <span class="timeline-cat">[{{ post.category | default: "LOG" | upcase }}]</span>
+                    <span class="timeline-title">{{ post.title }}</span>
                 </div>
-                <div class="news-slide-body">
-                    <div>
-                        <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--accent-contrast); margin-bottom: 5px; font-weight: 800;">
-                            [{{ post.category | default: "NEWS" | upcase }}] // {{ post.date | date: "%Y.%m.%d" }}
-                        </div>
-                        <h3 style="font-size: 0.9rem; font-weight: 800; color: #fff; margin: 0 0 6px 0; line-height: 1.25;">
-                            {{ post.title }}
-                        </h3>
-                    </div>
-                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent-blue); margin-top: 10px; font-weight: 700;">
-                        // CZYTAJ &rarr;
-                    </div>
+                <span class="timeline-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- PRAWA KOLUMNA: SIDEBAR (PARTNERZY, SPOŁECZNOŚĆ, WSPARCIE) -->
+    <div>
+        
+        <!-- SPOŁECZNOŚĆ YOUTUBE -->
+        <div class="sidebar-block">
+            <div class="sidebar-title">
+                <span>// WĘZŁY SPOŁECZNOŚCI</span>
+                <span style="color: var(--accent-contrast); font-size: 0.7rem;">LIVE</span>
+            </div>
+            <a href="https://www.youtube.com/channel/UCisFPSU_Y8hznpqrcewcJAg" target="_blank" style="text-decoration: none; display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                <div>
+                    <div style="font-weight: 800; color: #fff; font-size: 0.9rem;">DevLabStudy</div>
+                    <div style="font-size: 0.72rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">@YouTube Main Channel</div>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 1.4rem; font-weight: 900; color: var(--text-main); font-family: 'JetBrains Mono', monospace;">37</div>
+                    <div style="font-size: 0.6rem; color: var(--accent-contrast); font-family: 'JetBrains Mono', monospace;">SUBÓW</div>
+                </div>
+            </a>
+            <a href="https://www.youtube.com/channel/UCaTfVaE8Pb95CZvblqjNheA" target="_blank" style="text-decoration: none; display: flex; align-items: center; justify-content: space-between;">
+                <div>
+                    <div style="font-weight: 800; color: #fff; font-size: 0.9rem;">PC Hub</div>
+                    <div style="font-size: 0.72rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">@YouTube Hardware</div>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 1.4rem; font-weight: 900; color: var(--text-main); font-family: 'JetBrains Mono', monospace;">0</div>
+                    <div style="font-size: 0.6rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">SUBÓW</div>
                 </div>
             </a>
         </div>
-        {% endfor %}
-    </div>
-    <div class="swiper-pagination news-pagination"></div>
-</div>
 
-<!-- SEKCJA KARUZELA DZIENNIK SYSTEMOWY (BLOG) -->
-<div class="section-header-flex">
-    <div class="section-tag">Dziennik Systemowy / Blog</div>
-    <div class="carousel-controls">
-        <div class="carousel-btn blog-prev">←</div>
-        <div class="carousel-btn blog-next">→</div>
-    </div>
-</div>
-
-<div class="swiper blogSwiper">
-    <div class="swiper-wrapper">
-        {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
-        {% for post in sorted_posts limit:8 %}
-        <div class="swiper-slide">
-            <a href="{{ post.url | relative_url }}" class="blog-slide-card">
-                <div>
-                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; color: var(--accent-blue); margin-bottom: 8px; font-weight: bold;">
-                        [{{ post.category | default: "LOG" | upcase }}] // {{ post.date | date: "%Y.%m.%d" }}
-                    </div>
-                    <h3 style="font-size: 1rem; font-weight: 800; color: #fff; margin: 0 0 10px 0; line-height: 1.3;">
-                        {{ post.title }}
-                    </h3>
-                    <p style="color: var(--text-muted); font-size: 0.8rem; line-height: 1.4; margin: 0;">
-                        {{ post.excerpt | strip_html | truncate: 90 }}
-                    </p>
-                </div>
-                <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--accent-contrast); margin-top: 15px; font-weight: 800;">
-                    OTWÓRZ WPIS ➔
-                </div>
-            </a>
-        </div>
-        {% endfor %}
-    </div>
-    <div class="swiper-pagination blog-pagination"></div>
-</div>
-
-<!-- SEKCJA SPONSORÓW -->
-<div class="section-header-flex">
-    <div class="section-tag">Partnerzy Technologiczni</div>
-</div>
-<div class="sponsors-grid">
-    <div class="sponsor-card">
-        <div>
-            <div class="sponsor-header">
-                <div class="sponsor-name">LANBERG</div>
-                <div class="sponsor-badge">Hardware Partner</div>
+        <!-- PARTNERZY TECHNOLOGICZNI -->
+        <div class="sidebar-block">
+            <div class="sidebar-title">
+                <span>// PARTNERZY</span>
+                <a href="/sponsors" style="color: var(--accent-blue); text-decoration: none; font-size: 0.7rem;">Więcej ➔</a>
             </div>
-            <p class="sponsor-desc">
-                Współpraca w ramach dostarczania osprzętu sieciowego, okablowania strukturalnego oraz szaf RACK (19" i 10"), stanowiących fizyczny kręgosłup homelabu.
+            <div class="partner-mini-card">
+                <div>
+                    <div class="partner-name">LANBERG</div>
+                    <div class="partner-role">Sprzęt RACK & Sieci</div>
+                </div>
+                <a href="https://lanberg.eu" target="_blank" class="partner-link">lanberg.eu ↗</a>
+            </div>
+            <div class="partner-mini-card">
+                <div>
+                    <div class="partner-name">FYGO OS</div>
+                    <div class="partner-role">Systemy NAS & ZFS</div>
+                </div>
+                <a href="https://fygonas.com/" target="_blank" class="partner-link">fygonas.com ↗</a>
+            </div>
+        </div>
+
+        <!-- MARKETPLACE & WSPARCIE -->
+        <div class="sidebar-block">
+            <div class="sidebar-title">
+                <span>// GIEŁDA & WSPARCIE</span>
+            </div>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin: 0 0 8px 0; line-height: 1.4;">
+                Wyprzedaż sprzętu z testów oraz możliwość wsparcia rozwoju projektu:
             </p>
+            <div class="mini-btn-group">
+                <a href="https://www.vinted.pl/member/306118036" target="_blank" class="mini-btn" style="background: #00bfb2; color: #fff;">Vinted</a>
+                <a href="https://allegrolokalnie.pl/uzytkownik/Client:137881965" target="_blank" class="mini-btn" style="background: #ff5a00; color: #fff;">Allegro</a>
+                <a href="https://www.buymeacoffee.com/DevLabStudy" target="_blank" class="mini-btn" style="background: #FFDD00; color: #000;">Coffee</a>
+            </div>
         </div>
-        <div class="sponsor-footer">
-            <span>// STATUS: ACTIVE_PARTNER</span>
-            <a href="https://lanberg.eu" target="_blank" class="sponsor-link">lanberg.eu →</a>
-        </div>
+
     </div>
 
-    <div class="sponsor-card sponsor-card-blue">
-        <div>
-            <div class="sponsor-header">
-                <div class="sponsor-name">FYGO OS</div>
-                <div class="sponsor-badge sponsor-badge-blue">Software Partner</div>
-            </div>
-            <p class="sponsor-desc">
-                System operacyjny NAS, testy wirtualizacji pod Proxmox VE oraz rozwijanie wspólnych materiałów z zakresu przestrzeni dyskowych.
-            </p>
-        </div>
-        <div class="sponsor-footer">
-            <span>// STATUS: AFFILIATE_PARTNER</span>
-            <a href="https://fygonas.com/" target="_blank" class="sponsor-link">fygonas.com →</a>
-        </div>
-    </div>
 </div>
-
-<!-- SPOŁECZNOŚĆ YOUTUBE -->
-<div class="section-header-flex">
-    <div class="section-tag">Społeczność & Kanały</div>
-</div>
-<div class="stats-grid">
-    <a href="https://www.youtube.com/channel/UCisFPSU_Y8hznpqrcewcJAg" target="_blank" class="stat-card">
-        <div>
-            <div class="stat-header">
-                <div class="stat-icon">▶</div>
-                <div>
-                    <div class="stat-name">DevLabStudy</div>
-                    <div class="stat-platform">@YouTube</div>
-                </div>
-            </div>
-            <div>
-                <div class="stat-number">37</div>
-                <div class="stat-label">Subskrypcji</div>
-            </div>
-        </div>
-        <div style="margin-top: 12px; border-top: 1px dashed rgba(255,255,255,0.08); padding-top: 8px; font-size: 0.72rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">
-            // KANAŁ GŁÓWNY HOMELAB
-        </div>
-    </a>
-
-    <a href="https://www.youtube.com/channel/UCaTfVaE8Pb95CZvblqjNheA" target="_blank" class="stat-card">
-        <div>
-            <div class="stat-header">
-                <div class="stat-icon">💻</div>
-                <div>
-                    <div class="stat-name">PC Hub</div>
-                    <div class="stat-platform">@YouTube</div>
-                </div>
-            </div>
-            <div>
-                <div class="stat-number">0</div>
-                <div class="stat-label">Subskrypcji</div>
-            </div>
-        </div>
-        <div style="margin-top: 12px; border-top: 1px dashed rgba(255,255,255,0.08); padding-top: 8px; font-size: 0.72rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">
-            // HARDWARE & TESTY
-        </div>
-    </a>
-</div>
-
-<!-- MARKETPLACE & SUPPORT -->
-<div class="section-header-flex">
-    <div class="section-tag">Marketplace & Wsparcie</div>
-</div>
-<div class="extra-grid">
-    <div class="extra-card">
-        <h3 style="font-size: 0.78rem; color: #00bfb2; margin: 0 0 6px 0; text-transform: uppercase; font-family: 'JetBrains Mono', monospace;">// Giełda Sprzętowa:</h3>
-        <p style="color: var(--text-muted); font-size: 0.82rem; line-height: 1.4; margin-bottom: 10px;">
-            Sprzedaż przetestowanych podzespołów z warsztatu i nadwyżek sprzętowych.
-        </p>
-        <div class="mini-btn-group">
-            <a href="https://www.vinted.pl/member/306118036" target="_blank" class="mini-btn" style="background: #00bfb2; color: #fff;">Vinted</a>
-            <a href="https://allegrolokalnie.pl/uzytkownik/Client:137881965" target="_blank" class="mini-btn" style="background: #ff5a00; color: #fff;">Allegro Lokalnie</a>
-        </div>
-    </div>
-
-    <div class="extra-card">
-        <h3 style="font-size: 0.78rem; color: var(--accent-blue); margin: 0 0 6px 0; text-transform: uppercase; font-family: 'JetBrains Mono', monospace;">// Wesprzyj Projekt:</h3>
-        <p style="color: var(--text-muted); font-size: 0.82rem; line-height: 1.4; margin-bottom: 10px;">
-            Jeśli materiały są przydatne, możesz dołożyć cegiełkę do rozwoju serwerowni.
-        </p>
-        <div class="mini-btn-group">
-            <a href="https://patreon.com/DevStudyLab" target="_blank" class="mini-btn" style="background: #e11d48; color: #fff;">Patreon</a>
-            <a href="https://www.buymeacoffee.com/DevLabStudy" target="_blank" class="mini-btn" style="background: #FFDD00; color: #000;">Buy Me a Coffee</a>
-        </div>
-    </div>
-</div>
-
-<!-- INICJALIZACJA SWIPERA -->
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // Karuzela Newsów
-        new Swiper('.newsSwiper', {
-            slidesPerView: 1,
-            spaceBetween: 15,
-            loop: true,
-            pagination: { el: '.news-pagination', clickable: true },
-            navigation: { nextEl: '.news-next', prevEl: '.news-prev' },
-            breakpoints: {
-                640: { slidesPerView: 2 },
-                900: { slidesPerView: 3 },
-                1200: { slidesPerView: 4 }
-            }
-        });
-
-        // Karuzela Bloga
-        new Swiper('.blogSwiper', {
-            slidesPerView: 1,
-            spaceBetween: 15,
-            loop: true,
-            pagination: { el: '.blog-pagination', clickable: true },
-            navigation: { nextEl: '.blog-next', prevEl: '.blog-prev' },
-            breakpoints: {
-                640: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 }
-            }
-        });
-    });
-</script>
