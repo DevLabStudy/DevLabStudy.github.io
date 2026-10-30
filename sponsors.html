@@ -38,31 +38,31 @@ permalink: /sponsors
         margin-bottom: 12px;
     }
 
-    /* Pomniejszona siatka z większą liczbą kolumn */
+    /* Siatka kart partnerów */
     .sponsor-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         gap: 12px;
     }
 
-    /* Pomniejszone karty głównych partnerów */
+    /* Karty głównych partnerów */
     .sponsor-card {
         background: rgba(15, 15, 15, 0.8);
         border: 1px solid var(--border);
         border-radius: 8px;
-        padding: 8px 12px;
+        padding: 8px 10px;
         display: flex;
         align-items: center;
         justify-content: center;
         transition: all 0.25s ease;
         text-decoration: none;
-        min-height: 55px;
+        min-height: 64px;
         cursor: pointer;
         backdrop-filter: blur(8px);
         overflow: hidden;
     }
 
-    /* Dedykowana spójna biała karta pod logo z ciemną grafiką (jak Lanberg, Fygo i Tapelark) */
+    /* Dedykowana spójna biała karta pod logo z ciemną grafiką (Lanberg, Fygo, Tapelark) */
     .sponsor-card-light {
         background: #ffffff !important;
         border-color: #ffffff !important;
@@ -74,15 +74,16 @@ permalink: /sponsors
         box-shadow: 0 4px 14px rgba(0, 210, 255, 0.25);
     }
 
+    /* Powiększone logo: wypełnia kartę, zachowując proporcje */
     .sponsor-logo-img {
-        max-width: 90%;
-        max-height: 38px;
+        max-width: 100%;
+        max-height: 46px;
         width: auto;
         height: auto;
         object-fit: contain;
     }
 
-    /* Pomniejszone okienka zastępcze (placeholdery) */
+    /* Okienka zastępcze (placeholdery) */
     .sponsor-card-placeholder {
         background: var(--card-bg);
         border: 1px dashed var(--border);
@@ -93,7 +94,7 @@ permalink: /sponsors
         display: flex;
         align-items: center;
         justify-content: center;
-        min-height: 55px;
+        min-height: 64px;
         backdrop-filter: blur(8px);
     }
 
