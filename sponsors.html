@@ -38,14 +38,14 @@ permalink: /sponsors
         margin-bottom: 14px;
     }
 
-    /* Siatka kart partnerów */
+    /* Siatka kart partnerów - zbalansowana szerokość kolumn */
     .sponsor-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
         gap: 14px;
     }
 
-    /* Karty głównych partnerów - zaokrąglenie 6px */
+    /* Karty głównych partnerów - zaokrąglenie 6px, wycięcie nadmiaru przy skalowaniu */
     .sponsor-card {
         background: rgba(15, 15, 15, 0.8);
         border: 1px solid var(--border);
@@ -89,12 +89,14 @@ permalink: /sponsors
         object-fit: contain;
     }
 
-    /* Zwiększone logo specjalnie dla Tapelark */
+    /* Wymuszenie powiększenia logo Tapelark (omijanie pustych marginesów pliku) */
     .sponsor-logo-tapelark {
-        max-width: 92% !important;
-        max-height: 62px !important;
-        width: auto;
-        height: auto;
+        width: 80% !important;
+        max-width: none !important;
+        max-height: none !important;
+        height: auto !important;
+        transform: scale(1.65);
+        object-fit: contain;
     }
 
     /* Okienka zastępcze (placeholdery) */
