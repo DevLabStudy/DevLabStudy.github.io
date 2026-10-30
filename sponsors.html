@@ -38,14 +38,14 @@ permalink: /sponsors
         margin-bottom: 12px;
     }
 
-    /* Siatka kart partnerów (rozmiar bez zmian) */
+    /* Siatka kart partnerów */
     .sponsor-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
         gap: 12px;
     }
 
-    /* Karty głównych partnerów (rozmiar bez zmian, mniejszy padding = więcej miejsca na logo) */
+    /* Karty głównych partnerów */
     .sponsor-card {
         background: rgba(15, 15, 15, 0.8);
         border: 1px solid var(--border);
@@ -74,19 +74,36 @@ permalink: /sponsors
         border-color: #F4EEE2 !important;
     }
 
+    /* Szeroka karta (2 pola siatki) dla długich, poziomych logo */
+    .sponsor-card-wide {
+        grid-column: span 2;
+        min-height: 68px;
+    }
+
     .sponsor-card:hover {
         border-color: var(--accent-blue) !important;
         transform: translateY(-2px);
         box-shadow: 0 4px 14px rgba(0, 210, 255, 0.25);
     }
 
-    /* Logo: nieco większe, ale mieści się w kartach o niezmienionej wielkości */
     .sponsor-logo-img {
         max-width: 100%;
         max-height: 43px;
         width: auto;
         height: auto;
         object-fit: contain;
+    }
+
+    /* Większe logo w szerokiej karcie (Tapelark) */
+    .sponsor-card-wide .sponsor-logo-img {
+        max-height: 56px;
+    }
+
+    /* Na bardzo wąskich ekranach szeroka karta wraca do jednego pola */
+    @media (max-width: 360px) {
+        .sponsor-card-wide {
+            grid-column: span 1;
+        }
     }
 
     /* Okienka zastępcze (placeholdery) */
@@ -196,12 +213,9 @@ permalink: /sponsors
             <a href="https://fygonas.com/" target="_blank" rel="noopener noreferrer" class="sponsor-card sponsor-card-light" title="FygoOS - System zarządzania pamięcią masową i NAS">
                 <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="FygoOS Logo" class="sponsor-logo-img">
             </a>
-            <a href="https://tapelark.com/pl/" target="_blank" rel="noopener noreferrer" class="sponsor-card sponsor-card-cream" title="Tapelark - rejestrator dźwięku dla Linuksa i macOS">
+            <a href="https://tapelark.com/pl/" target="_blank" rel="noopener noreferrer" class="sponsor-card sponsor-card-cream sponsor-card-wide" title="Tapelark - rejestrator dźwięku dla Linuksa i macOS">
                 <img src="{{ '/assets/images/tepelark.png' | relative_url }}" alt="Tapelark Logo" class="sponsor-logo-img">
             </a>
-            <div class="sponsor-card-placeholder">
-                <div class="placeholder-badge">[ MIEJSCE_NA_LOGO ]</div>
-            </div>
             <div class="sponsor-card-placeholder">
                 <div class="placeholder-badge">[ MIEJSCE_NA_LOGO ]</div>
             </div>
