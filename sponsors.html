@@ -33,30 +33,30 @@ permalink: /sponsors
 
     .sponsor-section-desc {
         color: var(--text-muted);
-        font-size: 0.82rem;
+        font-size: 0.85rem;
         line-height: 1.4;
-        margin-bottom: 12px;
+        margin-bottom: 14px;
     }
 
-    /* Siatka kart partnerów */
+    /* Siatka kart partnerów - powiększona szerokość minimalna */
     .sponsor-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-        gap: 12px;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 14px;
     }
 
-    /* Karty głównych partnerów */
+    /* Karty głównych partnerów - lekko prostokątne (border-radius: 4px), powiększone */
     .sponsor-card {
         background: rgba(15, 15, 15, 0.8);
         border: 1px solid var(--border);
-        border-radius: 8px;
-        padding: 6px 8px;
+        border-radius: 4px;
+        padding: 10px 14px;
         display: flex;
         align-items: center;
         justify-content: center;
         transition: all 0.25s ease;
         text-decoration: none;
-        min-height: 55px;
+        min-height: 75px;
         cursor: pointer;
         backdrop-filter: blur(8px);
         overflow: hidden;
@@ -74,50 +74,33 @@ permalink: /sponsors
         border-color: #F4EEE2 !important;
     }
 
-    /* Szeroka karta (2 pola siatki) dla długich, poziomych logo */
-    .sponsor-card-wide {
-        grid-column: span 2;
-        min-height: 68px;
-    }
-
     .sponsor-card:hover {
         border-color: var(--accent-blue) !important;
         transform: translateY(-2px);
         box-shadow: 0 4px 14px rgba(0, 210, 255, 0.25);
     }
 
+    /* Powiększone logo dla lepszej czytelności */
     .sponsor-logo-img {
         max-width: 100%;
-        max-height: 43px;
+        max-height: 52px;
         width: auto;
         height: auto;
         object-fit: contain;
     }
 
-    /* Większe logo w szerokiej karcie (Tapelark) */
-    .sponsor-card-wide .sponsor-logo-img {
-        max-height: 56px;
-    }
-
-    /* Na bardzo wąskich ekranach szeroka karta wraca do jednego pola */
-    @media (max-width: 360px) {
-        .sponsor-card-wide {
-            grid-column: span 1;
-        }
-    }
-
-    /* Okienka zastępcze (placeholdery) */
+    /* Okienka zastępcze (placeholdery) w tym samym kształcie i wymiarach */
     .sponsor-card-placeholder {
         background: var(--card-bg);
         border: 1px dashed var(--border);
-        border-radius: 8px;
-        padding: 8px;
+        border-radius: 4px;
+        padding: 10px 14px;
         text-align: center;
         transition: all 0.25s ease;
         display: flex;
         align-items: center;
         justify-content: center;
-        min-height: 55px;
+        min-height: 75px;
         backdrop-filter: blur(8px);
     }
 
@@ -128,7 +111,7 @@ permalink: /sponsors
 
     .placeholder-badge {
         font-family: 'JetBrains Mono', monospace;
-        font-size: 0.65rem;
+        font-size: 0.7rem;
         color: var(--text-muted);
         text-transform: uppercase;
         letter-spacing: 0.5px;
@@ -137,15 +120,15 @@ permalink: /sponsors
     .become-sponsor-card {
         background: radial-gradient(circle at top left, rgba(0, 210, 255, 0.08), rgba(10, 15, 25, 0.8));
         border: 1px solid var(--accent-blue);
-        border-radius: 8px;
-        padding: 20px 15px;
+        border-radius: 6px;
+        padding: 22px 18px;
         margin-top: 10px;
         text-align: center;
         backdrop-filter: blur(8px);
     }
 
     .become-sponsor-card h2 {
-        font-size: 1.1rem;
+        font-size: 1.15rem;
         margin: 0 0 6px 0;
         color: #fff;
         font-family: 'JetBrains Mono', monospace;
@@ -153,9 +136,9 @@ permalink: /sponsors
 
     .become-sponsor-card p {
         color: var(--text-muted);
-        font-size: 0.8rem;
+        font-size: 0.85rem;
         max-width: 550px;
-        margin: 0 auto 12px auto;
+        margin: 0 auto 14px auto;
         line-height: 1.4;
     }
 
@@ -164,9 +147,9 @@ permalink: /sponsors
         background: var(--accent-contrast);
         color: #000;
         font-weight: 800;
-        font-size: 0.78rem;
-        padding: 8px 18px;
-        border-radius: 6px;
+        font-size: 0.8rem;
+        padding: 9px 20px;
+        border-radius: 4px;
         text-decoration: none;
         transition: all 0.25s ease;
         font-family: 'JetBrains Mono', monospace;
@@ -213,9 +196,12 @@ permalink: /sponsors
             <a href="https://fygonas.com/" target="_blank" rel="noopener noreferrer" class="sponsor-card sponsor-card-light" title="FygoOS - System zarządzania pamięcią masową i NAS">
                 <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="FygoOS Logo" class="sponsor-logo-img">
             </a>
-            <a href="https://tapelark.com/pl/" target="_blank" rel="noopener noreferrer" class="sponsor-card sponsor-card-cream sponsor-card-wide" title="Tapelark - rejestrator dźwięku dla Linuksa i macOS">
+            <a href="https://tapelark.com/pl/" target="_blank" rel="noopener noreferrer" class="sponsor-card sponsor-card-cream" title="Tapelark - rejestrator dźwięku dla Linuksa i macOS">
                 <img src="{{ '/assets/images/tepelark.png' | relative_url }}" alt="Tapelark Logo" class="sponsor-logo-img">
             </a>
+            <div class="sponsor-card-placeholder">
+                <div class="placeholder-badge">[ MIEJSCE_NA_LOGO ]</div>
+            </div>
             <div class="sponsor-card-placeholder">
                 <div class="placeholder-badge">[ MIEJSCE_NA_LOGO ]</div>
             </div>
